@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="initial-scale=1, width=device-width" />
+
+    <link rel="stylesheet" href="./globalForm.css" />
+    <link rel="stylesheet" href="./form.css" />
+
+    <link rel="stylesheet" href="./index.css">
+
+
+    <title>Request a Service / Contact Us | Gold Line Services</title>
+    <meta name="description" content="Request professional HVAC, pool, spa, or appliance service in the Chicago area (60-mile radius). Fill out our quick form or call us today!">
+
+
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap"
+    />
+  </head>
+  
+  <body>
+    <!--<div class="content-container full-bleed" style="--bg-color: #dadbdc;"> <!-- Сюди в CSS: width: 1440px; margin: 0 auto;  #0A0B0C --> 
+
+      <section class="main-content">
+
+        <div class="v1"> 
+          <div class="top-text">
+            <h1 class="schedule-your-service">Schedule Your Service</h1>
+            <div class="ready-to-get">
+              Ready to get started? Please fill out the form below and a member<br>
+              of our team will be in touch shortly!<br />
+            </div>
+          </div>
+
+
+          <form action="https://formsubmit.co/contact.goldlineservice@gmail.com" method="POST">
+
+            <input type="hidden" name="_next" value="https://goldlineservices.netlify.app/goldlineservices.html#home-section">
+
+
+
+            <div id="block-1"> <!------------------------------|     V1     |------------------------------------ -->
+              <div class="block-1">
+
+                <div class="service-selection">
+
+                  <div class="what-do-you-need-help-with">
+                    <div class="label-step-row">
+                      <div class="what-do-you">
+                        What do you need help with? <span class="red-star">*</span><br />
+                      </div>
+                      <div class="step-1-of">Step 1 of 3</div>
+                    </div>
+                  </div>
+
+                  <!----------------------------------------------------------------->
+
+                  <div class="selections_zones">
+                    <div class="input-fields-row">
+                      <select id="category-select" class="form-inputs2" name="category">
+                        <option value="HVAC">Heating / Cooling</option>
+                        <option value="Pool">Pool / SPA</option>
+                        <option value="Refrigerator">Refrigerator / Freezer</option>
+                        <option value="Washer">Washer / Dryer</option>
+                        <option value="Oven">Oven/Stove/Cooktop</option>
+                      </select>
+
+                      <!-- Друга зона -->
+                      <select id="sub-select" class="form-inputs2" name="problem">
+                          <!-- варіанти підтягнуться автоматично через JS -->
+                      </select>
+                    </div>
+                  </div>
+
+                  <!----------------------------------------------------------------->
+                  
+                  <div class="phone-number">
+                    <div id="details-label" class="additional-details">
+                      Additional details <span id="required-star" class="red-star">*</span>
+                    </div>
+                    <div class="description-input">
+                      
+                      <!-- Замінюємо div з текстом на тег textarea -->
+                      <textarea 
+                        name="notes"
+                        id="details-textarea" 
+                        class="write-a-short" 
+                        maxlength="2000" 
+                        required 
+                        placeholder="Write a short description and include specific details needed for the appointment."></textarea>
+
+                      <!-- Лічильник з id, щоб JS міг його оновлювати -->
+                      <div class="div2" id="char-counter">0 / 2000</div>
+                    </div>
+                  </div>
+
+                  <!----------------------------------------------------------------->
+
+                  <div class="add-photo">
+                    <div class="add-pictures-to">
+                      Add pictures to make your description more detailed (optional)
+                    </div>
+
+                    <div class="upload-row">
+                      <!-- Кнопка завантаження -->
+                      <div class="add-photo-row-1">
+                        <div class="upload-photos">Upload Photos</div>
+                        <label class="upload-area">
+                          <input type="file" id="media-input" accept="image/*,video/*" multiple style="display: none;" name="photos"/>
+                        </label>
+                      </div>
+
+                      <!-- Контейнер, де з'являтимуться мініатюри завантажених фото/відео -->
+                      <div id="preview-container" class="preview-container"></div>
+                    </div>
+                  </div>
+
+
+
+                  <button id="next_button_1" class="next-button" type="button">
+                    <div class="button-wrapper">
+                      <div class="next">Next</div>
+                    </div>
+                  </button>
+                </div>
+
+              </div>
+            </div>
+
+
+
+            <div id="block-2" class="hidden"> <!------------------------------|     V2     |------------------------------------ -->
+              <div class="block-1">
+                
+                <div class="service-selection">
+                  <div class="what-do-you-need-help-with">
+                    <div class="label-step-row">
+                      <div class="what-do-you">
+                        First Name <span class="red-star">*</span><br />
+                      </div>
+                      <div class="step-1-of">Step 2 of 3</div>
+                    </div>
+                  </div>
+
+                  <!----------------------------------------------------------------->
+
+                  <div class="selections_zones">
+                    <div class="input-fields-row_texts">
+                      <!-- Поле вводу з обмеженням у 25 символів -->
+                      <input id="first-name" type="text" class="custom-text-input" maxlength="25" placeholder="Enter your Name" name="name"/>
+                    </div>
+                  </div>
+
+                  <!----------------------------------------------------------------->
+                  
+                  <div class="what-do-you-need-help-with">
+                    <div class="label-step-row">
+                      <div class="what-do-you">
+                        Last Name <span class="red-star">*</span><br />
+                      </div>
+                    </div>
+                  </div>
+                  <div class="selections_zones">
+                    <div class="input-fields-row_texts">
+                      <!-- Поле вводу з обмеженням у 25 символів -->
+                      <input id="last-name" type="text" class="custom-text-input" maxlength="25" placeholder="Enter your Last Name" name="last_name"/>
+                    </div>
+                  </div>
+
+                  <!----------------------------------------------------------------->
+                  
+                  <div class="what-do-you-need-help-with">
+                    <div class="label-step-row">
+                      <div class="what-do-you">
+                        Phone Number <span class="red-star">*</span><br />
+                      </div>
+                    </div>
+                  </div>
+                  <div class="selections_zones">
+                    <div class="input-fields-row_texts">
+                      <!-- Поле вводу телефону з маскою -->
+                      <input id="phone-input" type="tel" class="custom-text-input" id="phone-input" maxlength="14" placeholder="(123) 456-7890" name="phone"/>
+                    </div>
+                  </div>
+
+                  <!----------------------------------------------------------------->
+                  
+                  <div class="what-do-you-need-help-with">
+                    <div class="label-step-row">
+                      <div class="what-do-you">
+                        E-Mail address <span class="red-star">*</span><br />
+                      </div>
+                    </div>
+                  </div>
+                  <div class="selections_zones">
+                    <div class="input-fields-row_texts">
+                      <!-- Поле вводу електронної пошти -->
+                      <input id="email-input" type="email" class="custom-text-input" minlength="6" maxlength="50" placeholder="Enter your e-mail address" name="email"/>
+                    </div>
+                  </div>
+
+
+
+
+
+                  
+
+                  <button id="next_button_2" class="next-button" type="button">
+                    <div class="button-wrapper">
+                      <div class="next">Next</div>
+                    </div>
+                  </button>
+                </div>
+
+              </div>
+            </div>
+
+
+
+            <div id="block-3" class="hidden"> <!------------------------------|     V3     |------------------------------------ -->
+              <div class="block-1">
+
+                <div class="service-selection">
+                  <div class="what-do-you-need-help-with">
+                    <div class="label-step-row">
+                      <div class="what-do-you">
+                        Street address <span class="red-star">*</span><br />
+                      </div>
+                      <div class="step-1-of">Step 3 of 3</div>
+                    </div>
+                  </div>
+
+                  <!----------------------------------------------------------------->
+
+                  <!-- Поле вулиці -->
+                  <div class="selections_zones">
+                    <div class="input-fields-row_texts">
+                      <input id="street-input" type="text" class="custom-text-input" minlength="4" maxlength="40" placeholder="Enter your Street Address" name="street"/>
+                    </div>
+                  </div>
+                  
+
+
+                  <div class="what-do-you-need-help-with">
+                    <div class="label-step-row">
+                      <div class="S3_Lside"> Unit / Apartment <span class="red-star">*</span> </div>
+                      <div class="S3_Rside"> City <span class="red-star">*</span> </div>
+                    </div>
+                  </div>
+
+                  <!-- Поле апартаменту --> <!-- Поле міста -------------------------------------------------------->
+                  <div class="selections_zones">
+                    <div class="input-fields-row">
+                      <input id="Unit-input" type="text" class="form-inputs2" maxlength="10" placeholder="Unit / Apartment / Suite" name="unit"/>
+
+                      <input id="city-input" type="text" class="form-inputs2" minlength="2" maxlength="25" placeholder="City" name="city"/>
+                    </div>
+                  </div>
+
+                  
+
+                  <div class="what-do-you-need-help-with">
+                    <div class="label-step-row">
+                      <div class="S3_Lside"> State <span class="red-star">*</span> </div>
+                      <div class="S3_Rside"> Zip Code <span class="red-star">*</span> </div>
+                    </div>
+                  </div>
+
+                  <!-- Поле штату --> <!-- Поле зіп-коду (поштового індексу) ----------------------------------------->
+                  <div class="selections_zones">
+                    <div class="input-fields-row">
+                      <input id="state-input" type="text" class="form-inputs2" maxlength="20" value="Illinois" readonly placeholder="State" name="state"/>
+
+                      <input id="zip-input" type="text" class="form-inputs2" minlength="5" maxlength="10" placeholder="Zip Code" name="zipCode"/>
+                    </div>
+                  </div>
+
+
+
+
+                  <button id="Submit-Request" class="next-button" type="submit">
+                    <div class="button-wrapper">
+                      <div class="next">Submit Request</div>
+                    </div>
+                  </button>
+
+              </div>
+            </div>
+
+
+
+        
+        
+          </form>
+        </div>
+      </section>
+
+    <script src="script.js"></script>
+  </body>
+</html>

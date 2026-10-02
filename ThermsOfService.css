@@ -1,0 +1,104 @@
+.TermsOfService {
+  background-color: #ffffff;
+  box-sizing: border-box; /* Гарантує, що відступи не розширять загальну ширину за межі 1440px */
+}
+
+.ThermsOfService_textzone{
+    background-color: #ffffff;
+    padding-left: 350px;
+    padding-right: 350px;
+
+    padding-top: 100px;
+    padding-bottom: 100px;
+}
+
+.SMSTermsConditions {
+
+  background-color: #ffffff;
+  box-sizing: border-box;
+
+  /* Підключення шрифту та розмір тексту */
+  font-family: 'Inter', sans-serif;
+  font-size: 40px; 
+  font-weight: 800;
+
+  /* Центрування вмісту та самого блоку */
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Вирівнює дочірні елементи по горизонталі по центру */
+  margin: 0 auto;      /* Центрує сам блок 1440px на екрані монітора */
+}
+
+.SMSTermsConditions2{
+    padding-top: 30px;
+    background-color: #ffffff;
+    box-sizing: border-box;
+
+    /* Підключення шрифту та розмір тексту */
+    font-family: 'Inter', sans-serif;
+    font-size: 15px; 
+    font-weight: 500;
+
+    /* Центрування вмісту та самого блоку */
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Вирівнює дочірні елементи по горизонталі по центру */
+    margin: 0 auto;      /* Центрує сам блок 1440px на екрані монітора */
+
+     text-align: center;
+}
+
+.tERMS_MAINtext{
+    padding-top: 100px;
+
+    background-color: #ffffff;
+    box-sizing: border-box;
+
+    /* Підключення шрифту та розмір тексту */
+    font-family: 'Inter', sans-serif;
+    font-size: 14px; 
+    font-weight: 400;
+
+    display: flex;
+    flex-direction: column;
+
+    align-items: flex-start; /* Вирівнює весь текст і дочірні елементи по лівому краю */
+    margin-right: auto;      /* Притискає сам блок 1440px до лівого краю екрана */
+    margin-left: 0;
+}
+
+.PrivacyPolicyText{
+    padding-top: 100px;
+
+    background-color: #ffffff;
+    box-sizing: border-box;
+
+    /* Підключення шрифту та розмір тексту */
+    font-family: 'Inter', sans-serif;
+    font-size: 17px; 
+    font-weight: 400;
+
+    display: flex;
+    flex-direction: column;
+
+    align-items: flex-start; /* Вирівнює весь текст і дочірні елементи по лівому краю */
+    margin-right: auto;      /* Притискає сам блок 1440px до лівого краю екрана */
+    margin-left: 0;
+}
+
+.PrivacyPolicyText2{
+    background-color: #ffffff;
+    box-sizing: border-box;
+
+    /* Підключення шрифту та розмір тексту */
+    font-family: 'Inter', sans-serif;
+    font-size: 17px; 
+    font-weight: 700;
+
+    display: flex;
+    flex-direction: column;
+
+    align-items: flex-start; /* Вирівнює весь текст і дочірні елементи по лівому краю */
+    margin-right: auto;      /* Притискає сам блок 1440px до лівого краю екрана */
+    margin-left: 0;
+}

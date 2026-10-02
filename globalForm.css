@@ -1,0 +1,89 @@
+html {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  overflow-x: hidden; /* Прибираємо горизонтальний скролл */
+
+}
+
+body {
+  /* Захист від копіювання */
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+
+  margin: 0;
+  padding: 20px; /* Безпечний відступ для телефонів */
+  width: 100%;
+  box-sizing: border-box;
+
+  /* Центрування форми по центру екрана */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  min-height: 100dvh;
+  background-color: #0A0B0C;
+  line-height: normal;
+}
+
+/* Гнучкий контейнер для контенту */
+.content-container {
+  width: 100%;
+  max-width: 1440px; /* Дозволяє бути менше 1440px, але не більше */
+  position: relative;
+  box-sizing: border-box;
+}
+
+
+body {
+  margin: 0;
+  line-height: normal;
+}
+
+:root {
+  /* Common Style Variables */
+
+  /* Color */
+  --color-black: #000;
+  --color-darkgray-100: #a1a1a5;
+  --color-darkgray-200: #9797a0;
+  --color-dimgray: #58595e;
+  --color-gainsboro-100: #e5e7eb;
+  --color-gainsboro-200: rgba(217, 217, 217, 0);
+  --color-gray-100: #fafafa;
+  --color-gray-200: #27272a;
+  --color-gray-300: #0a0b0c;
+  --color-lightgray: #d1d2d3;
+  --color-white: #fff;
+
+  /* Gap */
+  --gap-8: 8px;
+  --gap-10: 10px;
+
+  /* Padding */
+  --padding-0: 0px;
+  --padding-2: 2px;
+  --padding-12: 12px;
+
+  /* BorderRadius */
+  --br-4: 4px;
+
+  /* Font */
+  --font-inter: Inter, Arial, sans-serif;
+
+  /* FontSize */
+  --fs-13: 13px;
+  --fs-15: 15px;
+  --fs-16: 16px;
+
+  /* Borders */
+  --border-1: 1px solid var(--color-gainsboro-100);
+
+  /* WidthHeights */
+  --width-1: 1px;
+
+  /* LetterSpacings */
+  --ls--0_01: -0.01;
+}

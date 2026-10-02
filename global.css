@@ -1,0 +1,163 @@
+html {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  overflow-x: auto; /* Вмикає горизонтальний скрол при зумі */
+}
+
+body {
+  /*  Block copyrite  */
+  -webkit-user-select: none; /* Safari */
+  -moz-user-select: none;    /* Firefox */
+  -ms-user-select: none;     /* Internet Explorer / Edge */
+  user-select: none;         /* Стандартний синтаксис */
+
+
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  min-width: 1440px; /* Забороняє стискати сайт менше ніж 1440px */
+  
+  /* Центрування через Grid без зламу лівого краю при зумі */
+  display: grid;
+  justify-content: center;
+  background: #fafafa;
+}
+
+/* Спільний клас для контенту */
+.content-container {
+  width: 1440px;
+  min-width: 1440px;
+  max-width: 1440px;
+  position: relative;
+  box-sizing: border-box;
+}
+
+
+
+body {
+  margin: 0;
+  line-height: normal;
+}
+
+:root {
+  /* Common Style Variables */
+
+  /* Color */
+  --color-black: #000;
+  --color-darkgray: #aaaeb4;
+  --color-darkslategray-100: #3f4a56;
+  --color-darkslategray-200: #3b3f43;
+  --color-darkslategray-300: #35393f;
+  --color-darkslategray-400: #2f2f2f;
+  --color-dimgray-100: #6b6e73;
+  --color-dimgray-200: #5c6874;
+  --color-dimgray-300: #52606e;
+  --color-gray-100: #fbfdfd;
+  --color-gray-200: #fafafa;
+  --color-gray-300: #84898a;
+  --color-gray-400: #84878d;
+  --color-gray-500: #262626;
+  --color-gray-600: #151c20;
+  --color-gray-700: #111724;
+  --color-gray-800: #141414;
+  --color-gray-900: #100e12;
+  --color-gray-1000: #060a16;
+  --color-gray-1100: #020613;
+  --color-lightslategray: #7d8890;
+  --color-silver: #bec2c6;
+  --color-slategray-100: #697787;
+  --color-slategray-200: #596675;
+  --color-white: #fff;
+  --color-whitesmoke-100: #f3f4f5;
+  --color-whitesmoke-200: #e8e9e8;
+
+  /* Gap */
+  --gap-0: 0px;
+  --gap-3: 3px;
+  --gap-4: 4px;
+  --gap-6: 6px;
+  --gap-8: 8px;
+  --gap-9: 9px;
+  --gap-10: 10px;
+  --gap-11: 11px;
+  --gap-16: 16px;
+  --gap-18: 18px;
+  --gap-20: 20px;
+
+  /* Padding */
+  --padding-0: 0px;
+  --padding-01: 0;
+  --padding-1: 1px;
+  --padding-2: 2px;
+  --padding-3: 3px;
+  --padding-4: 4px;
+  --padding-6: 6px;
+  --padding-11: 11px;
+  --padding-13: 13px;
+  --padding-14: 14px;
+  --padding-20: 20px;
+  --padding-22: 22px;
+  --padding-23: 23px;
+  --padding-24: 24px;
+  --padding-30: 30px;
+
+  /* BorderRadius */
+  --br-5: 5px;
+  --br-10: 10px;
+  --br-15: 15px;
+
+  /* Font */
+  --font-inter: Inter, Arial, sans-serif;
+
+  /* FontSize */
+  --fs-11: 11px;
+  --fs-12: 12px;
+  --fs-13: 13px;
+  --fs-14: 14px;
+  --fs-15: 15px;
+  --fs-16: 16px;
+  --fs-20: 20px;
+  --fs-24: 24px;
+  --fs-26: 26px;
+  --fs-36: 36px;
+
+  /* Shadows */
+  --shadow-drop: 0px 4px 20.1px 7px rgba(0, 0, 0, 0.25);
+
+  /* Gradients */
+  --gradient-1:
+    linear-gradient(87.62deg, #ea9142, #efc15b),
+    linear-gradient(87.62deg, #3983f3, #14b6a7);
+  --gradient-2:
+    linear-gradient(90deg, #0a0f13, #12181c), linear-gradient(#131619, #131619);
+  --gradient-3: linear-gradient(88.89deg, #efa636, #f2b33b);
+  --gradient-4: linear-gradient(89.12deg, #ea9143, #e6a141);
+
+  /* WidthHeights */
+  --height-12: 12px;
+  --height-15: 15px;
+  --height-23: 23px;
+  --height-24: 24px;
+  --height-26: 26px;
+  --height-28: 28px;
+  --height-29: 29px;
+  --height-32: 32px;
+  --min-w-310: 310px;
+  --width-1: 1px;
+  --width-15: 15px;
+  --width-23: 23px;
+  --width-29: 29px;
+  --width-80: 80px;
+
+  /* LineHeights */
+  --lh-16: 16px;
+  --lh-19: 19px;
+
+  /* LetterSpacings */
+  --ls--0_01: -0.01;
+  --ls--0_03: -0.03;
+  --ls-0_01: 0.01;
+  --ls-0_02: 0.02;
+  --ls-0_1: 0.1;
+}

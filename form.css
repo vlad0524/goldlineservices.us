@@ -1,0 +1,718 @@
+/* 1. БАЗА (завжди по центру, без смуг прокрутки, з відступами) */
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  margin: 0;
+  background-color: #0A0B0C;
+  
+  /* ГОЛОВНЕ ДЛЯ ВІДСТУПІВ ТА ПРОКРУТКИ: */
+  padding: 20px;         /* Завжди тримає відступ мінімум 20px від країв вікна */
+  box-sizing: border-box;
+  overflow-x: hidden;    /* Жорстко вбиває горизонтальну (нижню) смугу прокрутки */
+}
+
+/* 2. КОНТЕЙНЕР ФОРМИ */
+.main-content {
+  margin: auto;
+  background-color: var(--color-gray-300);
+  box-sizing: border-box;
+  text-align: center;
+  font-size: 26px;
+  color: var(--color-white);
+  font-family: var(--font-inter);
+  
+  /* Щоб форма не вилазила за межі екрана (мінус 40px відступів body) */
+  max-width: 100%; 
+}
+
+/* Мобільна адаптація по висоті та ширині */
+@media (max-width: 765px) {
+  .main-content {
+    /* 1. Трохи сильніше зменшуємо загальний масштаб (наприклад, до 80-85%) */
+    zoom: 0.82;
+    
+    /* 2. Зменшуємо внутрішні верхні та нижні відступи форми */
+    padding: 20px 15px !important;
+    
+    /* 3. Обмежуємо максимальну висоту форми відносно екрана */
+    max-height: 90vh;
+    box-sizing: border-box;
+  }
+
+  /* 4. Зменшуємо шрифти та відступи між блоками всередині форми */
+  .schedule-your-service,
+  .main-content h1 {
+    font-size: 20px !important;
+    margin-bottom: 8px !important;
+  }
+
+  .ready-to-get {
+    font-size: 13px !important;
+    margin-bottom: 12px !important;
+  }
+}
+
+/* Окреме правило для низьких екранів (наприклад, коли телефон повернутий горизонтально) */
+@media (max-height: 680px) {
+  .main-content {
+    zoom: 0.72; /* Додатково зменшуємо форму, щоб вона точно помістилася */
+  }
+}
+
+
+
+
+/*                         V1 старіша
+body {
+  display: flex;
+  justify-content: center; 
+  align-items: center;    
+  min-height: 100vh;       
+  min-height: 100dvh;    
+  margin: 0;             
+  padding: 15px;          
+  box-sizing: border-box;
+  background-color: #0A0B0C; 
+}
+
+
+.main-content {
+  margin: auto; 
+  background-color: var(--color-gray-300);
+  box-sizing: border-box;
+  text-align: center;
+  font-size: 26px;
+  color: var(--color-white);
+  font-family: var(--font-inter);
+
+  max-width: 100%;       
+  max-height: 100%;      
+  overflow-y: auto;      
+}
+
+
+@media (max-width: 765px) {
+  .main-content {
+    transform: scale(0.9);
+    
+    transform-origin: center center;
+  }
+}*/
+
+
+
+
+/*                 СТАРИЙ КОД того що зерху онлі пк
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;     
+  min-height: 100vh;
+  margin: 0;
+  background-color: #0A0B0C; 
+} 
+
+.main-content {
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: auto;
+  margin-bottom: auto;
+  
+
+  background-color: var(--color-gray-300);
+  box-sizing: border-box;
+  text-align: center;
+  font-size: 26px;
+  color: var(--color-white);
+  font-family: var(--font-inter);
+} */
+
+
+
+
+
+
+
+
+.service-select {
+  width: 100%; /* або підлаштуйте під ширину ваших інших полів (.form-inputs2) */
+  height: 50px; /* задайте таку ж висоту, як у сусідніх інпутів */
+  padding: 0 20px;
+  background-color: #0A0B0C;
+  color: var(--color-lightgray);
+  border: 1px solid #ffffff;
+  border-radius: 8px; /* якщо у вас заокруглені поля */
+  font-family: var(--font-inter), sans-serif;
+  font-size: 20px; /* під ваші шрифти */
+  box-sizing: border-box;
+  outline: none;
+  cursor: pointer;
+}
+
+/* Стиль для списку варіантів при відкритті */
+.service-select option {
+  background-color: #0A0B0C;
+  color: #ffffff;
+}
+
+
+
+
+
+.form-inputs2 {
+  height: 45px;
+  width: 182px;
+  flex: 1;
+  position: relative;
+  z-index: 5; /* Піднімаємо випадаючий список вище за інші елементи, щоб він завжди клікався */
+  border-radius: var(--br-4);
+  background-color: var(--color-gainsboro-200);
+  border: var(--border-1);
+  box-sizing: border-box;
+  outline: 0;
+  padding: 0 15px;
+  
+  font-family: var(--font-inter), sans-serif;
+  font-size: 14px;
+  color: inherit;
+  cursor: pointer;
+}
+
+/* Колір списку всередині */
+.form-inputs2 option {
+  background-color: #0A0B0C;
+  color: #ffffff;
+}
+.input-fields-row {
+  display: flex;
+  justify-content: space-between; /* Розводить елементи по протилежних краях (один зліва, інший справа) */
+  align-items: center;
+  width: 100%; /* Контейнер має займати всю доступну ширину форми, щоб поля розійшлися по краях */
+  box-sizing: border-box;
+  
+  align-self: stretch;
+  display: flex;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  align-content: flex-start;
+  padding: var(--padding-0) var(--padding-2) var(--padding-0) var(--padding-0);
+  gap: var(--gap-10) 13px;
+  z-index: 4;
+}
+
+
+
+
+
+/* Червоний контур та текст для не заповнених полів */
+.custom-text-input.error,
+.form-inputs2.error {
+  border-color: #ff4d4d !important;
+  color: #ff4d4d !important;
+}
+
+/* Можна також змінити колір плейсхолдера на червоний, щоб було помітніше */
+.custom-text-input.error::placeholder,
+.form-inputs2.error::placeholder {
+  color: #ff4d4d;
+  opacity: 0.8;
+}
+
+
+
+/* Усі батьківські контейнери мають займати повну ширину */
+.selections_zones,
+.input-fields-row_texts {
+  width: 100% !important;
+  max-width: 100% !important;
+  box-sizing: border-box !important;
+  display: block !important;
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+}
+.input-fields-row_texts {
+  width: 100%;
+  display: block; /* Прибираємо flex, щоб інпут займав рівно 100% ширини батьківського блоку */
+  padding: 0;     /* Прибираємо зайві відступи, якщо вони стискали поле */
+  box-sizing: border-box;
+}
+
+.custom-text-input {
+  width: 100%;             /* Розтягуємо від лівого до правого краю */
+  height: 45px;            /* Фіксована висота */
+  box-sizing: border-box;  /* Щоб padding не виходив за межі ширини */
+  
+  /* Зовнішній вигляд за вашими вимогами */
+  padding: 0 14px;
+  font-size: 14px;
+  border: 1px solid rgba(255, 255, 255, 0.5); /* Тонкий білий напівпрозорий контур (або просто #ffffff для чисто білого) */
+  border-radius: var(--br-4, 6px);
+  background-color: transparent; /* Повністю прозорий задній фон */
+  color: #fff;                   /* Колір введеного тексту (щоб було видно на прозорому) */
+  outline: none;
+  
+  resize: none; 
+}
+
+/* Зміна контуру при фокусі (кліку в поле) */
+.custom-text-input:focus {
+  border-color: #ffffff;         /* При фокусі контур стає яскраво-білим */
+}
+
+
+
+
+.main-content,
+.top-text,
+.v1 {
+  display: flex;
+  flex-direction: column;
+}
+.v1 {
+  width: 100%;
+  align-items: flex-start;
+  gap: 13px;
+  max-width: 479px;
+}
+.top-text {
+  align-self: stretch;
+  align-items: center;
+  gap: 9px;
+}
+.schedule-your-service {
+  margin: 0;
+  align-self: stretch;
+  position: relative;
+  font-size: inherit;
+  line-height: 100%;
+  font-weight: 700;
+  font-family: inherit;
+}
+.ready-to-get {
+  align-self: stretch;
+  position: relative;
+  font-size: 14px;
+  line-height: 129%;
+  color: var(--color-darkgray-200);
+}
+
+.block-1 {
+  width: 429px;          /* Фіксована ширина блоку */
+  max-width: 100%;       /* Щоб на вузьких екранах мобільних блок адаптувався і не виходив за межі */
+  align-self: stretch;
+  max-width: 100%;
+  text-align: left;
+  font-size: var(--fs-13);
+}
+
+.label-step-row,
+.what-do-you-need-help-with {
+  align-self: stretch;
+  display: flex;
+  align-items: flex-start;
+}
+.what-do-you-need-help-with {
+  flex-direction: column;
+  padding: 4px var(--padding-0);
+  position: relative;
+  isolation: isolate;
+  gap: var(--gap-10);
+  color: var(--color-darkgray-100);
+}
+.label-step-row {
+  height: 17px;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  align-content: flex-start;
+  gap: var(--gap-10) 0;
+  row-gap: 20px;
+  z-index: 3;
+  color: var(--color-white);
+}
+.step-1-of,
+.what-do-you {
+  position: relative;
+  letter-spacing: -0.01em;
+  line-height: 129%;
+  font-weight: 500;
+  display: inline-block;
+  flex-shrink: 0;
+}
+.what-do-you {
+  flex: 1;
+  width: 178px;
+  min-width: 116px;
+  max-width: 200px;
+}
+.step-1-of {
+  width: 70px;
+}
+
+.form-inputs {
+  height: 47px;
+  flex: 1;
+  position: relative;
+  border-radius: var(--br-4);
+  background-color: var(--color-gainsboro-200);
+  border: var(--border-1);
+  box-sizing: border-box;
+  min-width: 120px;
+}
+
+.div,
+.heating-cooling {
+  position: absolute;
+  margin: 0 !important;
+  top: calc(50% + 4px);
+  letter-spacing: -0.01em;
+  line-height: 129%;
+  display: inline-block;
+}
+.div {
+  left: calc(50% - 32.5px);
+  min-width: 13px;
+  z-index: 1;
+}
+.heating-cooling {
+  left: 21px;
+  min-width: 109px;
+  z-index: 2;
+}
+
+
+.block-1,
+.service-selection {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+}
+.service-selection {
+  flex: 1;
+  border-radius: 6px;
+  background-color: var(--color-gainsboro-200);
+  border: 1px solid var(--color-gray-200);
+  box-sizing: border-box;
+  flex-direction: column;
+  padding: 21px 22px;
+  gap: 11px;
+  max-width: 429px;
+}
+
+
+
+
+.red-star {
+  color: #DA3D57;
+  font-weight: bold;
+  transition: opacity 0.2s ease;
+}
+
+/* Колір тексту, коли він обов'язковий (порожній) */
+.error-label {
+  color: #DA3D57 !important; /* Робить весь текст червоним */
+}
+
+/* Клас для приховування зірочки */
+.star-hidden {
+  opacity: 0;
+  visibility: hidden;
+}
+
+/* Клас, який змінює колір рамки на червоний */
+.error-border {
+  border: 1px solid #DA3D57 !important; /* Вкажіть ваш червоний колір рамки */
+}
+.phone-number {
+  align-self: stretch;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--gap-10);
+}
+.additional-details {
+  width: 100%;
+  height: 17px;
+  position: relative;
+  letter-spacing: -0.01em;
+  line-height: 129%;
+  font-weight: 500;
+  display: inline-block;
+  flex-shrink: 0;
+}
+.description-input {
+  align-self: stretch;
+  border-radius: var(--br-4);
+  background-color: var(--color-gainsboro-200);
+  border: var(--border-1);
+  display: flex;
+  flex-direction: column;
+  align-items: stretch; /* Змініть з flex-start на stretch, щоб поле розтягувалося на всю ширину */
+  padding: 12px 16px;   /* Зробіть однакові або зручні внутрішні відступи */
+  gap: 3px;            /* <--- ЗМІНІТЬ 86px НА МАЛЕНЬКИЙ ВІДСТУП (наприклад, 10px) */
+  color: var(--color-darkgray-100);
+  height: 160px;        /* Задайте фіксовану загальну висоту для всього блока, якщо потрібно */
+}
+.write-a-short {
+  width: 100%;
+  flex-grow: 1;         /* Займає весь простір між плейсхолдером і лічильником */
+  background: transparent;
+  border: none;
+  outline: none;
+  resize: none;         
+  overflow-y: auto;     /* Повзунок з'явиться тільки тоді, коли текст перевищить висоту */
+  color: inherit;
+  font-family: inherit;
+  font-size: inherit;
+  line-height: 130%;
+}
+.description-input .div2 {
+  align-self: flex-end; /* Притискає лічильник праворуч */
+  font-size: 14px;
+}
+
+
+.add-photo,
+.div2 {
+  align-self: stretch;
+}
+.div2 {
+  position: relative;
+  letter-spacing: -0.01em;
+  line-height: 130%;
+  text-align: right;
+}
+.add-photo {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 6px var(--padding-0);
+  gap: var(--gap-10);
+}
+.add-pictures-to {
+  align-self: stretch;
+  position: relative;
+  letter-spacing: -0.01em;
+  line-height: 129%;
+  font-weight: 500;
+}
+.add-photo-row-1 {
+  width: 120px;
+  height: 30px;
+  position: relative;
+  text-align: center;
+}
+.upload-area,
+.upload-photos {
+  position: absolute;
+  flex-shrink: 0;
+}
+.upload-area {
+  cursor: pointer;
+  border: var(--border-1);
+  padding: 0;
+  background-color: var(--color-gainsboro-200);
+  top: -1px;
+  left: 0;
+  border-radius: 34px;
+  box-sizing: border-box;
+  width: 100%;
+  height: 100%;
+}
+.upload-photos {
+  top: 7px;
+  left: 16px;
+  letter-spacing: -0.01em;
+  line-height: 129%;
+  font-weight: 500;
+  display: inline-block;
+  width: 90px;
+  min-width: 90px;
+}
+
+.upload-row {
+  display: flex;
+  align-items: center;
+  gap: 12px; /* Відступ між кнопкою та завантаженими фото */
+  flex-wrap: wrap;
+}
+
+.preview-container {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+/* Стиль для мініатюри прев'ю */
+.preview-item {
+  position: relative;
+  width: 50px;
+  height: 50px;
+  border-radius: 6px;
+  overflow: hidden;
+  border: 1px solid var(--border-1, #ccc);
+}
+
+.preview-item img, 
+.preview-item video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+/* Кнопка видалення (хрестик) поверх прев'ю */
+.delete-btn {
+  position: absolute;
+  top: 2px;
+  right: 2px;
+  width: 18px;
+  height: 18px;
+  background-color: rgba(0, 0, 0, 0.7);
+  color: #fff;
+  border: none;
+  border-radius: 50%;
+  font-size: 12px;
+  line-height: 16px;
+  text-align: center;
+  cursor: pointer;
+  display: none; /* За замовчуванням схована */
+  padding: 0;
+}
+
+/* Показуємо хрестик, коли наводимо мишу на мініатюру */
+.preview-item:hover .delete-btn {
+  display: block;
+}
+
+
+
+.button-wrapper,
+.next-button {
+  box-sizing: border-box;
+  display: flex;
+  max-width: 100%;
+}
+.next-button {
+  cursor: pointer;
+  border: 0;
+  padding: var(--padding-2) var(--padding-0);
+  background-color: transparent;
+  align-self: stretch;
+  align-items: flex-start;
+}
+.button-wrapper {
+  transition: background-color 0.2s ease;
+
+  flex: 1;
+  border-radius: var(--br-4);
+  background-color: var(--color-gray-100);
+  border: var(--border-1);
+  align-items: center;
+  justify-content: center;
+  padding: var(--padding-12) var(--padding-0) 14px;
+}
+/* Зміна кольору на темніший сірий при наведенні на кнопку */
+.next-button:hover .button-wrapper {
+  background-color: #bbbbbb;
+}
+.next {
+  flex: 1;
+  position: relative;
+  font-size: var(--fs-13);
+  letter-spacing: -0.01em;
+  line-height: 129%;
+  font-weight: 500;
+  font-family: var(--font-inter);
+  color: var(--color-black);
+  text-align: center;
+  display: inline-block;
+  max-width: 100%;
+}
+.icons-hvac-pool-appliance-4 {
+  left: 73px;
+  width: 175px;
+}
+.icons-hvac-pool-appliance-4,
+.icons-hvac-pool-appliance-5,
+.icons-hvac-pool-appliance-6 {
+  position: absolute;
+  top: calc(50% + 128px);
+  height: 78px;
+  object-fit: cover;
+}
+.icons-hvac-pool-appliance-5 {
+  left: 275px;
+  width: 173px;
+}
+.icons-hvac-pool-appliance-6 {
+  left: calc(50% - 222px);
+  width: 149px;
+}
+.feature-icons,
+.feature-icons2 {
+  position: absolute;
+  bottom: 189px;
+  background-color: var(--color-dimgray);
+  width: var(--width-1);
+  height: 107px;
+}
+.feature-icons {
+  left: 263px;
+}
+.feature-icons2 {
+  left: calc(50% - 253px);
+}
+.reliable-service-for {
+  position: absolute;
+  top: calc(50% + 46px);
+  left: 217px;
+  letter-spacing: 0.01em;
+  line-height: 135%;
+  display: inline-block;
+  width: 307px;
+}
+
+
+
+
+
+.hidden {
+  display: none !important;
+}
+
+
+
+
+
+
+
+
+
+
+
+@media screen and (max-width: 525px) {
+  .hvac-category,
+  .v1 {
+    max-width: 100%;
+  }
+}
+@media screen and (max-width: 450px) {
+  .form {
+    height: auto;
+  }
+  .pool-spa-category {
+    flex: 1;
+  }
+  .schedule-your-service {
+    font-size: 21px;
+    line-height: 21px;
+  }
+  .service-selection {
+    max-width: 100%;
+  }
+  .reliable-service-for {
+    font-size: var(--fs-16);
+    line-height: 22px;
+  }
+}
