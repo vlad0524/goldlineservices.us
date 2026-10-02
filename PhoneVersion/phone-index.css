@@ -238,7 +238,7 @@ html {
 .chicagos-1-hvac-container {
   margin: 0;
   position: relative; 
-  font-size: 48px;
+  font-size: 41px;
   line-height: 105%;
   font-weight: 700;
   font-family: inherit;
@@ -2379,35 +2379,38 @@ html {
 
 /* 1. КОНТЕЙНЕР-МАСКА */
 .hero-bg-wrapper{
+  margin-top: 75px;
   position: absolute;
-  top: 20;
+  top: 0;
   left: 50%;
   transform: translateX(-50%); /* Центруємо маску */
   
   width: 100vw;
   min-width: 375px;
-  max-width: 765px;  /* Максимальна ширина маски */
+  max-width: 100vw;  /* Максимальна ширина маски */
   
-  height: 768px;     /* Висота вашої секції */
+  height: 665px;     /* Висота вашої секції */
 
   overflow: hidden;
 
   pointer-events: none; /* Щоб маска не перекривала кліки по кнопках */
-  z-index: 1;        /* Ставимо під контент */
+  z-index: 0;        /* Ставимо під контент */
+  background: #000000;
 }
-
-/* 2. ЗОБРАЖЕННЯ ВСЕРЕДИНІ МАСКИ */
 .hero-bg-icon {
-  
   position: absolute;
-  width: 1508px;      /* Залишаємо ваші оригінальні розміри */
-  height: 768px;      /* Залишаємо ваші оригінальні розміри */
-  top: 0px;           /* Залишаємо ваше точне позиціонування */
-  right: -540px;      /* Залишаємо ваше точне позиціонування */
+  top: 50%;
+  left: 50%;
   
-  object-fit: cover;
+  /* Центруємо і по горизонталі, і по вертикалі (-50%, -50%) + ваш масштаб */
+  transform: translate(-50%, -50%) scale(1.3); 
   
-  filter: brightness(0.6) blur(1px); /* Додаємо затемнення на 10% + ефект розмиття*/
+  /* Фіксуємо висоту на 100% від висоти батьківського блоку */
+  height: 100%; 
+  
+  width: auto;  
+  
+  filter: brightness(0.6) blur(1px); /* Затемнення та розмиття */
 }
 
 .from-hvac-systems {
