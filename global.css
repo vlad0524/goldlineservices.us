@@ -12,6 +12,7 @@ body {
   -ms-user-select: none;     /* Internet Explorer / Edge */
   user-select: none;         /* Стандартний синтаксис */
 
+  overflow: hidden;
 
   margin: 0;
   padding: 0;

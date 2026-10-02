@@ -636,6 +636,8 @@ html {
   font-family: var(--font-inter);
 }
 .image-icon {
+  pointer-events: none; /* Картинка стане "прозорою" для кліків миші, і вони проходитимуть крізь неї на посилання */
+  
   position: absolute;
   top: 1215px;
   left: 1.7px;
@@ -662,6 +664,8 @@ html {
 }
 .image-icon2,
 .image-icon3 {
+  pointer-events: none; /* Картинка стане "прозорою" для кліків миші, і вони проходитимуть крізь неї на посилання */
+
   position: absolute;
   top: 645px;
   left: 0px;
@@ -671,6 +675,8 @@ html {
   z-index: 9;
 }
 .image-icon3 {
+  pointer-events: none; /* Картинка стане "прозорою" для кліків миші, і вони проходитимуть крізь неї на посилання */
+
   top: 73.6px;
   left: 3px;
   width: 538px;
@@ -1084,6 +1090,10 @@ html {
   font-size: var(--fs-14);
 }
 .service-check-item-two {
+  position: relative;
+  z-index: 20; /* підіймаємо посилання вище за інші елементи */
+  pointer-events: auto; /* гарантуємо, що кліки працюють */
+
   display: flex;
   align-items: flex-start;
   gap: var(--gap-4);
