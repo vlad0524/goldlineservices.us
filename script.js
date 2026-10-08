@@ -469,42 +469,43 @@ unitInput.addEventListener('input', function() {
   }
 });
 
-myForm.addEventListener('submit', function (event) {
+form.addEventListener('submit', function (event) {
+    event.preventDefault(); // Зупиняємо стандартну відправку, щоб сторінка не кидала помилок
+
     let isValid = true;
 
-    // Очищаємо старі помилки
+    // Очищаємо попередні помилки
     streetInput.classList.remove('error');
     cityInput.classList.remove('error');
     zipInput.classList.remove('error');
     unitInput.classList.remove('error');
 
-    if (!streetInput.value.trim()) {
-        streetInput.classList.add('error');
-        isValid = false;
-    }
+    if (!streetInput.value.trim()) { streetInput.classList.add('error'); isValid = false; }
+    if (!cityInput.value.trim()) { cityInput.classList.add('error'); isValid = false; }
+    if (!zipInput.value.trim()) { zipInput.classList.add('error'); isValid = false; }
+    if (!unitInput.value.trim()) { unitInput.classList.add('error'); isValid = false; }
 
-    if (!cityInput.value.trim()) {
-        cityInput.classList.add('error');
-        isValid = false;
-    }
-
-    if (!zipInput.value.trim()) {
-        zipInput.classList.add('error');
-        isValid = false;
-    }
-
-    if (!unitInput.value.trim()) {
-        unitInput.classList.add('error');
-        isValid = false;
-    }
-
-    // Якщо щось не заповнено — зупиняємо відправку
     if (!isValid) {
-        event.preventDefault(); // Форма НЕ відправляється, помилка не летить
-        console.log("There are empty or invalid fields!");
+        console.log("Validation failed!");
+        return;
     }
-    // Якщо ВСЕ заповнено — ми НЕ викликаємо preventDefault(). 
-    // Браузер сам нативно відправляє форму методом POST, перенаправляючи на _next без жодних помилок FormSubmit!
+
+    // Якщо все валідно — надсилаємо дані на пошту через AJAX (fetch) без перенаправлень і помилок FormSubmit
+    const formData = new FormData(form);
+
+    fetch("https://formsubmit.co/ajax/contact.goldlineservice@gmail.com", {
+        method: "POST",
+        body: formData
+    })
+    .then(response => response.json())
+    .then(data => {
+        console.log("Success:", data);
+        // Після успішного відправлення самі робимо редирект куди вам треба
+        window.location.href = "index.html#home-section";
+    })
+    .catch(error => {
+        console.error("Error:", error);
+    });
 });
 
 
