@@ -424,8 +424,8 @@ const streetInput = document.getElementById('street-input');
 const cityInput = document.getElementById('city-input');
 const zipInput = document.getElementById('zip-input');
 
-const myForm = document.querySelector('form');
-//const submitButton = document.getElementById('Submit-Request');
+//const myForm = document.querySelector('form');
+const submitButton = document.getElementById('Submit-Request');
 
 const unitInput = document.getElementById('Unit-input');
 
@@ -469,43 +469,35 @@ unitInput.addEventListener('input', function() {
   }
 });
 
-form.addEventListener('submit', function (event) {
-    event.preventDefault(); // Зупиняємо стандартну відправку, щоб сторінка не кидала помилок
+// 3. Перевірка при натисканні кнопки Submit
+submitButton.addEventListener('submit', function (event) {
+  let isValid = true;
 
-    let isValid = true;
+  if (!streetInput.value.trim()) {
+    streetInput.classList.add('error');
+    isValid = false;
+  }
 
-    // Очищаємо попередні помилки
-    streetInput.classList.remove('error');
-    cityInput.classList.remove('error');
-    zipInput.classList.remove('error');
-    unitInput.classList.remove('error');
+  if (!cityInput.value.trim()) {
+    cityInput.classList.add('error');
+    isValid = false;
+  }
 
-    if (!streetInput.value.trim()) { streetInput.classList.add('error'); isValid = false; }
-    if (!cityInput.value.trim()) { cityInput.classList.add('error'); isValid = false; }
-    if (!zipInput.value.trim()) { zipInput.classList.add('error'); isValid = false; }
-    if (!unitInput.value.trim()) { unitInput.classList.add('error'); isValid = false; }
+  if (!zipInput.value.trim()) {
+    zipInput.classList.add('error');
+    isValid = false;
+  }
 
-    if (!isValid) {
-        console.log("Validation failed!");
-        return;
-    }
+  if (!unitInput.value.trim()) {
+    unitInput.classList.add('error');
+    isValid = false;
+  }
 
-    // Якщо все валідно — надсилаємо дані на пошту через AJAX (fetch) без перенаправлень і помилок FormSubmit
-    const formData = new FormData(form);
-
-    fetch("https://formsubmit.co/ajax/contact.goldlineservice@gmail.com", {
-        method: "POST",
-        body: formData
-    })
-    .then(response => response.json())
-    .then(data => {
-        console.log("Success:", data);
-        // Після успішного відправлення самі робимо редирект куди вам треба
-        window.location.href = "index.html#home-section";
-    })
-    .catch(error => {
-        console.error("Error:", error);
-    });
+  // Результат перевірки
+  if (!isValid) {
+    event.preventDefault();
+    console.log("There are empty or invalid fields!");
+  } 
 });
 
 
