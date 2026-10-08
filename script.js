@@ -423,7 +423,10 @@ document.addEventListener('DOMContentLoaded', () => {
 const streetInput = document.getElementById('street-input');
 const cityInput = document.getElementById('city-input');
 const zipInput = document.getElementById('zip-input');
+
+const myForm = document.querySelector('form');
 const submitButton = document.getElementById('Submit-Request');
+
 const unitInput = document.getElementById('Unit-input');
 
 
@@ -466,35 +469,42 @@ unitInput.addEventListener('input', function() {
   }
 });
 
-// 3. Перевірка при натисканні кнопки Submit
+// 2. Перевірка при кліку СУВОРОВИ НА КНОПКУ
 submitButton.addEventListener('click', function () {
-  let isValid = true;
+    let isValid = true;
 
-  if (!streetInput.value.trim()) {
-    streetInput.classList.add('error');
-    isValid = false;
-  }
+    // Очищаємо попередні помилки (щоб рамки зникали, якщо все заповнили)
+    streetInput.classList.remove('error');
+    cityInput.classList.remove('error');
+    zipInput.classList.remove('error');
+    unitInput.classList.remove('error');
 
-  if (!cityInput.value.trim()) {
-    cityInput.classList.add('error');
-    isValid = false;
-  }
+    if (!streetInput.value.trim()) {
+        streetInput.classList.add('error');
+        isValid = false;
+    }
 
-  if (!zipInput.value.trim()) {
-    zipInput.classList.add('error');
-    isValid = false;
-  }
+    if (!cityInput.value.trim()) {
+        cityInput.classList.add('error');
+        isValid = false;
+    }
 
-  if (!unitInput.value.trim()) {
-    unitInput.classList.add('error');
-    isValid = false;
-  }
+    if (!zipInput.value.trim()) {
+        zipInput.classList.add('error');
+        isValid = false;
+    }
 
-  // Результат перевірки
-  if (!isValid) {
-    event.preventDefault();
-    console.log("There are empty or invalid fields!");
-  } 
+    if (!unitInput.value.trim()) {
+        unitInput.classList.add('error');
+        isValid = false;
+    }
+
+    // 3. Результат перевірки
+    if (!isValid) {
+        console.log("There are empty or invalid fields!");
+    } else {
+        myForm.submit();
+    }
 });
 
 
