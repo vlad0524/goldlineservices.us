@@ -492,6 +492,7 @@ submitButton.addEventListener('click', function () {
 
   // Результат перевірки
   if (!isValid) {
+    event.preventDefault();
     console.log("There are empty or invalid fields!");
   } 
 });
