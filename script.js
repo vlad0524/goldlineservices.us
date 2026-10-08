@@ -425,7 +425,7 @@ const cityInput = document.getElementById('city-input');
 const zipInput = document.getElementById('zip-input');
 
 const myForm = document.querySelector('form');
-const submitButton = document.getElementById('Submit-Request');
+//const submitButton = document.getElementById('Submit-Request');
 
 const unitInput = document.getElementById('Unit-input');
 
@@ -469,11 +469,10 @@ unitInput.addEventListener('input', function() {
   }
 });
 
-// 2. Перевірка при кліку СУВОРОВИ НА КНОПКУ
-submitButton.addEventListener('click', function () {
+myForm.addEventListener('submit', function (event) {
     let isValid = true;
 
-    // Очищаємо попередні помилки (щоб рамки зникали, якщо все заповнили)
+    // Очищаємо старі помилки
     streetInput.classList.remove('error');
     cityInput.classList.remove('error');
     zipInput.classList.remove('error');
@@ -499,12 +498,13 @@ submitButton.addEventListener('click', function () {
         isValid = false;
     }
 
-    // 3. Результат перевірки
+    // Якщо щось не заповнено — зупиняємо відправку
     if (!isValid) {
+        event.preventDefault(); // Форма НЕ відправляється, помилка не летить
         console.log("There are empty or invalid fields!");
-    } else {
-        myForm.submit();
     }
+    // Якщо ВСЕ заповнено — ми НЕ викликаємо preventDefault(). 
+    // Браузер сам нативно відправляє форму методом POST, перенаправляючи на _next без жодних помилок FormSubmit!
 });
 
 
