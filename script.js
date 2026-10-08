@@ -493,10 +493,7 @@ submitButton.addEventListener('click', function () {
   // Результат перевірки
   if (!isValid) {
     console.log("There are empty or invalid fields!");
-  } else {
-    alert('Success! Form submitted.');
-    // Тут код відправки форми
-  }
+  } 
 });
 
 
