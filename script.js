@@ -420,7 +420,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 // 1. Отримуємо елементи
-const myForm = document.querySelector('form');
+const myForm = document.getElementById('myForm');
 const streetInput = document.getElementById('street-input');
 const cityInput = document.getElementById('city-input');
 const zipInput = document.getElementById('zip-input');
@@ -434,33 +434,42 @@ if (zipInput) {
   }); 
 }
 
-// 2. Додаємо слухачі подій: щойно користувач пише літеру — прибираємо червоний клас
-streetInput.addEventListener('input', function() { if (this.value.trim() !== '') { this.classList.remove('error'); } });
-cityInput.addEventListener('input', function() { if (this.value.trim() !== '') { this.classList.remove('error'); } });
-zipInput.addEventListener('input', function() { if (this.value.trim() !== '') { this.classList.remove('error'); } });
-unitInput.addEventListener('input', function() { if (this.value.trim() !== '') { this.classList.remove('error'); } });
-
-// 3. Перевірка при натисканні кнопки Submit
-submitButton.addEventListener('click', function (event) {
-  let isValid = true;
-
-  // Очищаємо старі помилки перед перевіркою
-  streetInput.classList.remove('error');
-  cityInput.classList.remove('error');
-  zipInput.classList.remove('error');
-  unitInput.classList.remove('error');
-
-  if (!streetInput.value.trim()) { streetInput.classList.add('error'); isValid = false;}
-  if (!cityInput.value.trim()) { cityInput.classList.add('error'); isValid = false; }
-  if (!zipInput.value.trim()) { zipInput.classList.add('error'); isValid = false; }
-  if (!unitInput.value.trim()) { unitInput.classList.add('error'); isValid = false; }
-
-  // Результат перевірки
-  if (!isValid) {
-    event.preventDefault();
-    console.log("There are empty or invalid fields!");
-  } 
+// 2. Прибираємо червоний клас при введенні тексту
+[streetInput, cityInput, zipInput, unitInput].forEach(input => {
+    if (input) {
+        input.addEventListener('input', function() { 
+            if (this.value.trim() !== '') { 
+                this.classList.remove('error'); 
+            } 
+        });
+    }
 });
+
+// 3. Перевірка при спробі відправки форми
+if (myForm) {
+    myForm.addEventListener('submit', function(event) {
+        let isValid = true;
+
+        // Очищаємо старі помилки
+        [streetInput, cityInput, zipInput, unitInput].forEach(input => {
+            if (input) input.classList.remove('error');
+        });
+
+        // Перевіряємо поля
+        if (streetInput && !streetInput.value.trim()) { streetInput.classList.add('error'); isValid = false; }
+        if (cityInput && !cityInput.value.trim()) { cityInput.classList.add('error'); isValid = false; }
+        if (zipInput && !zipInput.value.trim()) { zipInput.classList.add('error'); isValid = false; }
+        if (unitInput && !unitInput.value.trim()) { unitInput.classList.add('error'); isValid = false; }
+
+        // Якщо є незаповнені поля — скасовуємо відправку
+        if (!isValid) {
+            event.preventDefault();
+            console.log("There are empty or invalid fields!");
+        }
+        // Якщо все заповнено — event.preventDefault() НЕ викликається, 
+        // і браузер успішно надсилає форму на FormSubmit!
+    });
+}
 
 
 
