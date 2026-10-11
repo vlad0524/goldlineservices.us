@@ -428,7 +428,11 @@ const submitButton = document.getElementById('Submit-Request');
 const unitInput = document.getElementById('Unit-input');
 
 
-if (zipInput) { zipInput.addEventListener('input', function () { this.value = this.value.replace(/[^0-9- ]/g, ''); }); }
+if (zipInput) {
+  zipInput.addEventListener('input', function () {
+    this.value = this.value.replace(/[^0-9- ]/g, ''); 
+  }); 
+}
 
 // 2. Додаємо слухачі подій: щойно користувач пише літеру — прибираємо червоний клас
 streetInput.addEventListener('input', function() { if (this.value.trim() !== '') { this.classList.remove('error'); } });
@@ -453,10 +457,9 @@ submitButton.addEventListener('click', function (event) {
 
   // Результат перевірки
   if (!isValid) {
+    event.preventDefault();
     console.log("There are empty or invalid fields!");
-  } else {
-      myForm.submit();
-  }
+  } 
 });
 
 
