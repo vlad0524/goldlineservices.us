@@ -419,76 +419,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 
-const myForm = document.getElementById('myForm');
-const streetInput = document.getElementById('street-input');
-const cityInput = document.getElementById('city-input');
-const zipInput = document.getElementById('zip-input');
-const unitInput = document.getElementById('Unit-input');
-const submitButton = document.getElementById('Submit-Request');
 
-// Обмеження для ZIP (тільки цифри)
-if (zipInput) { 
-    zipInput.addEventListener('input', function () { 
-        this.value = this.value.replace(/[^0-9]/g, ''); 
-    }); 
-}
-
-// Прибираємо червоний клас при введенні тексту
-[streetInput, cityInput, zipInput, unitInput].forEach(input => {
-    if (input) {
-        input.addEventListener('input', function() { 
-            if (this.value.trim() !== '') { 
-                this.classList.remove('error'); 
-            } 
-        });
-    }
-});
-
-// Перевірка та відправка при кліку на кнопку
-if (submitButton && myForm) {
-    submitButton.addEventListener('click', function(event) {
-        event.preventDefault(); // Запобігаємо стандартній відправці
-        let isValid = true;
-
-        // Очищаємо старі помилки
-        [streetInput, cityInput, zipInput, unitInput].forEach(input => {
-            if (input) input.classList.remove('error');
-        });
-
-        // Перевіряємо поля
-        if (streetInput && !streetInput.value.trim()) { streetInput.classList.add('error'); isValid = false; }
-        if (cityInput && !cityInput.value.trim()) { cityInput.classList.add('error'); isValid = false; }
-        if (zipInput && !zipInput.value.trim()) { zipInput.classList.add('error'); isValid = false; }
-        if (unitInput && !unitInput.value.trim()) { unitInput.classList.add('error'); isValid = false; }
-
-        if (!isValid) {
-            console.log("There are empty or invalid fields!");
-            return; // Зупиняємось, якщо є незаповнені поля
-        }
-
-        // Збираємо дані з форми
-        const formData = new FormData(myForm);
-
-        // Надсилаємо на AJAX-ендпоінт FormSubmit
-        fetch("https://formsubmit.co/ajax/contact.goldlineservice@gmail.com", {
-            method: "POST",
-            body: formData
-        })
-        .then(response => response.json())
-        .then(data => {
-            if (data.success) {
-                alert("Request sent successfully!");
-                myForm.reset(); // Очищуємо форму після успішної відправки
-            } else {
-                alert("Something went wrong. Please try again.");
-            }
-        })
-        .catch(error => {
-            console.error("Error:", error);
-            alert("Network error. Please check your connection.");
-        });
-    });
-}
 
 
 
