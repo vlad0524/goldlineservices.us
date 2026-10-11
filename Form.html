@@ -35,7 +35,7 @@
           </div>
 
 
-          <form action="https://formsubmit.co/contact.goldlineservice@gmail.com" method="POST">
+          <form id="myForm" action="https://formsubmit.co/contact.goldlineservice@gmail.com" method="POST">
 
             <input type="hidden" name="_next" value="index.html#home-section">
 
@@ -84,6 +84,7 @@
                       <!-- Замінюємо div з текстом на тег textarea -->
                       <textarea 
                         name="notes"
+                        required
                         id="details-textarea" 
                         class="write-a-short" 
                         maxlength="2000" 
@@ -148,7 +149,7 @@
                   <div class="selections_zones">
                     <div class="input-fields-row_texts">
                       <!-- Поле вводу з обмеженням у 25 символів -->
-                      <input id="first-name" type="text" class="custom-text-input" maxlength="25" placeholder="Enter your Name" name="name"/>
+                      <input id="first-name" type="text" class="custom-text-input" maxlength="25" placeholder="Enter your Name" name="name" required/>
                     </div>
                   </div>
 
@@ -164,7 +165,7 @@
                   <div class="selections_zones">
                     <div class="input-fields-row_texts">
                       <!-- Поле вводу з обмеженням у 25 символів -->
-                      <input id="last-name" type="text" class="custom-text-input" maxlength="25" placeholder="Enter your Last Name" name="last_name"/>
+                      <input id="last-name" type="text" class="custom-text-input" maxlength="25" placeholder="Enter your Last Name" name="last_name" required/>
                     </div>
                   </div>
 
@@ -180,7 +181,7 @@
                   <div class="selections_zones">
                     <div class="input-fields-row_texts">
                       <!-- Поле вводу телефону з маскою -->
-                      <input id="phone-input" type="tel" class="custom-text-input" id="phone-input" maxlength="14" placeholder="(123) 456-7890" name="phone"/>
+                      <input id="phone-input" type="tel" class="custom-text-input" id="phone-input" maxlength="14" placeholder="(123) 456-7890" name="phone" required/>
                     </div>
                   </div>
 
@@ -196,7 +197,7 @@
                   <div class="selections_zones">
                     <div class="input-fields-row_texts">
                       <!-- Поле вводу електронної пошти -->
-                      <input id="email-input" type="email" class="custom-text-input" minlength="6" maxlength="50" placeholder="Enter your e-mail address" name="email"/>
+                      <input id="email-input" type="email" class="custom-text-input" minlength="6" maxlength="50" placeholder="Enter your e-mail address" name="email" required/>
                     </div>
                   </div>
 
@@ -236,7 +237,7 @@
                   <!-- Поле вулиці -->
                   <div class="selections_zones">
                     <div class="input-fields-row_texts">
-                      <input id="street-input" type="text" class="custom-text-input" minlength="4" maxlength="40" placeholder="Enter your Street Address" name="street"/>
+                      <input id="street-input" type="text" class="custom-text-input" minlength="4" maxlength="40" placeholder="Enter your Street Address" name="street" required/>
                     </div>
                   </div>
                   
@@ -252,9 +253,9 @@
                   <!-- Поле апартаменту --> <!-- Поле міста -------------------------------------------------------->
                   <div class="selections_zones">
                     <div class="input-fields-row">
-                      <input id="Unit-input" type="text" class="form-inputs2" maxlength="10" placeholder="Unit / Apartment / Suite" name="unit"/>
+                      <input id="Unit-input" type="text" class="form-inputs2" maxlength="10" placeholder="Unit / Apartment / Suite" name="unit" required/>
 
-                      <input id="city-input" type="text" class="form-inputs2" minlength="2" maxlength="25" placeholder="City" name="city"/>
+                      <input id="city-input" type="text" class="form-inputs2" minlength="2" maxlength="25" placeholder="City" name="city" required/>
                     </div>
                   </div>
 
@@ -270,9 +271,9 @@
                   <!-- Поле штату --> <!-- Поле зіп-коду (поштового індексу) ----------------------------------------->
                   <div class="selections_zones">
                     <div class="input-fields-row">
-                      <input id="state-input" type="text" class="form-inputs2" maxlength="20" value="Illinois" readonly placeholder="State" name="state"/>
+                      <input id="state-input" type="text" class="form-inputs2" maxlength="20" value="Illinois" readonly placeholder="State" name="state" required/>
 
-                      <input id="zip-input" type="text" class="form-inputs2" minlength="5" maxlength="10" placeholder="Zip Code" name="zipCode"/>
+                      <input id="zip-input" type="text" class="form-inputs2" minlength="5" maxlength="10" placeholder="Zip Code" name="zipCode" required/>
                     </div>
                   </div>
 
@@ -295,7 +296,8 @@
           </form>
         </div>
       </section>
-
+    
     <script src="script.js"></script>
+        
   </body>
 </html>

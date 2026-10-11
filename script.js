@@ -428,44 +428,13 @@ const submitButton = document.getElementById('Submit-Request');
 const unitInput = document.getElementById('Unit-input');
 
 
-
-
-if (zipInput) {
-  zipInput.addEventListener('input', function () {
-    // Додали пробіл наприкінці виразу (після дефіса)
-    this.value = this.value.replace(/[^0-9- ]/g, '');
-  });
-}
-
-
-
-
-
+if (zipInput) { zipInput.addEventListener('input', function () { this.value = this.value.replace(/[^0-9- ]/g, ''); }); }
 
 // 2. Додаємо слухачі подій: щойно користувач пише літеру — прибираємо червоний клас
-streetInput.addEventListener('input', function() {
-  if (this.value.trim() !== '') {
-    this.classList.remove('error');
-  }
-});
-
-cityInput.addEventListener('input', function() {
-  if (this.value.trim() !== '') {
-    this.classList.remove('error');
-  }
-});
-
-zipInput.addEventListener('input', function() {
-  if (this.value.trim() !== '') {
-    this.classList.remove('error');
-  }
-});
-
-unitInput.addEventListener('input', function() {
-  if (this.value.trim() !== '') {
-    this.classList.remove('error');
-  }
-});
+streetInput.addEventListener('input', function() { if (this.value.trim() !== '') { this.classList.remove('error'); } });
+cityInput.addEventListener('input', function() { if (this.value.trim() !== '') { this.classList.remove('error'); } });
+zipInput.addEventListener('input', function() { if (this.value.trim() !== '') { this.classList.remove('error'); } });
+unitInput.addEventListener('input', function() { if (this.value.trim() !== '') { this.classList.remove('error'); } });
 
 // 3. Перевірка при натисканні кнопки Submit
 submitButton.addEventListener('click', function (event) {
