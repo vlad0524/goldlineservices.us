@@ -420,53 +420,78 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 // 1. Отримуємо елементи
-const myForm = document.querySelector('form');
+const myForm = document.querySelector('myForm');
 const streetInput = document.getElementById('street-input');
 const cityInput = document.getElementById('city-input');
 const zipInput = document.getElementById('zip-input');
+const unitInput = document.getElementById('Unit-input'); // Перевірте, чи у вас 'Unit-input' з великої чи маленької літери
 const submitButton = document.getElementById('Submit-Request');
-const unitInput = document.getElementById('Unit-input');
 
-if (zipInput) {
-  zipInput.addEventListener('input', function () {
-    // Додали пробіл наприкінці виразу (після дефіса)
-    this.value = this.value.replace(/[^0-9- ]/g, '');
-  });
+// Обмеження для ZIP (тільки цифри)
+if (zipInput) { 
+    zipInput.addEventListener('input', function () { 
+        this.value = this.value.replace(/[^0-9]/g, ''); 
+    }); 
 }
 
-// 2. Прибираємо червоний клас при введенні тексту
+// 2. Очищаємо рамку щойно користувач починає щось писати
 [streetInput, cityInput, zipInput, unitInput].forEach(input => {
     if (input) {
-        input.addEventListener('input', function() { 
-            if (this.value.trim() !== '') { 
-                this.classList.remove('error'); 
-            } 
+        input.addEventListener('input', function() {
+            if (this.value.trim() !== '') {
+                this.style.borderColor = '#ffffff';
+            }
         });
     }
 });
 
 // 3. Перевірка при натисканні кнопки Submit
-submitButton.addEventListener('click', function (event) {
-  let isValid = true;
+if (submitButton && myForm) {
+    submitButton.addEventListener('click', function(event) {
+        let isValid = true;
 
-  // Очищаємо старі помилки перед перевіркою
-  streetInput.classList.remove('error');
-  cityInput.classList.remove('error');
-  zipInput.classList.remove('error');
-  unitInput.classList.remove('error');
+        // Перевірка Street
+        if (!streetInput || streetInput.value.trim() === '') {
+            if (streetInput) streetInput.style.borderColor = '#DA3D57';
+            isValid = false;
+        } else {
+            streetInput.style.borderColor = '#ffffff';
+        }
 
-  if (!streetInput.value.trim()) { streetInput.classList.add('error'); isValid = false;}
-  if (!cityInput.value.trim()) { cityInput.classList.add('error'); isValid = false; }
-  if (!zipInput.value.trim()) { zipInput.classList.add('error'); isValid = false; }
-  if (!unitInput.value.trim()) { unitInput.classList.add('error'); isValid = false; }
+        // Перевірка City
+        if (!cityInput || cityInput.value.trim() === '') {
+            if (cityInput) cityInput.style.borderColor = '#DA3D57';
+            isValid = false;
+        } else {
+            cityInput.style.borderColor = '#ffffff';
+        }
 
-  // Результат перевірки
-  if (!isValid) {
-    console.log("There are empty or invalid fields!");
-  } else {
-      myForm.submit();
-  }
-});
+        // Перевірка ZIP
+        if (!zipInput || zipInput.value.trim() === '') {
+            if (zipInput) zipInput.style.borderColor = '#DA3D57';
+            isValid = false;
+        } else {
+            zipInput.style.borderColor = '#ffffff';
+        }
+
+        // Перевірка Unit
+        if (!unitInput || unitInput.value.trim() === '') {
+            if (unitInput) unitInput.style.borderColor = '#DA3D57';
+            isValid = false;
+        } else {
+            unitInput.style.borderColor = '#ffffff';
+        }
+
+        // Результат перевірки
+        if (!isValid) {
+            event.preventDefault(); // Зупиняємо відправку, якщо є порожні поля
+            console.warn("There are empty or invalid fields!");
+        } else {
+            // Якщо все заповнено — форма легально летить на сервер
+            myForm.submit();
+        }
+    });
+}
 
 
 
