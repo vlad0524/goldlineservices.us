@@ -419,6 +419,54 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 
+// 1. Отримуємо елементи
+const myForm = document.querySelector('form');
+const streetInput = document.getElementById('street-input');
+const cityInput = document.getElementById('city-input');
+const zipInput = document.getElementById('zip-input');
+const submitButton = document.getElementById('Submit-Request');
+const unitInput = document.getElementById('Unit-input');
+
+if (zipInput) {
+  zipInput.addEventListener('input', function () {
+    // Додали пробіл наприкінці виразу (після дефіса)
+    this.value = this.value.replace(/[^0-9- ]/g, '');
+  });
+}
+
+// 2. Прибираємо червоний клас при введенні тексту
+[streetInput, cityInput, zipInput, unitInput].forEach(input => {
+    if (input) {
+        input.addEventListener('input', function() { 
+            if (this.value.trim() !== '') { 
+                this.classList.remove('error'); 
+            } 
+        });
+    }
+});
+
+// 3. Перевірка при натисканні кнопки Submit
+submitButton.addEventListener('click', function (event) {
+  let isValid = true;
+
+  // Очищаємо старі помилки перед перевіркою
+  streetInput.classList.remove('error');
+  cityInput.classList.remove('error');
+  zipInput.classList.remove('error');
+  unitInput.classList.remove('error');
+
+  if (!streetInput.value.trim()) { streetInput.classList.add('error'); isValid = false;}
+  if (!cityInput.value.trim()) { cityInput.classList.add('error'); isValid = false; }
+  if (!zipInput.value.trim()) { zipInput.classList.add('error'); isValid = false; }
+  if (!unitInput.value.trim()) { unitInput.classList.add('error'); isValid = false; }
+
+  // Результат перевірки
+  if (!isValid) {
+    console.log("There are empty or invalid fields!");
+  } else {
+      myForm.submit();
+  }
+});
 
 
 
