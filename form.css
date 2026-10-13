@@ -64,6 +64,42 @@ body {
 
 
 
+
+
+.bottom-text {
+  background-color: #4d0c16;
+  display: inline-flex;
+  align-items: center;
+  text-decoration: none;
+  width: 100%;
+  height: 100%;
+}
+.callNow {
+  align-self: stretch;
+  position: relative;
+  font-size: 14px;
+  line-height: 129%;
+  color: var(--color-darkgray-200);
+}
+
+
+.footer-spacer {
+  width: 100%; 
+  height: 100%;
+  display: flex; /* Змінюємо на inline-flex, щоб вирівнювати текст усередині */
+
+  text-decoration: none; 
+}
+.div {
+  color: #dcdcdc; 
+  font-size: 17px; 
+  font-weight: 600;
+  text-decoration: none; 
+  text-align: center; /* Центрує текст всередині */
+}
+
+
+
 /*                         V1 старіша
 body {
   display: flex;
@@ -272,6 +308,7 @@ body {
 }
 .v1 {
   width: 100%;
+  height: 100%;
   align-items: flex-start;
   gap: 13px;
   max-width: 479px;
