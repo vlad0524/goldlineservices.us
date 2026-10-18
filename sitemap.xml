@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+
+  <!-- Main -->
+  <url>
+    <loc>https://goldlineservices.us/</loc>
+    <lastmod>2026-10-18</lastmod>
+  </url>
+  <url>
+    <loc>https://goldlineservices.us/about-us.html</loc>
+    <lastmod>2026-10-18</lastmod>
+  </url>
+  <url>
+    <loc>https://goldlineservices.us/contact-us.html</loc>
+    <lastmod>2026-10-18</lastmod>
+  </url>
+  <url>
+    <loc>https://goldlineservices.us/service-areas.html</loc>
+    <lastmod>2026-10-18</lastmod>
+  </url>
+
+  <!-- HVAC -->
+  <url>
+    <loc>https://goldlineservices.us/air-conditioner-repair.html</loc>
+    <lastmod>2026-10-18</lastmod>
+  </url>
+  <url>
+    <loc>https://goldlineservices.us/furnace-repair.html</loc>
+    <lastmod>2026-10-18</lastmod>
+  </url>
+  <url>
+    <loc>https://goldlineservices.us/mini-split-repair.html</loc>
+    <lastmod>2026-10-18</lastmod>
+  </url>
+  <url>
+    <loc>https://goldlineservices.us/packaged-unit-repair.html</loc>
+    <lastmod>2026-10-18</lastmod>
+  </url>
+  <url>
+    <loc>https://goldlineservices.us/through-the-wall-repair.html</loc>
+    <lastmod>2026-10-18</lastmod>
+  </url>
+
+  <!-- Appliances -->
+  <url>
+    <loc>https://goldlineservices.us/refrigerator-repair.html</loc>
+    <lastmod>2026-10-18</lastmod>
+  </url>
+  <url>
+    <loc>https://goldlineservices.us/freezer-repair.html</loc>
+    <lastmod>2026-10-18</lastmod>
+  </url>
+  <url>
+    <loc>https://goldlineservices.us/washer-repair.html</loc>
+    <lastmod>2026-10-18</lastmod>
+  </url>
+  <url>
+    <loc>https://goldlineservices.us/dryer-repair.html</loc>
+    <lastmod>2026-10-18</lastmod>
+  </url>
+  <url>
+    <loc>https://goldlineservices.us/oven-stove-repair.html</loc>
+    <lastmod>2026-10-18</lastmod>
+  </url>
+  <url>
+    <loc>https://goldlineservices.us/cooktop-range-repair.html</loc>
+    <lastmod>2026-10-18</lastmod>
+  </url>
+
+  <!-- Pool / Spa -->
+  <url>
+    <loc>https://goldlineservices.us/pool-pump-repair.html</loc>
+    <lastmod>2026-10-18</lastmod>
+  </url>
+  <url>
+    <loc>https://goldlineservices.us/pool-filter-repair.html</loc>
+    <lastmod>2026-10-18</lastmod>
+  </url>
+  <url>
+    <loc>https://goldlineservices.us/pool-salt-cell-repair.html</loc>
+    <lastmod>2026-10-18</lastmod>
+  </url>
+  <url>
+    <loc>https://goldlineservices.us/pool-heater-repair.html</loc>
+    <lastmod>2026-10-18</lastmod>
+  </url>
+  <url>
+    <loc>https://goldlineservices.us/pool-plumbing-repair.html</loc>
+    <lastmod>2026-10-18</lastmod>
+  </url>
+  <url>
+    <loc>https://goldlineservices.us/pool-timers-repair.html</loc>
+    <lastmod>2026-10-18</lastmod>
+  </url>
+  <url>
+    <loc>https://goldlineservices.us/pool-electronics-repair.html</loc>
+    <lastmod>2026-10-18</lastmod>
+  </url>
+
+  <!-- Legal -->
+  <url>
+    <loc>https://goldlineservices.us/privacy-policy.html</loc>
+    <lastmod>2026-10-18</lastmod>
+  </url>
+  <url>
+    <loc>https://goldlineservices.us/terms.html</loc>
+    <lastmod>2026-10-18</lastmod>
+  </url>
+
+  <!-- COMMERCIAL: uncomment these two blocks ONLY when COMMERCIAL = true in site-config.js
+  <url>
+    <loc>https://goldlineservices.us/commercial-ac-repair.html</loc>
+    <lastmod>2026-10-18</lastmod>
+  </url>
+  <url>
+    <loc>https://goldlineservices.us/commercial-heating-repair.html</loc>
+    <lastmod>2026-10-18</lastmod>
+  </url>
+  -->
+</urlset>

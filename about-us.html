@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <script src="./site-config.js"></script>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <link rel="canonical" href="https://goldlineservices.us/about-us.html">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Gold Line Services">
+    <meta property="og:title" content="About Us | Gold Line Services">
+    <meta property="og:description" content="Gold Line Services is a local team for HVAC, appliance, and pool/spa repair in Chicago and nearby suburbs. Honest advice, clear pricing, work done right.">
+    <meta property="og:url" content="https://goldlineservices.us/about-us.html">
+    <meta property="og:image" content="https://goldlineservices.us/index/og-image.jpg">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta name="twitter:card" content="summary_large_image">
+    <title>About Us | Gold Line Services</title>
+    <meta name="description" content="Gold Line Services is a local team for HVAC, appliance, and pool/spa repair in Chicago and nearby suburbs. Honest advice, clear pricing, work done right.">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./index.css" />
+
+    <!-- Google tag (same as main page) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=AW-18441761320"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+        gtag('config', 'AW-18441761320');
+    </script>
+    <style>
+        /* ===== About page (extra styles, index.css is loaded as usual) ===== */
+        .about-hero { background: radial-gradient(circle at 88% 12%, rgba(234,145,66,.20), transparent 42%), var(--bgdark) }
+        .about-hero::before { display: none }
+        .about-hero .hero-content { min-height: clamp(420px, 38vw, 540px); padding-top: 56px; padding-bottom: 56px; max-width: var(--max) }
+        .about-hero .hero-content>* { position: relative; z-index: 2 }
+        .about-hero h1 { max-width: 820px }
+        .about-hero p { max-width: 640px }
+        /* orange circles */
+        .orb { position: absolute; border-radius: 50%; pointer-events: none; z-index: 1 }
+        .orb.o1 { width: clamp(260px, 34vw, 480px); aspect-ratio: 1; right: clamp(-120px, -6vw, -40px); top: 50%; transform: translateY(-50%); background: radial-gradient(circle at 35% 30%, rgba(239,193,91,.55), rgba(234,145,66,.28) 45%, rgba(234,145,66,0) 70%); filter: blur(6px); animation: orbFloat 9s ease-in-out infinite }
+        .orb.o2 { width: clamp(90px, 10vw, 150px); aspect-ratio: 1; right: clamp(40px, 22vw, 330px); bottom: 12%; border: 1.5px solid rgba(234,145,66,.45); animation: orbFloat 7s ease-in-out infinite reverse }
+        .orb.o3 { width: 18px; aspect-ratio: 1; right: clamp(60px, 30vw, 460px); top: 22%; background: var(--grad); animation: orbPulse 3.6s ease-in-out infinite }
+        @keyframes orbFloat { 0%,100% { transform: translateY(-50%) scale(1) } 50% { transform: translateY(calc(-50% - 18px)) scale(1.04) } }
+        .orb.o2 { animation-name: orbFloat2 }
+        @keyframes orbFloat2 { 0%,100% { transform: translateY(0) } 50% { transform: translateY(-16px) } }
+        @keyframes orbPulse { 0%,100% { transform: scale(1); opacity: .9 } 50% { transform: scale(1.6); opacity: .35 } }
+        .about-hero .btns { margin-top: 4px }
+        @media(max-width:640px) {
+            .orb.o1 { right: -140px; top: 18%; opacity: .7 }
+            .orb.o2, .orb.o3 { display: none }
+            .about-hero .hero-content { align-items: center; text-align: center; min-height: 0 }
+            .about-hero .btns { margin-left: auto; margin-right: auto }
+        }
+
+        /* what we do */
+        .do-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px }
+        .do-card { position: relative; background: linear-gradient(135deg, #fff, #f6f9f9); border: 1px solid #e3eaec; border-radius: 22px; padding: 30px 28px 26px; box-shadow: 0 18px 44px rgba(10,26,34,.07); display: flex; flex-direction: column; transition: transform .25s, box-shadow .25s, border-color .25s; overflow: hidden }
+        .do-card::after { content: ""; position: absolute; left: 0; top: 0; height: 3px; width: 0; background: var(--grad); transition: width .45s ease }
+        .do-card:hover { transform: translateY(-5px); border-color: #ea9142; box-shadow: 0 24px 54px rgba(10,26,34,.13) }
+        .do-card:hover::after { width: 100% }
+        .do-card .ico { margin-bottom: 20px }
+        .do-card h3 { font-size: clamp(22px, 2vw, 26px); font-weight: 600; letter-spacing: -.02em; margin-bottom: 10px }
+        .do-card p { color: #5d6f78; font-size: 15.5px; line-height: 1.65; letter-spacing: .01em }
+        .do-card ul { list-style: none; margin: 18px 0 22px; display: grid; gap: 10px }
+        .do-card li { display: flex; gap: 10px; align-items: flex-start; font-size: 15px; color: #33434b }
+        .do-card li svg { color: #ea9142; font-size: 18px; margin-top: 2px; stroke-width: 2.4 }
+        .do-card .more { margin-top: auto; display: inline-flex; align-items: center; gap: 8px; font-weight: 600; color: #b35f12; font-size: 15px }
+        .do-card .more svg { transition: transform .25s }
+        .do-card:hover .more svg { transform: translateX(5px) }
+        .do-note { margin-top: 28px; display: flex; gap: 16px; align-items: center; background: rgba(234,145,66,.09); border: 1px solid rgba(234,145,66,.3); border-radius: 18px; padding: 18px 22px; color: #4a3a28; line-height: 1.6; font-size: 15.5px }
+        .do-note svg { color: #e0872e; font-size: 26px }
+
+        /* why (dark) */
+        .why-dark { background: radial-gradient(circle at 8% 0%, rgba(234,145,66,.13), transparent 40%), var(--bgdark); color: #fff }
+        .why-dark .sec-head p { color: #aab6bc }
+        .why-dark .why-card { background: linear-gradient(135deg, #161e24, #12191e); border-color: #232e35; box-shadow: none }
+        .why-dark .why-card:hover { border-color: #ea9142; box-shadow: 0 18px 40px rgba(0,0,0,.35) }
+        .why-dark .why-card h4 { color: #fff }
+        .why-dark .why-card p { color: #b9c3c9 }
+        .why-dark .ico { background: rgba(234,145,66,.14); border-color: rgba(234,145,66,.35); color: #efc15b }
+        .why-dark .why-card .no { color: #4f5f68 }
+        .why-dark .why-card { overflow: hidden }
+
+        @media(max-width:1100px) { .do-grid { grid-template-columns: 1fr 1fr } }
+        @media(max-width:700px) { .do-grid { grid-template-columns: 1fr; gap: 18px } .do-card { padding: 24px 20px } .do-note { flex-direction: column; text-align: center } }
+        @media(prefers-reduced-motion: reduce) { .orb { animation: none } }
+    </style>
+</head>
+
+<body>
+    <!-- HEADER (same as main page) -->
+    <header class="header" id="header">
+        <div class="inner">
+            <a class="logo" href="index.html#top" aria-label="Gold Line Services"><img src="index/LOGO@2x.png" alt="Gold Line Services"></a>
+            <nav class="nav">
+                <a href="index.html#top">Home</a>
+                <div class="has-menu">
+                    <button type="button" aria-haspopup="true">Services <svg viewBox="0 0 24 24"><path d="m6 9 6 6 6-6" /></svg></button>
+                    <div class="mega"><div class="inner" id="mega"></div></div>
+                </div>
+                <a href="about-us.html">About us</a>
+                <a href="service-areas.html">Service Areas</a>
+                <a href="contact-us.html">Contact</a>
+            </nav>
+            <div class="right">
+                <a class="phone" href="tel:{{phoneTel}}"><i data-ic="phone"></i>{{phone}}</a>
+                <a class="btn btn-grad" href="schedule-service.html">Schedule Service</a>
+            </div>
+            <button class="burger" id="burger" aria-label="Menu" aria-expanded="false"><svg viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h16" /></svg></button>
+        </div>
+        <div class="mobile">
+            <div class="inner">
+                <a href="index.html#top">Home</a>
+                <details>
+                    <summary>Services <svg viewBox="0 0 24 24" style="width:20px;height:20px;transition:.2s"><path d="m6 9 6 6 6-6" /></svg></summary>
+                    <div id="mmenu"></div>
+                </details>
+                <a href="about-us.html">About us</a>
+                <a href="service-areas.html">Service Areas</a>
+                <a href="contact-us.html">Contact</a>
+                <div class="actions">
+                    <a class="btn btn-out" href="tel:{{phoneTel}}">Call {{phone}}</a>
+                    <a class="btn btn-grad" href="schedule-service.html">Schedule Service</a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+
+    <main id="top">
+        <!-- HERO (no photo: dark gradient + orange circles) -->
+        <section class="hero about-hero">
+            <div class="orb o1"></div><div class="orb o2"></div><div class="orb o3"></div>
+            <div class="inner hero-content">
+                <div class="eyebrow-hero">ABOUT US<i></i>CHICAGO &amp; NEARBY SUBURBS</div>
+                <h1><span class="line">A local team you can</span> <span class="line grad-text">count on at home.</span></h1>
+                <p>Gold Line Services repairs the systems that keep your home comfortable: heating and cooling, household appliances, and pool and spa equipment. One company to call, honest answers, and a fair price you know before the work begins.</p>
+                <div class="btns">
+                    <a class="btn btn-grad" href="schedule-service.html"><i data-ic="cal"></i>Request Service</a>
+                    <a class="btn btn-out" href="tel:{{phoneTel}}"><i data-ic="phone"></i>{{phone}}</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- TRUST STRIP -->
+        <div class="features">
+            <div class="inner">
+                <div class="feat"><i data-ic="shield"></i><div><b>Licensed &amp; Insured</b><span>Your home is protected.</span></div></div>
+                <div class="feat"><i data-ic="dollar"></i><div><b>Upfront Pricing</b><span>Exact price before we start.</span></div></div>
+                <div class="feat"><i data-ic="check"></i><div><b>Repair Warranty</b><span>Our work is backed.</span></div></div>
+                <div class="feat"><i data-ic="bolt"></i><div><b>Emergency Calls</b><span>Available when you need us.</span></div></div>
+            </div>
+        </div>
+
+        <!-- WHAT WE DO -->
+        <section class="services" id="what-we-do">
+            <div class="inner">
+                <div class="sec-head"><div>
+                    <div class="kicker">What We Do</div>
+                    <h2>Three kinds of repair, one team</h2>
+                    <p>Most homes need more than one kind of help over the years. Instead of searching for a different company each time, you can call us for heating and cooling, appliances, and pool and spa equipment. Every visit follows the same simple rule: find the real cause first, explain it clearly, and only then fix it.</p>
+                </div></div>
+                <div class="do-grid" id="dogrid"></div>
+                <div class="do-note" data-commercial><i data-ic="home"></i><div><b>Homes and businesses.</b> Besides residential service, we also work on commercial air conditioning and heating. Tell us what you have when you schedule and we'll send the right technician.</div></div>
+            </div>
+        </section>
+
+        <!-- WHY US -->
+        <section class="why why-dark" id="why-us">
+            <div class="inner">
+                <div class="sec-head"><div>
+                    <div class="kicker">Why Choose Us</div>
+                    <h2>Why homeowners choose Gold Line</h2>
+                    <p>Repairs are stressful enough. We try to make this part easy: clear communication, fair pricing, and work that lasts.</p>
+                </div></div>
+                <div class="why-grid" id="whygrid"></div>
+            </div>
+        </section>
+
+        <!-- SCHEDULE (orange) -->
+        <section class="sched" id="contact">
+            <div class="inner">
+                <div>
+                    <div class="kick">Ready when you are</div>
+                    <h2>Schedule your service appointment</h2>
+                    <p>Call us directly or request an appointment online. We’ll review your request and contact you shortly to confirm.</p>
+                </div>
+                <div class="btns">
+                    <a class="btn b-dark" href="tel:{{phoneTel}}"><i data-ic="phone"></i>Call now · {{phone}}</a>
+                    <a class="btn b-white" href="schedule-service.html"><i data-ic="cal"></i>Schedule online</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- FOOTER (same as main page) -->
+    <footer class="dark foot">
+        <div class="inner">
+            <div class="foot-grid">
+                <div class="about">
+                    <a class="logo" href="index.html#top" aria-label="Gold Line Services"><img src="index/LOGO@2x.png" alt="Gold Line Services"></a>
+                    <p>Reliable HVAC, appliance, and pool/spa repair for Chicago and surrounding communities.</p>
+                </div>
+                <div>
+                    <h5>Services</h5>
+                    <ul>
+                        <li><a href="air-conditioner-repair.html">Air Conditioner repair</a></li>
+                        <li><a href="furnace-repair.html">Furnace repair</a></li>
+                        <li data-commercial><a href="commercial-ac-repair.html">Commercial HVAC repair</a></li>
+                        <li><a href="refrigerator-repair.html">Refrigerator repair</a></li>
+                        <li><a href="washer-repair.html">Washer &amp; Dryer repair</a></li>
+                        <li><a href="oven-stove-repair.html">Oven &amp; Stove repair</a></li>
+                        <li><a href="index.html#pool">Pool / Spa repair</a></li>
+                        <li><a href="index.html#services">View all services</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h5>Explore</h5>
+                    <ul>
+                        <li><a href="index.html#top">Home</a></li>
+                        <li><a href="index.html#services">Services</a></li>
+                        <li><a href="about-us.html">About us</a></li>
+                        <li><a href="service-areas.html">Service Areas</a></li>
+                        <li><a href="index.html#faq">FAQ</a></li>
+                        <li><a href="schedule-service.html">Schedule Service</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h5>Get in touch</h5>
+                    <a class="ct" href="tel:{{phoneTel}}"><i data-ic="phone"></i>{{phone}}</a>
+                    <a class="ct" href="sms:{{smsTel}}"><i data-ic="chat"></i>Text {{sms}}</a>
+                    <a class="ct" href="mailto:{{email}}"><i data-ic="mail"></i>{{email}}</a>
+                    <div class="ct"><i data-ic="clock"></i><span>Mon–Sat: 8:00 AM – 9:00 PM<br>Sunday: closed (emergency calls available)</span></div>
+                    <a class="btn btn-grad" href="schedule-service.html" style="margin-top:8px">Schedule service</a>
+                </div>
+            </div>
+            <div class="foot-bottom"><span>© 2026 Gold Line Services. All rights reserved. · <a href="privacy-policy.html">Privacy Policy</a> · <a href="terms.html">Terms &amp; Conditions</a></span><span>Payments accepted: Cash · Zelle · Visa · Mastercard</span></div>
+        </div>
+    </footer>
+
+    <script>
+        /* =====================================================
+           PAGE CONTENT: edit the texts here
+           ===================================================== */
+        const DO = [
+            ["snow", "Heating & Cooling", "Air conditioners and furnaces keep your home comfortable all year. We repair and install the systems found in Chicago homes and buildings.",
+                ["Air conditioner repair", "Furnace and heating repair", "Mini-split, packaged and through-the-wall units", ...(SITE.commercial ? ["Commercial cooling and heating"] : [])], "index.html#hvac"],
+            ["fridge", "Home Appliances", "When a refrigerator, washer or oven stops working, the whole day stops. We find the cause on site and get the appliance working again.",
+                ["Refrigerators and freezers", "Washers and dryers", "Ovens, stoves, cooktops and ranges", "Most major brands"], "index.html#appliances"],
+            ["drop", "Pool & Spa", "Pool and spa equipment has its own problems: flow, filtration, heating, and controls. We keep the water clean and the equipment running.",
+                ["Pumps and filters", "Heaters and salt cells", "Above-ground plumbing", "Timers, smart systems and electronics"], "index.html#pool"]
+        ];
+        const WHY = [
+            ["bolt", "Fast response", "Quick scheduling and prompt arrival, with emergency calls available when something can't wait."],
+            ["dollar", "Price before the repair", "After the diagnosis we explain what happened and what the repair costs. You decide, with no surprises."],
+            ["star", "Done right the first time", "We look for the root cause, not just the symptom, so the repair lasts and you avoid a second visit."],
+            ["chat", "Clear communication", "We explain the problem in simple terms and keep you informed from the first call to the finished repair."],
+            ["home", "Local and family-run", "We know Chicago and the neighborhoods around it, and we treat every home like our own."],
+            ["tool", "One team for everything", "Heating, cooling, appliances and pool equipment from a single company you can call."]
+        ];
+        const MENU = [
+            ["HVAC", "index.html#hvac", [["Air Conditioner", "air-conditioner-repair.html"], ["Furnace", "furnace-repair.html"], ["Mini-Split Systems", "mini-split-repair.html"], ["Packaged Units", "packaged-unit-repair.html"], ["Through-the-Wall Units", "through-the-wall-repair.html"]]],
+            ...(SITE.commercial ? [["Commercial", "index.html#commercial", [["Commercial Air Conditioning", "commercial-ac-repair.html"], ["Commercial Heating", "commercial-heating-repair.html"]]]] : []),
+            ["Appliances", "", [["Refrigerator", "refrigerator-repair.html"], ["Freezer", "freezer-repair.html"], ["Washer", "washer-repair.html"], ["Dryer", "dryer-repair.html"], ["Oven & Stove", "oven-stove-repair.html"], ["Cooktop & Range", "cooktop-range-repair.html"]]],
+            ["Pool / Spa", "index.html#pool", [["Pump", "pool-pump-repair.html"], ["Filter", "pool-filter-repair.html"], ["Salt Cells", "pool-salt-cell-repair.html"], ["Heater", "pool-heater-repair.html"], ["Plumbing (Above Ground)", "pool-plumbing-repair.html"], ["Timers & Smart Systems", "pool-timers-repair.html"], ["Electronics", "pool-electronics-repair.html"]]]
+        ];
+
+        /* ---------- icons ---------- */
+        const P = {
+            bolt: '<path d="M13 2 4 14h7l-1 8 9-12h-7z"/>',
+            shield: '<path d="M12 2 4 5v6c0 5 3.4 9.4 8 11 4.6-1.6 8-6 8-11V5z"/><path d="m9 12 2 2 4-4"/>',
+            check: '<path d="m5 12 5 5 9-10"/>',
+            chat: '<path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/><path d="M8 9h8M8 13h5"/>',
+            phone: '<path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z"/>',
+            mail: '<rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/>',
+            clock: '<circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/>',
+            cal: '<rect x="3" y="5" width="18" height="16" rx="2"/><path d="M8 3v4M16 3v4M3 10h18"/>',
+            arrow: '<path d="M5 12h14M13 6l6 6-6 6"/>',
+            dollar: '<circle cx="12" cy="12" r="9"/><path d="M14.5 9.2c-.4-.8-1.4-1.2-2.5-1.2-1.4 0-2.5.7-2.5 1.8 0 2.7 5 1.2 5 3.9 0 1.1-1.1 1.8-2.5 1.8-1.2 0-2.2-.5-2.6-1.3M12 6.5V8M12 16v1.5"/>',
+            snow: '<path d="M12 2v20M4.9 6.5l14.2 11M19.1 6.5 4.9 17.5"/>',
+            drop: '<path d="M12 3s6 6.2 6 10.5A6 6 0 0 1 6 13.5C6 9.2 12 3 12 3z"/>',
+            fridge: '<rect x="5" y="2" width="14" height="20" rx="2"/><path d="M5 10h14M9 6v1M9 14v3"/>',
+            star: '<path d="m12 2 3 6.6 7 .8-5.2 4.8 1.4 7.1L12 17.8 5.8 21.3l1.4-7.1L2 9.4l7-.8z"/>',
+            home: '<path d="m3 11 9-8 9 8"/><path d="M5 10v10h14V10M10 20v-6h4v6"/>',
+            tool: '<path d="M14.7 6.3a4 4 0 0 0-5.4 5.1L3 17.7V21h3.3l6.3-6.3a4 4 0 0 0 5.1-5.4l-2.6 2.6-2.4-.6-.6-2.4z"/>'
+        };
+        const ic = n => `<svg viewBox="0 0 24 24">${P[n]}</svg>`;
+        const $ = id => document.getElementById(id);
+        const esc = s => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;');
+
+        /* ---------- menus ---------- */
+        const mk = m => m[2].map(i => Array.isArray(i) ? `<a href="${i[1]}">${esc(i[0])}</a>` : `<a href="${m[1]}">${esc(i)}</a>`).join('');
+        $('mega').innerHTML = MENU.map(m => `<div><h4>${m[0]}</h4>${mk(m)}</div>`).join('');
+        $('mmenu').innerHTML = MENU.map(m => `<h4>${m[0]}</h4>${mk(m)}`).join('');
+
+        /* ---------- sections ---------- */
+        $('dogrid').innerHTML = DO.map(d => `<div class="do-card"><div class="ico">${ic(d[0])}</div><h3>${d[1]}</h3><p>${d[2]}</p><ul>${d[3].map(x => `<li>${ic('check')}${x}</li>`).join('')}</ul><a class="more" href="${d[4]}">View services ${ic('arrow')}</a></div>`).join('');
+        $('whygrid').innerHTML = WHY.map((w, i) => `<div class="why-card"><div class="ico">${ic(w[0])}</div><h4>${w[1]}</h4><p>${w[2]}</p></div>`).join('');
+        document.querySelectorAll('[data-ic]').forEach(e => { e.outerHTML = ic(e.dataset.ic) });
+
+        /* ---------- mobile menu ---------- */
+        const h = $('header'), b = $('burger');
+        b.onclick = () => { const o = h.classList.toggle('open'); b.setAttribute('aria-expanded', o) };
+        document.querySelectorAll('.mobile a').forEach(a => a.addEventListener('click', () => h.classList.remove('open')));
+        document.querySelectorAll('.mega a').forEach(a => a.addEventListener('click', () => document.activeElement.blur()));
+    </script>
+
+    <!-- Scroll animations (same as other pages) -->
+    <script>
+        (function () {
+            if (!('IntersectionObserver' in window) || matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+            var sel = '.sec-head,.do-card,.do-note,.why-card,.sched .inner>div,.foot-grid>div,.features .feat';
+            var io = new IntersectionObserver(function (entries) {
+                entries.forEach(function (e) {
+                    if (!e.isIntersecting) return;
+                    var el = e.target;
+                    el.classList.add('in');
+                    io.unobserve(el);
+                    el.addEventListener('transitionend', function () { el.classList.remove('reveal', 'in'); el.style.removeProperty('--d'); }, { once: true });
+                });
+            }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+            document.querySelectorAll(sel).forEach(function (el) {
+                var idx = Array.prototype.indexOf.call(el.parentElement.children, el);
+                el.style.setProperty('--d', Math.min(idx, 5) * 80 + 'ms');
+                el.classList.add('reveal');
+                io.observe(el);
+            });
+        })();
+    </script>
+</body>
+
+</html>

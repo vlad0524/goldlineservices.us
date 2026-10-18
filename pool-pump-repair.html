@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <script src="./site-config.js"></script>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <title>Pool Pump Repair in Chicagoland | Gold Line Services</title>
+    <meta name="description" content="Pool and spa pump repair in Chicago and nearby suburbs. Noisy, low flow or losing prime? Exact price before we start. Schedule today.">
+
+    <link rel="icon" href="./favicon.png" type="image/x-icon">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./index.css" />
+
+    <!-- Google tag (same as main page) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=AW-18441761320"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+        gtag('config', 'AW-18441761320');
+    </script>
+
+    <style>
+        /* emergency checkbox in the hero form */
+        .emchk { display: flex; gap: 10px; align-items: flex-start; margin: 4px 0 14px; font-size: 14px; line-height: 1.45; color: #dfe5e8; cursor: pointer; text-align: left }
+        .emchk input { width: 18px; height: 18px; margin-top: 2px; accent-color: #ea9142; flex: none }
+        .emchk small { display: block; margin-top: 3px; color: #aab6bc; font-size: 12.5px }
+    </style>
+</head>
+
+<body>
+    <!-- HEADER (same as main page) -->
+    <header class="header" id="header">
+        <div class="inner">
+            <a class="logo" href="index.html#top" aria-label="Gold Line Services"><img src="index/LOGO@2x.png" alt="Gold Line Services"></a>
+            <nav class="nav">
+                <a href="index.html#top">Home</a>
+                <div class="has-menu">
+                    <button type="button" aria-haspopup="true">Services <svg viewBox="0 0 24 24"><path d="m6 9 6 6 6-6" /></svg></button>
+                    <div class="mega"><div class="inner" id="mega"></div></div>
+                </div>
+                <a href="about-us.html">About us</a>
+                <a href="service-areas.html">Service Areas</a>
+                <a href="contact-us.html">Contact</a>
+            </nav>
+            <div class="right">
+                <a class="phone" href="tel:{{phoneTel}}"><i data-ic="phone"></i>{{phone}}</a>
+                <a class="btn btn-grad" href="schedule-service.html">Schedule Service</a>
+            </div>
+            <button class="burger" id="burger" aria-label="Menu" aria-expanded="false"><svg viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h16" /></svg></button>
+        </div>
+        <div class="mobile">
+            <div class="inner">
+                <a href="index.html#top">Home</a>
+                <details>
+                    <summary>Services <svg viewBox="0 0 24 24" style="width:20px;height:20px;transition:.2s"><path d="m6 9 6 6 6-6" /></svg></summary>
+                    <div id="mmenu"></div>
+                </details>
+                <a href="about-us.html">About us</a>
+                <a href="service-areas.html">Service Areas</a>
+                <a href="contact-us.html">Contact</a>
+                <div class="actions">
+                    <a class="btn btn-out" href="tel:{{phoneTel}}">Call {{phone}}</a>
+                    <a class="btn btn-grad" href="schedule-service.html">Schedule Service</a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main id="top">
+        <!-- HERO -->
+        <section class="hero page-hero">
+            <!-- Put your image here: pool/pump-bg.jpg -->
+            <img class="hero-bg" src="./pool/pump-bg.jpg" alt="">
+            <div class="inner hero-content">
+                <div class="hero-copy">
+                    <div class="eyebrow-hero">POOL &amp; SPA REPAIR<i></i>CHICAGO &amp; NEARBY SUBURBS</div>
+                    <h1><span class="line">Pool pump not working?</span> <span class="line grad-text">We’ll fix it fast.</span></h1>
+                    <p>Noisy, losing prime, or barely moving water? Our licensed technicians find the real cause on site, tell you the exact price before any work begins, and get your pump running again.</p>
+                    <div class="btns">
+                        <a class="btn btn-grad" href="schedule-service.html?service=pool&item=Pump"><i data-ic="cal"></i>Schedule Service</a>
+                        <a class="btn btn-out" href="tel:{{phoneTel}}"><i data-ic="phone"></i>Call Now</a>
+                    </div>
+                </div>
+
+                <div class="lead-form" id="quote">
+                    <div class="live"><i data-ic="check"></i>Same-day emergency service available</div>
+                    <h2>Schedule your repair</h2>
+                    <p class="sub">Tell us what's going on and we'll call you to confirm your appointment.</p>
+                    <form id="leadForm" novalidate>
+                        <input type="hidden" name="appliance" value="">
+                        <input class="hp" type="text" name="company" tabindex="-1" autocomplete="off" aria-hidden="true">
+                        <label class="sr" for="f-name">Full name</label>
+                        <input class="field" id="f-name" name="name" type="text" placeholder="Full name" autocomplete="name" required>
+                        <div class="frow">
+                            <div><label class="sr" for="f-phone">Phone number</label><input class="field" id="f-phone" name="phone" type="tel" inputmode="tel" placeholder="Phone number" autocomplete="tel" required></div>
+                            <div><label class="sr" for="f-zip">ZIP code</label><input class="field" id="f-zip" name="zip" type="text" inputmode="numeric" maxlength="5" placeholder="ZIP code" autocomplete="postal-code" required></div>
+                        </div>
+                        <label class="sr" for="f-msg">Describe the problem (optional)</label>
+                        <textarea class="field" id="f-msg" name="message" rows="3" placeholder="What's wrong? (optional)"></textarea>
+                        <label class="emchk" for="f-emg"><input type="checkbox" id="f-emg" name="emergency"><span><b>Emergency service</b><small>Diagnostic visit on Sundays &amp; holidays: <b id="emFee"></b>. Regular days: <b id="emReg"></b>.</small></span></label>
+                        <button class="btn btn-grad" type="submit">Schedule Service</button>
+                        <div class="fmsg" id="fmsg" role="status" aria-live="polite"></div>
+                        <div class="priv">We only use your details to contact you about your repair.</div>
+                    </form>
+                    <!-- Google reviews: number is filled automatically if GBP.placeId + GBP.apiKey are set in the script -->
+                    <a class="rv" href="{{reviewsUrl}}" target="_blank" rel="noopener" aria-label="Read our Google reviews">
+                        <span class="gbadge"><svg viewBox="0 0 48 48" aria-hidden="true"><path fill="#EA4335" d="M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.38 2.56 13.22l7.98 6.19C12.43 13.72 17.74 9.5 24 9.5z"/><path fill="#4285F4" d="M46.98 24.55c0-1.57-.15-3.09-.38-4.55H24v9.02h12.94c-.58 2.96-2.26 5.48-4.78 7.18l7.73 6c4.51-4.18 7.09-10.36 7.09-17.65z"/><path fill="#FBBC05" d="M10.53 28.59c-.48-1.45-.76-2.99-.76-4.59s.27-3.14.76-4.59l-7.98-6.19C.92 16.46 0 20.12 0 24c0 3.88.92 7.54 2.56 10.78l7.97-6.19z"/><path fill="#34A853" d="M24 48c6.48 0 11.93-2.13 15.89-5.81l-7.73-6c-2.15 1.45-4.92 2.3-8.16 2.3-6.26 0-11.57-4.22-13.47-9.91l-7.98 6.19C6.51 42.62 14.62 48 24 48z"/></svg></span>
+                        <span class="stars" aria-hidden="true">★★★★★</span>
+                        <b id="rvRate">{{rating}}</b><span class="dot">·</span><span id="rvCount">{{reviewCount}} reviews</span>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- TRUST STRIP -->
+        <div class="features">
+            <div class="inner">
+                <div class="feat"><i data-ic="shield"></i><div><b>Licensed &amp; Insured</b><span>Your home is protected.</span></div></div>
+                <div class="feat"><i data-ic="check"></i><div><b>Repair Warranty</b><span>Our work is backed.</span></div></div>
+                <div class="feat"><i data-ic="dollar"></i><div><b>Upfront Pricing</b><span>Exact price before we start.</span></div></div>
+                <div class="feat"><i data-ic="bolt"></i><div><b>Emergency Calls</b><span>Available when you need us.</span></div></div>
+            </div>
+        </div>
+
+        <!-- PROBLEMS WE FIX -->
+        <section class="sect light" id="problems">
+            <div class="inner">
+                <div class="sec-head"><div>
+                    <div class="kicker">What We Repair</div>
+                    <h2>Pump problems we fix</h2>
+                    <p>From a loud motor to weak water flow, these are the issues we handle most often and what usually causes them.</p>
+                </div></div>
+                <div class="pgrid" id="pgrid"></div>
+                <p class="pnote">One symptom can have several causes. A technician confirms the real one on site before any repair.</p>
+            </div>
+        </section>
+
+        <!-- PRICING -->
+        <section class="dark pricing" id="pricing">
+            <div class="inner price-wrap">
+                <div>
+                    <div class="kicker">Transparent Pricing</div>
+                    <h2>Know the price before we start</h2>
+                    <p class="txt">The diagnostic visit is where the problem gets found, so here is exactly what it covers. After the diagnosis we explain what happened and what the repair will cost, and you decide whether to go ahead.</p>
+                    <div class="assure"><i data-ic="shield"></i><div>You’ll know the exact price before we start. No surprises.</div></div>
+                    <div class="btns">
+                        <a class="btn btn-grad" href="schedule-service.html?service=pool&item=Pump">Schedule Service</a>
+                        <a class="btn btn-out" href="tel:{{phoneTel}}">Call Now</a>
+                    </div>
+                </div>
+                <div class="price-card">
+                    <div class="lab">Diagnostic visit</div>
+                    <div class="price-tag"><b>{{feePool}}</b><span>flat rate</span></div>
+                    <ul class="checks">
+                        <li><i data-ic="check"></i>Technician visit to your home</li>
+                        <li><i data-ic="check"></i>Full diagnosis of the problem</li>
+                        <li><i data-ic="check"></i>Exact repair price before any work begins</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- SYMPTOMS -->
+        <section class="sect light" id="symptoms">
+            <div class="inner">
+                <div class="sec-head"><div>
+                    <div class="kicker">Quick Request</div>
+                    <h2>What’s wrong with your pump?</h2>
+                    <p>Choose the closest match and we’ll add it to your request.</p>
+                </div></div>
+                <div class="sym-grid" id="symgrid"></div>
+                <p class="sym-foot">Don’t see yours? <a href="tel:{{phoneTel}}">Call {{phone}}</a> and we’ll help.</p>
+            </div>
+        </section>
+
+        <!-- HOW IT WORKS -->
+        <section class="dark" id="how">
+            <div class="inner">
+                <div class="sec-head"><div>
+                    <div class="kicker">How It Works</div>
+                    <h2>From your call to flowing water</h2>
+                    <p>A simple process with no pressure and no guessing.</p>
+                </div></div>
+                <div class="steps" id="steps"></div>
+            </div>
+        </section>
+
+        <!-- BRANDS -->
+        <section class="sect light" id="brands">
+            <div class="inner">
+                <div class="sec-head"><div>
+                    <div class="kicker">Brands</div>
+                    <h2>Brands we repair</h2>
+                    <p>Single-speed, two-speed, and variable-speed pumps for pools and spas.</p>
+                </div></div>
+            </div>
+            <div class="marq"><div class="mq-track" id="brandtrack"></div></div>
+            <div class="inner"><p class="brand-note">Brand names are trademarks of their respective owners. Gold Line Services is an independent repair company and is not affiliated with these manufacturers.</p></div>
+        </section>
+
+        <!-- AREAS -->
+        <section class="dark areas" id="areas">
+            <div class="areas-bg"></div>
+            <div class="inner">
+                <div class="areas-wrap">
+                    <div>
+                        <div class="kicker">Service Areas</div>
+                        <h2>Areas we serve</h2>
+                        <p>We repair pool and spa pumps throughout Chicago and the surrounding communities. Don't see your town? Call us, we may still be able to help.</p>
+                        <div class="btns"><a class="btn btn-grad" href="schedule-service.html">Schedule Service</a><a class="btn btn-out" href="service-areas.html">View All Areas <i data-ic="arrow"></i></a></div>
+                    </div>
+                    <div class="city-list" id="cities"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- FAQ -->
+        <section class="faq" id="faq">
+            <div class="inner faq-wrap">
+                <div>
+                    <div class="kicker">Pool Pump Repair</div>
+                    <h2>Frequently asked questions</h2>
+                    <p class="lead">Straight answers about pricing, scheduling, and what to expect.</p>
+                    <a class="btn btn-light" href="#areas">Check our service areas <i data-ic="arrow"></i></a>
+                </div>
+                <div id="faqlist"></div>
+            </div>
+        </section>
+
+        <!-- SCHEDULE -->
+        <section class="sched" id="contact">
+            <div class="inner">
+                <div>
+                    <div class="kick">Ready when you are</div>
+                    <h2>Schedule your service appointment</h2>
+                    <p>Call us directly or request an appointment online. We’ll review your request and contact you shortly to confirm.</p>
+                </div>
+                <div class="btns">
+                    <a class="btn b-dark" href="tel:{{phoneTel}}"><i data-ic="phone"></i>Call now · {{phone}}</a>
+                    <a class="btn b-white" href="#quote"><i data-ic="cal"></i>Schedule online</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- FOOTER (same as main page) -->
+    <footer class="dark foot">
+        <div class="inner">
+            <div class="foot-grid">
+                <div class="about">
+                    <a class="logo" href="index.html#top" aria-label="Gold Line Services"><img src="index/LOGO@2x.png" alt="Gold Line Services"></a>
+                    <p>Reliable HVAC, appliance, and pool/spa repair for Chicago and surrounding communities.</p>
+                </div>
+                <div>
+                    <h5>Services</h5>
+                    <ul>
+                        <li><a href="air-conditioner-repair.html">Air Conditioner repair</a></li>
+                        <li><a href="furnace-repair.html">Furnace repair</a></li>
+                        <li data-commercial><a href="commercial-ac-repair.html">Commercial HVAC repair</a></li>
+                        <li><a href="refrigerator-repair.html">Refrigerator repair</a></li>
+                        <li><a href="washer-repair.html">Washer &amp; Dryer repair</a></li>
+                        <li><a href="oven-stove-repair.html">Oven &amp; Stove repair</a></li>
+                        <li><a href="index.html#pool">Pool / Spa repair</a></li>
+                        <li><a href="index.html#services">View all services</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h5>Explore</h5>
+                    <ul>
+                        <li><a href="index.html#top">Home</a></li>
+                        <li><a href="index.html#services">Services</a></li>
+                        <li><a href="about-us.html">About us</a></li>
+                        <li><a href="service-areas.html">Service Areas</a></li>
+                        <li><a href="#faq">FAQ</a></li>
+                        <li><a href="schedule-service.html">Schedule Service</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h5>Get in touch</h5>
+                    <a class="ct" href="tel:{{phoneTel}}"><i data-ic="phone"></i>{{phone}}</a>
+                    <a class="ct" href="sms:{{smsTel}}"><i data-ic="chat"></i>Text {{sms}}</a>
+                    <a class="ct" href="mailto:{{email}}"><i data-ic="mail"></i>{{email}}</a>
+                    <div class="ct"><i data-ic="clock"></i><span>Mon–Sat: 8:00 AM – 9:00 PM<br>Sunday: closed (emergency calls available)</span></div>
+                    <a class="btn btn-grad" href="schedule-service.html" style="margin-top:8px">Schedule service</a>
+                </div>
+            </div>
+            <div class="foot-bottom"><span>© 2026 Gold Line Services. All rights reserved. · <a href="privacy-policy.html">Privacy Policy</a> · <a href="terms.html">Terms &amp; Conditions</a></span><span>Payments accepted: Cash · Zelle · Visa · Mastercard</span></div>
+        </div>
+    </footer>
+
+    <script>
+        /* =====================================================
+           PAGE CONTENT. For other appliances copy this file and edit only this block
+           ===================================================== */
+        const PAGE = {
+            appliance: "pool pump",
+            name: "Pump",
+            fee: "pool",      /* fee group in site-config.js: appliances / hvac / hvacCom / pool */
+            problems: [
+                ["volume", "Loud or grinding noise", "Often worn motor bearings, a damaged impeller, air or debris getting into the pump, or loose mounting."],
+                ["drop", "Loses prime or runs dry", "Commonly a cracked lid or worn lid O-ring, a loose union, a suction-side leak, or a low water level."],
+                ["gauge", "Low flow or weak pressure", "Usually a clogged basket or impeller, a dirty filter, a partly closed valve, or a worn impeller."],
+                ["drop", "Leaking water", "Typically a worn shaft seal, a bad gasket or O-ring, or a cracked housing or union."],
+                ["bolt", "Won't start or just hums", "May be a failed capacitor, seized motor bearings, a stuck impeller, or a power supply or timer issue."],
+                ["thermo", "Overheats or trips the breaker", "Often low voltage, a failing capacitor, blocked motor vents, or a motor near the end of its life."],
+                ["bubbles", "Air bubbles in the basket or pool", "Air in the system usually points to a suction-side leak, a low water level, or a loose lid or fitting."],
+                ["clock", "Runs constantly or ignores the schedule", "A faulty timer or automation, a stuck relay or contactor, or a drive setting can keep the pump off its schedule."],
+                ["cpu", "Variable-speed drive or error codes", "The pump shows a fault, won't change speed, or the display stays blank."]
+            ],
+            symptoms: [
+                ["volume", "Making noise"], ["drop", "Losing prime"], ["gauge", "Low flow"], ["drop", "Leaking water"], ["bolt", "Won't start"]
+            ],
+            steps: [
+                ["Tell us what’s wrong", "Call us or request service online and describe the problem."],
+                ["We schedule your visit", "We confirm a convenient arrival window with you."],
+                ["On-site diagnosis", "Our technician inspects your pump and finds the real cause."],
+                ["You get the exact price", "We explain what happened and what the repair costs, so you can decide without pressure."],
+                ["Repair and testing", "We fix it and test it to make sure it's running and moving water properly before we leave."]
+            ],
+            brands: ["Pentair", "Hayward", "Jandy", "Zodiac", "Sta-Rite", "Waterway", "Speck", "Emaux", "& more"],
+            faq: [
+                ["How much does a pool pump repair cost?", "The diagnostic visit is {{feePool}}. After the diagnosis we tell you the exact repair price before any work begins, because the final cost depends on the part and the problem."],
+                ["Should I repair or replace my pool pump?", "If the issue is a single part, such as a seal, capacitor, or basket, repair is often the better choice. For an older pump with a worn motor we'll explain your options honestly, so you can decide."],
+                ["Why is my pool pump so loud?", "Noise usually comes from worn motor bearings, a damaged impeller, or air or debris getting into the pump. If it screams or grinds, turn it off, because running it can cause more damage."],
+                ["Why does my pump keep losing prime?", "Most often air is getting in through a cracked lid, a worn lid O-ring, or a loose union on the suction side. Also check that the water level is high enough and the baskets are clean."],
+                ["Why is my pump leaking water?", "Common causes are a worn shaft seal, a bad gasket or O-ring, or a cracked housing or fitting. Turn the pump off at the breaker until we arrive."],
+                ["Why does my pump hum but not start?", "A pump that hums but won't spin often has a failed capacitor, seized bearings, or a stuck impeller. Turn it off at the breaker so the motor doesn't overheat."],
+                ["What should I do before the technician arrives?", "Clean the skimmer and pump baskets, check the water level, and note any error codes. Have the model number ready (usually on the pump label) and make sure we can reach the equipment pad. Never run the pump dry."],
+                ["Do you repair all types of pumps?", "We repair most major brands, including single-speed, two-speed, and variable-speed pumps for pools and spas."],
+                ["When can you come?", "We're open Monday through Saturday, 8:00 AM to 9:00 PM. We're closed on Sundays, but emergency calls are available."],
+                ["Do you offer a warranty on repairs?", "Yes, our repairs are backed by a warranty. Ask us about the details when you schedule."]
+            ]
+        };
+        const MENU = [
+            ["HVAC", "index.html#hvac", [["Air Conditioner", "air-conditioner-repair.html"], ["Furnace", "furnace-repair.html"], ["Mini-Split Systems", "mini-split-repair.html"], ["Packaged Units", "packaged-unit-repair.html"], ["Through-the-Wall Units", "through-the-wall-repair.html"]]],
+            ...(SITE.commercial ? [["Commercial", "index.html#commercial", [["Commercial Air Conditioning", "commercial-ac-repair.html"], ["Commercial Heating", "commercial-heating-repair.html"]]]] : []),
+            ["Appliances", "", [["Refrigerator", "refrigerator-repair.html"], ["Freezer", "freezer-repair.html"], ["Washer", "washer-repair.html"], ["Dryer", "dryer-repair.html"], ["Oven & Stove", "oven-stove-repair.html"], ["Cooktop & Range", "cooktop-range-repair.html"]]],
+            ["Pool / Spa", "index.html#pool", [["Pump", "pool-pump-repair.html"], ["Filter", "pool-filter-repair.html"], ["Salt Cells", "pool-salt-cell-repair.html"], ["Heater", "pool-heater-repair.html"], ["Plumbing (Above Ground)", "pool-plumbing-repair.html"], ["Timers & Smart Systems", "pool-timers-repair.html"], ["Electronics", "pool-electronics-repair.html"]]]
+        ];
+        const CITIES = ["Chicago", "Des Plaines", "Evanston", "Skokie", "Park Ridge", "Niles", "Norridge", "Schaumburg", "Arlington Heights", "Elgin", "Naperville", "Aurora", "St. Charles", "Crystal Lake"];
+
+        /* Google reviews count: fill placeId + apiKey (Places API New, key restricted to your domain) */
+        const GBP = { placeId: "", apiKey: "", fallbackCount: null };
+
+        /* ---------- icons ---------- */
+        const P = {
+            pin: '<path d="M20 10c0 6-8 12-8 12S4 16 4 10a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="3"/>',
+            bolt: '<path d="M13 2 4 14h7l-1 8 9-12h-7z"/>',
+            shield: '<path d="M12 2 4 5v6c0 5 3.4 9.4 8 11 4.6-1.6 8-6 8-11V5z"/><path d="m9 12 2 2 4-4"/>',
+            check: '<path d="m5 12 5 5 9-10"/>',
+            chat: '<path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/><path d="M8 9h8M8 13h5"/>',
+            phone: '<path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z"/>',
+            mail: '<rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/>',
+            clock: '<circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/>',
+            cal: '<rect x="3" y="5" width="18" height="16" rx="2"/><path d="M8 3v4M16 3v4M3 10h18"/>',
+            plus: '<path d="M12 5v14M5 12h14"/>',
+            arrow: '<path d="M5 12h14M13 6l6 6-6 6"/>',
+            dollar: '<circle cx="12" cy="12" r="9"/><path d="M14.5 9.2c-.4-.8-1.4-1.2-2.5-1.2-1.4 0-2.5.7-2.5 1.8 0 2.7 5 1.2 5 3.9 0 1.1-1.1 1.8-2.5 1.8-1.2 0-2.2-.5-2.6-1.3M12 6.5V8M12 16v1.5"/>',
+            snow: '<path d="M12 2v20M4.9 6.5l14.2 11M19.1 6.5 4.9 17.5"/>',
+            thermo: '<path d="M14 14.8V5a2 2 0 0 0-4 0v9.8a4 4 0 1 0 4 0z"/>',
+            drop: '<path d="M12 3s6 6.2 6 10.5A6 6 0 0 1 6 13.5C6 9.2 12 3 12 3z"/>',
+            ice: '<path d="M6 3h12l2 5-8 13L4 8z"/><path d="M4 8h16"/>',
+            volume: '<path d="M11 5 6 9H2v6h4l5 4zM15.5 8.5a5 5 0 0 1 0 7M18.5 5.5a9 9 0 0 1 0 13"/>',
+            flame: '<path d="M12 2s5 4.5 5 9a5 5 0 0 1-10 0c0-2 1-3 2-4 .3 1.5 1 2 2 2 0-3-1-5 1-7z"/>',
+            washer: '<rect x="4" y="2" width="16" height="20" rx="2"/><circle cx="12" cy="14" r="4.5"/><path d="M8 6h.01M11 6h.01"/>',
+            oven: '<rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M7 6h.01M11 6h.01"/><rect x="7" y="12" width="10" height="6" rx="1"/>',
+            tool: '<path d="M14.7 6.3a4 4 0 0 0-5.4 5.1L3 17.7V21h3.3l6.3-6.3a4 4 0 0 0 5.1-5.4l-2.6 2.6-2.4-.6-.6-2.4z"/>',
+            gauge: '<path d="M3.3 17a9 9 0 1 1 17.4 0"/><path d="M12 14l4-4"/><path d="M12 14h.01"/>',
+            wifi: '<path d="M5 12.5a10 10 0 0 1 14 0M8.5 16a5 5 0 0 1 7 0M12 20h.01"/>',
+            bubbles: '<circle cx="8" cy="15" r="4"/><circle cx="16" cy="8" r="3"/><circle cx="17.5" cy="17" r="2"/>',
+            fridge: '<rect x="5" y="2" width="14" height="20" rx="2"/><path d="M5 10h14M9 6v1M9 14v3"/>',
+            cpu: '<rect x="6" y="6" width="12" height="12" rx="2"/><path d="M9 2v4M15 2v4M9 18v4M15 18v4M2 9h4M2 15h4M18 9h4M18 15h4"/>'
+        };
+        const ic = n => `<svg viewBox="0 0 24 24">${P[n]}</svg>`;
+        const $ = id => document.getElementById(id);
+        const esc = s => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;');
+
+        /* ---------- menus ---------- */
+        $('mega').innerHTML = MENU.map(m => `<div><h4>${m[0]}</h4>${m[2].map(i => Array.isArray(i) ? `<a href="${i[1]}">${esc(i[0])}</a>` : `<a href="${m[1]}">${esc(i)}</a>`).join('')}</div>`).join('');
+        $('mmenu').innerHTML = MENU.map(m => `<h4>${m[0]}</h4>${m[2].map(i => Array.isArray(i) ? `<a href="${i[1]}">${esc(i[0])}</a>` : `<a href="${m[1]}">${esc(i)}</a>`).join('')}`).join('');
+
+        /* ---------- sections ---------- */
+        $('pgrid').innerHTML = PAGE.problems.map(p => `<a class="pcell" href="#quote" data-sym="${esc(p[1])}"><div class="ico">${ic(p[0])}</div><h3>${p[1]}</h3><p>${p[2]}</p><span class="go">Get it fixed ${ic('arrow')}</span></a>`).join('');
+        $('symgrid').innerHTML = PAGE.symptoms.map(s => `<a class="sym" href="#quote" data-sym="${esc(s[1])}"><div class="ico">${ic(s[0])}</div><b>${s[1]}</b><span>Request repair ${ic('arrow')}</span></a>`).join('');
+        $('steps').innerHTML = PAGE.steps.map((s, i) => `<div class="step"><div class="n">${i + 1}</div><h3>${s[0]}</h3><p>${s[1]}</p></div>`).join('');
+        const bl = PAGE.brands.map(b => `<div class="brand">${b}</div>`).join('');
+        $('brandtrack').innerHTML = bl + bl;
+        $('cities').innerHTML = CITIES.map(c => `<a class="city" href="#quote">${ic('pin')}<span>${c}</span>${ic('arrow')}</a>`).join('');
+        $('faqlist').innerHTML = PAGE.faq.map((q, i) => `<details class="f"${i ? '' : ' open'}><summary>${q[0]}<span class="pm">${ic('plus')}</span></summary><p>${q[1]}</p></details>`).join('');
+        document.querySelectorAll('[data-ic]').forEach(e => { e.outerHTML = ic(e.dataset.ic) });
+
+        /* ---------- clicking a symptom fills the form ---------- */
+        document.querySelectorAll('[data-sym]').forEach(a => a.addEventListener('click', () => {
+            const m = $('f-msg'); m.value = a.dataset.sym;
+            setTimeout(() => $('f-name').focus({ preventScroll: true }), 500);
+        }));
+
+        /* ---------- Google reviews count ---------- */
+        (async function () {
+            const el = $('rvCount');
+            if (GBP.fallbackCount) el.innerHTML = `<b>${GBP.fallbackCount}</b> Google reviews`;
+            if (!GBP.placeId || !GBP.apiKey) return;
+            try {
+                const r = await fetch(`https://places.googleapis.com/v1/places/${GBP.placeId}?fields=userRatingCount&key=${GBP.apiKey}`);
+                const d = await r.json();
+                if (d.userRatingCount) el.innerHTML = `<b>${d.userRatingCount}</b> Google reviews`;
+            } catch (e) { }
+        })();
+
+        /* ---------- form ---------- */
+        const FEEG = SITE.fees[PAGE.fee];
+        $('emFee').textContent = '$' + FEEG.emergency; $('emReg').textContent = '$' + FEEG.standard;
+        const pIn = $('f-phone'), zIn = $('f-zip');
+        pIn.maxLength = 14;
+        pIn.addEventListener('input', () => { const d = pIn.value.replace(/\D/g, '').slice(0, 10); pIn.value = d.length > 6 ? `(${d.slice(0, 3)}) ${d.slice(3, 6)}-${d.slice(6)}` : d.length > 3 ? `(${d.slice(0, 3)}) ${d.slice(3)}` : d; });
+        zIn.addEventListener('input', () => { zIn.value = zIn.value.replace(/\D/g, '').slice(0, 5); });
+        $('leadForm').addEventListener('submit', async e => {
+            e.preventDefault();
+            const f = e.target, msg = $('fmsg'), v = n => f.elements[n].value.trim();
+            msg.className = 'fmsg';
+            if (v('company')) return;
+            if (v('name').length < 2) return fail('Please enter your full name.');
+            if (v('phone').replace(/\D/g, '').length < 10) return fail('Please enter a valid phone number.');
+            if (!/^\d{5}$/.test(v('zip'))) return fail('Please enter a 5-digit ZIP code.');
+            const data = { appliance: PAGE.name, name: v('name'), phone: v('phone'), zip: v('zip'), message: v('message') };
+            if (typeof gtag === 'function') gtag('event', 'generate_lead', { appliance: data.appliance });
+            const btn = f.querySelector('button[type=submit]'), F = FEEG, emg = $('f-emg').checked;
+            const payload = { source: PAGE.name + ' page quick form', category: 'Pool / Spa', equipment: PAGE.name, segment: 'Residential', brand: '', diagnostic_fee: emg ? F.emergency : F.standard, standard_fee: F.standard, emergency_fee: F.emergency, problem: data.message, name: data.name, phone: data.phone, email: '', address: 'ZIP ' + data.zip, availability: '', emergency: emg };
+            if (SITE.sheetsUrl) {
+                btn.disabled = true;
+                try {
+                    await fetch(SITE.sheetsUrl, { method: 'POST', mode: 'no-cors', headers: { 'Content-Type': 'text/plain;charset=utf-8' }, body: JSON.stringify(payload) });
+                    f.reset(); msg.className = 'fmsg ok'; msg.textContent = 'Thank you! We received your request and will contact you shortly.';
+                } catch (x) { fail('Something went wrong. Please call ' + SITE.phone + '.'); }
+                btn.disabled = false;
+            } else {
+                console.error('SHEETS_URL is empty: set it in site-config.js');
+                fail('Online form is temporarily unavailable. Please call ' + SITE.phone + '.');
+            }
+            function fail(t) { msg.className = 'fmsg err'; msg.textContent = t; }
+        });
+
+        /* ---------- mobile menu ---------- */
+        const h = $('header'), b = $('burger');
+        b.onclick = () => { const o = h.classList.toggle('open'); b.setAttribute('aria-expanded', o) };
+        document.querySelectorAll('.mobile a').forEach(a => a.addEventListener('click', () => h.classList.remove('open')));
+        document.querySelectorAll('.mega a').forEach(a => a.addEventListener('click', () => document.activeElement.blur()));
+    </script>
+
+    <!-- Scroll animations (same as main page) -->
+    <script>
+        (function () {
+            if (!('IntersectionObserver' in window) || matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+            var sel = '.sec-head,.pcell,.sym,.price-wrap>div,.step,.city-list,.areas-wrap>div,.f,.faq-wrap>div,.sched .inner>div,.foot-grid>div,.features .feat,.brand-note';
+            var io = new IntersectionObserver(function (entries) {
+                entries.forEach(function (e) {
+                    if (!e.isIntersecting) return;
+                    var el = e.target;
+                    el.classList.add('in');
+                    io.unobserve(el);
+                    el.addEventListener('transitionend', function () { el.classList.remove('reveal', 'in'); el.style.removeProperty('--d'); }, { once: true });
+                });
+            }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+            document.querySelectorAll(sel).forEach(function (el) {
+                var idx = Array.prototype.indexOf.call(el.parentElement.children, el);
+                el.style.setProperty('--d', Math.min(idx, 5) * 80 + 'ms');
+                el.classList.add('reveal');
+                io.observe(el);
+            });
+        })();
+    </script>
+</body>
+
+</html>

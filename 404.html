@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <script src="/site-config.js"></script>
+    <script>window.SITE || document.write('<script src="site-config.js"><\/script>');   /* fallback when opened as a local file */</script>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <title>Page Not Found | Gold Line Services</title>
+    <meta name="robots" content="noindex">
+    <link rel="icon" href="/favicon.png" type="image/x-icon">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* Self-contained 404 page: does not depend on index.css, so it can never look broken */
+        * { box-sizing: border-box; margin: 0; padding: 0 }
+        body { min-height: 100vh; display: flex; flex-direction: column; font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, sans-serif; background: linear-gradient(90deg, #0a0f13, #12181c); color: #fff; -webkit-font-smoothing: antialiased }
+        a { color: inherit; text-decoration: none }
+        .top { padding: 22px clamp(16px, 4vw, 25px) }
+        .top img { height: 44px; width: auto; display: block }
+        main { flex: 1; display: grid; place-items: center; padding: 40px clamp(16px, 4vw, 25px) 80px; text-align: center }
+        .code { font-size: clamp(88px, 16vw, 168px); font-weight: 700; letter-spacing: -.04em; line-height: 1; background: linear-gradient(87.62deg, #ea9142, #efc15b); -webkit-background-clip: text; background-clip: text; color: transparent }
+        h1 { font-size: clamp(24px, 3.4vw, 36px); font-weight: 600; letter-spacing: -.02em; margin: 14px 0 12px }
+        p { color: #aab6bc; font-size: clamp(15px, 1.3vw, 17px); line-height: 1.65; max-width: 520px; margin: 0 auto 28px }
+        .btns { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap }
+        .btn { min-width: 190px; height: 52px; padding: 0 24px; display: inline-flex; align-items: center; justify-content: center; border-radius: 999px; font-weight: 600; font-size: 16px; transition: transform .2s, box-shadow .2s, background .2s }
+        .btn:hover { transform: translateY(-2px) }
+        .btn-grad { background: linear-gradient(87.62deg, #ea9142, #efc15b); color: #14181c }
+        .btn-grad:hover { box-shadow: 0 10px 24px rgba(234, 145, 66, .35) }
+        .btn-out { border: 1.5px solid rgba(255, 255, 255, .35); color: #fff }
+        .btn-out:hover { background: rgba(255, 255, 255, .08) }
+    </style>
+</head>
+
+<body>
+    <div class="top"><a href="/" data-home aria-label="Gold Line Services"><img src="/index/LOGO@2x.png" alt="Gold Line Services" onerror="this.onerror=null;this.src='index/LOGO@2x.png'"></a></div>
+    <main>
+        <div>
+            <div class="code">404</div>
+            <h1>We can't find that page</h1>
+            <p>The link may be outdated or mistyped. Head back to the home page, or call us and we'll help you right away.</p>
+            <div class="btns">
+                <a class="btn btn-grad" href="/" data-home>Back to home</a>
+                <a class="btn btn-out" href="/schedule-service.html" data-sched>Schedule Service</a>
+                <a class="btn btn-out" href="tel:{{phoneTel}}">Call {{phone}}</a>
+            </div>
+        </div>
+    </main>
+    <script>
+        /* when the file is opened directly from a folder, root links ("/") do not work: switch to relative ones */
+        if (location.protocol === 'file:') {
+            document.querySelectorAll('[data-home]').forEach(a => a.setAttribute('href', 'index.html'));
+            document.querySelectorAll('[data-sched]').forEach(a => a.setAttribute('href', 'schedule-service.html'));
+        }
+    </script>
+</body>
+
+</html>

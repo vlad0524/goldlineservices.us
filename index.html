@@ -2,10 +2,28 @@
 <html lang="en">
 
 <head>
+    <script src="./site-config.js"></script>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <link rel="canonical" href="https://goldlineservices.us/">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Gold Line Services">
+    <meta property="og:title" content="Chicago HVAC, Appliance, Pool &amp; Spa Repair | Gold Line Services">
+    <meta property="og:description" content="Air conditioner, furnace, appliance and pool/spa repair and installation in Chicago and nearby suburbs. Emergency calls available. Schedule today.">
+    <meta property="og:url" content="https://goldlineservices.us/">
+    <meta property="og:image" content="https://goldlineservices.us/index/og-image.jpg">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta name="twitter:card" content="summary_large_image">
 
-    <title>Gold Line Services | Appliance, HVAC & Pool Repair in Chicago</title>
+
+
+    <title>Chicagoland HVAC, Appliance, Pool & Spa Repair | Gold Line Services</title>
+    <meta name="description" content="Air conditioner, furnace, appliance and pool/spa repair and installation in Chicago and nearby suburbs. Emergency calls available. Schedule today.">
+
+    <link rel="icon" href="./favicon.png" type="image/x-icon">
+
+
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -24,6 +42,31 @@
     </script>
 
 
+    <!-- Structured data (Google business card). Built from site-config.js, so phone/email stay in sync. -->
+    <script>
+        (function () {
+            const S = window.SITE, D = "https://goldlineservices.us";
+            const data = {
+                "@context": "https://schema.org",
+                "@type": "HomeAndConstructionBusiness",
+                "@id": D + "/#business",
+                "name": "Gold Line Services",
+                "url": D + "/",
+                "logo": D + "/index/LOGO@2x.png",
+                "image": D + "/index/og-image.jpg",
+                "description": "HVAC, appliance and pool & spa repair in Chicago and nearby suburbs. We come to your home or business.",
+                "telephone": S.phoneTel,
+                "email": S.email,
+                "openingHoursSpecification": [{ "@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"], "opens": "08:00", "closes": "21:00" }],
+                "areaServed": ["Chicago", "Des Plaines", "Evanston", "Skokie", "Park Ridge", "Niles", "Norridge", "Schaumburg", "Arlington Heights", "Elgin", "Naperville", "Aurora", "St. Charles", "Crystal Lake"].map(c => ({ "@type": "City", "name": c + ", IL" })),
+                "hasOfferCatalog": {
+                    "@type": "OfferCatalog", "name": "Repair services",
+                    "itemListElement": ["HVAC repair", "Appliance repair", "Pool and spa repair"].map(n => ({ "@type": "Offer", "itemOffered": { "@type": "Service", "name": n } }))
+                }
+            };
+            const s = document.createElement("script"); s.type = "application/ld+json"; s.textContent = JSON.stringify(data); document.head.appendChild(s);
+        })();
+    </script>
 </head>
 
 
@@ -52,11 +95,11 @@
                 <a href="contact-us.html">Contact</a>
             </nav>
             <div class="right">
-                <a class="phone" href="tel:+19299091265"><svg viewBox="0 0 24 24">
+                <a class="phone" href="tel:{{phoneTel}}"><svg viewBox="0 0 24 24">
                         <path
                             d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z" />
-                    </svg>(929) 909-1265</a>
-                <a class="btn btn-grad" href="service-areas.html">Schedule Service</a>
+                    </svg>{{phone}}</a>
+                <a class="btn btn-grad" href="schedule-service.html">Schedule Service</a>
             </div>
             <button class="burger" id="burger" aria-label="Menu" aria-expanded="false"><svg viewBox="0 0 24 24">
                     <path d="M4 7h16M4 12h16M4 17h16" />
@@ -71,12 +114,12 @@
                         </svg></summary>
                     <div id="mmenu"></div>
                 </details>
-                <a href="#about">About us</a>
-                <a href="#areas">Service Areas</a>
-                <a href="#contact">Contact</a>
+                <a href="about-us.html">About us</a>
+                <a href="service-areas.html">Service Areas</a>
+                <a href="contact-us.html">Contact</a>
                 <div class="actions">
-                    <a class="btn btn-out" href="tel:+19299091265">Call (929) 909-1265</a>
-                    <a class="btn btn-grad" href="service-areas.html">Schedule Service</a>
+                    <a class="btn btn-out" href="tel:{{phoneTel}}">Call {{phone}}</a>
+                    <a class="btn btn-grad" href="schedule-service.html">Schedule Service</a>
                 </div>
             </div>
         </div>
@@ -85,7 +128,7 @@
     <main id="top">
         <!-- HERO -->
         <section class="hero">
-            <img class="hero-bg ph" src="./index/Hero-Container@3x.png"> 
+            <img class="hero-bg ph" src="./index/main-bg.jpg"> 
             <!--<div class="hero-bg ph" data-label="Hero background image"></div>-->
             <div class="inner hero-content">
                 <div class="eyebrow-hero">HVAC<i></i>POOL/SPA<i></i>APPLIANCE</div>
@@ -94,12 +137,12 @@
                     pool equipment to appliance repairs, we keep your home running smoothly year-round. Schedule now!
                 </p>
                 <div class="btns">
-                    <a class="btn btn-grad" href="service-areas.html"><svg viewBox="0 0 24 24" width="24" height="24"
+                    <a class="btn btn-grad" href="schedule-service.html"><svg viewBox="0 0 24 24" width="24" height="24"
                             style="font-size:24px">
                             <rect x="3" y="5" width="18" height="16" rx="2" />
                             <path d="M8 3v4M16 3v4M3 10h18" />
                         </svg>Schedule Service</a>
-                    <a class="btn btn-out" href="tel:+19299091265"><svg viewBox="0 0 24 24" style="font-size:22px">
+                    <a class="btn btn-out" href="tel:{{phoneTel}}"><svg viewBox="0 0 24 24" style="font-size:22px">
                         <path
                             d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z" />
                         </svg>Call Now</a>
@@ -198,8 +241,8 @@
                         <p>We proudly provide HVAC, pool/spa, and appliance services throughout Chicago and the
                             surrounding communities. Don't see your town? Call us, we may still be able to help.</p>
                         <div class="btns">
-                            <a class="btn btn-grad" href="service-areas.html">Schedule Service</a>
-                            <!--<a class="btn btn-out" href="tel:+19299091265">Call Now</a>-->
+                            <a class="btn btn-grad" href="schedule-service.html">Schedule Service</a>
+                            <!--<a class="btn btn-out" href="tel:{{phoneTel}}">Call Now</a>-->
                             <a class="btn btn-out" href="service-areas.html">View All Areas
                                 <svg viewBox="0 0 24 24" style="font-size:20px"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
                             </a>
@@ -232,8 +275,8 @@
                     <p>Call us directly or request an appointment online. We’ll review your request and contact you shortly to confirm.</p>
                 </div>
                 <div class="btns">
-                    <a class="btn b-dark" href="tel:+19299091265"><i data-ic="phone"></i>Call now · (929) 909-1265</a>
-                    <a class="btn b-white" href="service-areas.html"><i data-ic="cal"></i>Schedule online</a>
+                    <a class="btn b-dark" href="tel:{{phoneTel}}"><i data-ic="phone"></i>Call now · {{phone}}</a>
+                    <a class="btn b-white" href="schedule-service.html"><i data-ic="cal"></i>Schedule online</a>
                 </div>
             </div>
         </section>
@@ -254,11 +297,12 @@
                 <div>
                     <h5>Services</h5>
                     <ul>
-                        <li><a href="#hvac">Air Conditioner repair</a></li>
-                        <li><a href="#hvac">Furnace repair</a></li>
-                        <li><a href="#appliances">Refrigerator repair</a></li>
-                        <li><a href="#appliances">Washer &amp; Dryer repair</a></li>
-                        <li><a href="#appliances">Oven &amp; Stove repair</a></li>
+                        <li><a href="air-conditioner-repair.html">Air Conditioner repair</a></li>
+                        <li><a href="furnace-repair.html">Furnace repair</a></li>
+                        <li data-commercial><a href="commercial-ac-repair.html">Commercial HVAC repair</a></li>
+                        <li><a href="refrigerator-repair.html">Refrigerator repair</a></li>
+                        <li><a href="washer-repair.html">Washer &amp; Dryer repair</a></li>
+                        <li><a href="oven-stove-repair.html">Oven &amp; Stove repair</a></li>
                         <li><a href="#pool">Pool / Spa repair</a></li>
                         <li><a href="#services">View all services</a></li>
                     </ul>
@@ -267,25 +311,25 @@
                     <h5>Explore</h5>
                     <ul>
                         <li><a href="index.html#top">Home</a></li>
-                        <li><a href="service-areas.html">Services</a></li>
+                        <li><a href="index.html#services">Services</a></li>
                         <li><a href="about-us.html">About us</a></li>
                         <li><a href="service-areas.html">Service Areas</a></li>
                         <li><a href="#faq">FAQ</a></li>
-                        <li><a href="service-areas.html">Schedule Service</a></li>
+                        <li><a href="schedule-service.html">Schedule Service</a></li>
                     </ul>
                 </div>
                 <div>
                     <h5>Get in touch</h5>
-                    <a class="ct" href="tel:+19299091265"><i data-ic="phone"></i>(929) 909-1265</a>
-                    <a class="ct" href="sms:+19299091266"><i data-ic="chat"></i>Text (929) 909-1266</a>
-                    <a class="ct" href="mailto:contact.goldlineservice@gmail.com"><i
-                            data-ic="mail"></i>contact.goldlineservice@gmail.com</a>
+                    <a class="ct" href="tel:{{phoneTel}}"><i data-ic="phone"></i>{{phone}}</a>
+                    <a class="ct" href="sms:{{smsTel}}"><i data-ic="chat"></i>Text {{sms}}</a>
+                    <a class="ct" href="mailto:{{email}}"><i
+                            data-ic="mail"></i>{{email}}</a>
                     <div class="ct"><i data-ic="clock"></i><span>Mon–Sat: 8:00 AM – 9:00 PM<br>Sunday: closed (emergency
                             calls available)</span></div>
-                    <a class="btn btn-grad" href="service-areas.html" style="margin-top:8px">Schedule service</a>
+                    <a class="btn btn-grad" href="schedule-service.html" style="margin-top:8px">Schedule service</a>
                 </div>
             </div>
-            <div class="foot-bottom"><span>© 2026 Gold Line Services. All rights reserved.</span><span>Payments
+            <div class="foot-bottom"><span>© 2026 Gold Line Services. All rights reserved. · <a href="privacy-policy.html">Privacy Policy</a> · <a href="terms.html">Terms &amp; Conditions</a></span><span>Payments
                     accepted: Cash · Zelle · Visa · Mastercard</span></div>
         </div>
     </footer>
@@ -294,41 +338,51 @@
         /* ===== DATA: set img:"path/to/image.jpg" to show a photo in any card. Empty = placeholder zone ===== */
         const GROUPS = [
             {
-                id: "hvac", title: "HVAC", wide: true, items: [
-                    { n: "Air Conditioner", e: "AC not cooling?", d: "Restore strong cooling, steady airflow, and efficient performance all summer.", img: "./hvac/ac-logo.png" },
-                    { n: "Furnace", e: "No heat? We can fix it", d: "Get safe, consistent heat back with fast diagnostics and dependable repairs.", img: "./hvac/hvac-logo.png" }]
-            },
+                id: "hvac", title: "HVAC", sub: "Heating & Cooling Repair and Installation", items: [
+                    { n: "Air Conditioner",        href: "air-conditioner-repair.html", wide: true, e: "AC not cooling?", d: "Restore strong cooling, steady airflow, and efficient performance all summer.", img: "./hvac/ac-logo.jpg" },
+                    { n: "Furnace",                href: "furnace-repair.html", wide: true, e: "No heat? We can fix it", d: "Get safe, consistent heat back with fast diagnostics and dependable repairs.", img: "./hvac/hvac-logo.jpg" },
+                    { n: "Mini-Split Systems",     href: "mini-split-repair.html", e: "Cooling several rooms without ducts?", d: "Ductless systems with one outdoor unit connected to one or more indoor units, professionally installed and serviced.", img: "./hvac/mini-split.jpg" },
+                    { n: "Packaged Units",         href: "packaged-unit-repair.html", e: "Apartment or rooftop unit not working?", d: "Repair and installation of all-in-one heating and cooling units, from apartment closet models to rooftop systems.", img: "./hvac/packaged-unit.jpg" },
+                    { n: "Through-the-Wall Units", href: "through-the-wall-repair.html", e: "Need comfort in just one room?", d: "Professional installation and repair of compact through-the-wall units, for cooling only or cooling and heating.", img: "./hvac/wall-unit.jpg" }
+            ]}, 
+            ...(SITE.commercial ? [{
+                id: "commercial", title: "Commercial", sub: "Commercial Air Conditioning & Heating", items: [
+                    { n: "Commercial Air Conditioning", href: "commercial-ac-repair.html", wide: true, e: "AC down at your business?", d: "Keep staff and customers comfortable with fast repairs and reliable installation of rooftop and cooling units.", img: "./hvac/" },
+                    { n: "Commercial Heating",          href: "commercial-heating-repair.html", wide: true, e: "No heat at your business?", d: "Get your space warm again with dependable repair and installation of furnaces and heating systems.", img: "./hvac/" }
+            ]}] : []),
             {
-                id: "appliances", title: "Appliances", items: [
-                    { n: "Refrigerator", e: "Not cooling or leaking?", d: "Get your fridge back to the right temperature and keep your groceries safe.", img: "./appliance/refrigerator-logo.png" },
-                    { n: "Freezer", e: "Frost buildup or warm freezer?", d: "Fix frost buildup, warm spots, and noisy cycles to protect your food.", img: "./appliance/freezer-logo.png" },
-                    { n: "Washer", e: "Won't drain or spin?", d: "Fix water not draining, drum not spinning, or leaks and error codes.", img: "./appliance/washer-logo.png" },
-                    { n: "Dryer", e: "Not heating or drying?", d: "Solve no-heat, long drying times, and a drum that won’t turn.", img: "./appliance/Dryer-logo.png" },
-                    { n: "Oven & Stove", e: "Oven not heating evenly?", d: "Resolve heating, ignition, and temperature issues for consistent cooking.", img: "./appliance/range-logo.png" },
-                    { n: "Cooktop & Range", e: "Burner won't light?", d: "Repair burners, igniters, and controls on cooktops and ranges.", img: "./appliance/cook-top-logo.png" }]
-            },
+                id: "appliances", title: "Appliances", sub: "Appliance Repair", items: [
+                    { n: "Refrigerator",    href: "refrigerator-repair.html", t: "Refrigerator repair", e: "Not cooling or leaking?", d: "Get your fridge back to the right temperature and keep your groceries safe.", img: "./appliance/refrigerator-lg.jpg" },
+                    { n: "Freezer",         href: "freezer-repair.html", t: "Freezer repair", e: "Frost buildup or warm freezer?", d: "Fix frost buildup, warm spots, and noisy cycles to protect your food.", img: "./appliance/Sub-Zero-freezer.jpg" },
+                    { n: "Washer",          href: "washer-repair.html", t: "Washer repair", e: "Won't drain or spin?", d: "Fix water not draining, drum not spinning, or leaks and error codes.", img: "./appliance/washer-logo.jpg" },
+                    { n: "Dryer",           href: "dryer-repair.html",t: "Dryer repair", e: "Not heating or drying?", d: "Solve no-heat, long drying times, and a drum that won’t turn.", img: "./appliance/Dryer-logo.jpg" },
+                    { n: "Oven & Stove",    href: "oven-stove-repair.html", t: "Oven & Stove repair", e: "Oven not heating evenly?", d: "Resolve heating, ignition, and temperature issues for consistent cooking.", img: "./appliance/range-logo.jpg" },
+                    { n: "Cooktop & Range", href: "cooktop-range-repair.html", t: "Cooktop & Range repair", e: "Burner won't light?", d: "Repair burners, igniters, and controls on cooktops and ranges.", img: "./appliance/cook-top-logo.jpg" }
+            ]},
             {
-                id: "pool", title: "Pool / Spa", items: [
-                    { n: "Pump", e: "Noisy pump or low flow?", d: "Fix noise, loss of prime, and flow problems to keep water moving.", img: "" },
-                    { n: "Filter", e: "Cloudy water or high pressure?", d: "Restore filtration, pressure balance, and water clarity.", img: "" },
-                    { n: "Salt Cells", e: "Low chlorine or cell error?", d: "Inspect, clean, and replace salt cells to keep chlorine production steady.", img: "" },
-                    { n: "Heater", e: "Pool heater not heating?", d: "Repair ignition, heating, and temperature control issues.", img: "" },
-                    { n: "Plumbing (Above Ground)", e: "Leaks at pipes or valves?", d: "Fix leaks, valves, and fittings on above-ground pool and spa plumbing.", img: "" },
-                    { n: "Timers & Smart Systems", e: "Timer or automation issues?", d: "Set up and repair timers, automation, and smart controls.", img: "" },
-                    { n: "Electronics", e: "Control panel not responding?", d: "Diagnose control boards, panels, and electronic components.", img: "" }]
-            }
+                id: "pool", title: "Pool / Spa", sub: "Pool & Spa Repair & Installation", items: [
+                    { n: "Pump",                    href: "pool-pump-repair.html", e: "Noisy pump or low flow?", d: "Fix noise, loss of prime, and flow problems to keep water moving.", img: "./pool/" },
+                    { n: "Filter",                  href: "pool-filter-repair.html", e: "Cloudy water or high pressure?", d: "Restore filtration, pressure balance, and water clarity.", img: "./pool/" },
+                    { n: "Salt Cells",              href: "pool-salt-cell-repair.html", e: "Low chlorine or cell error?", d: "Inspect, clean, and replace salt cells to keep chlorine production steady.", img: "./pool/" },
+                    { n: "Heater",                  href: "pool-heater-repair.html", e: "Pool heater not heating?", d: "Repair ignition, heating, and temperature control issues.", img: "./pool/" },
+                    { n: "Plumbing (Above Ground)", href: "pool-plumbing-repair.html", e: "Leaks at pipes or valves?", d: "Fix leaks, valves, and fittings on above-ground pool and spa plumbing.", img: "./pool/" },
+                    { n: "Timers & Smart Systems",  href: "pool-timers-repair.html", e: "Timer or automation issues?", d: "Set up and repair timers, automation, and smart controls.", img: "./pool/" },
+                    { n: "Electronics",             href: "pool-electronics-repair.html", e: "Control panel not responding?", d: "Diagnose control boards, panels, and electronic components.", img: "./pool/" }
+            ]}
         ];
         const arrow = '<svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg>';
         document.getElementById('groups').innerHTML = GROUPS.map(g => {
-                const cards = g.items.map(i => {
+            const card = i => {
                 const m = `<div class="media${i.img ? '' : ' ph'}" data-label="Add image: ${i.n}">${i.img ? `<img src="${i.img}" alt="${i.n}">` : ''}<span class="tag">${g.title}</span><span class="name">${i.n}</span></div>`;
-                return `<a class="card${g.wide ? ' wide' : ''}" href="#" >${m}<div class="body"><small>${i.e}</small><h4>${i.n}</h4><p>${i.d}</p><span class="arrow">${arrow}</span></div></a>`
-            }).join('');
-            return `<div class="group" id="${g.id}"><div class="group-title"><h3>${g.title}</h3></div><div class="${g.wide ? 'grid2' : 'grid3'}">${cards}</div></div>`
+                return `<a class="card${i.wide ? ' wide' : ''}" href="${i.href || '#'}">${m}<div class="body"><small>${i.e}</small><h4>${g.id === 'appliances' ? i.n + ' Repair' : i.n}</h4><p>${i.d}</p><span class="arrow">${arrow}</span></div></a>`;
+            };
+        const wide = g.items.filter(i => i.wide).map(card).join('');
+        const rest = g.items.filter(i => !i.wide).map(card).join('');
+        return `<div class="group" id="${g.id}"><div class="group-title"><h3>${g.sub || g.title}</h3></div>${wide ? `<div class="grid2">${wide}</div>` : ''}${rest ? `<div class="grid3"${wide ? ' style="margin-top:28px"' : ''}>${rest}</div>` : ''}</div>`;
         }).join('');
         /* menu from same data */
-        document.getElementById('mega').innerHTML = GROUPS.map(g => `<div><h4>${g.title}</h4>${g.items.map(i => `<a href="#${g.id}">${i.n}</a>`).join('')}</div>`).join('');
-        document.getElementById('mmenu').innerHTML = GROUPS.map(g => `<h4>${g.title}</h4>${g.items.map(i => `<a href="#${g.id}">${i.n}</a>`).join('')}`).join('');
+        document.getElementById('mega').innerHTML = GROUPS.map(g => `<div><h4>${g.title}</h4>${g.items.map(i => `<a href="${i.href || '#' + g.id}">${i.n}</a>`).join('')}</div>`).join('');
+        document.getElementById('mmenu').innerHTML = GROUPS.map(g => `<h4>${g.title}</h4>${g.items.map(i => `<a href="${i.href || '#' + g.id}">${i.n}</a>`).join('')}`).join('');
         const P = { pin: '<path d="M20 10c0 6-8 12-8 12S4 16 4 10a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="3"/>', bolt: '<path d="M13 2 4 14h7l-1 8 9-12h-7z"/>', shield: '<path d="M12 2 4 5v6c0 5 3.4 9.4 8 11 4.6-1.6 8-6 8-11V5z"/><path d="m9 12 2 2 4-4"/>', star: '<path d="m12 2 3 6.6 7 .8-5.2 4.8 1.4 7.1L12 17.8 5.8 21.3l1.4-7.1L2 9.4l7-.8z"/>', home: '<path d="m3 11 9-8 9 8"/><path d="M5 10v10h14V10M10 20v-6h4v6"/>', chat: '<path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/><path d="M8 9h8M8 13h5"/>', tool: '<path d="M14.7 6.3a4 4 0 0 0-5.4 5.1L3 17.7V21h3.3l6.3-6.3a4 4 0 0 0 5.1-5.4l-2.6 2.6-2.4-.6-.6-2.4z"/>' };
         const ic = n => `<svg viewBox="0 0 24 24">${P[n]}</svg>`;
         /* ===== REVIEWS: sample text, replace with real reviews ===== */
@@ -357,7 +411,7 @@
         const FAQ = [
             ["Which services do you repair?", "We repair HVAC systems (air conditioners and furnaces), home appliances (refrigerators, freezers, washers, dryers, ovens, stoves, cooktops and ranges), and pool/spa equipment (pumps, filters, heaters, salt cells, above-ground plumbing, timers, smart systems and electronics)."],
             ["Do you serve my neighborhood?", "We serve Chicago and the surrounding communities. Check the Areas we serve section above, or call us and we'll confirm availability for your address."],
-            ["How do I schedule a repair?", "Click Schedule Service or call (929) 909-1265. Tell us what's happening and our team will confirm your appointment."],
+            ["How do I schedule a repair?", "Click Schedule Service or call {{phone}}. Tell us what's happening and our team will confirm your appointment."],
             ["What should I have ready for the visit?", "Have the brand, model number, and a short description of the symptoms ready, and make sure our technician has clear access to the unit."],
             ["When are appointments available?", "We're open Monday through Saturday, 8:00 AM to 9:00 PM. We're closed on Sundays, but emergency calls are available."],
             ["How much does a service visit cost?", "Call or text us and we'll explain current pricing before your visit, so you know what to expect."]];
