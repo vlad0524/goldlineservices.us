@@ -40,6 +40,7 @@
         .emchk input { width: 18px; height: 18px; margin-top: 2px; accent-color: #ea9142; flex: none }
         .emchk small { display: block; margin-top: 3px; color: #aab6bc; font-size: 12.5px }
     </style>
+
 </head>
 
 <body>
@@ -437,6 +438,7 @@
                 btn.disabled = true;
                 try {
                     await fetch(SITE.sheetsUrl, { method: 'POST', mode: 'no-cors', headers: { 'Content-Type': 'text/plain;charset=utf-8' }, body: JSON.stringify(payload) });
+                    SITE.trackLead();
                     f.reset(); msg.className = 'fmsg ok'; msg.textContent = 'Thank you! We received your request and will contact you shortly.';
                 } catch (x) { fail('Something went wrong. Please call ' + SITE.phone + '.'); }
                 btn.disabled = false;

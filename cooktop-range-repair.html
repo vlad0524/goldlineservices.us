@@ -5,6 +5,16 @@
     <script src="./site-config.js"></script>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <link rel="canonical" href="https://goldlineservices.us/cooktop-range-repair.html">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Gold Line Services">
+    <meta property="og:title" content="Cooktop &amp; Range Repair in Chicago | Gold Line Services">
+    <meta property="og:description" content="Cooktop and range repair in Chicago and nearby suburbs. Burner will not light, not heating, or clicking? Exact price before we start. Schedule today.">
+    <meta property="og:url" content="https://goldlineservices.us/cooktop-range-repair.html">
+    <meta property="og:image" content="https://goldlineservices.us/index/og-image.jpg">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta name="twitter:card" content="summary_large_image">
     <title>Cooktop &amp; Range Repair in Chicagoland | Gold Line Services</title>
     <meta name="description" content="Cooktop and range repair in Chicago and nearby suburbs. Burner will not light, not heating, or clicking? Exact price before we start. Schedule today.">
 
@@ -435,6 +445,7 @@
                 btn.disabled = true;
                 try {
                     await fetch(SITE.sheetsUrl, { method: 'POST', mode: 'no-cors', headers: { 'Content-Type': 'text/plain;charset=utf-8' }, body: JSON.stringify(payload) });
+                    SITE.trackLead();
                     f.reset(); msg.className = 'fmsg ok'; msg.textContent = 'Thank you! We received your request and will contact you shortly.';
                 } catch (x) { fail('Something went wrong. Please call ' + SITE.phone + '.'); }
                 btn.disabled = false;

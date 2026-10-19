@@ -41,6 +41,10 @@ window.SITE = (function () {
   const REVIEW_COUNT = "22+";      // number of reviews, e.g. "21+" or "34"
   const REVIEWS_URL = "https://share.google/feIekBTpIm25aUQHO";   // where the badge links to
 
+  /* 6) GOOGLE ADS CONVERSION: "Booking form" label from Google Ads. Fires after a form is sent.
+        Leave "" to turn the conversion tracking off. */
+  const ADS_CONVERSION = "AW-18441761320/xenoCN613KEdEKjk29lE";
+
 
 
 
@@ -76,6 +80,7 @@ window.SITE = (function () {
     els.forEach(e => { if (e.nodeName === "SCRIPT" || e.nodeName === "STYLE") return; for (const a of e.attributes) if (a.value.indexOf("{{") > -1) e.setAttribute(a.name, sub(a.value)); });
   }
   S.apply = walk; S.sub = sub;
+  S.trackLead = function () { try { if (ADS_CONVERSION && typeof gtag === "function") gtag("event", "conversion", { send_to: ADS_CONVERSION }); } catch (e) { } };
   function start() {
     if (!COMMERCIAL) document.querySelectorAll("[data-commercial]").forEach(e => e.remove());
     if (COMMERCIAL) { const st = document.createElement("style"); st.textContent = ".mega .inner{grid-template-columns:none!important;grid-auto-flow:column;grid-auto-columns:1fr}"; document.head.appendChild(st); }   /* 4 menu columns in one row */

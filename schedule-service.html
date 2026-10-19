@@ -641,6 +641,7 @@
                 try {
                     data.photos = (await Promise.all(S.files.map(shrink))).filter(Boolean);
                     await fetch(SHEETS_URL, { method: 'POST', mode: 'no-cors', headers: { 'Content-Type': 'text/plain;charset=utf-8' }, body: JSON.stringify(data) });
+                    SITE.trackLead();
                     go('done');
                 } catch (x) { btn.disabled = false; btn.textContent = 'Send request'; $('sendErr').textContent = 'Something went wrong. Please call ' + SITE.phone + '.'; }
             } else {
