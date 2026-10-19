@@ -15,10 +15,10 @@ window.SITE = (function () {
 
   /* 3) DIAGNOSTIC FEES (USD): standard = normal visit, emergency = emergency visit */
   const FEES = {
-    appliances: { standard: 75,  emergency: 100 },
-    hvac:       { standard: 75,  emergency: 100 },
-    hvacCom:    { standard: 100, emergency: 150 },  // HVAC commercial
-    pool:       { standard: 75,  emergency: 100 }
+    appliances: { standard: 79,  emergency: 150 },
+    hvac:       { standard: 79,  emergency: 150 },
+    hvacCom:    { standard: 100, emergency: 200 },  // HVAC commercial
+    pool:       { standard: 79,  emergency: 150 }
   };
 
   /* 3b) DIAGNOSTIC CREDIT: the diagnostic fee is deducted from the repair if the customer approves it.
