@@ -38,7 +38,7 @@ window.SITE = (function () {
 
   /* 5) GOOGLE REVIEWS shown in the small badge on the service pages */
   const RATING = "5.0";            // average rating, e.g. "5.0" or "4.8"
-  const REVIEW_COUNT = "22+";      // number of reviews, e.g. "21+" or "34"
+  const REVIEW_COUNT = "25+";      // number of reviews, e.g. "21+" or "34"
   const REVIEWS_URL = "https://share.google/feIekBTpIm25aUQHO";   // where the badge links to
 
   /* 6) GOOGLE ADS CONVERSION: "Booking form" label from Google Ads. Fires after a form is sent.

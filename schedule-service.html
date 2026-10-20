@@ -335,9 +335,9 @@
                 <section class="pane" data-pane="3">
                     <div class="kk">Availability</div>
                     <h1>When are you available?</h1>
-                    <p class="lede">Pick every day that works for you (today is available too), then the hours you'll be home between 8:00 AM and 9:00 PM. Each day needs a window of at least 3 hours.</p>
-                    <label class="chk emg"><input type="checkbox" id="emg"><span><b>Emergency call</b>: check this if it's urgent. Sundays become available.</span></label>
-                    <div class="emnote" id="emnote" hidden>For emergencies, please call <a href="tel:{{phoneTel}}">{{phone}}</a>, it's the fastest way. Emergency diagnostic visit: <b id="emfee"></b> (<span id="emreg"></span> on regular days).</div>
+                    <p class="lede">Pick every day that works for you, then the hours you'll be home between 8:00 AM and 9:00 PM. Each day needs a window of at least 3 hours. Need a technician today or tomorrow? Choose Emergency below.</p>
+                    <label class="chk emg"><input type="checkbox" id="emg"><span><b>Emergency (urgent) visit</b>: need a technician today or tomorrow? Check this for priority scheduling, including Sundays and holidays. Diagnostic fee: <b id="emfee2"></b> instead of <b id="emreg2"></b> with regular scheduling.</span></label>
+                    <div class="emnote" id="emnote" hidden>Emergency visits are for today or tomorrow only. For the fastest response, please call <a href="tel:{{phoneTel}}">{{phone}}</a>. Emergency diagnostic visit: <b id="emfee"></b> (<span id="emreg"></span> with regular scheduling).</div>
                     <div class="days" id="days"></div>
                     <div class="drows" id="drows"></div>
                     <div class="er" id="e-days" style="margin-top:12px">Please select at least one day.</div>
@@ -381,7 +381,7 @@
            ===================================================== */
         const SHEETS_URL = SITE.sheetsUrl;   // set in site-config.js
         const FEES = SITE.fees;            // set in site-config.js
-        const MAX_PHOTOS = 5, MAX_MB = 10, DAYS_AHEAD = 14, OPEN = 8 * 60, CLOSE = 21 * 60, MIN_GAP = 180;
+        const MAX_PHOTOS = 5, MAX_MB = 10, DAYS_AHEAD = 14, OPEN = 8 * 60, CLOSE = 21 * 60, MIN_GAP = 180, STD_FROM = 2;   /* regular visits start STD_FROM days from today; emergency = today or tomorrow */
                 const SERVICES = {
             hvac: {
                 label: "HVAC", icon: "snow", text: "Air conditioning, furnace, and heating", brand: false, items: [
@@ -536,13 +536,14 @@
         const DAYLIST = Array.from({ length: DAYS_AHEAD }, (_, i) => { const d = new Date(today); d.setDate(d.getDate() + i); return d; });
         let emergency = false;
         const feeOf = it => FEES[it.g][emergency ? 'emergency' : 'standard'];
-        function drawNote() { const it = S.item, f = it ? FEES[it.g] : null; $('emfee').textContent = f ? money(f.emergency) : 'a higher fee'; $('emreg').textContent = f ? money(f.standard) : 'the standard fee'; }
+        function drawNote() { const it = S.item, f = it ? FEES[it.g] : null; const a = f ? money(f.emergency) : 'a higher fee', b = f ? money(f.standard) : 'the standard fee'; $('emfee').textContent = a; $('emreg').textContent = b; $('emfee2').textContent = a; $('emreg2').textContent = b; }
         const minStart = k => { if (k !== iso(today)) return OPEN; const n = new Date(), m = n.getHours() * 60 + n.getMinutes(); return Math.max(OPEN, Math.ceil((m + 30) / 30) * 30); };
-        const dayOk = d => (d.getDay() !== 0 || emergency) && minStart(iso(d)) + MIN_GAP <= CLOSE;
+        const dayIdx = d => Math.round((d - today) / 864e5);
+        const dayOk = d => { const i = dayIdx(d); return (emergency ? i <= 1 : (i >= STD_FROM && d.getDay() !== 0)) && minStart(iso(d)) + MIN_GAP <= CLOSE; };
         function drawDays() {
             $('days').innerHTML = DAYLIST.map((d, i) => {
-                const k = iso(d), ok = dayOk(d), sun = d.getDay() === 0 && !emergency;
-                const sub = i === 0 ? (ok ? 'Today' : 'Too late') : sun ? 'Closed' : MO[d.getMonth()];
+                const k = iso(d), ok = dayOk(d);
+                const sub = emergency ? (i === 0 ? (ok ? 'Today' : 'Too late') : i === 1 ? 'Tomorrow' : 'Regular') : (i < STD_FROM ? 'Emergency' : d.getDay() === 0 ? 'Closed' : MO[d.getMonth()]);
                 return `<button type="button" class="day${S.days[k] ? ' sel' : ''}" data-d="${k}" ${ok ? '' : 'disabled'} aria-pressed="${!!S.days[k]}"><small>${WD[d.getDay()]}</small><b>${d.getDate()}</b><small>${sub}</small></button>`;
             }).join('');
         }
@@ -556,7 +557,7 @@
             emergency = e.target.checked;
             $('emnote').hidden = !emergency;
             drawNote();
-            if (!emergency) Object.keys(S.days).forEach(k => { if (new Date(k + 'T00:00').getDay() === 0) delete S.days[k]; });
+            Object.keys(S.days).forEach(k => { const d = new Date(k + 'T00:00'); if (!dayOk(d)) delete S.days[k]; });
             drawDays(); drawRows();
         });
         const opts = (a, b, sel) => { let h = ''; for (let m = a; m <= b; m += 30) h += `<option value="${m}"${m === sel ? ' selected' : ''}>${fmt(m)}</option>`; return h; };
