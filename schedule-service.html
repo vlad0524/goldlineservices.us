@@ -124,7 +124,7 @@
         .day b { display: block; font-size: 22px; font-weight: 700; margin: 2px 0 }
         .day:hover:not(:disabled) { border-color: #ea9142; transform: translateY(-2px) }
         .callout[hidden] { display: none }
-        .day.urgent:not(.sel) { border-color: #f3c48f; box-shadow: 0 0 0 3px rgba(234, 145, 66, .16) }
+        .day.today:not(.sel) { border-color: #f3c48f; box-shadow: 0 0 0 3px rgba(234, 145, 66, .16) }
         .day.sel { background: var(--grad); border-color: transparent; box-shadow: 0 8px 18px rgba(234, 145, 66, .3) }
         .day.sel small { color: #4a3515 }
         .day:disabled { background: #f3f6f7; color: #aab6bc; cursor: not-allowed }
@@ -538,11 +538,12 @@
 
         /* ---------- STEP 3: days ---------- */
         const today = new Date(); today.setHours(0, 0, 0, 0);
-        const TODAY = iso(today), LEAD = 30;   /* a window must start at least 30 min from now */
+        const TODAY = iso(today);
         const DAYLIST = Array.from({ length: DAYS_AHEAD }, (_, i) => { const d = new Date(today); d.setDate(d.getDate() + i); return d; });
         let emergency = false;
         /* numbers from site-config.js (a typo there falls back to a default instead of breaking the page) */
         const num = (v, d) => (typeof v === 'number' && isFinite(v)) ? v : d;
+        const LEAD = num(SCH.leadMinutes, 0);   /* minutes between "now" and the earliest window start (leadMinutes in site-config.js) */
         const EV_FROM = num(EV.from, 19) * 60, EV_UNTIL = num(EV.until, 22) * 60;
         const MINW = { reg: num(REG.minWindow, 3), em: num(EM.minWindow, 3) }; MINW.ev = num(EV.minWindow, MINW.em);
         const evFee = it => (it && EM_ON && EV.enabled !== false && EV.fees && EV.fees[it.g] != null) ? EV.fees[it.g] : null;   /* null = no evening visits for this equipment */
@@ -573,11 +574,9 @@
         /* every start time (30-min steps) the customer may pick on this day. [] = day not available */
         function starts(k, h) {
             const out = [], t = k === TODAY, n = nowMin();
-            const first = t ? Math.max(h[0], Math.ceil(n / 30) * 30) : h[0];
-            const lead = t ? Math.max(h[0], Math.ceil((n + LEAD) / 30) * 30) : h[0];   /* normal windows need a 30 min lead; an evening window only needs to start in the future */
+            const first = t ? Math.max(h[0], Math.ceil((n + LEAD) / 30) * 30) : h[0];   /* earliest start today = now + leadMinutes, rounded up to :00 / :30 */
             for (let m = first; m <= (h[2] != null ? h[2] : h[1]); m += 30) {
                 const ev = isEv(m, h);
-                if (!ev && m < lead) continue;
                 if (m + gap(m) <= (ev ? h[2] : h[1]) && (!t || todayOpen(ev))) out.push(m);
             }
             return out;
@@ -596,7 +595,7 @@
             const h = hoursOf(today, true); if (!h) return null;
             const cap = (end, m, dl, lead) => Math.min(end - m - lead, typeof dl === 'number' ? dl * 60 : 1e9);
             let c = cap(h[1], gap(0, true), EM.sameDayUntil, LEAD);
-            if (h[2] != null) c = Math.max(c, cap(h[2], gap(EV_FROM, true), EV.sameDayUntil, 0));
+            if (h[2] != null) c = Math.max(c, cap(h[2], gap(EV_FROM, true), EV.sameDayUntil, LEAD));
             return c < 0 ? null : c;
         }
         const joinOr = a => a.length > 2 ? a.slice(0, -1).join(', ') + ', or ' + a[a.length - 1] : a.join(' or ');
@@ -630,9 +629,9 @@
             $('days').innerHTML = DAYLIST.map((d, i) => {
                 const k = iso(d), ok = dayOk(d), hol = isHol(d), sun = d.getDay() === 0;
                 let sub;
-                if (emergency) sub = ok ? (i === 0 ? 'Today' : i === 1 ? 'Tomorrow' : hol ? 'Holiday' : sun ? 'Sunday' : MO[d.getMonth()]) : (hoursOf(d) ? 'Call us' : hoursOf(d, false) ? 'Regular' : 'Closed');
+                if (emergency) sub = ok ? (i === 1 ? 'Tomorrow' : hol ? 'Holiday' : sun ? 'Sunday' : MO[d.getMonth()]) : (hoursOf(d) ? 'Call us' : hoursOf(d, false) ? 'Regular' : 'Closed');
                 else sub = ok ? (hol ? 'Holiday' : MO[d.getMonth()]) : (hoursOf(d, true) ? 'Emergency' : 'Closed');
-                return `<button type="button" class="day${S.days[k] ? ' sel' : ''}${emergency && ok && i === 0 ? ' urgent' : ''}" data-d="${k}" ${ok ? '' : 'disabled'} aria-pressed="${!!S.days[k]}"><small>${WD[d.getDay()]}</small><b>${d.getDate()}</b><small>${sub}</small></button>`;
+                return `<button type="button" class="day${S.days[k] ? ' sel' : ''}${i === 0 ? ' today' : ''}" data-d="${k}" ${ok ? '' : 'disabled'} aria-pressed="${!!S.days[k]}"><small>${i === 0 ? 'Today' : WD[d.getDay()]}</small><b>${d.getDate()}</b><small>${sub}</small></button>`;
             }).join('');
         }
         $('days').addEventListener('click', e => {

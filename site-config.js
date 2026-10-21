@@ -13,8 +13,6 @@ window.SITE = (function () {
   /* 2) GOOGLE SHEETS: paste your Apps Script Web App URL (ends with /exec) */
   const SHEETS_URL = "https://script.google.com/macros/s/AKfycbxv2qmR2L8RBleVGkWXBeFzdT4Xpaz9lK867NJ41aIjXoTXBxZ_PZqf4xq_RZu-iL47ng/exec";
 
-
-  
   /* 3) DIAGNOSTIC FEES (USD): standard = normal visit, emergency = emergency visit */
   const FEES = {
     appliances: { standard: 79,  emergency: 150 },
@@ -49,10 +47,11 @@ window.SITE = (function () {
            HVAC emergency normal windows end by 7:00 PM, and an extra choice appears in the From / To lists:
            "Evening: 7:00 PM – 10:00 PM" at the evening fee (a window must START at "evening.from" or later).
 
-         "Today": a window must start at least ~30 min from now, so with the settings above emergency today closes by itself
-         at 4:30 PM. "sameDayUntil" can only stop it EARLIER, never later. */
+         "Today" closes by itself when the last window no longer fits: with the settings above emergency today closes at 5:00 PM
+         (8 PM - 3 h), minus "leadMinutes". "sameDayUntil" can only stop it EARLIER, never later. */
   const SCHEDULE = {
     daysAhead: 14,       // how many days the calendar shows
+    leadMinutes: 0,      // today: the earliest window may start this many minutes from now (0 = no buffer, 30 = at least 30 min from now)
 
     /* OUR WORKING HOURS per weekday: [open, close]. Windows start at "open" or later. A normal window ends by "close"
        or by latestEnd below (whichever is earlier). Evening windows ignore "close" (they use evening.until).
@@ -79,40 +78,38 @@ window.SITE = (function () {
       holidays: false,     // holidays available for regular visits?
       startFromDay: 1,     // first bookable day: 0 = today, 1 = tomorrow (default: today is NOT offered), 2 = day after tomorrow ...
       sameDayUntil: null,  // only if startFromDay is 0. null = automatic. A number = stop taking today at this hour (14 = 2:00 PM)
-      latestEnd: 20,       // a regular window must END by this hour (20 = 8:00 PM). null = use "close" from hours above
-      minWindow: 4,        // shortest arrival window the customer may pick, in HOURS
+      latestEnd: 19,       // a regular window must END by this hour (19 = 7:00 PM). null = use "close" from hours above
+      minWindow: 3,        // shortest arrival window the customer may pick, in HOURS
       minDays: 2           // the customer must choose at least this many days (1 = one day is enough)
     },
 
     /* ---------------------------------------- EMERGENCY requests (own settings) --------------------------------------------------------- */
     emergency: {
       enabled: true,       // false = NO emergency option at all (the Emergency checkbox is hidden everywhere)
-      
       days: { mon: true, tue: true, wed: true, thu: true, fri: true, sat: true, sun: true },    // do we work these days for emergency?
-      holidays: false,      // do we work holidays for emergency?
+      holidays: true,      // do we work holidays for emergency?
       daysAhead: 2,        // 2 = today + tomorrow. Days further out are offered ONLY if regular visits are not available that day
                            //     (for example Sundays and holidays). 14 = every day of the calendar.
       sameDayUntil: null,  // normal emergency windows today: null = automatic, a number = stop at this hour (15 = 3:00 PM)
-      latestEnd: 20,       // an emergency window must END by this hour (20 = 8:00 PM). With evening visits ON, HVAC is cut at evening.from
+      latestEnd: 21,       // an emergency window must END by this hour (20 = 8:00 PM). With evening visits ON, HVAC is cut at evening.from
       minWindow: 3,        // shortest arrival window, in HOURS
       minDays: 1,          // the customer must choose at least this many days
-
-
 
       /* EVENING visits (OFF by default): only with Emergency checked, only for equipment that has a fee below (HVAC). A window that STARTS at "from"
          or later costs the evening fee. Windows that start earlier are normal windows and must end by "from". */
       evening: {
         enabled: false,    // true = turn evening visits ON (HVAC only). false = OFF (default)
-
         from: 19,          // evening windows START at this hour or later (19 = 7:00 PM)
         until: 22,         // an evening window must END by this hour (22 = 10:00 PM)
         minWindow: 3,      // shortest evening window, in HOURS (from 19 + until 22 + 3 h = exactly 7-10 PM; 2 h would also allow 7-9, 7:30-9:30, 8-10 PM)
         sameDayUntil: null, // evening windows today: null = automatic (closes by itself), a number = stop at this hour (17 = 5:00 PM)
         otherDays: true,   // true = evening also on tomorrow / Sundays / holidays; false = today only
-        fees: { hvac: 200, hvacCom: 300, appliances: null, pool: null }   // evening fee per equipment group, null = no evening visits for it
+        fees: { hvac: 200, hvacCom: 250, appliances: null, pool: null }   // evening fee per equipment group, null = no evening visits for it
       }
     }
   };
+
+
 
   /* 4) COMMERCIAL SERVICES: true = show commercial HVAC everywhere (menu, home page cards,
         booking form, footer, About, Contact). false = hide it everywhere. */
