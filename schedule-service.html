@@ -387,44 +387,14 @@
         const FEES = SITE.fees;            // set in site-config.js
         const MAX_PHOTOS = 5, MAX_MB = 10;
         const SCH = SITE.schedule, REG = SCH.regular, EM = SCH.emergency, EV = EM.evening || {}, DAYS_AHEAD = SCH.daysAhead, EM_ON = EM.enabled !== false;   /* all schedule settings live in site-config.js */
-                const SERVICES = {
-            hvac: {
-                label: "HVAC", icon: "snow", text: "Air conditioning, furnace, and heating", brand: false, items: [
-                    { n: "Air Conditioner", d: "Not cooling, noisy, or leaking.", g: "hvac", icon: "snow" },
-                    { n: "Furnace / Heating", d: "No heat or uneven heating.", g: "hvac", icon: "flame" },
-                    { n: "Mini-Split System", d: "Ductless indoor or outdoor units.", g: "hvac", icon: "snow" },
-                    { n: "Packaged Unit", d: "All-in-one rooftop or closet units.", g: "hvac", icon: "home" },
-                    { n: "Through-the-Wall Unit", d: "Wall-mounted cooling and heating.", g: "hvac", icon: "home" },
-                    { n: "Commercial Air Conditioner", d: "Rooftop and commercial cooling systems.", g: "hvacCom", icon: "snow", commercial: true },
-                    { n: "Commercial Furnace / Heating", d: "Commercial heating systems.", g: "hvacCom", icon: "flame", commercial: true }
-            ]},
-            appliances: {
-                label: "Appliances", icon: "fridge", text: "Refrigerator, washer, dryer, oven, and more", brand: true, items: [
-                    { n: "Refrigerator", d: "Not cooling, leaking, or noisy.", g: "appliances", icon: "fridge" },
-                    { n: "Freezer", d: "Warm, frosting up, or not running.", g: "appliances", icon: "snow" },
-                    { n: "Washer", d: "Won't drain, spin, or fill.", g: "appliances", icon: "washer" },
-                    { n: "Dryer", d: "Not heating or drying slowly.", g: "appliances", icon: "washer" },
-                    { n: "Oven & Stove", d: "Not heating or won't ignite.", g: "appliances", icon: "oven" },
-                    { n: "Cooktop & Range", d: "Burners won't light or heat.", g: "appliances", icon: "flame" }]
-            },
-            pool: {
-                label: "Pool / Spa", icon: "drop", text: "Pump, filter, heater, salt cell, and more", brand: false, items: [
-                    { n: "Pump", d: "Noise, low flow, or loss of prime.", g: "pool", icon: "drop" },
-                    { n: "Filter", d: "Cloudy water or high pressure.", g: "pool", icon: "drop" },
-                    { n: "Salt Cell", d: "Low chlorine or cell errors.", g: "pool", icon: "bolt" },
-                    { n: "Heater", d: "Water not heating.", g: "pool", icon: "flame" },
-                    { n: "Plumbing (Above Ground)", d: "Leaks at pipes or valves.", g: "pool", icon: "tool" },
-                    { n: "Timers & Smart Systems", d: "Automation or timer issues.", g: "pool", icon: "cpu" },
-                    { n: "Electronics", d: "Control panels and boards.", g: "pool", icon: "cpu" }]
-            }
-        };
+        /* equipment list comes from SERVICES in site-config.js (shown / hidden, names, texts, icons) */
+        const SERVICES = {};
+        SITE.groups().forEach(g => {
+            const tid = g.mergeInto || g.id, T = SITE.services[tid];
+            if (!SERVICES[tid]) SERVICES[tid] = { label: T.title, icon: T.icon, text: T.text, brand: !!T.brand, items: [] };
+            g.items.forEach(i => SERVICES[tid].items.push({ k: i.k, n: i.formName || i.name, d: i.formText || '', g: g.fee || g.id, icon: i.icon || T.icon, commercial: g.id === 'commercial' }));
+        });
         const BRANDS = ["Samsung", "LG", "Whirlpool", "GE", "Frigidaire", "Bosch", "Sub-Zero", "KitchenAid", "Maytag", "Kenmore", "Electrolux", "Thermador", "Viking", "Miele", "Other"];
-        const MENU = [
-            ["HVAC", "index.html#hvac", [["Air Conditioner", "air-conditioner-repair.html"], ["Furnace", "furnace-repair.html"], ["Mini-Split Systems", "mini-split-repair.html"], ["Packaged Units", "packaged-unit-repair.html"], ["Through-the-Wall Units", "through-the-wall-repair.html"]]],
-            ...(SITE.commercial ? [["Commercial", "index.html#commercial", [["Commercial Air Conditioning", "commercial-ac-repair.html"], ["Commercial Heating", "commercial-heating-repair.html"]]]] : []),
-            ["Appliances", "", [["Refrigerator", "refrigerator-repair.html"], ["Freezer", "freezer-repair.html"], ["Washer", "washer-repair.html"], ["Dryer", "dryer-repair.html"], ["Oven & Stove", "oven-stove-repair.html"], ["Cooktop & Range", "cooktop-range-repair.html"]]],
-            ["Pool / Spa", "index.html#pool", [["Pump", "pool-pump-repair.html"], ["Filter", "pool-filter-repair.html"], ["Salt Cells", "pool-salt-cell-repair.html"], ["Heater", "pool-heater-repair.html"], ["Plumbing (Above Ground)", "pool-plumbing-repair.html"], ["Timers & Smart Systems", "pool-timers-repair.html"], ["Electronics", "pool-electronics-repair.html"]]]
-        ];
 
         /* ---------- helpers ---------- */
         const P = {
@@ -452,8 +422,6 @@
         const WD = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'], MO = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
 
         /* ---------- menus + icons ---------- */
-        $('mega').innerHTML = MENU.map(m => `<div><h4>${m[0]}</h4>${m[2].map(i => Array.isArray(i) ? `<a href="${i[1]}">${esc(i[0])}</a>` : `<a href="${m[1]}">${esc(i)}</a>`).join('')}</div>`).join('');
-        $('mmenu').innerHTML = MENU.map(m => `<h4>${m[0]}</h4>${m[2].map(i => Array.isArray(i) ? `<a href="${i[1]}">${esc(i[0])}</a>` : `<a href="${m[1]}">${esc(i)}</a>`).join('')}`).join('');
         const swap = () => document.querySelectorAll('[data-ic]').forEach(e => { e.outerHTML = ic(e.dataset.ic) });
         swap();
         const hd = $('header'), bg = $('burger');
@@ -498,7 +466,6 @@
         }
 
         /* ---------- STEP 1 ---------- */
-        if (!SITE.commercial) Object.values(SERVICES).forEach(c => { c.items = c.items.filter(x => !x.commercial); });   // COMMERCIAL flag in site-config.js
         $('cats').innerHTML = Object.entries(SERVICES).map(([k, c]) => `<button type="button" class="cat" data-k="${k}" aria-pressed="false"><span class="ic">${ic(c.icon)}</span><span class="tx"><b>${c.label}</b><span class="t">${c.text}</span></span><span class="tick">${ic('check')}</span></button>`).join('');
         $('cats').addEventListener('click', e => { const b = e.target.closest('.cat'); if (b) pickCat(b.dataset.k, true); });
         function pickCat(k, scroll) {

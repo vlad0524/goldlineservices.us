@@ -336,53 +336,18 @@
 
     <script>
         /* ===== DATA: set img:"path/to/image.jpg" to show a photo in any card. Empty = placeholder zone ===== */
-        const GROUPS = [
-            {
-                id: "hvac", title: "HVAC", sub: "Heating & Cooling Repair and Installation", items: [
-                    { n: "Air Conditioner",        href: "air-conditioner-repair.html", wide: true, e: "AC not cooling?", d: "Restore strong cooling, steady airflow, and efficient performance all summer.", img: "./hvac/ac-logo.jpg" },
-                    { n: "Furnace",                href: "furnace-repair.html", wide: true, e: "No heat? We can fix it", d: "Get safe, consistent heat back with fast diagnostics and dependable repairs.", img: "./hvac/hvac-logo.jpg" },
-                    /*{ n: "Mini-Split Systems",     href: "mini-split-repair.html", e: "Cooling several rooms without ducts?", d: "Ductless systems with one outdoor unit connected to one or more indoor units, professionally installed and serviced.", img: "./hvac/mini-split.jpg" }, */
-                    { n: "Packaged Units",         href: "packaged-unit-repair.html", wide: true, e: "Apartment or rooftop unit not working?", d: "Repair and installation of all-in-one heating and cooling units, from apartment closet models to rooftop systems.", img: "./hvac/packaged-unit.jpg" },
-                    { n: "Through-the-Wall Units", href: "through-the-wall-repair.html", wide: true, e: "Need comfort in just one room?", d: "Professional installation and repair of compact through-the-wall units, for cooling only or cooling and heating.", img: "./hvac/wall-unit.jpg" }
-            ]}, 
-            ...(SITE.commercial ? [{
-                id: "commercial", title: "Commercial", sub: "Commercial Air Conditioning & Heating", items: [
-                    { n: "Commercial Air Conditioning", href: "commercial-ac-repair.html", wide: true, e: "AC down at your business?", d: "Keep staff and customers comfortable with fast repairs and reliable installation of rooftop and cooling units.", img: "./hvac/" },
-                    { n: "Commercial Heating",          href: "commercial-heating-repair.html", wide: true, e: "No heat at your business?", d: "Get your space warm again with dependable repair and installation of furnaces and heating systems.", img: "./hvac/" }
-            ]}] : []),
-            {
-                id: "appliances", title: "Appliances", sub: "Appliance Repair", items: [
-                    { n: "Refrigerator",    href: "refrigerator-repair.html", t: "Refrigerator repair", e: "Not cooling or leaking?", d: "Get your fridge back to the right temperature and keep your groceries safe.", img: "./appliance/refrigerator-lg.jpg" },
-                    { n: "Freezer",         href: "freezer-repair.html", t: "Freezer repair", e: "Frost buildup or warm freezer?", d: "Fix frost buildup, warm spots, and noisy cycles to protect your food.", img: "./appliance/Sub-Zero-freezer.jpg" },
-                    { n: "Washer",          href: "washer-repair.html", t: "Washer repair", e: "Won't drain or spin?", d: "Fix water not draining, drum not spinning, or leaks and error codes.", img: "./appliance/washer-logo.jpg" },
-                    { n: "Dryer",           href: "dryer-repair.html",t: "Dryer repair", e: "Not heating or drying?", d: "Solve no-heat, long drying times, and a drum that won’t turn.", img: "./appliance/Dryer-logo.jpg" },
-                    { n: "Oven & Stove",    href: "oven-stove-repair.html", t: "Oven & Stove repair", e: "Oven not heating evenly?", d: "Resolve heating, ignition, and temperature issues for consistent cooking.", img: "./appliance/range-logo.jpg" },
-                    { n: "Cooktop & Range", href: "cooktop-range-repair.html", t: "Cooktop & Range repair", e: "Burner won't light?", d: "Repair burners, igniters, and controls on cooktops and ranges.", img: "./appliance/cook-top-logo.jpg" }
-            ]},
-            {
-                id: "pool", title: "Pool / Spa", sub: "Pool & Spa Repair & Installation", items: [
-                    { n: "Pump",                    href: "pool-pump-repair.html", e: "Noisy pump or low flow?", d: "Fix noise, loss of prime, and flow problems to keep water moving.", img: "./pool/" },
-                    { n: "Filter",                  href: "pool-filter-repair.html", e: "Cloudy water or high pressure?", d: "Restore filtration, pressure balance, and water clarity.", img: "./pool/" },
-                    { n: "Salt Cells",              href: "pool-salt-cell-repair.html", e: "Low chlorine or cell error?", d: "Inspect, clean, and replace salt cells to keep chlorine production steady.", img: "./pool/" },
-                    { n: "Heater",                  href: "pool-heater-repair.html", e: "Pool heater not heating?", d: "Repair ignition, heating, and temperature control issues.", img: "./pool/" },
-                    { n: "Plumbing (Above Ground)", href: "pool-plumbing-repair.html", e: "Leaks at pipes or valves?", d: "Fix leaks, valves, and fittings on above-ground pool and spa plumbing.", img: "./pool/" },
-                    { n: "Timers & Smart Systems",  href: "pool-timers-repair.html", e: "Timer or automation issues?", d: "Set up and repair timers, automation, and smart controls.", img: "./pool/" },
-                    { n: "Electronics",             href: "pool-electronics-repair.html", e: "Control panel not responding?", d: "Diagnose control boards, panels, and electronic components.", img: "./pool/" }
-            ]}
-        ];
+        /* cards come from SERVICES in site-config.js (shown / hidden, wide / small, texts, photos) */
+        const GROUPS = SITE.groups().map(g => ({ id: g.id, title: g.title, sub: g.heading, suffix: g.suffix || '', items: g.items.map(i => ({ n: i.name, href: i.page, e: i.ask, d: i.text, img: i.img, wide: !!i.wide })) }));
         const arrow = '<svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg>';
         document.getElementById('groups').innerHTML = GROUPS.map(g => {
             const card = i => {
                 const m = `<div class="media${i.img ? '' : ' ph'}" data-label="Add image: ${i.n}">${i.img ? `<img src="${i.img}" alt="${i.n}">` : ''}<span class="tag">${g.title}</span><span class="name">${i.n}</span></div>`;
-                return `<a class="card${i.wide ? ' wide' : ''}" href="${i.href || '#'}">${m}<div class="body"><small>${i.e}</small><h4>${g.id === 'appliances' ? i.n + ' Repair' : i.n}</h4><p>${i.d}</p><span class="arrow">${arrow}</span></div></a>`;
+                return `<a class="card${i.wide ? ' wide' : ''}" href="${i.href || '#'}">${m}<div class="body"><small>${i.e}</small><h4>${i.n + g.suffix}</h4><p>${i.d}</p><span class="arrow">${arrow}</span></div></a>`;
             };
         const wide = g.items.filter(i => i.wide).map(card).join('');
         const rest = g.items.filter(i => !i.wide).map(card).join('');
         return `<div class="group" id="${g.id}"><div class="group-title"><h3>${g.sub || g.title}</h3></div>${wide ? `<div class="grid2">${wide}</div>` : ''}${rest ? `<div class="grid3"${wide ? ' style="margin-top:28px"' : ''}>${rest}</div>` : ''}</div>`;
         }).join('');
-        /* menu from same data */
-        document.getElementById('mega').innerHTML = GROUPS.map(g => `<div><h4>${g.title}</h4>${g.items.map(i => `<a href="${i.href || '#' + g.id}">${i.n}</a>`).join('')}</div>`).join('');
-        document.getElementById('mmenu').innerHTML = GROUPS.map(g => `<h4>${g.title}</h4>${g.items.map(i => `<a href="${i.href || '#' + g.id}">${i.n}</a>`).join('')}`).join('');
         const P = { pin: '<path d="M20 10c0 6-8 12-8 12S4 16 4 10a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="3"/>', bolt: '<path d="M13 2 4 14h7l-1 8 9-12h-7z"/>', shield: '<path d="M12 2 4 5v6c0 5 3.4 9.4 8 11 4.6-1.6 8-6 8-11V5z"/><path d="m9 12 2 2 4-4"/>', star: '<path d="m12 2 3 6.6 7 .8-5.2 4.8 1.4 7.1L12 17.8 5.8 21.3l1.4-7.1L2 9.4l7-.8z"/>', home: '<path d="m3 11 9-8 9 8"/><path d="M5 10v10h14V10M10 20v-6h4v6"/>', chat: '<path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/><path d="M8 9h8M8 13h5"/>', tool: '<path d="M14.7 6.3a4 4 0 0 0-5.4 5.1L3 17.7V21h3.3l6.3-6.3a4 4 0 0 0 5.1-5.4l-2.6 2.6-2.4-.6-.6-2.4z"/>' };
         const ic = n => `<svg viewBox="0 0 24 24">${P[n]}</svg>`;
         /* ===== REVIEWS: sample text, replace with real reviews ===== */
