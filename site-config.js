@@ -283,6 +283,12 @@ window.SITE = (function () {
         Leave "" to turn the conversion tracking off. */
   const ADS_CONVERSION = "AW-18441761320/xenoCN613KEdEKjk29lE";
 
+  /* 7) GOOGLE ADS CALL TRACKING (phone calls from your website). Works on EVERY page from this one file.
+        The Google forwarding number replaces PHONE only for visitors who came from an ad; PHONE above is used automatically,
+        so when you change PHONE everything follows. CALL_CONVERSION = label of "Calls from your website" in Google Ads. */
+  const GOOGLE_TAG = "AW-18441761320";
+  const CALL_CONVERSION = "AW-18441761320/m7fyCJSwgpUdEKjk29lE";
+
 
 
 
@@ -400,12 +406,26 @@ window.SITE = (function () {
   }
   S.apply = walk; S.sub = sub;
   S.trackLead = function () { try { if (ADS_CONVERSION && typeof gtag === "function") gtag("event", "conversion", { send_to: ADS_CONVERSION }); } catch (e) { } };
+  /* makes sure the Google tag is on the page (adds it if a page has none), then turns on the Google forwarding number */
+  function trackCalls() {
+    try {
+      if (!GOOGLE_TAG) return;
+      window.dataLayer = window.dataLayer || [];
+      if (typeof window.gtag !== "function") window.gtag = function () { window.dataLayer.push(arguments); };
+      if (!document.querySelector('script[src*="googletagmanager.com/gtag/js"]')) {
+        const g = document.createElement("script"); g.async = true; g.src = "https://www.googletagmanager.com/gtag/js?id=" + GOOGLE_TAG; document.head.appendChild(g);
+        window.gtag("js", new Date()); window.gtag("config", GOOGLE_TAG);
+      }
+      if (CALL_CONVERSION) window.gtag("config", CALL_CONVERSION, { phone_conversion_number: PHONE });
+    } catch (e) { }
+  }
   function start() {
     if (!COMMERCIAL) document.querySelectorAll("[data-commercial]").forEach(e => e.remove());
     const st = document.createElement("style"); st.textContent = ".mega .inner{grid-template-columns:none!important;grid-auto-flow:column;grid-auto-columns:1fr}"; document.head.appendChild(st);   /* any number of menu columns in one row */
     renderMenu();
     walk(document.body);
     hideOff();
+    trackCalls();
     new MutationObserver(ms => ms.forEach(m => m.addedNodes.forEach(x => { if (x.nodeType === 1 || x.nodeType === 3) walk(x.nodeType === 3 ? x.parentNode : x); }))).observe(document.body, { childList: true, subtree: true });
   }
   if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", start); else start();
