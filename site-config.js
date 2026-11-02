@@ -132,26 +132,26 @@ window.SITE = (function () {
       fee: "pool",
       icon: "drop", text: "Pump, filter, heater, salt cell, and more", brand: false,   // booking form tile
       items: {
-        pump: { show: true, wide: false, name: "Pump", page: "pool-pump-repair.html", img: "./pool/",
+        pump: { show: true, wide: false, name: "Pump", page: "pool-pump-repair.html", img: "./pool/pool_pump.webp",
           ask: "Noisy pump or low flow?",
           text: "Fix noise, loss of prime, and flow problems to keep water moving.",
           formName: "Pump", formText: "Noise, low flow, or loss of prime.", icon: "drop" },
 
-        filter: { show: true, wide: false, name: "Filter", page: "pool-filter-repair.html", img: "./pool/",
+        filter: { show: true, wide: false, name: "Filter", page: "pool-filter-repair.html", img: "./pool/pool_filterd.webp",
           ask: "Cloudy water or high pressure?",
           text: "Restore filtration, pressure balance, and water clarity.",
           formName: "Filter", formText: "Cloudy water or high pressure.", icon: "drop" },
+
+        heater: { show: true, wide: false, name: "Heater", page: "pool-heater-repair.html", img: "./pool/pool_heater.webp",
+          ask: "Pool heater not heating?",
+          text: "Repair ignition, heating, and temperature control issues.",
+          formName: "Heater", formText: "Water not heating.", icon: "flame" },
 
         saltCell: { show: true, wide: false, name: "Salt Cells", page: "pool-salt-cell-repair.html", img: "./pool/",
           ask: "Low chlorine or cell error?",
           text: "Inspect, clean, and replace salt cells to keep chlorine production steady.",
           formName: "Salt Cell", formText: "Low chlorine or cell errors.", icon: "bolt" },
-
-        heater: { show: true, wide: false, name: "Heater", page: "pool-heater-repair.html", img: "./pool/",
-          ask: "Pool heater not heating?",
-          text: "Repair ignition, heating, and temperature control issues.",
-          formName: "Heater", formText: "Water not heating.", icon: "flame" },
-
+        
         plumbing: { show: true, wide: false, name: "Plumbing (Above Ground)", page: "pool-plumbing-repair.html", img: "./pool/",
           ask: "Leaks at pipes or valves?",
           text: "Fix leaks, valves, and fittings on above-ground pool and spa plumbing.",
