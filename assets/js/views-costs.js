@@ -13,6 +13,12 @@
   };
   const fmt = (v, st) => (+v).toFixed(st < 0.01 ? 3 : 2);
 
+  // Fuel quantity in the units on a US bill (gal / therms) or MWh in metric mode
+  function fuelQty(bl) {
+    const u = UNITS[bl.fuel];
+    if (U.imp() && u && bl.fuel !== 'elec') return `${U.n(bl.heatFuelKwh / u.k, 0)} ${u.unit.slice(2)} × $${(bl.price * u.k).toFixed(2)}/${u.unit.slice(2)}`;
+    return `${U.n(bl.heatFuelKwh / 1000, 1)} MWh × $${bl.price.toFixed(3)}/kWh`;
+  }
   GX.views.costs = {
     name: 'Costs & Incentives', header: { mode: 'step', step: 4, label: 'Costs & Incentives' },
     render(el) {
@@ -32,8 +38,8 @@
             <div class="pair">${field('cx-esc', 'Price escalation', (st.escalation * 100).toFixed(1), 0.1, '%/yr', 'Yearly energy price growth', 'g:escalation')}${field('cx-disc', 'Discount rate', (st.discount * 100).toFixed(1), 0.1, '%', 'Used for NPV', 'g:discount')}</div>
           </div>
           <div class="card pad form-card"><div class="sec-t"><span>Installed cost ${GX.info('capex')}</span></div>
-            <div class="pair">${field('cx-drillMult', 'Drilling cost multiplier', ec.drillMult, 0.05, '×', `Base rate for ${esc(p.ground)}: $${E.GROUND[p.ground].drill}/m incl. loop &amp; grout`, 'drillMult')}${field('cx-equipRate', 'Heat pumps &amp; installation', Math.round(ec.equipRate), 10, '$/kW', `${sec.label} default: $${def.equipRate}/kW`, 'equipRate')}</div>
-            <div class="pair">${field('cx-avoidedPerKw', 'Avoided baseline equipment', Math.round(ec.avoidedPerKw), 10, '$/kW', E.PROJECT_TYPES[r.projectType].avoided ? 'Credited: ' + esc(E.PROJECT_TYPES[r.projectType].short.toLowerCase()) : 'Not credited for an early retrofit', 'avoidedPerKw')}${field('cx-maintPerKw', 'Maintenance savings', ec.maintPerKw, 1, '$/kW·yr', 'vs. conventional HVAC', 'maintPerKw')}</div>
+            <div class="pair">${field('cx-drillMult', 'Drilling cost multiplier', ec.drillMult, 0.05, '×', `Base rate for ${esc(p.ground)}: ${U.perLen(E.GROUND[p.ground].drill, U.imp() ? 1 : 0)} incl. loop &amp; grout`, 'drillMult')}${field('cx-equipRate', 'Heat pumps &amp; installation', Math.round(U.perPowV(ec.equipRate)), U.imp() ? 50 : 10, U.perPowU(), `${sec.label} default: ${U.perPow(def.equipRate)}`, 'equipRate')}</div>
+            <div class="pair">${field('cx-avoidedPerKw', 'Avoided baseline equipment', Math.round(U.perPowV(ec.avoidedPerKw)), U.imp() ? 50 : 10, U.perPowU(), E.PROJECT_TYPES[r.projectType].avoided ? 'Credited: ' + esc(E.PROJECT_TYPES[r.projectType].short.toLowerCase()) : 'Not credited for an early retrofit', 'avoidedPerKw')}${field('cx-maintPerKw', 'Maintenance savings', +U.perPowV(ec.maintPerKw).toFixed(0), 1, U.perPowU() + '·yr', 'vs. conventional HVAC', 'maintPerKw')}</div>
           </div>
           <div class="card pad form-card"><div class="sec-t"><span>Incentives</span></div>
             <div class="cx-note">${esc(sec.itcNote)}</div>
@@ -57,6 +63,7 @@
           let v = raw;
           if (UNITS[key]) v = raw / UNITS[key].k;
           if (key === 'itc') v = U.clamp(raw / 100, 0, 0.7);
+          if (key === 'equipRate' || key === 'avoidedPerKw' || key === 'maintPerKw') v = U.perPowIn(raw);   // $/ton → $/kW in imperial mode
           S.setEcon({ [key]: +v.toFixed(5) });
           inp.closest('.cx-f').classList.add('over');
           S.log(`Costs: ${key} set to ${inp.value}`, 'Config', 'Modified');
@@ -81,8 +88,8 @@
       out.innerHTML = `
         <div class="card pad"><h3 class="card-title">Investment</h3>
           <div class="cx-bar">${bar(pieces)}</div>
-          ${row('Drilling &amp; ground loop', U.money(r.drilling), '', `${r.n} × ${U.len(r.depth)} · $${r.drillPerM.toFixed(0)}/m`)}
-          ${row('Heat pumps &amp; installation', U.money(r.equipment), '', `${U.pow(peak)} × $${Math.round(s.equipRate * (s.equipMult || 1))}/kW`)}
+          ${row('Drilling &amp; ground loop', U.money(r.drilling), '', `${r.n} × ${U.len(r.depth)} · ${U.perLen(r.drillPerM, U.imp() ? 1 : 0)}`)}
+          ${row('Heat pumps &amp; installation', U.money(r.equipment), '', `${U.pow(peak, 1)} × ${U.perPow(s.equipRate * (s.equipMult || 1))}`)}
           ${row('Integration &amp; field preparation', U.money(r.integration))}
           ${row('Total installed cost (CAPEX)', U.count(r.capex, 'money', 'cx-cap'), 'tot')}
           ${off.length ? `<div class="cx-bar off">${bar(off)}<i style="flex:${Math.max(0.001, r.netCapex)};background:#e2e8f0" data-tip="Net investment: ${U.money(r.netCapex)}"></i></div>` : ''}
@@ -98,7 +105,7 @@
             <div><span>Current: ${esc(bl.short)}</span><div class="cx-track"><i style="width:${r.baselineCost / maxC * 100}%;background:#94a3b8"></i></div><b>${U.money(r.baselineCost)}</b></div>
             <div><span>Geothermal heat pump</span><div class="cx-track"><i style="width:${r.gshpCost / maxC * 100}%;background:#14b8a6"></i></div><b>${U.money(r.gshpCost)}</b></div>
           </div>
-          ${row('Heating (' + (bl.fuel === 'elec' ? 'electricity' : bl.fuel === 'oil' ? 'heating oil' : bl.fuel === 'gas' ? 'natural gas' : bl.fuel) + ')', U.money(bl.heatCost), '', `${U.n(bl.heatFuelKwh / 1000, 1)} MWh × $${bl.price.toFixed(3)}/kWh`)}
+          ${row('Heating (' + (bl.fuel === 'elec' ? 'electricity' : bl.fuel === 'oil' ? 'heating oil' : bl.fuel === 'gas' ? 'natural gas' : bl.fuel) + ')', U.money(bl.heatCost), '', fuelQty(bl))}
           ${row('Cooling (electricity)', U.money(bl.coolCost), '', `${U.n(bl.coolElecKwh / 1000, 1)} MWh × $${s.elec.toFixed(3)}/kWh`)}
           ${row('Geothermal electricity', U.money(r.gshpCost), '', `${U.n(r.gshpElec / 1000, 1)} MWh · seasonal COP ${r.SCOP.toFixed(2)}`)}
           ${row('Maintenance savings', '+' + U.money(r.maintSave))}

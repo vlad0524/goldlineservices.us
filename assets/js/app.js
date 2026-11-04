@@ -49,8 +49,8 @@
         return `<a href="#${id}" data-id="${id}" class="${id === currentId || PARENT[currentId] === id ? 'active' : ''}">${num ? `<span class="nav-n">${num}</span>` : ''}${label}${tag}</a>`;
       }).join('') + '</div>').join('') +
       `</nav><div class="side-foot">
-        <div class="units-sw" role="group" aria-label="Units"><button data-units="metric" class="${!U.imp() ? 'on' : ''}">Metric</button><button data-units="imperial" class="${U.imp() ? 'on' : ''}">Imperial</button></div>
-        <div style="margin-top:12px">GeoThermX v2.0 · Preliminary engineering estimates</div></div>`;
+        <div class="units-sw" role="group" aria-label="Units"><button data-units="imperial" class="${U.imp() ? 'on' : ''}">US units</button><button data-units="metric" class="${!U.imp() ? 'on' : ''}">Metric</button></div>
+        <div style="margin-top:12px">GeoThermX v2.1 · Preliminary engineering estimates</div></div>`;
   }
 
   function topbar(view) {
@@ -160,7 +160,7 @@
   document.addEventListener('click', e => {
     const g = e.target.closest('[data-go]');
     if (g) { e.preventDefault(); GX.go(g.dataset.go); return; }
-    const un = e.target.closest('[data-units]'); if (un) { S.setSettings({ units: un.dataset.units }); U.toast(un.dataset.units === 'imperial' ? 'Units: imperial (ft, tons, °F)' : 'Units: metric (m, kW, °C)'); return; }
+    const un = e.target.closest('[data-units]'); if (un) { S.setSettings({ units: un.dataset.units }); U.toast(un.dataset.units === 'imperial' ? 'US units: ft, ft², tons, °F, gpm' : 'Metric units: m, m², kW, °C, L/s'); return; }
     if (e.target.closest('#menu-btn')) { document.body.classList.toggle('nav-open'); return; }
     if (e.target.closest('#proj-btn')) { projectMenu(e.target.closest('#proj-btn')); return; }
     if (e.target.closest('#start-project')) { GX.newProject(); return; }

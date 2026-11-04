@@ -1,4 +1,4 @@
-# GeoThermX — Web Platform (v2.0)
+# GeoThermX — Web Platform (v2.1)
 
 Interactive engineering & analytics web app for geothermal (ground-source heat pump) projects,
 built from the GeoThermX UI design (14 screens) and the platform description / business plan.
@@ -19,6 +19,9 @@ what it costs after incentives and when it pays back against the current heating
 5. Payback — tabs: Cash flow & payback · Compare options.
 6. Report.
 After installation: Operation (Measured data · Alerts). AI assistant removed from navigation.
+
+**Units (v2.1)** — US units by default (ft, ft², tons, °F, gpm, psi, $/ft, $/ton, Btu/h·ft·°F, °F-degree-days, fuel in gal / therms).
+One switch (sidebar or Settings) converts every page, chart, tooltip, report, checklist and CSV export. Data is stored once in SI, so switching never changes results.
 
 **Engine changes**
 - Energy prices per state and sector (EIA averages, approx. 2024) — residential/commercial electricity and natural gas; propane / heating oil US averages. All editable per project.

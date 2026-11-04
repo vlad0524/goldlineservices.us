@@ -25,7 +25,7 @@
       prevEff: null,
       mitigation: { rebalance: false, returnTemp: 0, flowOpt: false },
       drill: { auto: true, n: 16, depth: 180 },
-      sim: { scenario: 'winter', ambient: -12, loadVar: 25, demand: +((p.heatDemand + p.coolDemand) / 1e6).toFixed(2), years: 5 },
+      sim: { scenario: 'winter', ambient: -12, loadVar: 25, demand: +((p.heatDemand + p.coolDemand) / 1e6).toFixed(4), years: 5 },
       alerts: null,
       reports: [],
       chat: [],
@@ -68,7 +68,7 @@
     return {
       v: 5, current: null,
       projects: {}, order: [],
-      settings: globalSettings(Object.assign({}, E.DEFAULT_SETTINGS, { units: 'metric', tips: true, hiddenTips: {} })),
+      settings: globalSettings(Object.assign({}, E.DEFAULT_SETTINGS, { units: 'imperial', unitsSet: true, tips: true, hiddenTips: {} })),
       user: { access: 'admin' },
       log: []
     };
@@ -78,6 +78,7 @@
   try { const raw = localStorage.getItem(KEY); state = raw ? JSON.parse(raw) : null; } catch (e) { state = null; }
   /* migrate: drop chats seeded with old mock wording */
   if (state && state.settings) globalSettings(state.settings);
+  if (state && state.settings && !state.settings.unitsSet) { state.settings.units = 'imperial'; state.settings.unitsSet = true; }   // US market: imperial by default
   if (state && state.projects) Object.values(state.projects).forEach(p => {
     const pr = p.project; if (pr) { if (!pr.sector) pr.sector = E.sectorOf(pr); if (!pr.baseline) pr.baseline = 'gas-ac'; if (!pr.projectType) pr.projectType = 'replace'; if (!pr.econ) pr.econ = {}; if (E.FIDELITY_OLD[pr.fidelity]) pr.fidelity = E.FIDELITY_OLD[pr.fidelity]; } if (p.chat && JSON.stringify(p.chat).includes('Southern Cluster')) p.chat = []; if (p.reports) p.reports.forEach(r => { if (r.title === 'Borehole Zone 4 Risk Assessment') r.title = 'Borefield Thermal Risk Assessment'; }); });
   if (!state || state.v !== 5) state = freshState();
@@ -126,6 +127,7 @@
       if (c.project.loadMode === 'calculated' && !('heatDemand' in patch) && !('coolDemand' in patch) && !('peakLoad' in patch)) {
         const l = E.loadCalc(c.project); c.project.heatDemand = l.heat; c.project.coolDemand = l.cool; c.project.peakLoad = l.peak;
       }
+      if (c.sim) c.sim.demand = +((c.project.heatDemand + c.project.coolDemand) / 1e6).toFixed(4);   // keep simulation demand in step with building loads
       if (patch.locationId && !('zone' in patch)) {
         const L = E.location(patch.locationId);
         c.project.zone = L.zone; if (!('ground' in patch)) c.project.ground = L.ground;

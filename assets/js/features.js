@@ -24,6 +24,27 @@
   U.powU = () => imp() ? 'tons' : 'kW';
   U.cond = k => imp() ? fx(k * 0.5779, 2) + ' Btu/h·ft·°F' : fx(k, 1) + ' W/m·K';
   U.loopRatio = r => imp() ? `${fx(r.ftPerTon, 0)} ft/ton` : `${fx(r.mPerKw, 1)} m/kW`;
+  U.flow = (ls, d) => imp() ? fx(ls * 15.850, d == null ? 1 : d) + ' gpm' : fx(ls, d == null ? 2 : d) + ' L/s';
+  U.flowV = ls => imp() ? ls * 15.850 : ls;
+  U.flowIn = v => imp() ? v / 15.850 : v;
+  U.flowU = () => imp() ? 'gpm' : 'L/s';
+  U.pres = (bar, d) => imp() ? fx(bar * 14.504, d == null ? 1 : d) + ' psi' : fx(bar, d == null ? 2 : d) + ' bar';
+  U.condV = k => imp() ? k * 0.5779 : k;
+  U.condIn = v => imp() ? v / 0.5779 : v;
+  U.condU = () => imp() ? 'Btu/h·ft·°F' : 'W/m·K';
+  U.perLen = (usdPerM, d) => imp() ? '$' + fx(usdPerM / 3.28084, d == null ? 0 : d) + '/ft' : '$' + fx(usdPerM, d == null ? 0 : d) + '/m';
+  U.perPow = (usdPerKw, d) => imp() ? '$' + fx(usdPerKw * 3.517, d == null ? 0 : d) + '/ton' : '$' + fx(usdPerKw, d == null ? 0 : d) + '/kW';
+  U.perPowV = v => imp() ? v * 3.517 : v;
+  U.perPowIn = v => imp() ? v / 3.517 : v;
+  U.perPowU = () => imp() ? '$/ton' : '$/kW';
+  U.wpm = (w, d) => imp() ? fx(w * 1.0400, d == null ? 1 : d) + ' Btu/h·ft' : fx(w, d == null ? 1 : d) + ' W/m';
+  U.ua = kwk => imp() ? fx(kwk * 1895.6, 0) + ' Btu/h·°F' : fx(kwk, 1) + ' kW/K';
+  U.dTyr = (c, d) => U.dT(c, d) + '/yr';
+  U.tempU = () => imp() ? '°F' : '°C';
+  U.tempV = c => imp() ? c * 9 / 5 + 32 : c;
+  U.tempIn = v => imp() ? (v - 32) * 5 / 9 : v;
+  U.dd = v => imp() ? U.n(Math.round(v * 1.8)) : U.n(v);   // degree-days: °F-days (base 65°F) or °C-days (base 18°C)
+  U.ddBase = () => imp() ? 'base 65°F' : 'base 18°C';
   U.loopRange = () => imp() ? '130–250 ft/ton' : '11–22 m/kW';
   U.loopOk = r => r.ftPerTon >= 130 && r.ftPerTon <= 250;
 
@@ -92,13 +113,13 @@
     const lib = {
       loop: ['Ground loop sizing', `<p>Required loop length is the larger of the heating and cooling requirement, using a specific heat-exchange rate that depends on ground conductivity and borehole spacing.</p>
         <div class="formula">L<sub>cool</sub> = Q<sub>cool</sub> × (1 + 1/COP<sub>c</sub>) ÷ q′<sub>c</sub> &nbsp;·&nbsp; L<sub>heat</sub> = Q<sub>heat</sub> × (1 − 1/COP<sub>h</sub>) ÷ q′<sub>h</sub><br>q′<sub>h</sub> = 20 × k × f<sub>spacing</sub> (W/m), q′<sub>c</sub> = 1.15 × q′<sub>h</sub>, f<sub>spacing</sub> = 1 − 0.35·e<sup>−(s−3)/2.5</sup></div>` +
-        rows([['Ground conductivity k', U.cond(r.g.k)], ['Spacing factor', r.fsp.toFixed(3)], ['q′ heating / cooling', `${r.qh.toFixed(1)} / ${r.qc.toFixed(1)} W/m`], ['Peak heating / cooling', `${U.pow(d.heatPeak)} / ${U.pow(d.coolPeak)}`], ['Required length', U.len(r.Lreq)], ['Installed length', `${U.len(r.L)} (${(r.ratio * 100).toFixed(0)}%)`], ['Loop ratio', `${U.loopRatio(r)} · typical ${U.loopRange()} ${U.loopOk(r) ? '✓' : '⚠'}`]])],
+        rows([['Ground conductivity k', U.cond(r.g.k)], ['Spacing factor', r.fsp.toFixed(3)], ['q′ heating / cooling', `${U.wpm(r.qh)} / ${U.wpm(r.qc)}`], ['Peak heating / cooling', `${U.pow(d.heatPeak)} / ${U.pow(d.coolPeak)}`], ['Required length', U.len(r.Lreq)], ['Installed length', `${U.len(r.L)} (${(r.ratio * 100).toFixed(0)}%)`], ['Loop ratio', `${U.loopRatio(r)} · typical ${U.loopRange()} ${U.loopOk(r) ? '✓' : '⚠'}`]])],
       cop: ['Heat pump efficiency (COP)', `<p>COP is driven by the entering water temperature (EWT) from the ground loop. Smaller loops push EWT further from ground temperature; long-term heat accumulation (drift) shifts it over the system life.</p>
         <div class="formula">EWT<sub>h</sub> = T<sub>g</sub> − 7 ÷ r<sub>h</sub><sup>0.8</sup> + drift · EWT<sub>c</sub> = T<sub>g</sub> + 9 ÷ r<sub>c</sub><sup>0.8</sup> + drift<br>COP<sub>h</sub> = (2.0 + 0.1·(EWT<sub>h</sub>+10)) × fluid factor · COP<sub>c</sub> = 9.2 − 0.17·EWT<sub>c</sub><br>SCOP = (H + C) ÷ (H/COP<sub>h</sub> + C/COP<sub>c</sub>)</div>` +
         rows([['Undisturbed ground T<sub>g</sub>', U.temp(r.c.tg)], ['EWT heating / cooling', `${U.temp(r.EWTh)} / ${U.temp(r.EWTc)}`], ['Ground drift', `${U.dT(r.drift, 2)} per year`], ['COP heating / cooling', `${r.COPh.toFixed(2)} / ${r.COPc.toFixed(2)}`], ['Seasonal COP (SCOP)', `<b>${r.SCOP.toFixed(2)}</b>`]])],
-      capex: ['Capital cost (CAPEX)', `<p>Drilling is priced per meter by ground type with a depth premium above 150 m; heat pumps per kW of peak capacity; integration covers headers, controls and field preparation.</p>` +
-        rows([['Drilling rate', `$${r.drillPerM.toFixed(2)}/m × ${U.len(r.L)} + $380 per borehole`], ['Drilling & loop', U.money(r.drilling)], ['Heat pumps', `$${s.equipRate}/kW × ${d.coolPeak > d.heatPeak ? d.coolPeak : d.heatPeak} kW = ${U.money(r.equipment)}`], ['Integration & field prep', U.money(r.integration)], ['Total CAPEX', `<b>${U.money(r.capex)}</b> (range ${U.moneyK(r.capexLow)}–${U.moneyK(r.capexHigh)})`]])],
-      savings: ['Annual savings vs. current system', `<p>Baseline: <b>${U.esc(r.baseline.label)}</b> — heating efficiency ${r.baseline.eff < 1.5 ? (r.baseline.eff * 100).toFixed(0) + '%' : 'COP ' + r.baseline.eff.toFixed(2)}, cooling COP ${r.baseline.coolCop}. Geothermal: heat pump electricity, circulation pumps and any backup. Maintenance difference ≈ $${s.maintPerKw}/kW of peak per year.</p>` +
+      capex: ['Capital cost (CAPEX)', `<p>Drilling is priced per meter by ground type with a depth premium above ${U.len(150)}; heat pumps per ${U.imp() ? 'ton' : 'kW'} of peak capacity; integration covers headers, controls and field preparation.</p>` +
+        rows([['Drilling rate', `${U.perLen(r.drillPerM, 2)} × ${U.len(r.L)} + $380 per borehole`], ['Drilling & loop', U.money(r.drilling)], ['Heat pumps', `${U.perPow(s.equipRate)} × ${U.pow(Math.max(d.coolPeak, d.heatPeak), 1)} = ${U.money(r.equipment)}`], ['Integration & field prep', U.money(r.integration)], ['Total CAPEX', `<b>${U.money(r.capex)}</b> (range ${U.moneyK(r.capexLow)}–${U.moneyK(r.capexHigh)})`]])],
+      savings: ['Annual savings vs. current system', `<p>Baseline: <b>${U.esc(r.baseline.label)}</b> — heating efficiency ${r.baseline.eff < 1.5 ? (r.baseline.eff * 100).toFixed(0) + '%' : 'COP ' + r.baseline.eff.toFixed(2)}, cooling COP ${r.baseline.coolCop}. Geothermal: heat pump electricity, circulation pumps and any backup. Maintenance difference ≈ ${U.perPow(s.maintPerKw)} of peak per year.</p>` +
         rows([['Electricity price', `$${s.elec.toFixed(3)}/kWh`], [r.baseline.fuel === 'elec' ? 'Heating energy' : 'Heating fuel price', r.baseline.fuel === 'elec' ? 'electricity' : `$${r.baseline.price.toFixed(3)}/kWh (${r.baseline.fuel})`], ['Baseline heating / cooling cost', `${U.money(r.baseline.heatCost)} / ${U.money(r.baseline.coolCost)}`], ['Baseline energy cost', U.money(r.baselineCost)], ['Geothermal energy cost', `${U.money(r.gshpCost)} (${U.n(r.gshpElec, 0)} kWh)`], ['Circulation pumps', `${r.pumpKw.toFixed(1)} kW`], ['Maintenance savings', U.money(r.maintSave)], ['Annual savings', `<b>${U.money(r.annualSavings)}</b>`]])],
       payback: ['Payback, ROI, NPV, IRR', `<p>Net investment = CAPEX − incentives${r.avoided > 0 ? ' − avoided cost of the baseline equipment that would have been bought anyway' : ''}. Savings escalate with energy prices (${(s.escalation * 100).toFixed(1)}%/yr) and decline with system degradation (${r.degr.toFixed(2)}%/yr). The range reflects −7/+8% CAPEX and +10/−12% savings.</p>` +
         rows([['CAPEX', U.money(r.capex)], ['Incentives', '−' + U.money(r.incentives)], ['Avoided baseline equipment', '−' + U.money(r.avoided)], ['Net investment', U.money(r.netCapex)], ['Payback', r.paybackYears >= 25 ? '<b>over 25 yrs</b>' : `<b>${r.paybackYears.toFixed(1)} yrs</b> (range ${r.paybackLow.toFixed(1)}–${Math.min(25, r.paybackHigh).toFixed(1)})`], ['10-year ROI', r.roi10.toFixed(0) + '%'], ['20-year NPV @ ' + (s.discount * 100).toFixed(0) + '%', U.money(r.npv20)], ['20-year IRR', r.irr != null ? (r.irr * 100).toFixed(1) + '%' : 'n/a']])],
@@ -109,8 +130,8 @@
       suit: ['Site suitability score', `<p>Weighted score of ground and site factors.</p>` +
         rows([['Thermal conductivity (30%)', (r.kScore * 100).toFixed(0)], ['Drillability (20%)', (r.g.drillability * 100).toFixed(0)], ['Geological stability (15%)', (r.g.stability * 100).toFixed(0)], ['Climate fit (15%)', (r.c.fit * 100).toFixed(0)], ['Depth allowance (10%)', (Math.min(1, p.depthLimit / 300) * 100).toFixed(0)], ['Data fidelity (10%)', ((E.FIDELITY[p.fidelity] || 1) * 100).toFixed(0)], ['Score', `<b>${r.suit} / 100</b>`]])],
       loads: ['Building thermal loads', `<p>${p.loadMode === 'calculated' ? 'Calculated with the degree-day method for annual energy and design-day conditions for peaks.' : 'Using known (metered / utility) demand entered by the user. The calculated estimate is shown for comparison.'}</p>
-        <div class="formula">UA = U<sub>vintage</sub> × ventilation factor × floor area · Q<sub>heat,peak</sub> = UA × (20°C − T<sub>design,heat</sub>) × 0.9<br>Q<sub>cool,peak</sub> = A × (0.9·gains + U·(T<sub>design,cool</sub> − 24) + 0.5·solar)<br>E<sub>heat</sub> = UA × HDD × 24 × occupancy − 0.1 × internal gains · E<sub>cool</sub> = 0.75 × gains + UA × CDD × 24 × 0.6 + solar</div>` +
-        rows([['Climate', `${r.c.label} · HDD ${r.c.hdd} · CDD ${r.c.cdd} · design ${U.temp(r.c.tdh, 0)} / ${U.temp(r.c.tdc, 0)}`], ['UA (envelope + ventilation)', `${L.UA.toFixed(1)} kW/K`], ['Internal gains', `${L.gainsKw.toFixed(0)} kW · ${U.n(L.hours)} h/yr`], ['Calculated heating / cooling', `${U.n(L.heat / 1000)} / ${U.n(L.cool / 1000)} MWh/yr`], ['Calculated peaks', `${U.pow(L.heatPeak)} heating / ${U.pow(L.coolPeak)} cooling`], ['Used in model', `${U.n(p.heatDemand / 1000)} / ${U.n(p.coolDemand / 1000)} MWh/yr (${p.loadMode === 'calculated' ? 'calculated' : 'known'})`]])],
+        <div class="formula">UA = U<sub>vintage</sub> × ventilation factor × floor area · Q<sub>heat,peak</sub> = UA × (${U.temp(20, 0)} − T<sub>design,heat</sub>) × 0.9<br>Q<sub>cool,peak</sub> = A × (0.9·gains + U·(T<sub>design,cool</sub> − 24) + 0.5·solar)<br>E<sub>heat</sub> = UA × HDD × 24 × occupancy − 0.1 × internal gains · E<sub>cool</sub> = 0.75 × gains + UA × CDD × 24 × 0.6 + solar</div>` +
+        rows([['Climate', `${r.c.label} · HDD ${U.dd(r.c.hdd)} · CDD ${U.dd(r.c.cdd)} (${U.ddBase()}) · design ${U.temp(r.c.tdh, 0)} / ${U.temp(r.c.tdc, 0)}`], ['UA (envelope + ventilation)', U.ua(L.UA)], ['Internal gains', `${U.pow(L.gainsKw, 1)} · ${U.n(L.hours)} h/yr`], ['Calculated heating / cooling', `${U.n(L.heat / 1000)} / ${U.n(L.cool / 1000)} MWh/yr`], ['Calculated peaks', `${U.pow(L.heatPeak)} heating / ${U.pow(L.coolPeak)} cooling`], ['Used in model', `${U.n(p.heatDemand / 1000)} / ${U.n(p.coolDemand / 1000)} MWh/yr (${p.loadMode === 'calculated' ? 'calculated' : 'known'})`]])],
       risk: ['Aggregate risk score', `<p>Weighted combination of model-derived risk factors (0–1 each), scaled to 0–100.</p>` +
         rows(Object.entries(r.risk.parts).map(([k, v]) => [k.replace(/([A-Z])/g, ' $1').replace(/^\w/, m => m.toUpperCase()), (v * 100).toFixed(0) + '%']).concat([['Score', `<b>${r.risk.score} (${r.risk.label})</b>`]]))]
     };
@@ -121,7 +142,7 @@
   /* ---------- Compliance card ---------- */
   GX.complianceHtml = (compact) => {
     const r = S.result(), c = S.cur();
-    const items = E.compliance(r, c.project, c.design);
+    const items = E.compliance(r, c.project, c.design, U);
     const ic = { pass: ['✓', 'green'], warn: ['!', 'amber'], fail: ['×', 'red'], action: ['○', 'gray'] };
     const done = c.checks || {};
     const list = compact ? items.filter(i => i.status !== 'pass').slice(0, 5) : items;

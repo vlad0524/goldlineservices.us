@@ -144,15 +144,17 @@
   }
 
   /* ---------- Safety & compliance checks (preliminary, verify locally) ---------- */
-  function compliance(r, p, d) {
+  function compliance(r, p, d, u) {
+    const fx = (v, dd) => Number(v).toLocaleString('en-US', { maximumFractionDigits: dd || 0 });
+    u = u || { len: (m, dd) => fx(m, dd) + ' m', area: m2 => fx(m2) + ' m²', temp: (c, dd) => fx(c, dd == null ? 1 : dd) + '°C', dT: (c, dd) => fx(c, dd == null ? 1 : dd) + '°C' };
     const siteArea = +p.siteArea || 0;
     const field = r.footprint * 1.15;
     const items = [];
     const add = (cat, title, status, note, ref) => items.push({ cat, title, status, note, ref });
-    add('Design', 'Borehole depth within drilling constraint', d.depth <= p.depthLimit ? 'pass' : 'fail', `${d.depth} m planned vs ${p.depthLimit} m limit.`, 'Project constraint');
-    add('Design', 'Borehole spacing for thermal interference', d.spacing >= 6 ? 'pass' : d.spacing >= 4.5 ? 'warn' : 'fail', `${d.spacing} m spacing. Common practice is about 6 m (20 ft) or more for large fields.`, 'IGSHPA design guidance');
-    add('Design', 'Borefield fits available site area', !siteArea ? 'warn' : field <= siteArea ? 'pass' : 'fail', siteArea ? `Field needs ≈${Math.round(field).toLocaleString('en-US')} m² incl. setbacks; site has ${Math.round(siteArea).toLocaleString('en-US')} m².` : 'Enter available site area in Project Setup.', 'Site survey');
-    add('Design', 'Freeze protection margin', r.EWTh - 3 > r.fl.freeze ? 'pass' : 'fail', `Min entering water ${r.EWTh.toFixed(1)}°C; fluid freeze point ${r.fl.freeze}°C (needs ≥3°C margin).`, 'ASHRAE / manufacturer data');
+    add('Design', 'Borehole depth within drilling constraint', d.depth <= p.depthLimit ? 'pass' : 'fail', `${u.len(d.depth)} planned vs ${u.len(p.depthLimit)} limit.`, 'Project constraint');
+    add('Design', 'Borehole spacing for thermal interference', d.spacing >= 6 ? 'pass' : d.spacing >= 4.5 ? 'warn' : 'fail', `${u.len(d.spacing, 1)} spacing. Common practice is about ${u.len(6)} or more for large fields.`, 'IGSHPA design guidance');
+    add('Design', 'Borefield fits available site area', !siteArea ? 'warn' : field <= siteArea ? 'pass' : 'fail', siteArea ? `Field needs ≈${u.area(field)} incl. setbacks; site has ${u.area(siteArea)}.` : 'Enter available site area on the Building & Loads page.', 'Site survey');
+    add('Design', 'Freeze protection margin', r.EWTh - 3 > r.fl.freeze ? 'pass' : 'fail', `Min entering water ${u.temp(r.EWTh)}; fluid freeze point ${u.temp(r.fl.freeze, 0)} (needs ≥${u.dT(3, 0)} margin).`, 'ASHRAE / manufacturer data');
     add('Design', 'Loop length vs. required (redundancy)', r.ratio >= 1 ? 'pass' : r.ratio >= 0.92 ? 'warn' : 'fail', `Installed ${(r.ratio * 100).toFixed(0)}% of required loop length.`, 'GeoThermX sizing');
     add('Permits', 'State well / borehole drilling permit', 'action', 'Most states require a licensed driller and a permit or registration for geothermal boreholes.', 'State water / geological agency');
     if (d.loop === 'open') add('Permits', 'Groundwater withdrawal & discharge permit', 'action', 'Open-loop systems need water-rights and discharge approval plus water-quality testing.', 'State environmental agency');

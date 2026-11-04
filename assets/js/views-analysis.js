@@ -11,6 +11,8 @@
     state: { show: { eff: true, load: false, thermal: true }, cursor: null, animate: true },
     render(el) {
       const s = S.cur().sim;
+      const base = (S.cur().project.heatDemand + S.cur().project.coolDemand) / 1e6;   // GWh/yr
+      const demF = v => +v >= 1 ? (+v).toFixed(2) + ' GWh/yr' : U.n(v * 1000, +v < 0.1 ? 1 : 0) + ' MWh/yr';
       el.innerHTML = `<div class="sim-grid">
         <div class="card sim-ctl">
           <h3 class="card-title">Simulation Controls</h3>
@@ -19,7 +21,7 @@
           <div class="sim-lbl" style="margin-top:26px">Input Variables</div>
           ${slider('sim-amb', 'Ambient Temp Shift', -20, 15, 1, s.ambient, v => (v > 0 ? '+' : '') + U.dT(v, 0))}
           ${slider('sim-lv', 'Load Variation', -30, 50, 5, s.loadVar, v => (v > 0 ? '+' : '') + v + '%')}
-          ${slider('sim-dem', 'Energy Demand', 0.2, 10, 0.05, s.demand, v => (+v).toFixed(2) + ' GWh')}
+          ${slider('sim-dem', 'Energy Demand', +(base * 0.3).toPrecision(2), +(base * 3).toPrecision(2), +(base / 50).toPrecision(1), U.clamp(s.demand, base * 0.3, base * 3), demF)}
           <div class="sim-lbl" style="margin-top:26px">Simulation Range</div>
           <div class="range-seg">${[1, 5, 10].map(y => `<button data-yrs="${y}" class="${s.years === y ? 'on' : ''}">${y}Y</button>`).join('')}</div>
           <button class="btn btn-accent btn-block sim-run" id="sim-run">Run Simulation</button>
@@ -35,7 +37,7 @@
         <div class="card sim-met" id="sim-met"></div>
       </div>`;
       function slider(id, label, min, max, step, val, f) { return `<div class="sl"><div class="between"><label for="${id}">${label}</label><span class="muted num" id="${id}-v">${f(val)}</span></div><input type="range" class="range" id="${id}" min="${min}" max="${max}" step="${step}" value="${val}" data-edit></div>`; }
-      const fm = { 'sim-amb': ['ambient', v => (v > 0 ? '+' : '') + U.dT(+v, 0)], 'sim-lv': ['loadVar', v => (v > 0 ? '+' : '') + v + '%'], 'sim-dem': ['demand', v => (+v).toFixed(2) + ' GWh'] };
+      const fm = { 'sim-amb': ['ambient', v => (v > 0 ? '+' : '') + U.dT(+v, 0)], 'sim-lv': ['loadVar', v => (v > 0 ? '+' : '') + v + '%'], 'sim-dem': ['demand', demF] };
       Object.keys(fm).forEach(id => {
         const inp = U.$('#' + id, el);
         const paintFill = () => { const p = (inp.value - inp.min) / (inp.max - inp.min) * 100; inp.style.background = `linear-gradient(90deg, var(--line) ${p}%, var(--line) ${p}%)`; };
@@ -85,10 +87,10 @@
         ${this.state.show.thermal ? path(yT, '', '#64748b', '2 4', 1.3) : ''}
         ${this.state.show.eff ? path(yE, '', '#14b8a6', null, 2.4) : ''}
         <line id="sim-cur" x1="0" x2="0" y1="0" y2="${H}" stroke="#0f172a" stroke-dasharray="3 3" opacity="0"/></svg>
-        <div class="sim-stats"><div class="ss"><b class="green">${U.count(sim.maxCop, 'n2', 'sm-pk')}</b><span>Peak COP</span></div><div class="ss"><b class="red">${U.count(sim.minCop, 'n2', 'sm-mn')}</b><span>Min. Efficiency</span></div><div class="ss"><b>${U.count(sim.avgLoad, 'n0', 'sm-al')} kW</b><span>Avg. Load</span></div></div>
+        <div class="sim-stats"><div class="ss"><b class="green">${U.count(sim.maxCop, 'n2', 'sm-pk')}</b><span>Peak COP</span></div><div class="ss"><b class="red">${U.count(sim.minCop, 'n2', 'sm-mn')}</b><span>Min. Efficiency</span></div><div class="ss"><b>${U.count(U.powV(sim.avgLoad), U.imp() ? 'n1' : 'n0', 'sm-al')} ${U.powU()}</b><span>Avg. Load</span></div></div>
         <div class="sim-legend">${this.state.show.eff ? '<span><i style="background:#14b8a6"></i>COP</span>' : ''}${this.state.show.load ? '<span><i class="dash" style="border-color:#334155"></i>Load</span>' : ''}${this.state.show.thermal ? '<span><i class="dash" style="border-color:#64748b"></i>Ground temp</span>' : ''}<span><i style="background:#fdecec"></i>Peak stress</span></div>`;
       U.bindLineHover(U.$('#sim-svg', el), xs, i => `Month ${i + 1} · ${E.MONTHS[i % 12]} Y${Math.floor(i / 12) + 1}`, [
-        { name: 'COP', values: sim.cop, fmt: v => v.toFixed(2) }, { name: 'Load', values: sim.load, fmt: v => U.n(v, 0) + ' kW' }, { name: 'Ground', values: sim.ground, fmt: v => U.temp(v) }], { ys: yE });
+        { name: 'COP', values: sim.cop, fmt: v => v.toFixed(2) }, { name: 'Load', values: sim.load, fmt: v => U.pow(v, 1) }, { name: 'Ground', values: sim.ground, fmt: v => U.temp(v) }], { ys: yE });
       // timeline gradient from stress
       const mn = sim.minCop, mx = sim.maxCop; const stops = [];
       const sev = U.clamp(0.55 + sim.overloadProb / 120 + sim.degPerYr / 6 + (sim.imbalanceLabel === 'High' ? 0.2 : sim.imbalanceLabel === 'Moderate' ? 0.1 : 0), 0.4, 1.15);
@@ -119,7 +121,7 @@
       U.$('#tl-mark', el).style.left = x * 100 + '%';
       U.$('#tl-lbl', el).textContent = 'Month ' + (i + 1);
       const cur = U.$('#sim-cur', el); if (cur) { cur.setAttribute('x1', x * 700); cur.setAttribute('x2', x * 700); cur.setAttribute('opacity', '.5'); }
-      U.$('#tl-mark', el).title = `COP ${sim.cop[i].toFixed(2)} · Load ${U.n(sim.load[i], 0)} kW · Ground ${sim.ground[i].toFixed(1)}°C`;
+      U.$('#tl-mark', el).title = `COP ${sim.cop[i].toFixed(2)} · Load ${U.pow(sim.load[i], 1)} · Ground ${U.temp(sim.ground[i])}`;
     },
     foot: () => `<span class="spacer"></span><button class="btn btn-ghost" data-go="system-design">Back to Design</button><button class="btn btn-ghost" id="sim-final">Save simulation result</button><button class="btn btn-primary" data-go="costs">Continue to Costs &amp; Incentives →</button>`
   };
