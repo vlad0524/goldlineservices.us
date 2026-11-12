@@ -8,6 +8,81 @@
     const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
     const $$ = s => [...document.querySelectorAll(s)];
 
+    /* ---------- custom dropdowns: replaces native <select> and <input list> popups (they open in odd places and cannot be styled) ---------- */
+    (function () {
+        const CH = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>', CK = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12 5 5 9-10"/></svg>';
+        let pop = null, owner = null, rafp = 0;
+        const esc = s => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;');
+        const close = () => { if (pop) { pop.remove(); pop = null; } if (owner) { owner.setAttribute('aria-expanded', 'false'); owner.classList.remove('open'); } owner = null; };
+        const place = () => {
+            if (!pop || !owner) return;
+            const r = owner.getBoundingClientRect(), vh = innerHeight, bar = document.querySelector('.callbar'), cb = bar && bar.offsetHeight ? bar.offsetHeight + 8 : 0, below = vh - r.bottom - 12 - cb, above = r.top - 70;
+            const h = Math.min(pop.scrollHeight, 280), up = below < Math.min(h, 220) && above > below;
+            pop.style.width = r.width + 'px'; pop.style.left = Math.max(8, Math.min(r.left, innerWidth - r.width - 8)) + 'px';
+            pop.style.maxHeight = Math.max(120, Math.min(280, up ? above : below)) + 'px';
+            pop.style.top = up ? 'auto' : (r.bottom + 6) + 'px'; pop.style.bottom = up ? (vh - r.top + 6) + 'px' : 'auto';
+            pop.classList.toggle('up', up);
+        };
+        const open = (anchor, items, cur, pick, empty) => {
+            close(); owner = anchor; anchor.setAttribute('aria-expanded', 'true'); anchor.classList.add('open');
+            pop = document.createElement('div'); pop.className = 'dd-pop'; pop.setAttribute('role', 'listbox');
+            pop.innerHTML = items.length ? items.map((o, i) => '<button type="button" role="option" class="dd-o' + (o.v === cur ? ' sel' : '') + (o.dis ? ' dis' : '') + '" data-i="' + i + '"><span>' + esc(o.t) + '</span>' + CK + '</button>').join('') : '<div class="dd-empty">' + (empty || 'No matches') + '</div>';
+            document.body.appendChild(pop); place();
+            const s = pop.querySelector('.sel'); if (s) s.scrollIntoView({ block: 'nearest' });
+            pop.addEventListener('pointerdown', e => e.preventDefault());
+            pop.addEventListener('click', e => { const b = e.target.closest('.dd-o'); if (!b || b.classList.contains('dis')) return; const o = items[+b.dataset.i]; close(); pick(o); });
+            return pop;
+        };
+        const move = d => { if (!pop) return; const os = [...pop.querySelectorAll('.dd-o:not(.dis)')]; if (!os.length) return; let i = os.findIndex(o => o.classList.contains('hl')); os.forEach(o => o.classList.remove('hl')); i = (i + d + os.length) % os.length; os[i].classList.add('hl'); os[i].scrollIntoView({ block: 'nearest' }); };
+        const pickHl = () => { const h = pop && pop.querySelector('.dd-o.hl'); if (h) { h.click(); return true; } return false; };
+        addEventListener('resize', () => { if (pop) place(); }, { passive: true });
+        addEventListener('scroll', () => { if (!pop || rafp) return; rafp = requestAnimationFrame(() => { rafp = 0; place(); }); }, { passive: true, capture: true });
+        document.addEventListener('pointerdown', e => { if (pop && !pop.contains(e.target) && !(owner && owner.contains(e.target))) close(); }, true);
+        document.addEventListener('keydown', e => { if (e.key === 'Escape') close(); });
+
+        /* <select class="ip"> */
+        const enhanceSelect = sel => {
+            if (sel.dataset.dd || sel.multiple) return; sel.dataset.dd = '1';
+            const btn = document.createElement('button'); btn.type = 'button'; btn.className = sel.className + ' dd-btn'; btn.setAttribute('aria-haspopup', 'listbox'); btn.setAttribute('aria-expanded', 'false');
+            sel.style.display = 'none'; sel.insertAdjacentElement('afterend', btn); sel.focus = () => btn.focus();
+            const lab = () => { const o = sel.options[sel.selectedIndex]; const t = o ? o.text : ''; btn.innerHTML = '<span class="' + (sel.value ? '' : 'dd-ph') + '">' + esc(t || '') + '</span>' + CH; };
+            const sync = () => { btn.className = sel.className + ' dd-btn' + (btn.classList.contains('open') ? ' open' : ''); lab(); btn.disabled = sel.disabled; };
+            const items = () => [...sel.options].map(o => ({ v: o.value, t: o.text, dis: o.disabled || (o.value === '' && o.index === 0 && sel.required) }));
+            btn.addEventListener('click', () => { if (owner === btn) return close(); open(btn, items(), sel.value, o => { sel.value = o.v; sel.dispatchEvent(new Event('input', { bubbles: true })); sel.dispatchEvent(new Event('change', { bubbles: true })); sync(); btn.focus(); }); });
+            btn.addEventListener('keydown', e => {
+                if (e.key === 'ArrowDown' || e.key === 'ArrowUp') { e.preventDefault(); if (!pop) btn.click(); move(e.key === 'ArrowDown' ? 1 : -1); }
+                else if ((e.key === 'Enter' || e.key === ' ') && pop) { e.preventDefault(); if (!pickHl()) close(); }
+            });
+            sel.addEventListener('change', sync);
+            new MutationObserver(sync).observe(sel, { attributes: true, attributeFilter: ['class', 'disabled'], childList: true, subtree: true });
+            sync();
+            const lb = sel.id && document.querySelector('label[for="' + sel.id + '"]'); if (lb) lb.addEventListener('click', e => { e.preventDefault(); btn.focus(); });
+        };
+
+        /* <input list="..."> (brand suggestions) */
+        const enhanceCombo = inp => {
+            if (inp.dataset.dd) return; const dl = document.getElementById(inp.getAttribute('list')); if (!dl) return; inp.dataset.dd = '1';
+            inp.removeAttribute('list'); inp.setAttribute('autocomplete', 'off'); inp.setAttribute('role', 'combobox'); inp.setAttribute('aria-expanded', 'false');
+            const all = () => [...dl.options].map(o => ({ v: o.value, t: o.value }));
+            const show = () => {
+                const q = inp.value.trim().toLowerCase(); let l = all();
+                if (q) l = l.filter(o => o.t.toLowerCase().includes(q)).sort((a, b) => (b.t.toLowerCase().startsWith(q)) - (a.t.toLowerCase().startsWith(q)));
+                if (!l.length) return close();
+                open(inp, l.slice(0, 40), inp.value, o => { inp.value = o.v; inp.dispatchEvent(new Event('input', { bubbles: true })); inp.dispatchEvent(new Event('change', { bubbles: true })); });
+            };
+            inp.addEventListener('focus', show); inp.addEventListener('input', show);
+            inp.addEventListener('click', () => { if (owner !== inp) show(); });
+            inp.addEventListener('blur', () => setTimeout(() => { if (owner === inp) close(); }, 120));
+            inp.addEventListener('keydown', e => {
+                if (e.key === 'ArrowDown' || e.key === 'ArrowUp') { e.preventDefault(); if (!pop) show(); move(e.key === 'ArrowDown' ? 1 : -1); }
+                else if (e.key === 'Enter' && pop && pop.querySelector('.dd-o.hl')) { e.preventDefault(); pickHl(); }
+            });
+        };
+        const scan = root => { (root.querySelectorAll ? root : document).querySelectorAll('select.ip').forEach(enhanceSelect); (root.querySelectorAll ? root : document).querySelectorAll('input.ip[list]').forEach(enhanceCombo); };
+        scan(document);
+        new MutationObserver(ms => { let go = false; ms.forEach(m => m.addedNodes.forEach(n => { if (n.nodeType === 1) go = true; })); if (go) scan(document); }).observe(document.body, { childList: true, subtree: true });
+    })();
+
     /* scroll progress bar + header shadow (one rAF per frame, no layout reads while scrolling) */
     const bar = document.createElement('div'); bar.id = 'fxbar'; document.body.appendChild(bar);
     const hdr = document.getElementById('header');

@@ -175,3 +175,24 @@ textarea.ip { min-height: 110px; resize: vertical; line-height: 1.55 }
 .grp { grid-column: 1/-1; font-size: 12.5px; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; color: #9a9da3; margin: 6px 0 -4px }
 .grp:first-child { margin-top: 0 }
 .chk.emg { margin: -6px 0 18px; background: #fffaf4; border-color: rgba(234, 145, 66, .4) }
+
+
+/* ===== booking page: site design language (v7) ===== */
+html:has(body.bkpage) { background: #0d0e10 }
+body.bkpage { background: #0d0e10 !important; background-image: none !important }
+.bk-bgfx { position: fixed !important; inset: 0; z-index: 0; pointer-events: none; min-height: 0 !important }
+body.bkpage .bk { padding: clamp(28px, 4vw, 56px) 0 clamp(48px, 6vw, 88px); position: relative; z-index: 3 }
+body.bkpage .bk-card { background: #f7f7f8 !important; border: 1px solid var(--line) !important; border-radius: 28px; box-shadow: 0 30px 70px rgba(22,24,27,.14) !important }
+body.bkpage .bk-top { background: radial-gradient(70% 140% at 100% 0%, rgba(234,145,66,.22), transparent 62%), linear-gradient(160deg, #101114, #0b0c0e) }
+body.bkpage .cat, body.bkpage .item, body.bkpage .day, body.bkpage .drow, body.bkpage .rc, body.bkpage .chk, body.bkpage .drop { background: #fff !important; border: 1px solid var(--line) !important; box-shadow: none !important; border-radius: var(--r-m) }
+body.bkpage .cat:hover, body.bkpage .item:hover, body.bkpage .day:not(:disabled):hover { border-color: rgba(234,145,66,.7) !important; transform: translateY(-4px); box-shadow: 0 16px 34px rgba(22,24,27,.09) !important }
+body.bkpage .cat.sel, body.bkpage .item.sel, body.bkpage .day.sel, body.bkpage .chk.emg { border-color: #ea9142 !important; background: #fffaf4 !important; box-shadow: 0 0 0 3px rgba(234,145,66,.16) !important }
+body.bkpage .cat .ic, body.bkpage .item .ic, body.bkpage .drop .ic { background: #17181b !important; border: 0 !important; color: #efc15b !important; box-shadow: inset 0 0 0 1px rgba(239,193,91,.22) }
+body.bkpage .cat.sel .ic { background: var(--grad) !important; color: #14181c !important }
+body.bkpage .ip, body.bkpage .searchbar { background: #fff !important; border: 1.5px solid #dcdde1 !important; border-radius: 12px }
+body.bkpage .ip:focus { border-color: #ea9142 !important; box-shadow: 0 0 0 3px rgba(234,145,66,.18) !important }
+body.bkpage .ip[readonly] { background: #f1f1f3 !important }
+body.bkpage h2 { font-family: var(--head); letter-spacing: -.03em }
+@media (max-width: 640px) {
+    body.bkpage .bk-card { border-radius: 22px }
+}
