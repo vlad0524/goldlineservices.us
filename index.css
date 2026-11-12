@@ -1,9 +1,9 @@
 :root {
     --grad: linear-gradient(87.62deg, #ea9142, #efc15b);
-    --bgdark: linear-gradient(90deg, #0a0f13, #12181c);
+    --bgdark: linear-gradient(90deg, #0b0c0e, #141518);
     --teal: #ea9142;
-    --ink: #0a1a22;
-    --muted: #5d6f78;
+    --ink: #16181b;
+    --muted: #666a71;
     --max: 1280px;
     --pad: clamp(16px, 4vw, 25px)
 }
@@ -21,7 +21,7 @@ html {
 
 body {
     font-family: 'Inter', system-ui, sans-serif;
-    background: #f5f7f7;
+    background: #f4f4f5;
     color: var(--ink);
     -webkit-font-smoothing: antialiased
 }
@@ -71,7 +71,7 @@ svg {
 
 /* IMAGE PLACEHOLDER: add images via the "img" fields in the script or replace the .ph blocks */
 .ph {
-    background: repeating-linear-gradient(45deg, #1b252b, #1b252b 14px, #202c33 14px, #202c33 28px)
+    background: repeating-linear-gradient(45deg, #1e2024, #1e2024 14px, #222428 14px, #222428 28px)
 }
 
 .ph::after {
@@ -80,7 +80,7 @@ svg {
     inset: 0;
     display: grid;
     place-items: center;
-    color: #6f7f88;
+    color: #8b8e94;
     font-size: 12px;
     letter-spacing: .04em;
     text-transform: uppercase;
@@ -132,7 +132,7 @@ svg {
     width: 187px;
     height: 73px;
     position: relative;
-    /*border: 1px dashed #4a5a63; */
+    /*border: 1px dashed #52565c; */
     border-radius: 8px;
     flex: none;
     overflow: hidden
@@ -151,7 +151,7 @@ svg {
     display: grid;
     place-items: center;
     font-size: 12px;
-    color: #7d8d96
+    color: #8b8e94
 }
 
 .logo:has(img)::after {
@@ -193,8 +193,8 @@ svg {
     left: 0;
     right: 0;
     top: 100%;
-    background: #0f161a;
-    border-top: 1px solid #1f2a30;
+    background: #111214;
+    border-top: 1px solid #26282c;
     box-shadow: 0 20px 40px rgba(0, 0, 0, .35);
     opacity: 0;
     visibility: hidden;
@@ -235,7 +235,7 @@ svg {
     display: block;
     padding: 7px 0;
     font-size: 16px;
-    color: #d5dde1
+    color: #dbdde1
 }
 
 .mega a:hover {
@@ -273,7 +273,7 @@ svg {
     width: 46px;
     height: 46px;
     border-radius: 12px;
-    border: 1px solid #2a363d;
+    border: 1px solid #303338;
     place-items: center;
     font-size: 24px
 }
@@ -303,11 +303,11 @@ svg {
         left: 0;
         right: 0;
         top: 100%;
-        background: #0d1317;
+        background: #0e0f11;
         max-height: 0;
         overflow: hidden;
         transition: max-height .3s;
-        border-bottom: 1px solid #1f2a30
+        border-bottom: 1px solid #26282c
     }
 
     .header.open .mobile {
@@ -329,7 +329,7 @@ svg {
     .mobile summary {
         padding: 16px 0;
         font-size: 18px;
-        border-bottom: 1px solid #1d272d;
+        border-bottom: 1px solid #26282c;
         list-style: none;
         display: flex;
         justify-content: space-between;
@@ -360,7 +360,7 @@ svg {
     .mobile details div a {
         display: block;
         padding: 9px 0;
-        color: #cfd8dc;
+        color: #d5d7db;
         font-size: 16px
     }
 
@@ -374,7 +374,7 @@ svg {
 /* HERO */
 .hero {
     position: relative;
-    background: #050709;
+    background: #08090a;
     color: #fff;
     overflow: hidden
 }
@@ -450,7 +450,7 @@ svg {
     margin: 28px 0 36px;
     font-size: clamp(16px, 1.5vw, 21px);
     line-height: 1.6;
-    color: #eef1f3
+    color: #f1f2f4
 }
 
 .hero .btns {
@@ -467,7 +467,7 @@ svg {
 .features {
     position: relative;
     z-index: 2;
-    background: #0d1317
+    background: #0e0f11
 }
 
 .features .inner {
@@ -499,7 +499,7 @@ svg {
 
 .feat span {
     font-size: 15px;
-    color: #d3dbe0
+    color: #dbdde1
 }
 
 @media(max-width:900px) {
@@ -547,8 +547,8 @@ svg {
 /* SERVICES */
 .services {
     padding: clamp(56px, 7vw, 110px) 0;
-    background: #f5f7f7;
-    background-image: radial-gradient(circle at 100% 0, #e6eeef, transparent 40%)
+    background: #f4f4f5;
+    background-image: radial-gradient(circle at 100% 0, #f1f1f3, transparent 40%)
 }
 
 .sec-head {
@@ -587,14 +587,14 @@ svg {
 .sec-head p {
     max-width: 720px;
     margin-top: 20px;
-    color: #6b7d85;
+    color: #6b6f76;
     font-size: clamp(16px, 1.5vw, 21px);
     line-height: 1.7
 }
 
 .btn-light {
-    background: #f8fbfb;
-    border: 1px solid #dbe4e6;
+    background: #fafafa;
+    border: 1px solid #dcdde1;
     color: var(--ink);
     padding: 18px 32px;
     font-size: 18px
@@ -621,7 +621,7 @@ svg {
     content: "";
     flex: 1;
     height: 1px;
-    background: #d6e0e2
+    background: #d9dade
 }
 
 .grid3 {
@@ -637,11 +637,11 @@ svg {
 }
 
 .card {
-    background: linear-gradient(135deg, #fff, #f6f9f9);
-    border: 1px solid #e3eaec;
+    background: linear-gradient(135deg, #fff, #fafafa);
+    border: 1px solid #e5e6e9;
     border-radius: 28px;
     overflow: hidden;
-    box-shadow: 0 18px 44px rgba(10, 26, 34, .08);
+    box-shadow: 0 18px 44px rgba(22, 24, 27, .08);
     display: flex;
     flex-direction: column;
     transition: transform .25s, box-shadow .25s
@@ -649,7 +649,7 @@ svg {
 
 .card:hover {
     transform: translateY(-4px);
-    box-shadow: 0 24px 54px rgba(10, 26, 34, .14);
+    box-shadow: 0 24px 54px rgba(22, 24, 27, .14);
     border-color: #ea9142
 }
 
@@ -658,7 +658,7 @@ svg {
     aspect-ratio: 4/3;
     overflow: hidden;
     color: #fff;
-    background-color: #1b252b
+    background-color: #1e2024
 }
 
 .media img {
@@ -674,7 +674,7 @@ svg {
     position: absolute;
     inset: 0;
     z-index: 1;
-    background: linear-gradient(180deg, rgba(6, 14, 18, .65) 0%, rgba(6, 14, 18, 0) 35%, rgba(6, 14, 18, 0) 55%, rgba(6, 14, 18, .8) 100%)
+    background: linear-gradient(180deg, rgba(22, 24, 27, .65) 0%, rgba(22, 24, 27, 0) 35%, rgba(22, 24, 27, 0) 55%, rgba(22, 24, 27, .8) 100%)
 } */
 
 .media::before {
@@ -682,9 +682,9 @@ svg {
     position: absolute;
     inset: 0;
     z-index: 1;
-    background: linear-gradient(rgba(6, 14, 18, .10),rgba(6, 14, 18, .10)),  /*це загальне затемнення всієї картинки*/
+    background: linear-gradient(rgba(22, 24, 27, .10),rgba(22, 24, 27, .10)),  /*це загальне затемнення всієї картинки*/
         /*це затемнення зверху й знизу |.це сила зверху| % це де закінчується верхнє затемнення |%де починається нижнє | .це сила знизу |   */
-        linear-gradient(180deg, rgba(6, 14, 18, .70) 0%,rgba(6, 14, 18, 0) 40%, rgba(6, 14, 18, 0) 45%, rgba(6, 14, 18, .80) 100%) 
+        linear-gradient(180deg, rgba(22, 24, 27, .70) 0%,rgba(22, 24, 27, 0) 40%, rgba(22, 24, 27, 0) 45%, rgba(22, 24, 27, .80) 100%) 
 }
 
 .media .tag,
@@ -759,7 +759,7 @@ svg {
 }
 
 .body p {
-    color: #5d6f78;
+    color: #666a71;
     font-size: 18px;
     line-height: 1.7
 }
@@ -848,7 +848,7 @@ svg {
 }
 
 .dark .sec-head p {
-    color: #aab6bc
+    color: #b4b7bc
 }
 
 .rev-bar {
@@ -857,8 +857,8 @@ svg {
     align-items: center;
     gap: 16px;
     flex-wrap: wrap;
-    background: #141c21;
-    border: 1px solid #232e35;
+    background: #17181b;
+    border: 1px solid #2a2c30;
     border-radius: 20px;
     padding: 20px 28px;
     margin-bottom: 24px;
@@ -882,7 +882,7 @@ svg {
 }
 
 .rev-bar span.t {
-    color: #aab6bc
+    color: #b4b7bc
 }
 
 .track {
@@ -902,8 +902,8 @@ svg {
 .rev {
     flex: 0 0 calc((100% - 48px)/3);
     scroll-snap-align: start;
-    background: linear-gradient(135deg, #161e24, #12191e);
-    border: 1px solid #232e35;
+    background: linear-gradient(135deg, #18191c, #141518);
+    border: 1px solid #2a2c30;
     border-radius: 24px;
     padding: 32px;
     display: flex;
@@ -925,7 +925,7 @@ svg {
 .rev p {
     font-size: 18px;
     line-height: 1.65;
-    color: #dfe5e8;
+    color: #e2e4e7;
     flex: 1
 }
 
@@ -934,7 +934,7 @@ svg {
     align-items: center;
     gap: 14px;
     padding-top: 18px;
-    border-top: 1px solid #232e35
+    border-top: 1px solid #2a2c30
 }
 
 .av {
@@ -956,7 +956,7 @@ svg {
 
 .who span {
     font-size: 14px;
-    color: #8d9ba3
+    color: #8b8e94
 }
 
 .sl-nav {
@@ -970,7 +970,7 @@ svg {
     width: 52px;
     height: 52px;
     border-radius: 50%;
-    border: 1px solid #2c3a42;
+    border: 1px solid #34373c;
     font-size: 22px;
     display: grid;
     place-items: center;
@@ -986,22 +986,22 @@ svg {
 
 .why {
     padding: clamp(56px, 7vw, 110px) 0;
-    background: #f5f7f7
+    background: #f4f4f5
 }
 
 .why-card {
     position: relative;
     background: #fff;
-    border: 1px solid #e3eaec;
+    border: 1px solid #e5e6e9;
     border-radius: 28px;
     padding: 36px 34px;
-    box-shadow: 0 18px 44px rgba(10, 26, 34, .06);
+    box-shadow: 0 18px 44px rgba(22, 24, 27, .06);
     transition: .25s
 }
 
 .why-card:hover {
     transform: translateY(-4px);
-    box-shadow: 0 24px 54px rgba(10, 26, 34, .12)
+    box-shadow: 0 24px 54px rgba(22, 24, 27, .12)
 }
 
 .ico {
@@ -1021,7 +1021,7 @@ svg {
     top: 30px;
     right: 32px;
     font-weight: 600;
-    color: #9fb0b6;
+    color: #a3a6ac;
     font-size: 15px
 }
 
@@ -1033,7 +1033,7 @@ svg {
 }
 
 .why-card p {
-    color: #5d6f78;
+    color: #666a71;
     font-size: 17px;
     line-height: 1.7
 }
@@ -1058,7 +1058,7 @@ svg {
 }
 
 .cta p {
-    color: #aab6bc;
+    color: #b4b7bc;
     margin-top: 8px
 }
 
@@ -1104,7 +1104,7 @@ svg {
 
 .areas-wrap p {
     margin: 20px 0 32px;
-    color: #aab6bc;
+    color: #b4b7bc;
     font-size: clamp(16px, 1.5vw, 20px);
     line-height: 1.7;
     max-width: 520px
@@ -1120,7 +1120,7 @@ svg {
     display: grid;
     grid-template-columns: 1fr 1fr;
     background: rgba(20, 28, 33, .9);
-    border: 1px solid #232e35;
+    border: 1px solid #2a2c30;
     border-radius: 28px;
     overflow: hidden;
     backdrop-filter: blur(8px)
@@ -1131,14 +1131,14 @@ svg {
     align-items: center;
     gap: 14px;
     padding: 19px 24px;
-    border-bottom: 1px solid #232e35;
+    border-bottom: 1px solid #2a2c30;
     font-weight: 500;
     font-size: 17px;
     transition: .2s
 }
 
 .city:nth-child(odd) {
-    border-right: 1px solid #232e35
+    border-right: 1px solid #2a2c30
 }
 
 .city svg:first-child {
@@ -1148,13 +1148,13 @@ svg {
 
 .city svg:last-child {
     margin-left: auto;
-    color: #6d7c84;
+    color: #7a7e84;
     font-size: 18px;
     transition: .2s
 }
 
 .city:hover {
-    background: #1b252b;
+    background: #1e2024;
     color: #efc15b
 }
 
@@ -1260,7 +1260,7 @@ svg {
 
 .faq {
     padding: clamp(56px, 7vw, 110px) 0;
-    background: #f5f7f7
+    background: #f4f4f5
 }
 
 .faq-wrap {
@@ -1284,17 +1284,17 @@ svg {
 
 .faq .lead {
     margin: 20px 0 32px;
-    color: #6b7d85;
+    color: #6b6f76;
     font-size: clamp(16px, 1.5vw, 20px);
     line-height: 1.7
 }
 
 .f {
-    border-bottom: 1px solid #dbe4e6
+    border-bottom: 1px solid #dcdde1
 }
 
 .f:first-child {
-    border-top: 1px solid #dbe4e6
+    border-top: 1px solid #dcdde1
 }
 
 .f summary {
@@ -1317,7 +1317,7 @@ svg {
     width: 38px;
     height: 38px;
     border-radius: 50%;
-    border: 1px solid #dbe4e6;
+    border: 1px solid #dcdde1;
     display: grid;
     place-items: center;
     color: #ea9142;
@@ -1335,7 +1335,7 @@ svg {
 
 .f p {
     padding: 0 56px 26px 0;
-    color: #5d6f78;
+    color: #666a71;
     font-size: 17px;
     line-height: 1.7
 }
@@ -1390,7 +1390,7 @@ svg {
 }
 
 .b-dark {
-    background: #0a0f13;
+    background: #0b0c0e;
     color: #fff
 }
 
@@ -1422,7 +1422,7 @@ svg {
 }
 
 .foot a {
-    color: #b3bfc5
+    color: #bbbec3
 }
 
 .foot a:hover {
@@ -1434,7 +1434,7 @@ svg {
 }
 
 .foot .about p {
-    color: #aab6bc;
+    color: #b4b7bc;
     line-height: 1.7;
     margin-top: 20px;
     max-width: 360px
@@ -1444,7 +1444,7 @@ svg {
     display: flex;
     gap: 14px;
     align-items: flex-start;
-    color: #b3bfc5;
+    color: #bbbec3;
     margin-bottom: 16px;
     line-height: 1.5
 }
@@ -1456,7 +1456,7 @@ svg {
 }
 
 .hours {
-    color: #b3bfc5;
+    color: #bbbec3;
     line-height: 1.7;
     margin: 20px 0 24px
 }
@@ -1464,12 +1464,12 @@ svg {
 .foot-bottom {
     margin-top: 56px;
     padding-top: 28px;
-    border-top: 1px solid #232e35;
+    border-top: 1px solid #2a2c30;
     display: flex;
     justify-content: space-between;
     gap: 16px;
     flex-wrap: wrap;
-    color: #8d9ba3;
+    color: #8b8e94;
     font-size: 15px
 }
 
@@ -1573,7 +1573,7 @@ svg {
 .wide .body { padding: 28px 26px }
 
 /* Appliances + Pool/Spa cards: smaller radius, shorter text zone, thin light-grey outline */
-.grid3 .card { border-radius: 18px; border: 1px solid #dde4e7 }
+.grid3 .card { border-radius: 18px; border: 1px solid #e0e1e4 }
 .grid3 .card:hover { border-color: #ea9142 }
 .grid3 .body { padding: 22px 24px 16px }
 .grid3 .body h4 { margin: 8px 0 8px }
@@ -1694,7 +1694,7 @@ svg {
 
 /* hero: taller image area, grey paragraph, left offset on desktop */
 .hero-content { min-height: clamp(640px, 55vw, 800px) }
-.hero p { color: #b9c3c9 }
+.hero p { color: #bcbfc4 }
 .features .inner { padding-top: 20px; padding-bottom: 20px }
 .feat svg { font-size: 34px }
 .feat b { font-size: 15.5px }
@@ -1725,21 +1725,21 @@ svg {
 /* Appliances + Pool/Spa cards (HVAC untouched) */
 .grid3 .card {
     border-radius: 20px;
-    box-shadow: 0 6px 40px rgba(10, 26, 34, .15)
+    box-shadow: 0 6px 40px rgba(22, 24, 27, .15)
 }
 .grid3 .card:hover {
-    box-shadow: 0 10px 48px rgba(10, 26, 34, .22)
+    box-shadow: 0 10px 48px rgba(22, 24, 27, .22)
 }
 .grid3 .media::before {
     background:
-        linear-gradient(rgba(11, 34, 50, .10), rgba(11, 34, 50, .10)),
-        linear-gradient(180deg, rgba(11, 34, 50, .72) 0%, rgba(11, 34, 50, 0) 40%, rgba(11, 34, 50, 0) 45%, rgba(11, 34, 50, .82) 100%)
+        linear-gradient(rgba(22, 24, 27, .10), rgba(22, 24, 27, .10)),
+        linear-gradient(180deg, rgba(22, 24, 27, .72) 0%, rgba(22, 24, 27, 0) 40%, rgba(22, 24, 27, 0) 45%, rgba(22, 24, 27, .82) 100%)
 }
 .grid3 .num {
     width: 43px;
     height: 43px;
     font-size: 12.5px;
-    color: #c9d3d8
+    color: #d1d3d7
 }
 .grid3 .body .arrow { font-size: 27px }
 
@@ -1790,11 +1790,11 @@ svg {
 /* 5. Appliances + Pool/Spa: darker (still blue) image overlay, shadow back to normal size but a bit darker */
 .grid3 .media::before {
     background:
-        linear-gradient(rgba(9, 28, 42, .16), rgba(9, 28, 42, .16)),
-        linear-gradient(180deg, rgba(9, 28, 42, .80) 0%, rgba(9, 28, 42, 0) 40%, rgba(9, 28, 42, 0) 45%, rgba(9, 28, 42, .88) 100%)
+        linear-gradient(rgba(22, 24, 27, .16), rgba(22, 24, 27, .16)),
+        linear-gradient(180deg, rgba(22, 24, 27, .80) 0%, rgba(22, 24, 27, 0) 40%, rgba(22, 24, 27, 0) 45%, rgba(22, 24, 27, .88) 100%)
 }
-.grid3 .card { box-shadow: 0 18px 44px rgba(10, 26, 34, .12) }
-.grid3 .card:hover { box-shadow: 0 24px 54px rgba(10, 26, 34, .19) }
+.grid3 .card { box-shadow: 0 18px 44px rgba(22, 24, 27, .12) }
+.grid3 .card:hover { box-shadow: 0 24px 54px rgba(22, 24, 27, .19) }
 
 
 /* =====================================================
@@ -1802,7 +1802,7 @@ svg {
    ===================================================== */
 
 /* 1a. Services dropdown: column dividers + nicer links (desktop) */
-.mega .inner>div { padding: 0 32px; border-left: 1px solid #222e35 }
+.mega .inner>div { padding: 0 32px; border-left: 1px solid #2a2c30 }
 .mega .inner>div:first-child { padding-left: 0; border-left: 0 }
 .mega a { transition: color .2s, padding-left .2s }
 .mega a:hover { padding-left: 6px }
@@ -1825,16 +1825,16 @@ svg {
 /* 3. Appliances + Pool/Spa cards */
 .grid3 .media::before {
     background:
-        linear-gradient(rgba(5, 13, 20, .22), rgba(5, 13, 20, .22)),
-        linear-gradient(180deg, rgba(5, 13, 20, .90) 0%, rgba(5, 13, 20, 0) 40%, rgba(5, 13, 20, 0) 45%, rgba(5, 13, 20, .95) 100%)
+        linear-gradient(rgba(22, 24, 27, .22), rgba(22, 24, 27, .22)),
+        linear-gradient(180deg, rgba(22, 24, 27, .90) 0%, rgba(22, 24, 27, 0) 40%, rgba(22, 24, 27, 0) 45%, rgba(22, 24, 27, .95) 100%)
 }
 .grid3 .tag { top: 26px; left: 26px; line-height: 1.2 }
 .grid3 .name { left: 26px; bottom: 26px; line-height: 1.2 }
 .grid3 .num { right: 18px; bottom: 16px }
 .grid3 .body small { font-size: 13.5px }
 .grid3 .body p { font-size: 14.5px }
-.grid3 .card { box-shadow: 0 9px 22px rgba(9, 28, 42, .20) }
-.grid3 .card:hover { box-shadow: 0 12px 28px rgba(9, 28, 42, .28) }
+.grid3 .card { box-shadow: 0 9px 22px rgba(22, 24, 27, .20) }
+.grid3 .card:hover { box-shadow: 0 12px 28px rgba(22, 24, 27, .28) }
 
 @media(max-width:640px) {
     .grid3 .tag { top: 20px; left: 20px }
@@ -1868,7 +1868,7 @@ svg {
 
 /* 1. Mobile/tablet menu: thin separators between HVAC / Appliances / Pool-Spa */
 @media(max-width:1100px) {
-    .mobile details h4 { margin: 14px 0 4px; padding-top: 14px; border-top: 1px solid #1d272d }
+    .mobile details h4 { margin: 14px 0 4px; padding-top: 14px; border-top: 1px solid #26282c }
     .mobile details h4:first-child { margin-top: 4px; padding-top: 0; border-top: 0 }
 }
 
@@ -1882,11 +1882,11 @@ svg {
 /* 3. Appliances + Pool/Spa cards: lighter gradient, 10% overall darkening, softer shadow */
 .grid3 .media::before {
     background:
-        linear-gradient(rgba(5, 13, 20, .10), rgba(5, 13, 20, .10)),
-        linear-gradient(180deg, rgba(5, 13, 20, .76) 0%, rgba(5, 13, 20, 0) 40%, rgba(5, 13, 20, 0) 45%, rgba(5, 13, 20, .81) 100%)
+        linear-gradient(rgba(22, 24, 27, .10), rgba(22, 24, 27, .10)),
+        linear-gradient(180deg, rgba(22, 24, 27, .76) 0%, rgba(22, 24, 27, 0) 40%, rgba(22, 24, 27, 0) 45%, rgba(22, 24, 27, .81) 100%)
 }
-.grid3 .card { box-shadow: 0 9px 22px rgba(9, 28, 42, .14) }
-.grid3 .card:hover { box-shadow: 0 12px 28px rgba(9, 28, 42, .20) }
+.grid3 .card { box-shadow: 0 9px 22px rgba(22, 24, 27, .14) }
+.grid3 .card:hover { box-shadow: 0 12px 28px rgba(22, 24, 27, .20) }
 
 /* HVAC text vertically centered (not on phone) */
 @media(min-width:641px) {
@@ -1898,13 +1898,13 @@ svg {
 .btn { transition: transform .2s ease, box-shadow .2s ease, background .2s ease }
 .btn-grad:hover { transform: translateY(-2px); box-shadow: 0 10px 24px rgba(234, 145, 66, .35) }
 .btn-out:hover { background: rgba(255, 255, 255, .1); transform: translateY(-2px) }
-.b-dark:hover, .b-white:hover, .btn-light:hover { transform: translateY(-2px); box-shadow: 0 10px 24px rgba(10, 26, 34, .18) }
+.b-dark:hover, .b-white:hover, .btn-light:hover { transform: translateY(-2px); box-shadow: 0 10px 24px rgba(22, 24, 27, .18) }
 .body .arrow svg { transition: transform .25s ease }
 .card:hover .arrow svg { transform: translateX(5px) }
 .ico { transition: transform .3s ease }
 .why-card:hover .ico { transform: scale(1.08) rotate(-4deg) }
 .city, .rev { transition: background .2s, color .2s, transform .25s, border-color .25s }
-.rev:hover { transform: translateY(-3px); border-color: #3a4a54 }
+.rev:hover { transform: translateY(-3px); border-color: #44474c }
 
 /* scroll reveal (classes are added by the small script at the bottom of index.html) */
 .reveal { opacity: 0; transform: translateY(24px); transition: opacity .7s ease, transform .7s ease; transition-delay: var(--d, 0ms) }
@@ -1939,7 +1939,7 @@ svg {
     bottom: 21px;
     padding: 8px 14px;
     border-radius: 999px;
-    background: rgba(9, 28, 42, .6);
+    background: rgba(22, 24, 27, .6);
     border: 1px solid rgba(255, 255, 255, .18);
     backdrop-filter: blur(6px);
     font-size: 12.5px;
@@ -1989,27 +1989,27 @@ svg {
 .sect { padding: clamp(48px, 6vw, 88px) 0 }
 @media(max-width:640px) { .sect { padding: 44px 0 } }
 .sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap }
-.light { background: #f5f7f7; background-image: radial-gradient(circle at 100% 0, #e6eeef, transparent 40%) }
+.light { background: #f4f4f5; background-image: radial-gradient(circle at 100% 0, #f1f1f3, transparent 40%) }
 
 /* ---------- HERO (text left, form right) ---------- */
 .page-hero .hero-content { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, .9fr); gap: clamp(28px, 4vw, 64px); align-items: center; justify-content: normal }
 .page-hero h1 { font-size: clamp(34px, 3.8vw, 56px); max-width: 640px }
 .page-hero .hero p { max-width: 540px }
-.lead-form { background: rgba(12, 18, 22, .84); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); border: 1px solid #26333a; border-radius: 24px; padding: clamp(22px, 2.4vw, 32px); box-shadow: 0 24px 60px rgba(0, 0, 0, .45); color: #fff; text-align: left; width: 100%; max-width: 520px; justify-self: end }
+.lead-form { background: rgba(22, 24, 27, .84); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); border: 1px solid #2d2f34; border-radius: 24px; padding: clamp(22px, 2.4vw, 32px); box-shadow: 0 24px 60px rgba(0, 0, 0, .45); color: #fff; text-align: left; width: 100%; max-width: 520px; justify-self: end }
 .lead-form h2 { font-size: clamp(20px, 1.8vw, 26px); font-weight: 700; letter-spacing: -.02em }
-.lead-form .sub { color: #aab6bc; font-size: 14.5px; margin: 6px 0 20px; line-height: 1.5 }
+.lead-form .sub { color: #b4b7bc; font-size: 14.5px; margin: 6px 0 20px; line-height: 1.5 }
 .lead-form form { display: grid; gap: 12px }
 .frow { display: grid; grid-template-columns: 1fr 1fr; gap: 12px }
-.field { width: 100%; background: #0f161a; border: 1px solid #2a363d; border-radius: 12px; padding: 14px 16px; color: #fff; font: inherit; font-size: 15px; transition: border-color .2s, box-shadow .2s }
-.field::placeholder { color: #7f8d95 }
+.field { width: 100%; background: #111214; border: 1px solid #303338; border-radius: 12px; padding: 14px 16px; color: #fff; font: inherit; font-size: 15px; transition: border-color .2s, box-shadow .2s }
+.field::placeholder { color: #8b8e94 }
 .field:focus { outline: none; border-color: #ea9142; box-shadow: 0 0 0 3px rgba(234, 145, 66, .18) }
 textarea.field { resize: vertical; min-height: 84px }
 .lead-form .btn { width: 100%; height: 52px; font-size: 16px }
 .hp { position: absolute; left: -9999px }
-.fmsg { font-size: 14px; line-height: 1.5; color: #cfd8dc; min-height: 0 }
+.fmsg { font-size: 14px; line-height: 1.5; color: #d5d7db; min-height: 0 }
 .fmsg.ok { color: #7ddc9a } .fmsg.err { color: #ff9b8a }
-.priv { font-size: 12.5px; color: #8d9ba3; text-align: center }
-.rv { display: flex; align-items: center; justify-content: center; gap: 10px; margin-top: 18px; padding-top: 16px; border-top: 1px solid #232e35; font-size: 14.5px; color: #cfd8dc; flex-wrap: wrap }
+.priv { font-size: 12.5px; color: #8b8e94; text-align: center }
+.rv { display: flex; align-items: center; justify-content: center; gap: 10px; margin-top: 18px; padding-top: 16px; border-top: 1px solid #2a2c30; font-size: 14.5px; color: #d5d7db; flex-wrap: wrap }
 .rv .stars { font-size: 18px; letter-spacing: 3px; background: var(--grad); -webkit-background-clip: text; background-clip: text; color: transparent }
 .rv b { color: #fff; font-weight: 600 }
 
@@ -2027,16 +2027,16 @@ textarea.field { resize: vertical; min-height: 84px }
 @media(max-width:440px) { .frow { grid-template-columns: 1fr } }
 
 /* ---------- PROBLEMS GRID ---------- */
-.pgrid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: #e3eaec; border: 1px solid #e3eaec; border-radius: 24px; overflow: hidden; box-shadow: 0 9px 22px rgba(9, 28, 42, .10) }
+.pgrid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: #e5e6e9; border: 1px solid #e5e6e9; border-radius: 24px; overflow: hidden; box-shadow: 0 9px 22px rgba(22, 24, 27, .10) }
 .pcell { background: #fff; padding: 28px 26px; display: flex; flex-direction: column; gap: 10px; transition: background .25s }
 .pcell:hover { background: #fffaf4 }
 .pcell .ico { width: 46px; height: 46px; font-size: 22px; margin-bottom: 8px; border-radius: 14px }
 .pcell h3 { font-size: 18px; font-weight: 600; letter-spacing: -.01em }
-.pcell p { font-size: 15px; line-height: 1.65; color: #5d6f78; flex: 1 }
+.pcell p { font-size: 15px; line-height: 1.65; color: #666a71; flex: 1 }
 .pcell .go { font-size: 14px; font-weight: 600; color: #e0872e; display: inline-flex; align-items: center; gap: 6px; margin-top: 6px }
 .pcell .go svg { font-size: 16px; transition: transform .25s }
 .pcell:hover .go svg { transform: translateX(4px) }
-.pnote { margin-top: 18px; font-size: 14px; color: #6b7d85 }
+.pnote { margin-top: 18px; font-size: 14px; color: #6b6f76 }
 @media(max-width:1000px) { .pgrid { grid-template-columns: repeat(2, 1fr) } .pgrid>:last-child:nth-child(odd) { grid-column: 1/-1 } }
 @media(max-width:640px) { .pgrid { grid-template-columns: 1fr; border-radius: 20px } .pcell { padding: 22px 20px } .pcell h3 { font-size: 17px } .pcell p { font-size: 14.5px } }
 
@@ -2045,32 +2045,32 @@ textarea.field { resize: vertical; min-height: 84px }
 .pricing .inner { position: relative; z-index: 1 }
 .price-wrap { display: grid; grid-template-columns: 1.1fr .9fr; gap: clamp(28px, 5vw, 72px); align-items: center }
 .price-wrap h2 { font-size: clamp(28px, 3.4vw, 46px); font-weight: 600; letter-spacing: -.03em; line-height: 1.1 }
-.price-wrap .txt { margin: 18px 0 24px; color: #aab6bc; font-size: clamp(15px, 1.2vw, 18px); line-height: 1.7; letter-spacing: .02em; max-width: 560px }
+.price-wrap .txt { margin: 18px 0 24px; color: #b4b7bc; font-size: clamp(15px, 1.2vw, 18px); line-height: 1.7; letter-spacing: .02em; max-width: 560px }
 .assure { display: flex; gap: 14px; align-items: flex-start; background: rgba(234, 145, 66, .08); border: 1px solid rgba(234, 145, 66, .28); border-radius: 18px; padding: 18px 20px; margin-bottom: 28px; color: #f1e6d8; line-height: 1.55 }
 .assure svg { color: #ea9142; font-size: 26px; margin-top: 1px }
 .price-wrap .btns { display: flex; gap: 14px; flex-wrap: wrap }
-.price-card { position: relative; overflow: hidden; background: linear-gradient(135deg, #161e24, #12191e); border: 1px solid #26333a; border-radius: 28px; padding: clamp(26px, 3vw, 40px) }
+.price-card { position: relative; overflow: hidden; background: linear-gradient(135deg, #18191c, #141518); border: 1px solid #2d2f34; border-radius: 28px; padding: clamp(26px, 3vw, 40px) }
 .price-card::before { content: ""; position: absolute; right: -80px; top: -80px; width: 260px; height: 260px; background: radial-gradient(circle, rgba(234, 145, 66, .3), transparent 70%) }
-.price-card .lab { position: relative; font-size: 13px; letter-spacing: .16em; text-transform: uppercase; color: #aab6bc; font-weight: 600 }
+.price-card .lab { position: relative; font-size: 13px; letter-spacing: .16em; text-transform: uppercase; color: #b4b7bc; font-weight: 600 }
 .price-tag { position: relative; display: flex; align-items: baseline; gap: 12px; margin: 10px 0 6px }
 .price-tag b { font-size: clamp(60px, 7vw, 92px); font-weight: 700; letter-spacing: -.04em; line-height: 1; background: var(--grad); -webkit-background-clip: text; background-clip: text; color: transparent }
-.price-tag span { color: #aab6bc; font-size: 16px }
-.checks { position: relative; list-style: none; display: grid; gap: 14px; margin-top: 24px; padding-top: 24px; border-top: 1px solid #26333a }
-.checks li { display: flex; gap: 12px; align-items: flex-start; font-size: 16px; color: #e6ecef; line-height: 1.5 }
+.price-tag span { color: #b4b7bc; font-size: 16px }
+.checks { position: relative; list-style: none; display: grid; gap: 14px; margin-top: 24px; padding-top: 24px; border-top: 1px solid #2d2f34 }
+.checks li { display: flex; gap: 12px; align-items: flex-start; font-size: 16px; color: #eaecef; line-height: 1.5 }
 .checks svg { color: #ea9142; font-size: 22px; margin-top: 1px }
 @media(max-width:900px) { .price-wrap { grid-template-columns: 1fr } }
 @media(max-width:640px) { .price-wrap .btns { width: 100% } .price-wrap .btn { flex: 1 } .assure { padding: 16px } .checks li { font-size: 15px } }
 
 /* ---------- SYMPTOM CARDS ---------- */
 .sym-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 16px }
-.sym { display: flex; flex-direction: column; gap: 14px; background: #fff; border: 1px solid #e3eaec; border-radius: 20px; padding: 22px 20px; box-shadow: 0 9px 22px rgba(9, 28, 42, .08); transition: transform .25s, border-color .25s, box-shadow .25s }
-.sym:hover { transform: translateY(-4px); border-color: #ea9142; box-shadow: 0 12px 28px rgba(9, 28, 42, .14) }
+.sym { display: flex; flex-direction: column; gap: 14px; background: #fff; border: 1px solid #e5e6e9; border-radius: 20px; padding: 22px 20px; box-shadow: 0 9px 22px rgba(22, 24, 27, .08); transition: transform .25s, border-color .25s, box-shadow .25s }
+.sym:hover { transform: translateY(-4px); border-color: #ea9142; box-shadow: 0 12px 28px rgba(22, 24, 27, .14) }
 .sym .ico { width: 46px; height: 46px; font-size: 22px; margin: 0 }
 .sym b { font-size: 16.5px; font-weight: 600; line-height: 1.35; flex: 1 }
 .sym span { font-size: 14px; font-weight: 600; color: #e0872e; display: inline-flex; align-items: center; gap: 6px }
 .sym span svg { font-size: 16px; transition: transform .25s }
 .sym:hover span svg { transform: translateX(4px) }
-.sym-foot { margin-top: 22px; color: #6b7d85; font-size: 15.5px }
+.sym-foot { margin-top: 22px; color: #6b6f76; font-size: 15.5px }
 .sym-foot a { color: #e0872e; font-weight: 600 }
 @media(max-width:1100px) { .sym-grid { grid-template-columns: repeat(3, 1fr) } }
 @media(max-width:700px) { .sym-grid { grid-template-columns: repeat(2, 1fr); gap: 12px } .sym { padding: 18px 16px } .sym b { font-size: 15px } }
@@ -2078,11 +2078,11 @@ textarea.field { resize: vertical; min-height: 84px }
 
 /* ---------- HOW IT WORKS ---------- */
 .steps { display: grid; grid-template-columns: repeat(5, 1fr); gap: 18px }
-.step { position: relative; background: linear-gradient(135deg, #161e24, #12191e); border: 1px solid #232e35; border-radius: 22px; padding: 26px 22px; transition: border-color .25s, transform .25s }
+.step { position: relative; background: linear-gradient(135deg, #18191c, #141518); border: 1px solid #2a2c30; border-radius: 22px; padding: 26px 22px; transition: border-color .25s, transform .25s }
 .step:hover { border-color: #ea9142; transform: translateY(-3px) }
 .step .n { width: 44px; height: 44px; border-radius: 50%; background: var(--grad); color: #14181c; font-weight: 700; display: grid; place-items: center; margin-bottom: 18px }
 .step h3 { font-size: 17px; font-weight: 600; margin-bottom: 8px }
-.step p { font-size: 14.5px; line-height: 1.65; color: #aab6bc }
+.step p { font-size: 14.5px; line-height: 1.65; color: #b4b7bc }
 .step:not(:last-child)::after { content: "\203A"; position: absolute; right: -16px; top: 26px; font-size: 28px; line-height: 1; color: #ea9142; opacity: .7 }
 @media(max-width:1100px) { .steps { grid-template-columns: repeat(2, 1fr) } .step:not(:last-child)::after { display: none } .steps>:last-child:nth-child(odd) { grid-column: 1/-1 } }
 @media(max-width:640px) { .steps { grid-template-columns: 1fr; gap: 12px } .step { display: grid; grid-template-columns: 44px 1fr; column-gap: 16px; padding: 20px 18px } .step .n { grid-row: span 2; margin: 0 } .step h3 { margin-bottom: 4px } }
@@ -2091,8 +2091,8 @@ textarea.field { resize: vertical; min-height: 84px }
 .marq { overflow: hidden; -webkit-mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent); mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent) }
 .mq-track { display: flex; gap: 16px; width: max-content; animation: mq 40s linear infinite }
 .marq:hover .mq-track { animation-play-state: paused }
-.brand { padding: 18px 34px; background: #fff; border: 1px solid #e3eaec; border-radius: 16px; font-weight: 700; font-size: clamp(17px, 1.7vw, 23px); letter-spacing: -.01em; color: #2a3b44; white-space: nowrap; box-shadow: 0 6px 16px rgba(9, 28, 42, .06) }
-.brand-note { margin-top: 22px; font-size: 13.5px; color: #8a9aa2; line-height: 1.6 }
+.brand { padding: 18px 34px; background: #fff; border: 1px solid #e5e6e9; border-radius: 16px; font-weight: 700; font-size: clamp(17px, 1.7vw, 23px); letter-spacing: -.01em; color: #2a3b44; white-space: nowrap; box-shadow: 0 6px 16px rgba(22, 24, 27, .06) }
+.brand-note { margin-top: 22px; font-size: 13.5px; color: #9a9da3; line-height: 1.6 }
 @keyframes mq { to { transform: translateX(-50%) } }
 @media(prefers-reduced-motion:reduce) { .mq-track { animation: none; flex-wrap: wrap; width: auto; justify-content: center } .marq { -webkit-mask-image: none; mask-image: none } }
 @media(max-width:640px) { .brand { padding: 14px 22px } .mq-track { gap: 12px } }
@@ -2120,3 +2120,560 @@ a.rv:hover #rvCount { text-decoration: underline }
 
 
 
+
+
+
+
+
+
+/* =====================================================================
+   THEME v3: neutral white / graphite / gold. Manrope headings, one radius scale, glass + motion.
+   (no tinted page backgrounds: white and light gray only)
+   ===================================================================== */
+:root { --r-s: 12px; --r-m: 18px; --r-l: 24px; --gold: #ea9142; --gold2: #efc15b; --line: #e5e6e9; --paper: #f4f4f5; --ink: #16181b; --mut: #666a71; --head: "Manrope", "Inter", system-ui, sans-serif }
+html { scroll-behavior: smooth }
+body { background: var(--paper); text-rendering: optimizeLegibility }
+h1, h2, h3, h4, .btn, .kicker, .price-tag b, .feat b, .eyebrow-hero { font-family: var(--head) }
+h1, h2, h3, h4 { text-wrap: balance }
+
+/* backgrounds: flat white / light gray only */
+.services, .why, .faq, .light, .sect.light { background: var(--paper) !important; background-image: none !important }
+.sp-white { background: #fff }
+.sp-gray { background: var(--paper) }
+.services, .why, .faq, .dark { padding: clamp(64px, 8vw, 112px) 0 }
+.card, .do-card, .why-card, .rev { background-image: none }
+.card, .grid3 .card { background: #fff }
+
+/* scroll progress */
+#fxbar { position: fixed; top: 0; left: 0; width: 100%; height: 3px; z-index: 300; transform-origin: 0 50%; transform: scaleX(0); background: var(--grad); pointer-events: none }
+
+/* header */
+.header { background: #0b0c0e; border-bottom: 1px solid #1f2124; transition: box-shadow .3s }
+.header.scrolled { box-shadow: 0 10px 34px rgba(0, 0, 0, .4) }
+.nav>a, .has-menu>button { font-weight: 600; letter-spacing: -.005em }
+
+/* buttons: shine + lift */
+.btn { position: relative; overflow: hidden; border-radius: 14px; font-weight: 700; letter-spacing: -.005em; transition: transform .25s cubic-bezier(.22, 1, .36, 1), box-shadow .25s, background .25s, border-color .25s }
+.btn-grad { box-shadow: inset 0 1px 0 rgba(255, 255, 255, .4), 0 10px 26px rgba(234, 145, 66, .25) }
+.btn-grad::after { content: ""; position: absolute; top: 0; left: -90%; width: 55%; height: 100%; background: linear-gradient(100deg, transparent, rgba(255, 255, 255, .55), transparent); transform: skewX(-20deg); transition: left .7s cubic-bezier(.22, 1, .36, 1); pointer-events: none }
+.btn-grad:hover { transform: translateY(-2px); box-shadow: inset 0 1px 0 rgba(255, 255, 255, .4), 0 16px 34px rgba(234, 145, 66, .38) }
+.btn-grad:hover::after { left: 140% }
+.btn-out { border: 1.5px solid rgba(255, 255, 255, .38) }
+.btn-out:hover { background: rgba(255, 255, 255, .1); border-color: #fff; transform: translateY(-2px) }
+.btn-light { border-radius: 14px }
+
+/* kicker: numbered, editorial */
+.kicker { font-size: 12.5px; font-weight: 800; letter-spacing: .16em; text-transform: uppercase; color: var(--gold); gap: 10px; margin-bottom: 16px }
+.kicker::before { width: 7px; height: 7px; border-radius: 50%; background: var(--grad); box-shadow: 0 0 0 4px rgba(234, 145, 66, .18) }
+.kicker:has(.kn)::before { display: none }
+.kicker .kn { font-weight: 800; color: var(--gold); display: inline-flex; align-items: center; gap: 12px }
+.kicker .kn::after { content: ""; width: 30px; height: 1px; background: currentColor; opacity: .55 }
+.sec-head h2, .areas-wrap h2, .faq h2, .sched h2, .price-wrap h2 { font-weight: 800; letter-spacing: -.035em; line-height: 1.05; color: var(--ink) }
+.dark h2, .dark .sec-head h2 { color: #fff }
+
+/* home + shared cards */
+.card, .grid3 .card { border-radius: var(--r-l); border: 1px solid var(--line); box-shadow: 0 1px 2px rgba(22, 24, 27, .04), 0 12px 30px rgba(22, 24, 27, .06); transition: transform .35s cubic-bezier(.22, 1, .36, 1), box-shadow .35s, border-color .35s }
+.card:hover, .grid3 .card:hover { transform: translateY(-6px); border-color: rgba(234, 145, 66, .6); box-shadow: 0 2px 4px rgba(22, 24, 27, .05), 0 26px 56px rgba(22, 24, 27, .16) }
+.why-card, .rev, .do-card, .city-list, .cta { border-radius: var(--r-l) }
+.ico { background: #17181b; border: 0; color: var(--gold2); border-radius: 14px }
+.why-card:hover .ico { background: var(--grad); color: #14181c }
+
+/* hero (all pages): glow + drifting grid + gold hairline */
+.hero { box-shadow: inset 0 -1px 0 rgba(239, 193, 91, .35) }
+.hero::before { background: radial-gradient(55% 60% at 88% 0%, rgba(239, 193, 91, .17), transparent 62%), radial-gradient(45% 50% at 0% 100%, rgba(234, 145, 66, .07), transparent 60%), linear-gradient(90deg, rgba(8, 9, 10, .95) 0%, rgba(8, 9, 10, .76) 46%, rgba(8, 9, 10, .34) 100%) }
+.hero::after { content: ""; position: absolute; inset: 0; z-index: 1; pointer-events: none; background-image: linear-gradient(rgba(255, 255, 255, .045) 1px, transparent 1px), linear-gradient(90deg, rgba(255, 255, 255, .045) 1px, transparent 1px); background-size: 64px 64px; -webkit-mask-image: radial-gradient(ellipse at 78% 20%, #000 0%, transparent 68%); mask-image: radial-gradient(ellipse at 78% 20%, #000 0%, transparent 68%) }
+.grad-text { background-size: 220% 100%; animation: shimmer 7s ease-in-out infinite }
+.features { border-top: 1px solid #1f2124; background: #0b0c0e }
+.feat svg { transition: transform .4s cubic-bezier(.3, 1.5, .5, 1) }
+.feat:hover svg { transform: translateY(-3px) scale(1.12) rotate(-4deg) }
+
+/* sticky call bar (phones) */
+.callbar { display: none }
+@media(max-width:900px) {
+    .callbar { position: fixed; left: 0; right: 0; bottom: 0; z-index: 90; display: flex; gap: 10px; padding: 10px 12px calc(10px + env(safe-area-inset-bottom)); background: #0c0d0f; border-top: 1px solid #2a2c30 }
+    .callbar a { height: 50px; border-radius: 14px; display: flex; align-items: center; justify-content: center; gap: 8px; font-weight: 800; font-size: 16px; white-space: nowrap; font-family: var(--head) }
+    .callbar svg { width: 20px; height: 20px }
+    .cb-call { flex: 1.7; background: var(--grad); color: #14181c; animation: ring 2.8s ease-out infinite }
+    .cb-book { flex: 1; border: 1.5px solid rgba(255, 255, 255, .35); color: #fff }
+    .has-callbar .foot { padding-bottom: 96px }
+}
+.foot { border-top: 1px solid #1f2124 }
+.foot::before { content: ""; position: absolute; left: 0; right: 0; top: 0; height: 1px; background: linear-gradient(90deg, transparent, rgba(239, 193, 91, .5), transparent) }
+
+/* =====================================================================
+   SERVICE PAGE
+   ===================================================================== */
+.sp-hero .hero-content { min-height: clamp(620px, 54vw, 780px) }
+.sp-hero h1 { font-size: clamp(38px, 4.8vw, 68px); font-weight: 800; line-height: 1.02; letter-spacing: -.04em; max-width: 700px }
+.sp-hero h1 .line { display: block }
+.sp-lead { max-width: 560px; margin: 24px 0 22px; font-size: clamp(16px, 1.3vw, 19px); line-height: 1.65; letter-spacing: 0; color: #c8cacf }
+.sp-chips { list-style: none; display: flex; flex-wrap: wrap; gap: 8px; margin: 0 0 28px }
+.sp-chips li { display: inline-flex; align-items: center; gap: 7px; padding: 9px 15px 9px 12px; border-radius: 999px; background: rgba(255, 255, 255, .07); border: 1px solid rgba(255, 255, 255, .15); font-size: 14px; font-weight: 700; color: #f1f2f4; font-family: var(--head) }
+.sp-chips svg { width: 16px; height: 16px; color: var(--gold2); stroke-width: 2.8 }
+.sp-hero .btns { gap: 12px }
+.sp-hero .btn { padding: 16px 28px; font-size: 17px }
+.sp-hero .btns .btn-grad { animation: ring 2.8s ease-out infinite }
+.sp-proof { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 18px; margin-top: 26px; font-size: 14px; color: #b4b7bc }
+.sp-proof .stars { font-size: 15px; letter-spacing: 2px }
+.sp-proof b { color: #fff; font-weight: 700 }
+.sp-proof span.sep { width: 1px; height: 14px; background: rgba(255, 255, 255, .22) }
+.lead-form { border-radius: var(--r-l); background: rgba(13, 14, 16, .94); border: 1px solid rgba(255, 255, 255, .12); box-shadow: 0 30px 80px rgba(0, 0, 0, .5), inset 0 1px 0 rgba(255, 255, 255, .08); position: relative }
+.lead-form::before { content: ""; position: absolute; left: 24px; right: 24px; top: -1px; height: 2px; border-radius: 2px; background: var(--grad) }
+.lead-form h2 { font-weight: 800; letter-spacing: -.03em }
+.lead-form .btn { height: 52px }
+.sp-hero .hero-copy>* { opacity: 0; animation: fadeUp .9s cubic-bezier(.22, 1, .36, 1) both }
+.sp-hero .hero-copy>:nth-child(1) { animation-delay: .05s } .sp-hero .hero-copy>:nth-child(2) { animation-delay: .15s } .sp-hero .hero-copy>:nth-child(3) { animation-delay: .27s } .sp-hero .hero-copy>:nth-child(4) { animation-delay: .38s } .sp-hero .hero-copy>:nth-child(5) { animation-delay: .48s } .sp-hero .hero-copy>:nth-child(6) { animation-delay: .58s }
+.sp-hero .lead-form { animation: slideR 1s cubic-bezier(.22, 1, .36, 1) .35s both }
+
+/* sections */
+.sp-sec { padding: clamp(68px, 8.5vw, 120px) 0; position: relative }
+.sp-dark { background: radial-gradient(60% 70% at 100% 0%, rgba(234, 145, 66, .14), transparent 60%), radial-gradient(40% 50% at 0% 100%, rgba(239, 193, 91, .07), transparent 60%), #0d0e10; color: #fff }
+.sp-head { max-width: 780px; margin-bottom: clamp(32px, 4vw, 56px) }
+.sp-head h2 { font-size: clamp(30px, 3.8vw, 54px); font-weight: 800; letter-spacing: -.035em; line-height: 1.04; color: var(--ink) }
+.sp-head h2::after { content: ""; display: block; width: 0; height: 4px; border-radius: 4px; background: var(--grad); margin-top: 20px; transition: width .9s cubic-bezier(.22, 1, .36, 1) .3s }
+.sp-head.in h2::after, .no-fx .sp-head h2::after { width: 64px }
+.sp-head p { margin-top: 18px; font-size: clamp(16px, 1.25vw, 19px); line-height: 1.65; color: var(--mut) }
+.sp-head p b { color: var(--ink); font-weight: 700 }
+.sp-dark .sp-head h2 { color: #fff }
+.sp-dark .sp-head p { color: #b4b7bc }
+
+/* problems */
+.sp .pgrid { gap: 16px; background: none; border: 0; border-radius: 0; box-shadow: none; overflow: visible }
+.sp .pcell { position: relative; overflow: hidden; background: #f7f7f8; border: 1px solid var(--line); border-radius: var(--r-m); padding: 28px 26px 26px; gap: 8px; transition: transform .35s cubic-bezier(.22, 1, .36, 1), border-color .3s, box-shadow .35s, background .3s }
+.sp .pcell::before { content: ""; position: absolute; inset: 0; border-radius: inherit; background: radial-gradient(320px circle at var(--mx, 50%) var(--my, 0%), rgba(234, 145, 66, .16), transparent 62%); opacity: 0; transition: opacity .3s; pointer-events: none }
+.sp .pcell:hover { background: #fff; transform: translateY(-6px); border-color: rgba(234, 145, 66, .7); box-shadow: 0 24px 50px rgba(22, 24, 27, .13) }
+.sp .pcell:hover::before { opacity: 1 }
+.sp .pcell>* { position: relative }
+.sp .pcell .ico { width: 48px; height: 48px; font-size: 22px; margin-bottom: 8px; transition: transform .45s cubic-bezier(.3, 1.6, .5, 1), background .3s, color .3s }
+.sp .pcell:hover .ico { background: var(--grad); color: #14181c; transform: rotate(-8deg) scale(1.1) }
+.sp .pcell h3 { font-size: 18px; font-weight: 800; letter-spacing: -.02em; color: var(--ink) }
+.sp .pcell p { font-size: 15px; line-height: 1.62; color: var(--mut) }
+.sp .pcell .go { font-weight: 700; color: #c7660f }
+.sp .pnote { margin-top: 26px; font-size: 15.5px; color: var(--mut); display: flex; align-items: center; gap: 10px; flex-wrap: wrap }
+.sp .pnote a { color: #c7660f; font-weight: 800 }
+
+/* what we do (dark glass) */
+.ogrid { display: grid; gap: 18px; grid-template-columns: repeat(3, 1fr); counter-reset: oc }
+.ogrid[data-n="2"] { grid-template-columns: repeat(2, 1fr) }
+.ocard { position: relative; overflow: hidden; counter-increment: oc; background: linear-gradient(160deg, rgba(255, 255, 255, .07), rgba(255, 255, 255, .02)); border: 1px solid rgba(255, 255, 255, .11); border-radius: var(--r-l); padding: 36px 32px 34px; transition: transform .4s cubic-bezier(.22, 1, .36, 1), border-color .3s, box-shadow .4s }
+.ocard::after { content: counter(oc, decimal-leading-zero); position: absolute; right: 24px; top: 18px; font: 800 64px/1 var(--head); letter-spacing: -.05em; color: rgba(255, 255, 255, .06); pointer-events: none; transition: color .4s }
+.ocard::before { content: ""; position: absolute; inset: 0; border-radius: inherit; background: radial-gradient(340px circle at var(--mx, 50%) var(--my, 0%), rgba(234, 145, 66, .2), transparent 62%); opacity: 0; transition: opacity .3s; pointer-events: none }
+.ocard:hover { transform: translateY(-8px); border-color: rgba(234, 145, 66, .6); box-shadow: 0 30px 70px rgba(0, 0, 0, .5), 0 0 0 1px rgba(234, 145, 66, .25) }
+.ocard:hover::before { opacity: 1 }
+.ocard:hover::after { color: rgba(239, 193, 91, .22) }
+.ocard>* { position: relative }
+.ocard .ico { width: 56px; height: 56px; font-size: 26px; margin-bottom: 24px; border-radius: 16px; background: var(--grad); color: #14181c; box-shadow: 0 10px 26px rgba(234, 145, 66, .3); transition: transform .5s cubic-bezier(.3, 1.6, .5, 1) }
+.ocard:hover .ico { transform: rotate(-10deg) scale(1.1) }
+.ocard h3 { font-size: 23px; font-weight: 800; letter-spacing: -.03em; color: #fff; display: flex; align-items: center; gap: 10px; flex-wrap: wrap }
+.ocard h3 em { font-style: normal; font-size: 11px; font-weight: 800; letter-spacing: .1em; text-transform: uppercase; color: var(--gold2); border: 1px solid rgba(239, 193, 91, .45); border-radius: 999px; padding: 4px 10px }
+.ocard p { margin-top: 12px; font-size: 16px; line-height: 1.7; color: #b4b7bc }
+
+/* how it works + price (light gray section, dark price card) */
+.sp-price { display: grid; grid-template-columns: 1.05fr .95fr; gap: clamp(30px, 5.5vw, 84px); align-items: start }
+.sp-price h2 { font-size: clamp(30px, 3.8vw, 54px); font-weight: 800; letter-spacing: -.035em; line-height: 1.04; color: var(--ink) }
+.sp-price .txt { margin: 16px 0 34px; color: var(--mut); font-size: clamp(16px, 1.25vw, 19px); line-height: 1.65; max-width: 520px }
+.sp-steps { list-style: none; display: grid; gap: 0 }
+.sp-steps li { position: relative; display: grid; grid-template-columns: 48px 1fr; gap: 20px; padding-bottom: 32px }
+.sp-steps li:last-child { padding-bottom: 0 }
+.sp-steps li:not(:last-child)::before { content: ""; position: absolute; left: 23px; top: 52px; bottom: 4px; width: 2px; background: linear-gradient(var(--gold), rgba(234, 145, 66, .1)); border-radius: 2px; transform: scaleY(0); transform-origin: top; transition: transform .7s ease var(--ld, 0s) }
+.sp-steps.go li:not(:last-child)::before { transform: scaleY(1) }
+.sp-steps .n { width: 48px; height: 48px; border-radius: 50%; background: var(--grad); color: #14181c; font: 800 18px var(--head); display: grid; place-items: center; box-shadow: 0 8px 22px rgba(234, 145, 66, .35); transform: scale(.3); opacity: 0; transition: transform .6s cubic-bezier(.3, 1.7, .5, 1) var(--d, 0s), opacity .4s var(--d, 0s) }
+.sp-steps.go .n { transform: none; opacity: 1; animation: nPulse 1.4s ease-out var(--d, 0s) 1 }
+.sp-steps li>div { opacity: 0; transform: translateX(-16px); transition: opacity .6s ease var(--d, 0s), transform .6s ease var(--d, 0s) }
+.sp-steps.go li>div { opacity: 1; transform: none }
+.sp-steps h3 { font-size: 19px; font-weight: 800; color: var(--ink); margin: 3px 0 5px; letter-spacing: -.02em }
+.sp-steps p { font-size: 15.5px; line-height: 1.6; color: var(--mut) }
+.sp-price .price-card { border-radius: var(--r-l); padding: clamp(28px, 3.2vw, 42px); background: linear-gradient(160deg, #1a1b1f, #0e0f11); border: 1px solid #2b2d32; box-shadow: 0 40px 80px rgba(22, 24, 27, .28); color: #fff; position: sticky; top: 100px }
+.sp-price .price-tag b { font-size: clamp(68px, 7.5vw, 96px); font-weight: 800; letter-spacing: -.05em }
+.sp-price .price-tag span { color: #b4b7bc }
+.sp-price .lab { color: #b4b7bc }
+.pcredit { position: relative; display: inline-flex; align-items: center; gap: 8px; margin: 4px 0 6px; padding: 8px 14px 8px 11px; border-radius: 999px; background: rgba(234, 145, 66, .13); border: 1px solid rgba(234, 145, 66, .4); color: #f6e3cc; font: 700 13.5px var(--head) }
+.pcredit svg { color: var(--gold); width: 18px; height: 18px }
+.sp-price .checks { gap: 14px; margin-top: 24px; padding-top: 24px; border-top: 1px solid #2b2d32 }
+.sp-price .checks li { font-size: 15.5px; color: #eaecef }
+.sp-price .checks li b { color: #fff; font-weight: 700 }
+.sp-price .checks li small { color: #9a9da3; font-size: 13px }
+.sp-price .price-btns { position: relative; display: flex; gap: 12px; margin-top: 28px; flex-wrap: wrap }
+.sp-price .price-btns .btn { flex: 1; min-width: 160px }
+
+/* brands */
+.sp-brands .marq { margin-top: 4px }
+.sp .brand { border-radius: var(--r-s); box-shadow: none; border: 1px solid var(--line); background: #f7f7f8; padding: 16px 30px; font: 800 clamp(16px, 1.4vw, 20px) var(--head); letter-spacing: -.02em; color: #34373c; transition: transform .3s, border-color .3s, background .3s }
+.sp .brand:hover { transform: translateY(-3px); border-color: var(--gold); background: #fff }
+
+/* areas */
+.sp-areas { position: relative; background: radial-gradient(55% 80% at 100% 0%, rgba(234, 145, 66, .16), transparent 60%), #0d0e10; color: #fff; padding: clamp(64px, 7.5vw, 104px) 0; overflow: hidden }
+.sp-areas .row { display: grid; grid-template-columns: .85fr 1.15fr; gap: clamp(28px, 4.5vw, 72px); align-items: center }
+.sp-areas h2 { font-size: clamp(30px, 3.6vw, 50px); font-weight: 800; letter-spacing: -.035em; line-height: 1.05; color: #fff }
+.sp-areas p { margin-top: 14px; color: #b4b7bc; font-size: 17px; line-height: 1.65; max-width: 460px }
+.chips { display: flex; flex-wrap: wrap; gap: 10px }
+.chip { display: inline-flex; align-items: center; gap: 8px; padding: 11px 18px 11px 13px; border-radius: 999px; background: rgba(255, 255, 255, .05); border: 1px solid #2b2d32; font-size: 15px; font-weight: 600; color: #eaecef; transition: border-color .25s, background .25s, color .25s, transform .3s cubic-bezier(.3, 1.6, .5, 1) }
+.chip svg { width: 16px; height: 16px; color: var(--gold) }
+.chip:hover { border-color: var(--gold); background: rgba(234, 145, 66, .12); color: #fff; transform: translateY(-3px) scale(1.04) }
+.chip.more { border-style: dashed; color: var(--gold2) }
+
+/* FAQ */
+.faq h2 { font-weight: 800 }
+.sp .f summary { font: 700 clamp(16px, 1.3vw, 19px) var(--head); letter-spacing: -.015em; transition: color .2s }
+.sp .f summary:hover { color: #c7660f }
+.f[open]>p { animation: faqIn .45s cubic-bezier(.22, 1, .36, 1) }
+
+/* ---------- motion ---------- */
+.fx { opacity: 0; transform: translateY(30px); will-change: opacity, transform; transition: opacity 1s cubic-bezier(.22, 1, .36, 1) var(--d, 0ms), transform 1s cubic-bezier(.22, 1, .36, 1) var(--d, 0ms) }
+.fx.fx-l { transform: translateX(-40px) }
+.fx.fx-r { transform: translateX(40px) }
+.fx.fx-z { transform: scale(.94) }
+.fx.in { opacity: 1; transform: none }
+@keyframes fadeUp { from { opacity: 0; transform: translateY(26px) } to { opacity: 1; transform: none } }
+@keyframes slideR { from { opacity: 0; transform: translateX(48px) } to { opacity: 1; transform: none } }
+@keyframes shimmer { 0%, 100% { background-position: 0% 50% } 50% { background-position: 100% 50% } }
+@keyframes gridDrift { to { background-position: 64px 64px, 64px 64px } }
+@keyframes ring { 0% { box-shadow: inset 0 1px 0 rgba(255, 255, 255, .4), 0 10px 26px rgba(234, 145, 66, .25), 0 0 0 0 rgba(234, 145, 66, .55) } 70%, 100% { box-shadow: inset 0 1px 0 rgba(255, 255, 255, .4), 0 10px 26px rgba(234, 145, 66, .25), 0 0 0 18px rgba(234, 145, 66, 0) } }
+@keyframes nPulse { 0% { box-shadow: 0 8px 22px rgba(234, 145, 66, .35), 0 0 0 0 rgba(234, 145, 66, .6) } 100% { box-shadow: 0 8px 22px rgba(234, 145, 66, .35), 0 0 0 20px rgba(234, 145, 66, 0) } }
+@keyframes faqIn { from { opacity: 0; transform: translateY(-8px) } to { opacity: 1; transform: none } }
+@keyframes gradShift { 0%, 100% { background-position: 0% 50% } 50% { background-position: 100% 50% } }
+@media(prefers-reduced-motion: reduce) {
+    *, *::before, *::after { animation: none !important; transition: none !important }
+    .fx { opacity: 1 !important; transform: none !important }
+    .sp-steps li>div, .sp-steps .n { opacity: 1 !important; transform: none !important }
+    .sp-steps li:not(:last-child)::before { transform: none !important }
+    .sp-head h2::after { width: 64px !important }
+    .sp-hero .hero-copy>*, .sp-hero .lead-form { opacity: 1 !important }
+}
+
+@media(max-width:1000px) {
+    .ogrid, .ogrid[data-n="2"] { grid-template-columns: 1fr }
+    .sp-price { grid-template-columns: 1fr }
+    .sp-price .price-card { position: relative; top: 0 }
+    .sp-areas .row { grid-template-columns: 1fr }
+}
+@media(max-width:640px) {
+    .sp-sec { padding: 56px 0 }
+    .sp-hero .hero-content { min-height: 0; align-items: stretch }
+    .sp-hero .btns { flex-direction: column; max-width: none; width: 100% }
+    .sp-hero .btns .btn { width: 100% }
+    .sp-chips, .sp-proof { justify-content: center }
+    .sp-lead { margin-left: auto; margin-right: auto }
+    .sp-steps li { gap: 14px; grid-template-columns: 42px 1fr }
+    .sp-steps .n { width: 42px; height: 42px; font-size: 16px }
+    .sp-steps li:not(:last-child)::before { left: 20px; top: 46px }
+    .sp-price .price-btns .btn { min-width: 0 }
+    .ocard { padding: 28px 24px }
+    .ocard::after { font-size: 48px }
+    .sp .pgrid { grid-template-columns: 1fr 1fr; gap: 10px }
+    .sp .pcell { padding: 16px 14px 16px; gap: 6px }
+    .sp .pcell .ico { width: 38px; height: 38px; font-size: 19px; margin-bottom: 2px }
+    .sp .pcell h3 { font-size: 15px; line-height: 1.25 }
+    .sp .pcell p { font-size: 13px; line-height: 1.5; display: -webkit-box; -webkit-line-clamp: 4; -webkit-box-orient: vertical; overflow: hidden }
+    .sp .pcell .go { display: none }
+    .sp .pgrid>:last-child:nth-child(odd) { grid-column: 1/-1 }
+}
+body { overflow-x: clip }
+@media(max-width:1000px) { .fx.fx-r, .fx.fx-l { transform: translateY(34px) } }
+
+
+/* =====================================================================
+   v3.1: solid header, loop animations (always running, GPU-only), CTA card, neutral callouts
+   ===================================================================== */
+/* CTA: dark rounded card on light gray (no orange page background) */
+.sched { background: var(--paper); padding: clamp(56px, 7vw, 100px) 0; animation: none }
+.sched .inner { position: relative; overflow: hidden; width: calc(100% - 2 * var(--pad)); max-width: calc(var(--max) - 2 * var(--pad)); padding: clamp(34px, 5vw, 68px); border-radius: 28px; color: #fff; background: radial-gradient(60% 130% at 100% 0%, rgba(234, 145, 66, .26), transparent 60%), linear-gradient(160deg, #1a1b1f, #0b0c0e); border: 1px solid #2b2d32; box-shadow: 0 40px 90px rgba(22, 24, 27, .22) }
+.sched .inner>:not(.fxorb) { position: relative; z-index: 1 }
+.sched h2 { color: #fff; font-weight: 800 }
+.sched p { color: #b4b7bc }
+.sched .kick { color: var(--gold2) }
+.sched .b-dark { background: var(--grad); color: #14181c; box-shadow: inset 0 1px 0 rgba(255, 255, 255, .4), 0 10px 26px rgba(234, 145, 66, .3) }
+.sched .b-white { background: transparent; color: #fff; border: 1.5px solid rgba(255, 255, 255, .4) }
+.sched .b-white:hover { background: rgba(255, 255, 255, .1); border-color: #fff }
+.sched .b-dark:hover { transform: translateY(-2px) }
+
+/* neutral callouts (no orange tint) */
+.do-note, .legal-card .note { background: #f1f1f3; border: 1px solid var(--line); color: #34373c }
+.do-note svg { color: var(--gold) }
+
+/* trust strip dividers */
+.features .feat { position: relative }
+.features .feat+.feat::before { content: ""; position: absolute; left: -13px; top: 8%; bottom: 8%; width: 1px; background: linear-gradient(transparent, #33363b, transparent) }
+@media(max-width:900px) { .features .feat+.feat::before { display: none } }
+
+/* floating glow orbs (added by fx.js) */
+.fx-host { position: relative; overflow: hidden }
+.fxorb { position: absolute; border-radius: 50%; pointer-events: none; z-index: 0; will-change: transform }
+.fxorb.fa { width: 560px; height: 560px; right: -140px; top: -180px; background: radial-gradient(circle, rgba(239, 193, 91, .2), transparent 66%); animation: orbA 20s ease-in-out infinite }
+.fxorb.fb { width: 460px; height: 460px; left: -160px; bottom: -200px; background: radial-gradient(circle, rgba(234, 145, 66, .14), transparent 66%); animation: orbB 24s ease-in-out infinite }
+.hero>.fxorb { z-index: 1 }
+.sp-dark .inner, .sp-areas .inner, section.dark>.inner { position: relative; z-index: 1 }
+@keyframes orbA { 0%, 100% { transform: translate3d(0, 0, 0) scale(1) } 50% { transform: translate3d(-90px, 70px, 0) scale(1.18) } }
+@keyframes orbB { 0%, 100% { transform: translate3d(0, 0, 0) scale(1) } 50% { transform: translate3d(110px, -60px, 0) scale(.9) } }
+
+/* always-on loops */
+.hero .hero-bg { animation: kenburns 28s ease-in-out infinite alternate; will-change: transform }
+@keyframes kenburns { from { transform: scale(1.02) translate3d(0, 0, 0) } to { transform: scale(1.09) translate3d(-1.2%, -1%, 0) } }
+.ocard .ico { animation: bob 4.6s ease-in-out infinite }
+.ocard:nth-child(2) .ico { animation-delay: -1.5s } .ocard:nth-child(3) .ico { animation-delay: -3s }
+.features .feat svg { animation: bob 5.2s ease-in-out infinite }
+.features .feat:nth-child(2) svg { animation-delay: -1.3s } .features .feat:nth-child(3) svg { animation-delay: -2.6s } .features .feat:nth-child(4) svg { animation-delay: -3.9s }
+@keyframes bob { 0%, 100% { transform: translate3d(0, 0, 0) } 50% { transform: translate3d(0, -6px, 0) } }
+.kicker::before { animation: dotPulse 2.6s ease-out infinite }
+@keyframes dotPulse { 0% { box-shadow: 0 0 0 0 rgba(234, 145, 66, .55) } 80%, 100% { box-shadow: 0 0 0 10px rgba(234, 145, 66, 0) } }
+.live svg { animation: heartbeat 2s ease-in-out infinite }
+@keyframes heartbeat { 0%, 100% { transform: scale(1) } 50% { transform: scale(1.3) } }
+.btn-grad svg, .cb-call svg { animation: wiggle 4.5s ease-in-out infinite; transform-origin: 50% 50% }
+@keyframes wiggle { 0%, 70%, 100% { transform: rotate(0) } 74% { transform: rotate(-16deg) } 78% { transform: rotate(14deg) } 82% { transform: rotate(-10deg) } 86% { transform: rotate(8deg) } 90% { transform: rotate(0) } }
+.sp-proof .stars, .rv .stars { background: linear-gradient(100deg, #ea9142 0%, #ea9142 38%, #fff2c2 50%, #ea9142 62%, #ea9142 100%); background-size: 260% 100%; -webkit-background-clip: text; background-clip: text; color: transparent; animation: starShine 4s linear infinite }
+@keyframes starShine { from { background-position: 130% 0 } to { background-position: -130% 0 } }
+.sp-steps.go .n { animation: nPulse 1.4s ease-out var(--d, 0s) 1, nLoop 8s ease-in-out calc(var(--d, 0s) + 2.2s) infinite }
+@keyframes nLoop { 0%, 38%, 100% { box-shadow: 0 8px 22px rgba(234, 145, 66, .35), 0 0 0 0 rgba(234, 145, 66, 0) } 4% { box-shadow: 0 8px 22px rgba(234, 145, 66, .5), 0 0 0 0 rgba(234, 145, 66, .55) } 26% { box-shadow: 0 8px 22px rgba(234, 145, 66, .35), 0 0 0 18px rgba(234, 145, 66, 0) } }
+.sp-price .price-card::before { animation: breathe 6s ease-in-out infinite }
+@keyframes breathe { 0%, 100% { opacity: .65; transform: scale(1) } 50% { opacity: 1; transform: scale(1.18) } }
+.sp-price .pcredit svg { animation: heartbeat 2.4s ease-in-out infinite }
+.chip.more svg { animation: nudge 1.8s ease-in-out infinite }
+@keyframes nudge { 0%, 100% { transform: translateX(0) } 50% { transform: translateX(4px) } }
+.pcell .go svg, .card .arrow svg { animation: nudge 2.4s ease-in-out infinite }
+.sched h2 { font-size: clamp(26px, 3.1vw, 42px); letter-spacing: -.03em }
+.sched .btns { min-width: min(100%, 320px) }
+
+
+/* =====================================================================
+   v3.2
+   ===================================================================== */
+/* 1) How it works + price: shorter, nothing sticky */
+#pricing.sp-sec { padding: clamp(48px, 6vw, 84px) 0 }
+.sp-price { gap: clamp(26px, 4.5vw, 64px); align-items: center }
+.sp-price h2 { font-size: clamp(28px, 3.2vw, 44px) }
+.sp-price .txt { margin: 10px 0 24px; font-size: 16.5px }
+.sp-steps li { padding-bottom: 20px; gap: 16px; grid-template-columns: 44px 1fr }
+.sp-steps .n { width: 44px; height: 44px; font-size: 16px }
+.sp-steps li:not(:last-child)::before { left: 21px; top: 48px }
+.sp-steps h3 { font-size: 17.5px; margin: 2px 0 3px }
+.sp-steps p { font-size: 15px; line-height: 1.55 }
+.sp-price .price-card { position: relative !important; top: auto !important; padding: clamp(24px, 2.6vw, 32px) }
+.sp-price .price-tag { margin: 6px 0 4px }
+.sp-price .price-tag b { font-size: clamp(56px, 6vw, 76px) }
+.sp-price .checks { gap: 10px; margin-top: 16px; padding-top: 16px }
+.sp-price .checks li { font-size: 15px }
+.sp-price .price-btns { margin-top: 20px }
+
+/* 3) problem cards: softer motion */
+.sp .pcell { transition: transform .7s cubic-bezier(.22, 1, .36, 1), border-color .5s ease, box-shadow .7s ease, background .5s ease }
+.sp .pcell:hover { transform: translateY(-3px); box-shadow: 0 16px 36px rgba(22, 24, 27, .09) }
+.sp .pcell::before { transition: opacity .6s ease; background: radial-gradient(320px circle at var(--mx, 50%) var(--my, 0%), rgba(234, 145, 66, .09), transparent 62%) }
+.sp .pcell .ico { transition: transform .7s cubic-bezier(.22, 1, .36, 1), background .5s ease, color .5s ease }
+.sp .pcell:hover .ico { transform: rotate(-4deg) scale(1.05) }
+.sp-sec .pcell.fx { transform: translateY(14px); transition-duration: 1.2s }
+.sp-sec .pcell.fx.in { transform: none }
+.pcell .go svg { animation-duration: 3.2s }
+@keyframes nudge { 0%, 100% { transform: translateX(0) } 50% { transform: translateX(3px) } }
+
+/* 4) brands: never pause, no hover jump */
+.marq:hover .mq-track { animation-play-state: running }
+.sp .brand:hover { transform: none; border-color: var(--line); background: #f7f7f8 }
+
+/* 5) FAQ call button: clearly visible on white */
+.faq .btn-light { background: #16181b; color: #fff; border: 0; padding: 15px 26px; font-size: 16px; box-shadow: 0 10px 24px rgba(22, 24, 27, .22) }
+.faq .btn-light svg { color: var(--gold2) }
+.faq .btn-light:hover { background: var(--grad); color: #14181c; box-shadow: 0 14px 30px rgba(234, 145, 66, .3) }
+.faq .btn-light:hover svg { color: #14181c }
+
+/* 2) plain home hero: no grid, no glows, no orbs */
+.hero-plain::after { display: none }
+.hero-plain::before { background: linear-gradient(90deg, rgba(8, 9, 10, .94) 0%, rgba(8, 9, 10, .72) 46%, rgba(8, 9, 10, .3) 100%) }
+
+/* 6) CTA: call panel */
+.sp-cta { background: var(--paper); padding: clamp(56px, 7vw, 100px) 0 }
+.sp-cta .cta-card { position: relative; overflow: hidden; width: calc(100% - 2 * var(--pad)); max-width: calc(var(--max) - 2 * var(--pad)); display: grid; grid-template-columns: 1.1fr .9fr; gap: clamp(26px, 4vw, 64px); align-items: center; padding: clamp(30px, 5vw, 64px); border-radius: 32px; color: #fff; background: radial-gradient(50% 120% at 0% 0%, rgba(239, 193, 91, .12), transparent 60%), linear-gradient(150deg, #1b1c20, #0a0b0d); border: 1px solid #2b2d32; box-shadow: 0 50px 100px rgba(22, 24, 27, .25) }
+.sp-cta .cta-card::before { content: ""; position: absolute; left: 6%; right: 6%; top: 0; height: 2px; background: linear-gradient(90deg, transparent, var(--gold2), transparent) }
+.sp-cta .cta-card>:not(.fxorb) { position: relative; z-index: 1 }
+.sp-cta .kick { font: 800 12.5px var(--head); letter-spacing: .16em; text-transform: uppercase; color: var(--gold2); margin-bottom: 14px }
+.sp-cta h2 { font-size: clamp(30px, 3.8vw, 52px); font-weight: 800; letter-spacing: -.035em; line-height: 1.04; color: #fff }
+.sp-cta .cta-l p { margin-top: 16px; font-size: 17px; line-height: 1.65; color: #b4b7bc; max-width: 480px }
+.cta-ticks { list-style: none; display: grid; gap: 12px; margin-top: 26px }
+.cta-ticks li { display: flex; align-items: center; gap: 12px; font: 700 16px var(--head); color: #eaecef }
+.cta-ticks svg { width: 24px; height: 24px; padding: 5px; border-radius: 50%; background: var(--grad); color: #14181c; stroke-width: 3.2; flex: none }
+.sp-cta .cta-r { text-align: center; padding: clamp(26px, 3vw, 40px) clamp(20px, 2.6vw, 36px); border-radius: 24px; background: rgba(255, 255, 255, .045); border: 1px solid rgba(255, 255, 255, .12) }
+.cta-lab { font: 800 12.5px var(--head); letter-spacing: .16em; text-transform: uppercase; color: #b4b7bc }
+.cta-phone { display: block; margin: 10px 0 8px; font: 800 clamp(30px, 3.4vw, 46px)/1.1 var(--head); letter-spacing: -.035em; white-space: nowrap; background: var(--grad); -webkit-background-clip: text; background-clip: text; color: transparent }
+.cta-hrs { font-size: 14px; color: #9a9da3; margin-bottom: 22px }
+.cta-btns { display: grid; gap: 10px }
+.cta-btns .btn { width: 100%; height: 54px; font-size: 17px }
+@media(max-width:900px) { .sp-cta .cta-card { grid-template-columns: 1fr; border-radius: 26px } }
+
+
+/* =====================================================================
+   v3.3: performance (cheap loops only), softer hover, same style on every page
+   ===================================================================== */
+:root { --ease: cubic-bezier(.22, 1, .36, 1) }
+
+/* expensive loops removed (box-shadow / background-position / text repaint) */
+.grad-text { animation: none; background-size: 100% 100% }
+.sp-proof .stars, .rv .stars { animation: none; background: var(--grad); -webkit-background-clip: text; background-clip: text; color: transparent }
+.kicker::before { animation: none; box-shadow: 0 0 0 4px rgba(234, 145, 66, .16) }
+.sp-hero .btns .btn-grad, .cb-call { animation: none }
+.pcell .go svg, .card .arrow svg { animation: none }
+.hero .hero-bg { will-change: auto }
+.fxorb { will-change: auto }
+.ocard::before, .sp .pcell::before { will-change: auto }
+
+/* gradient button: shine through background-position (no overflow clipping) + ring through a light pseudo-element */
+.btn { overflow: visible }
+.btn-grad { background: linear-gradient(100deg, #ea9142 0%, #efc15b 38%, #ffe9a8 50%, #efc15b 62%, #ea9142 100%); background-size: 260% 100%; background-position: 0 0; transition: background-position 1s ease, transform .6s var(--ease), box-shadow .6s ease }
+.btn-grad:hover { background-position: 100% 0 }
+.btn-grad::after { display: none }
+.sp-hero .btns .btn-grad::before, .cb-call::before, .cta-btns .btn-grad::before { content: ""; position: absolute; inset: 0; border-radius: inherit; border: 2px solid rgba(239, 193, 91, .8); pointer-events: none; animation: ringOut 3s ease-out infinite }
+@keyframes ringOut { 0% { transform: scale(1); opacity: .85 } 65%, 100% { transform: scale(1.12, 1.55); opacity: 0 } }
+
+/* step circles: ring is a pseudo-element (transform + opacity only) */
+.sp-steps.go .n { animation: none }
+.sp-steps .n { position: relative }
+.sp-steps .n::after { content: ""; position: absolute; inset: 0; border-radius: 50%; border: 2px solid var(--gold); opacity: 0; pointer-events: none }
+.sp-steps.go .n::after { animation: stepRing 8s ease-out infinite; animation-delay: calc(var(--d, 0s) + 1.4s) }
+@keyframes stepRing { 0% { transform: scale(1); opacity: .9 } 14%, 100% { transform: scale(1.8); opacity: 0 } }
+
+/* brands marquee: edge fade by overlays (no mask), never pauses */
+.marq { -webkit-mask-image: none; mask-image: none; position: relative }
+.marq::before, .marq::after { content: ""; position: absolute; top: 0; bottom: 0; width: 9%; z-index: 2; pointer-events: none }
+.marq::before { left: 0; background: linear-gradient(90deg, #fff, rgba(255, 255, 255, 0)) }
+.marq::after { right: 0; background: linear-gradient(270deg, #fff, rgba(255, 255, 255, 0)) }
+.marq:hover .mq-track { animation-play-state: running }
+
+/* animations of sections that are off-screen pause (class set by fx.js) */
+.off, .off *, .off *::before, .off *::after { animation-play-state: paused !important }
+
+/* soft hover: gold fades in over the dark icon tile instead of a hard colour swap */
+.pcell .ico, .why-card .ico { position: relative; isolation: isolate; overflow: hidden; transition: color .8s ease, transform .9s var(--ease) }
+.pcell .ico::before, .why-card .ico::before { content: ""; position: absolute; inset: 0; background: var(--grad); opacity: 0; transition: opacity .8s ease; z-index: -1 }
+.sp .pcell:hover .ico, .why-card:hover .ico { background: #17181b; color: #14181c; transform: scale(1.04) }
+.pcell:hover .ico::before, .why-card:hover .ico::before { opacity: 1 }
+.sp .pcell { transition: transform .8s var(--ease), border-color .7s ease, box-shadow .8s ease, background .7s ease }
+.sp .pcell:hover { transform: translateY(-3px) }
+.ocard { transition: transform .8s var(--ease), border-color .7s ease, box-shadow .8s ease }
+.ocard:hover { transform: translateY(-4px) }
+.ocard:hover .ico { transform: none }
+.card, .grid3 .card { transition: transform .7s var(--ease), box-shadow .8s ease, border-color .7s ease }
+.card:hover, .grid3 .card:hover { transform: translateY(-4px) }
+.why-card { transition: transform .7s var(--ease), box-shadow .8s ease, border-color .7s ease }
+.why-card:hover { transform: translateY(-3px) }
+.chip { transition: border-color .5s ease, background .5s ease, color .5s ease, transform .6s var(--ease) }
+.chip:hover { transform: translateY(-2px) }
+.sp .brand:hover, .brand:hover { transform: none }
+.f summary, .btn-out { transition: color .4s ease, background .5s ease, border-color .5s ease, transform .6s var(--ease) }
+
+/* same section style on the home page and other pages */
+.sec-head h2::after, .areas-wrap h2::after, .faq h2::after, .sp-areas h2::after { content: ""; display: block; width: 64px; height: 4px; border-radius: 4px; background: var(--grad); margin-top: 20px }
+.sec-head h2::after { width: 0; transition: width 1s var(--ease) .3s }
+.sec-head.in h2::after, .no-fx .sec-head h2::after { width: 64px }
+.sec-head h2 { font-size: clamp(30px, 3.8vw, 54px); line-height: 1.04 }
+.sec-head p { font-size: clamp(16px, 1.25vw, 19px) }
+.group-title h3 { font-family: var(--head); font-weight: 800; letter-spacing: -.03em }
+.group-com { margin-top: clamp(44px, 5vw, 72px) }
+.dark .sec-head p { color: #b4b7bc }
+.why-card { background: #f7f7f8; border: 1px solid var(--line); box-shadow: none }
+.why-card:hover { background: #fff; border-color: rgba(234, 145, 66, .6); box-shadow: 0 16px 36px rgba(22, 24, 27, .09) }
+.why-dark .why-card { background: linear-gradient(160deg, rgba(255, 255, 255, .07), rgba(255, 255, 255, .02)); border-color: rgba(255, 255, 255, .11) }
+.why-dark .why-card:hover { background: linear-gradient(160deg, rgba(255, 255, 255, .09), rgba(255, 255, 255, .03)); border-color: rgba(234, 145, 66, .6) }
+.rev { background: linear-gradient(160deg, rgba(255, 255, 255, .07), rgba(255, 255, 255, .02)); border: 1px solid rgba(255, 255, 255, .11) }
+.faq .btn-light { background: #16181b; color: #fff; border: 0 }
+
+
+/* =====================================================================
+   v3.4: reveal always animates, quicker hover, bigger Areas block (same on every page)
+   ===================================================================== */
+.fx { transition: opacity 1s var(--ease) var(--d, 0ms), transform 1s var(--ease) var(--d, 0ms) !important }
+
+/* hover: quick and soft (was too slow) */
+.pcell .ico, .why-card .ico { transition: color .35s ease, transform .45s var(--ease) }
+.pcell .ico::before, .why-card .ico::before { transition: opacity .35s ease }
+.sp .pcell { transition: transform .45s var(--ease), border-color .3s ease, box-shadow .45s ease, background .3s ease }
+.sp .pcell::before { transition: opacity .35s ease }
+.ocard { transition: transform .5s var(--ease), border-color .35s ease, box-shadow .5s ease }
+.card, .grid3 .card { transition: transform .45s var(--ease), box-shadow .5s ease, border-color .35s ease }
+.why-card { transition: transform .45s var(--ease), box-shadow .5s ease, border-color .35s ease, background .35s ease }
+.chip { transition: border-color .3s ease, background .3s ease, color .3s ease, transform .4s var(--ease) }
+
+/* Areas: bigger, one style on every page */
+.sp-areas { padding: clamp(80px, 10vw, 148px) 0 }
+.sp-areas .row { grid-template-columns: .8fr 1.2fr; gap: clamp(32px, 5vw, 88px); align-items: start }
+.sp-areas h2 { font-size: clamp(32px, 4.2vw, 58px) }
+.sp-areas p { font-size: 18px; max-width: 480px }
+.areas-btns { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 28px }
+.sp-areas .chips { gap: 12px }
+.sp-areas .chip { padding: 14px 22px 14px 16px; font-size: 16.5px }
+.sp-areas .chip svg { width: 18px; height: 18px }
+.sp-areas .kicker { color: var(--gold) }
+
+
+/* =====================================================================
+   v3.5: new icon motion (dark tiles): idle shine sweep + glow and spring on hover
+   ===================================================================== */
+.pcell .ico, .why-card .ico { background: #17181b; color: var(--gold2); overflow: hidden; isolation: isolate; box-shadow: inset 0 0 0 1px rgba(239, 193, 91, .22); transition: box-shadow .4s ease, color .35s ease, transform .5s var(--ease) }
+.pcell .ico::before, .why-card .ico::before { display: none }
+.pcell .ico::after, .why-card .ico::after { content: ""; position: absolute; inset: 0; border-radius: inherit; background: linear-gradient(115deg, transparent 35%, rgba(255, 233, 168, .3) 50%, transparent 65%); transform: translateX(-130%); animation: icoShine 6.5s ease-in-out infinite; pointer-events: none }
+.pcell:nth-child(3n+2) .ico::after, .why-card:nth-child(3n+2) .ico::after { animation-delay: 1.3s }
+.pcell:nth-child(3n) .ico::after, .why-card:nth-child(3n) .ico::after { animation-delay: 2.6s }
+@keyframes icoShine { 0%, 62% { transform: translateX(-130%) } 86%, 100% { transform: translateX(130%) } }
+.pcell .ico svg, .why-card .ico svg { position: relative; transition: transform .5s var(--ease) }
+.sp .pcell:hover .ico, .why-card:hover .ico { background: #17181b; color: #ffeaa8; transform: none; box-shadow: inset 0 0 0 1px rgba(239, 193, 91, .75), 0 10px 26px rgba(234, 145, 66, .38) }
+.pcell:hover .ico svg, .why-card:hover .ico svg { transform: scale(1.14) rotate(-6deg) }
+.why-dark .why-card .ico { background: rgba(255, 255, 255, .06); color: var(--gold2) }
+.why-dark .why-card:hover .ico { background: rgba(255, 255, 255, .08) }
+
+
+
+/* hero pages: layered glow + sweeping gold line (static gradients, transform-only motion) */
+section.hero.about-hero, section.hero.legal-hero { position: relative; overflow: hidden; background:
+  radial-gradient(70% 130% at 100% 0%, rgba(234,145,66,.20), transparent 62%),
+  radial-gradient(55% 100% at 0% 100%, rgba(239,193,91,.09), transparent 66%),
+  radial-gradient(40% 70% at 55% 120%, rgba(234,145,66,.08), transparent 70%),
+  linear-gradient(180deg, #121316, #0b0c0e) !important }
+section.hero.about-hero .fxorb, section.hero.legal-hero .fxorb { display: none !important }
+section.hero.about-hero::before, section.hero.legal-hero::before { display: block !important; content: ""; position: absolute; inset: 0; z-index: 0; pointer-events: none; background: repeating-linear-gradient(115deg, rgba(255,255,255,.028) 0 1px, transparent 1px 46px); -webkit-mask-image: linear-gradient(90deg, transparent 20%, #000 100%); mask-image: linear-gradient(90deg, transparent 20%, #000 100%) }
+section.hero.about-hero::after, section.hero.legal-hero::after { display: block !important; content: ""; position: absolute; top: -30%; bottom: -30%; left: 0; width: 70%; z-index: 0; pointer-events: none; background: linear-gradient(105deg, transparent 38%, rgba(239,193,91,.10) 49%, rgba(239,193,91,.03) 54%, transparent 62%); transform: translate3d(0,0,0); animation: heroSweep 11s ease-in-out infinite alternate; will-change: transform }
+@keyframes heroSweep { from { transform: translate3d(10%,0,0) } to { transform: translate3d(95%,0,0) } }
+section.hero.about-hero .hero-content, section.hero.legal-hero .hero-content, section.hero.legal-hero .inner { position: relative; z-index: 2 }
+@media (prefers-reduced-motion: reduce) { section.hero.about-hero::after, section.hero.legal-hero::after { animation: none } }
+.ab-big { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px }
+
+/* ===== v6: hero waves (about / contact / areas / legal) ===== */
+section.hero.about-hero, section.hero.legal-hero { background:
+  radial-gradient(65% 130% at 100% 100%, rgba(234,145,66,.22), transparent 62%),
+  radial-gradient(60% 90% at 0% 0%, rgba(255,255,255,.035), transparent 60%),
+  linear-gradient(160deg, #0f1013, #14110f) !important }
+section.hero.about-hero::before, section.hero.about-hero::after, section.hero.legal-hero::before, section.hero.legal-hero::after { display: none !important }
+section.hero.about-hero .fxorb, section.hero.legal-hero .fxorb { display: none !important }
+.hwaves { position: absolute; inset: 0; overflow: hidden; z-index: 0; pointer-events: none }
+.hwaves svg { position: absolute; left: 0; top: 0; width: 200%; height: 100% }
+.hwaves path { fill: none; stroke: rgba(239,193,91,.30); stroke-width: 1.2; vector-effect: non-scaling-stroke }
+.hwaves .w1 { animation: hwave 46s linear infinite }
+.hwaves .w2 { animation: hwave 64s linear infinite reverse; opacity: .8 }
+.hwaves .w3 { animation: hwave 84s linear infinite; opacity: .6 }
+@keyframes hwave { from { transform: translate3d(0,0,0) } to { transform: translate3d(-50%,0,0) } }
+.hwaves i { position: absolute; border-radius: 50%; background: #efc15b; opacity: .6; animation: hdot 7s ease-in-out infinite }
+@keyframes hdot { 0%, 100% { transform: translate3d(0,0,0); opacity: .25 } 50% { transform: translate3d(8px,-16px,0); opacity: .85 } }
+@media (prefers-reduced-motion: reduce) { .hwaves svg, .hwaves i { animation: none } }
+section.hero.about-hero .hero-content, section.hero.legal-hero .inner { position: relative; z-index: 2 }
+
+/* ===== v6.1: light pages: white sections, gray cards (exactly like "What we repair") ===== */
+html, body { background: #fff }
+body.bkpage { background: #fff !important; background-image: none !important }
+.services, .why, .faq, .sp-gray, .sp-white, .sched, .sp-cta, .legal, .dir { background: #fff !important; background-image: none !important }
+.ab-card, .c-item, .cty, .do-card, .none, .rc, .drow, .cat, .item, .toc, .c-form, .legal-card, .bk-card, .why-card { background: #f7f7f8 !important; border: 1px solid var(--line) !important; box-shadow: none !important }
+.ab-card:hover, .c-item:hover, .cty:hover, .do-card:hover, .cat:hover, .item:hover, .why-card:hover { background: #fff !important; border-color: rgba(234,145,66,.7) !important; box-shadow: 0 24px 50px rgba(22,24,27,.12) !important }
+.cat.sel, .item.sel { border-color: #ea9142 !important; background: #fffaf4 !important }
+
+/* our promise band (dark) */
+.sp-promise { padding: clamp(52px, 6vw, 84px) 0 }
+.pr-grid { display: grid; grid-template-columns: repeat(4, 1fr); border: 1px solid rgba(255,255,255,.11); border-radius: var(--r-l); background: linear-gradient(160deg, rgba(255,255,255,.06), rgba(255,255,255,.015)); overflow: hidden }
+.pr { padding: 30px 28px 28px; border-left: 1px solid rgba(255,255,255,.09); transition: background .35s }
+.pr:first-child { border-left: 0 }
+.pr:hover { background: rgba(255,255,255,.04) }
+.pr b { display: block; font: 800 clamp(26px, 2.6vw, 36px)/1.05 var(--head); letter-spacing: -.04em; background: var(--grad); -webkit-background-clip: text; background-clip: text; color: transparent; margin-bottom: 10px }
+.pr h3 { color: #fff; font: 700 18px/1.25 var(--head); letter-spacing: -.02em; margin-bottom: 8px }
+.pr p { color: #a9adb4; font-size: 14.5px; line-height: 1.6 }
+@media(max-width:1000px) { .pr-grid { grid-template-columns: 1fr 1fr } .pr:nth-child(3) { border-left: 0 } .pr:nth-child(n+3) { border-top: 1px solid rgba(255,255,255,.09) } }
+@media(max-width:560px) { .pr-grid { grid-template-columns: 1fr } .pr { border-left: 0; border-top: 1px solid rgba(255,255,255,.09) } .pr:first-child { border-top: 0 } }
+
+/* perf: no permanent compositor layers for reveal elements */
+.fx { will-change: auto !important }
+
+/* perf: hero photo no longer zooms in a loop (largest layer on the page); one-time soft zoom only */
+.hero .hero-bg { animation: heroZoom 1.8s ease-out both !important; will-change: auto !important }

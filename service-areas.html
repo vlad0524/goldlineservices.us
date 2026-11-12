@@ -20,7 +20,7 @@
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Manrope:wght@600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="./index.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css" />
 
@@ -34,7 +34,7 @@
     </script>
     <style>
         /* ===== About page (extra styles, index.css is loaded as usual) ===== */
-        .about-hero { background: radial-gradient(circle at 88% 12%, rgba(234,145,66,.20), transparent 42%), var(--bgdark) }
+        .about-hero .fxorb { display: none !important }
         .about-hero::before { display: none }
         .about-hero .hero-content { min-height: clamp(420px, 38vw, 540px); padding-top: 56px; padding-bottom: 56px; max-width: var(--max) }
         .about-hero .hero-content>* { position: relative; z-index: 2 }
@@ -59,15 +59,15 @@
 
         /* what we do */
         .do-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px }
-        .do-card { position: relative; background: linear-gradient(135deg, #fff, #f6f9f9); border: 1px solid #e3eaec; border-radius: 22px; padding: 30px 28px 26px; box-shadow: 0 18px 44px rgba(10,26,34,.07); display: flex; flex-direction: column; transition: transform .25s, box-shadow .25s, border-color .25s; overflow: hidden }
+        .do-card { position: relative; background: linear-gradient(135deg, #fff, #fafafa); border: 1px solid #e5e6e9; border-radius: 22px; padding: 30px 28px 26px; box-shadow: 0 18px 44px rgba(22, 24, 27,.07); display: flex; flex-direction: column; transition: transform .25s, box-shadow .25s, border-color .25s; overflow: hidden }
         .do-card::after { content: ""; position: absolute; left: 0; top: 0; height: 3px; width: 0; background: var(--grad); transition: width .45s ease }
-        .do-card:hover { transform: translateY(-5px); border-color: #ea9142; box-shadow: 0 24px 54px rgba(10,26,34,.13) }
+        .do-card:hover { transform: translateY(-5px); border-color: #ea9142; box-shadow: 0 24px 54px rgba(22, 24, 27,.13) }
         .do-card:hover::after { width: 100% }
         .do-card .ico { margin-bottom: 20px }
         .do-card h3 { font-size: clamp(22px, 2vw, 26px); font-weight: 600; letter-spacing: -.02em; margin-bottom: 10px }
-        .do-card p { color: #5d6f78; font-size: 15.5px; line-height: 1.65; letter-spacing: .01em }
+        .do-card p { color: #666a71; font-size: 15.5px; line-height: 1.65; letter-spacing: .01em }
         .do-card ul { list-style: none; margin: 18px 0 22px; display: grid; gap: 10px }
-        .do-card li { display: flex; gap: 10px; align-items: flex-start; font-size: 15px; color: #33434b }
+        .do-card li { display: flex; gap: 10px; align-items: flex-start; font-size: 15px; color: #34373c }
         .do-card li svg { color: #ea9142; font-size: 18px; margin-top: 2px; stroke-width: 2.4 }
         .do-card .more { margin-top: auto; display: inline-flex; align-items: center; gap: 8px; font-weight: 600; color: #b35f12; font-size: 15px }
         .do-card .more svg { transition: transform .25s }
@@ -77,13 +77,13 @@
 
         /* why (dark) */
         .why-dark { background: radial-gradient(circle at 8% 0%, rgba(234,145,66,.13), transparent 40%), var(--bgdark); color: #fff }
-        .why-dark .sec-head p { color: #aab6bc }
-        .why-dark .why-card { background: linear-gradient(135deg, #161e24, #12191e); border-color: #232e35; box-shadow: none }
+        .why-dark .sec-head p { color: #b4b7bc }
+        .why-dark .why-card { background: linear-gradient(135deg, #18191c, #141518); border-color: #2a2c30; box-shadow: none }
         .why-dark .why-card:hover { border-color: #ea9142; box-shadow: 0 18px 40px rgba(0,0,0,.35) }
         .why-dark .why-card h4 { color: #fff }
-        .why-dark .why-card p { color: #b9c3c9 }
+        .why-dark .why-card p { color: #bcbfc4 }
         .why-dark .ico { background: rgba(234,145,66,.14); border-color: rgba(234,145,66,.35); color: #efc15b }
-        .why-dark .why-card .no { color: #4f5f68 }
+        .why-dark .why-card .no { color: #5b5e63 }
         .why-dark .why-card { overflow: hidden }
 
         @media(max-width:1100px) { .do-grid { grid-template-columns: 1fr 1fr } }
@@ -95,44 +95,44 @@
         .area-hero h1 { font-size: clamp(32px, 3.8vw, 52px) }
         .area-hero p { margin-bottom: 0 }
         .dir h2, .cov h2 { font-size: clamp(28px, 3.4vw, 46px); font-weight: 600; letter-spacing: -.03em; line-height: 1.08 }
-        .dir .lead, .cov .lead { margin: 14px 0 26px; color: #6b7d85; line-height: 1.7; letter-spacing: .02em; max-width: 620px; font-size: clamp(15px, 1.2vw, 18px) }
-        .searchbar { display: flex; align-items: center; max-width: 640px; background: #fff; border: 1.5px solid #dbe4e6; border-radius: 16px; transition: border-color .2s, box-shadow .2s; overflow: hidden }
+        .dir .lead, .cov .lead { margin: 14px 0 26px; color: #6b6f76; line-height: 1.7; letter-spacing: .02em; max-width: 620px; font-size: clamp(15px, 1.2vw, 18px) }
+        .searchbar { display: flex; align-items: center; max-width: 640px; background: #fff; border: 1.5px solid #dcdde1; border-radius: 16px; transition: border-color .2s, box-shadow .2s; overflow: hidden }
         .searchbar:focus-within { border-color: #ea9142; box-shadow: 0 0 0 3px rgba(234,145,66,.18) }
-        .searchbar label { display: flex; align-items: center; gap: 10px; padding: 0 18px; height: 54px; border-right: 1px solid #e3eaec; font-size: 13.5px; font-weight: 700; color: var(--ink); white-space: nowrap }
+        .searchbar label { display: flex; align-items: center; gap: 10px; padding: 0 18px; height: 54px; border-right: 1px solid #e5e6e9; font-size: 13.5px; font-weight: 700; color: var(--ink); white-space: nowrap }
         .searchbar label svg { color: #ea9142; font-size: 20px }
         .searchbar input { flex: 1; min-width: 0; height: 54px; border: 0; outline: 0; padding: 0 16px; font: inherit; font-size: 15.5px; background: transparent; color: var(--ink) }
-        .searchbar button { width: 44px; height: 54px; color: #8a9aa2; display: none; place-items: center; font-size: 18px }
+        .searchbar button { width: 44px; height: 54px; color: #9a9da3; display: none; place-items: center; font-size: 18px }
         .searchbar.has button { display: grid }
         .searchbar button:hover { color: #d0452f }
-        .count { margin: 14px 0 22px; font-size: 13.5px; color: #8a9aa2 }
+        .count { margin: 14px 0 22px; font-size: 13.5px; color: #9a9da3 }
         .cities { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px }
-        .cty { display: flex; align-items: center; gap: 12px; padding: 16px 18px; background: linear-gradient(135deg, #fff, #f6f9f9); border: 1px solid #e3eaec; border-radius: 14px; font-weight: 600; font-size: 15.5px; box-shadow: 0 6px 16px rgba(9,28,42,.05); transition: transform .25s, border-color .25s, box-shadow .25s, color .25s; animation: ctyIn .5s ease both; animation-delay: var(--d, 0ms) }
+        .cty { display: flex; align-items: center; gap: 12px; padding: 16px 18px; background: linear-gradient(135deg, #fff, #fafafa); border: 1px solid #e5e6e9; border-radius: 14px; font-weight: 600; font-size: 15.5px; box-shadow: 0 6px 16px rgba(22, 24, 27,.05); transition: transform .25s, border-color .25s, box-shadow .25s, color .25s; animation: ctyIn .5s ease both; animation-delay: var(--d, 0ms) }
         .cty svg:first-child { color: #ea9142; font-size: 20px }
-        .cty svg:last-child { margin-left: auto; color: #8a9aa2; font-size: 18px; transition: transform .25s, color .25s }
-        .cty:hover { transform: translateY(-3px); border-color: #ea9142; box-shadow: 0 14px 28px rgba(9,28,42,.11) }
+        .cty svg:last-child { margin-left: auto; color: #9a9da3; font-size: 18px; transition: transform .25s, color .25s }
+        .cty:hover { transform: translateY(-3px); border-color: #ea9142; box-shadow: 0 14px 28px rgba(22, 24, 27,.11) }
         .cty:hover svg:last-child { transform: translateX(4px); color: #ea9142 }
         @keyframes ctyIn { from { opacity: 0; transform: translateY(12px) } to { opacity: 1; transform: none } }
-        .none { display: none; text-align: center; padding: 34px 20px; background: #fff; border: 1px dashed #cdd9dc; border-radius: 16px; color: #5d6f78; line-height: 1.7 }
+        .none { display: none; text-align: center; padding: 34px 20px; background: #fff; border: 1px dashed #d0d2d6; border-radius: 16px; color: #666a71; line-height: 1.7 }
         .none a { color: #b35f12; font-weight: 600 }
         .none.on { display: block }
         .cov { background: radial-gradient(circle at 90% 0, rgba(234,145,66,.14), transparent 45%), var(--bgdark); color: #fff }
-        .cov .lead { color: #aab6bc }
+        .cov .lead { color: #b4b7bc }
         .cov-wrap { display: grid; grid-template-columns: .8fr 1.4fr; gap: clamp(26px, 4vw, 60px); align-items: center }
         .cov .btns { display: flex; gap: 14px; flex-wrap: wrap; margin-top: 4px }
-        .cov .note { margin-top: 18px; font-size: 13.5px; color: #8d9ba3; line-height: 1.6 }
-        .mapbox { position: relative; border: 1px solid #232e35; border-radius: 24px; overflow: hidden; box-shadow: 0 24px 60px rgba(0,0,0,.4); background: #0f161a }
-        #map { height: clamp(340px, 42vw, 520px); width: 100%; background: #0f161a }
-        .mapbox .badge { position: absolute; z-index: 500; left: 14px; top: 14px; background: rgba(12,18,22,.88); border: 1px solid #2c3a42; border-radius: 999px; padding: 8px 14px; font-size: 13px; font-weight: 600; color: #fff; backdrop-filter: blur(6px) }
+        .cov .note { margin-top: 18px; font-size: 13.5px; color: #8b8e94; line-height: 1.6 }
+        .mapbox { position: relative; border: 1px solid #2a2c30; border-radius: 24px; overflow: hidden; box-shadow: 0 24px 60px rgba(0,0,0,.4); background: #111214 }
+        #map { height: clamp(340px, 42vw, 520px); width: 100%; background: #111214 }
+        .mapbox .badge { position: absolute; z-index: 500; left: 14px; top: 14px; background: rgba(22, 24, 27,.88); border: 1px solid #34373c; border-radius: 999px; padding: 8px 14px; font-size: 13px; font-weight: 600; color: #fff; backdrop-filter: blur(6px) }
         .mapbox .badge b { color: #efc15b }
         /* index.css sets a global size on svg, which would hide Leaflet's circle and dots */
         .leaflet-container svg { max-width: none !important; max-height: none !important }
         .leaflet-overlay-pane svg { width: auto; height: auto; stroke-width: initial }
         .leaflet-container { font-family: 'Inter', system-ui, sans-serif }
-        .leaflet-popup-content-wrapper { background: #12181c; color: #fff; border-radius: 12px; border: 1px solid #2c3a42 }
-        .leaflet-popup-tip { background: #12181c }
+        .leaflet-popup-content-wrapper { background: #141518; color: #fff; border-radius: 12px; border: 1px solid #34373c }
+        .leaflet-popup-tip { background: #141518 }
         .leaflet-popup-content { margin: 10px 14px; font-weight: 600; font-size: 14px }
         .leaflet-popup-content a { color: #efc15b }
-        .mapfail { display: none; place-items: center; text-align: center; height: 100%; padding: 30px; color: #aab6bc }
+        .mapfail { display: none; place-items: center; text-align: center; height: 100%; padding: 30px; color: #b4b7bc }
         @media(max-width:1000px) { .cities { grid-template-columns: repeat(2, 1fr) } .cov-wrap { grid-template-columns: 1fr } }
         @media(max-width:560px) { .cities { grid-template-columns: 1fr } .searchbar label span { display: none } .searchbar label { padding: 0 14px } }
         @media(prefers-reduced-motion: reduce) { .cty { animation: none } }
@@ -228,17 +228,27 @@
             </div>
         </section>
 
-        <!-- SCHEDULE (orange) -->
-        <section class="sched" id="contact">
-            <div class="inner">
-                <div>
+        <!-- CALL TO ACTION -->
+        <section class="sp-cta" id="contact">
+            <div class="inner cta-card">
+                <div class="cta-l">
                     <div class="kick">Ready when you are</div>
                     <h2>Schedule your service appointment</h2>
-                    <p>Call us directly or request an appointment online. We’ll review your request and contact you shortly to confirm.</p>
+                    <p>Call us or request a visit online. We confirm your appointment and quote the exact price before any work begins.</p>
+                    <ul class="cta-ticks">
+                        <li><svg viewBox="0 0 24 24"><path d="m5 12 5 5 9-10"/></svg>Exact price before any work</li>
+                        <li><svg viewBox="0 0 24 24"><path d="m5 12 5 5 9-10"/></svg>{{warranty}} warranty</li>
+                        <li><svg viewBox="0 0 24 24"><path d="m5 12 5 5 9-10"/></svg>Emergency visits available</li>
+                    </ul>
                 </div>
-                <div class="btns">
-                    <a class="btn b-dark" href="tel:{{phoneTel}}"><i data-ic="phone"></i>Call now · {{phone}}</a>
-                    <a class="btn b-white" href="schedule-service.html"><i data-ic="cal"></i>Schedule online</a>
+                <div class="cta-r">
+                    <div class="cta-lab">Call us now</div>
+                    <a class="cta-phone" href="tel:{{phoneTel}}">{{phone}}</a>
+                    <div class="cta-hrs">Mon–Sat 8:00 AM – 9:00 PM · Sunday emergency calls</div>
+                    <div class="cta-btns">
+                        <a class="btn btn-grad" href="tel:{{phoneTel}}"><svg viewBox="0 0 24 24"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z"/></svg>Call now</a>
+                        <a class="btn btn-out" href="schedule-service.html"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M8 3v4M16 3v4M3 10h18"/></svg>Schedule online</a>
+                    </div>
                 </div>
             </div>
         </section>
@@ -258,6 +268,7 @@
                         <li><a href="air-conditioner-repair.html">Air Conditioner repair</a></li>
                         <li><a href="furnace-repair.html">Furnace repair</a></li>
                         <li data-commercial><a href="commercial-ac-repair.html">Commercial HVAC repair</a></li>
+                        <li><a href="commercial-refrigerator-repair.html">Commercial refrigeration repair</a></li>
                         <li><a href="refrigerator-repair.html">Refrigerator repair</a></li>
                         <li><a href="washer-repair.html">Washer &amp; Dryer repair</a></li>
                         <li><a href="oven-stove-repair.html">Oven &amp; Stove repair</a></li>
@@ -298,16 +309,16 @@
         const CENTER = [41.9650, -87.8073];      // center of the circle (not shown on the page)
         /* Cities in the list. Delete a name to remove a city, add a name to add one (the list is sorted by you) */
         const CITIES = [
-            "Addison", "Arlington Heights", "Barrington", "Barrington Hills", "Bartlett", "Bensenville", "Bloomingdale",
-            "Buffalo Grove", "Carol Stream", "Cary", "Chicago", "Deer Park", "Deerfield", "Des Plaines", "Downers Grove",
-            "Elk Grove Village", "Elmhurst", "Elmwood Park", "Evanston", "Forest Glen", "Fox River Grove", "Glen Ellyn",
+            "Addison", "Arlington Heights", "Aurora", "Barrington", "Barrington Hills", "Bartlett", "Bensenville", "Bloomingdale",
+            "Buffalo Grove", "Carol Stream", "Cary", "Chicago", "Crystal Lake", "Deer Park", "Deerfield", "Des Plaines", "Downers Grove",
+            "Elgin", "Elk Grove Village", "Elmhurst", "Elmwood Park", "Evanston", "Forest Glen", "Fox River Grove", "Glen Ellyn",
             "Glencoe", "Glendale Heights", "Glenview", "Hanover Park", "Harwood Heights", "Highland Park", "Highwood",
             "Hoffman Estates", "Inverness", "Itasca", "Ivanhoe", "Jefferson Park", "Kildeer", "Lake Barrington",
             "Lake Forest", "Lake Zurich", "Lincolnshire", "Lincolnwood", "Lisle", "Lombard", "Long Grove",
             "Mount Prospect", "Mundelein", "Naperville", "Niles", "Norridge", "Northbrook", "Northfield", "Oak Brook",
             "Palatine", "Park Ridge", "Port Barrington", "Prospect Heights", "River Forest", "River Grove", "Riverwoods",
             "Rolling Meadows", "Roselle", "Rosemont", "Schaumburg", "Schiller Park", "Skokie", "South Barrington",
-            "Streamwood", "Tower Lakes", "Vernon Hills", "Villa Park", "Warrenville", "Wayne", "West Chicago", "Wheaton",
+            "St. Charles", "Streamwood", "Tower Lakes", "Vernon Hills", "Villa Park", "Warrenville", "Wayne", "West Chicago", "Wheaton",
             "Wheeling", "Wilmette", "Winfield", "Winnetka", "Wood Dale"
         ];
         const MENU = [
@@ -372,28 +383,6 @@
         document.querySelectorAll('.mega a').forEach(a => a.addEventListener('click', () => document.activeElement.blur()));
     </script>
 
-    <!-- Scroll animations (same as other pages) -->
-    <script>
-        (function () {
-            if (!('IntersectionObserver' in window) || matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-            var sel = '.dir .inner>*:not(.cities):not(.none),.cov-wrap>div,.sched .inner>div,.foot-grid>div';
-            var io = new IntersectionObserver(function (entries) {
-                entries.forEach(function (e) {
-                    if (!e.isIntersecting) return;
-                    var el = e.target;
-                    el.classList.add('in');
-                    io.unobserve(el);
-                    el.addEventListener('transitionend', function () { el.classList.remove('reveal', 'in'); el.style.removeProperty('--d'); }, { once: true });
-                });
-            }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
-            document.querySelectorAll(sel).forEach(function (el) {
-                var idx = Array.prototype.indexOf.call(el.parentElement.children, el);
-                el.style.setProperty('--d', Math.min(idx, 5) * 80 + 'ms');
-                el.classList.add('reveal');
-                io.observe(el);
-            });
-        })();
-    </script>
 </body>
 
 </html>

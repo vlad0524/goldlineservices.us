@@ -4,6 +4,7 @@
    ===================================================================== */
 
 window.SITE = (function () {
+  const BASE = ((document.currentScript && document.currentScript.src) || "").replace(/[^\/]*$/, "");   /* folder of this file (used to load fx.js) */
 
   /* 1) PHONE: type digits only, 10 digits. Everything else is automatic */
   const PHONE = "9299091265";      // main number: header, buttons, footer, links
@@ -33,10 +34,17 @@ window.SITE = (function () {
          HOW TO ADD A NEW GROUP: copy a whole group block (hvac / appliances / pool), change its key and texts, and give it
            fee: a key that exists in FEES and CREDIT below (e.g. "appliances"); icon: one of snow flame fridge washer oven drop bolt home tool cpu.
 
+         INSTALLATION / MAINTENANCE SWITCHES (each service page reads these)   <<< NEW
+           install: true      = the page shows an "Installation" card (new units / new equipment installed by us)
+           install: false     = no installation on that page (it shows "Parts & replacement" instead)
+           maintenance: true  = shows the "Maintenance" card;  false = hides it
+           Example: washer is  install: true  because we install washers; refrigerator is  install: false.
+
          ITEM FIELDS
            name  = name in the menu and on the home card      page = its page file     img = home card photo
            ask   = small question above the card title        text = card description
            formName / formText / icon = how it looks in the booking form
+           into / fee (optional) = put this item into another booking tile (into: "appliances") and use another fee group (fee: "appliancesCom")
          GROUP FIELDS
            title = menu column title + card tag     heading = home page section title     suffix = added to card titles
            fee = price group (FEES)     mergeInto = show this group's items inside another group's booking tile */
@@ -47,27 +55,27 @@ window.SITE = (function () {
       fee: "hvac",
       icon: "snow", text: "Air conditioning, furnace, and heating", brand: false,   // booking form tile
       items: {
-        airConditioner: { show: true, wide: true, name: "Air Conditioner", page: "air-conditioner-repair.html", img: "./hvac/ac-logo.jpg",
+        airConditioner: { show: true, install: true, maintenance: true, wide: true, name: "Air Conditioner", page: "air-conditioner-repair.html", img: "./hvac/ac-logo.jpg",
           ask: "AC not cooling?",
           text: "Restore strong cooling, steady airflow, and efficient performance all summer.",
           formName: "Air Conditioner", formText: "Not cooling, noisy, or leaking.", icon: "snow" },
 
-        furnace: { show: true, wide: true, name: "Furnace", page: "furnace-repair.html", img: "./hvac/hvac-logo.jpg",
+        furnace: { show: true, install: true, maintenance: true, wide: true, name: "Furnace", page: "furnace-repair.html", img: "./hvac/hvac-logo.jpg",
           ask: "No heat? We can fix it",
           text: "Get safe, consistent heat back with fast diagnostics and dependable repairs.",
           formName: "Furnace / Heating", formText: "No heat or uneven heating.", icon: "flame" },
 
-        miniSplit: { show: false, wide: true, name: "Mini-Split Systems", page: "mini-split-repair.html", img: "./hvac/mini-split.jpg",
+        miniSplit: { show: false, install: true, maintenance: true, wide: true, name: "Mini-Split Systems", page: "mini-split-repair.html", img: "./hvac/mini-split.jpg",
           ask: "Cooling several rooms without ducts?",
           text: "Ductless systems with one outdoor unit connected to one or more indoor units, professionally installed and serviced.",
           formName: "Mini-Split System", formText: "Ductless indoor or outdoor units.", icon: "snow" },
 
-        packaged: { show: true, wide: true, name: "Packaged Units", page: "packaged-unit-repair.html", img: "./hvac/packaged-unit.jpg",
+        packaged: { show: true, install: true, maintenance: true, wide: true, name: "Packaged Units", page: "packaged-unit-repair.html", img: "./hvac/packaged-unit.jpg",
           ask: "Apartment or rooftop unit not working?",
           text: "Repair and installation of all-in-one heating and cooling units, from apartment closet models to rooftop systems.",
           formName: "Packaged Unit", formText: "All-in-one rooftop or closet units.", icon: "home" },
 
-        wallUnit: { show: true, wide: true, name: "Through-the-Wall Units", page: "through-the-wall-repair.html", img: "./hvac/wall-unit.jpg",
+        wallUnit: { show: true, install: true, maintenance: true, wide: true, name: "Through-the-Wall Units", page: "through-the-wall-repair.html", img: "./hvac/wall-unit.jpg",
           ask: "Need comfort in just one room?",
           text: "Professional installation and repair of compact through-the-wall units, for cooling only or cooling and heating.",
           formName: "Through-the-Wall Unit", formText: "Wall-mounted cooling and heating.", icon: "home" }
@@ -78,12 +86,12 @@ window.SITE = (function () {
       title: "Commercial", heading: "Commercial Air Conditioning & Heating",
       fee: "hvacCom",   mergeInto: "hvac",   // its items are listed inside the "hvac" tile of the booking form
       items: {
-        commercialAc: { show: true, wide: true, name: "Commercial Air Conditioning", page: "commercial-ac-repair.html", img: "./hvac/",
+        commercialAc: { show: true, install: true, maintenance: true, wide: true, name: "Commercial Air Conditioning", page: "commercial-ac-repair.html", img: "./hvac/",
           ask: "AC down at your business?",
           text: "Keep staff and customers comfortable with fast repairs and reliable installation of rooftop and cooling units.",
           formName: "Commercial Air Conditioner", formText: "Rooftop and commercial cooling systems.", icon: "snow" },
 
-        commercialHeating: { show: true, wide: true, name: "Commercial Heating", page: "commercial-heating-repair.html", img: "./hvac/",
+        commercialHeating: { show: true, install: true, maintenance: true, wide: true, name: "Commercial Heating", page: "commercial-heating-repair.html", img: "./hvac/",
           ask: "No heat at your business?",
           text: "Get your space warm again with dependable repair and installation of furnaces and heating systems.",
           formName: "Commercial Furnace / Heating", formText: "Commercial heating systems.", icon: "flame" }
@@ -91,39 +99,49 @@ window.SITE = (function () {
     },
     appliances: {
       show: true,
-      title: "Appliances", heading: "Appliance Repair", suffix: " Repair",
+      title: "Appliances", heading: "Appliance Repair", suffix: " Repair", commercialTitle: "Commercial Refrigeration & Freezers",   /* title of the separate zone for items marked commercial: true */
       fee: "appliances",
       icon: "fridge", text: "Refrigerator, washer, dryer, oven, and more", brand: true,   // booking form tile
       items: {
-        refrigerator: { show: true, wide: false, name: "Refrigerator", page: "refrigerator-repair.html", img: "./appliance/refrigerator-lg.jpg",
+        refrigerator: { show: true, install: false, maintenance: true, wide: false, name: "Refrigerator", page: "refrigerator-repair.html", img: "./appliance/refrigerator-lg.jpg",
           ask: "Not cooling or leaking?",
           text: "Get your fridge back to the right temperature and keep your groceries safe.",
           formName: "Refrigerator", formText: "Not cooling, leaking, or noisy.", icon: "fridge" },
 
-        freezer: { show: true, wide: false, name: "Freezer", page: "freezer-repair.html", img: "./appliance/Sub-Zero-freezer.jpg",
+        freezer: { show: true, install: false, maintenance: true, wide: false, name: "Freezer", page: "freezer-repair.html", img: "./appliance/Sub-Zero-freezer.jpg",
           ask: "Frost buildup or warm freezer?",
           text: "Fix frost buildup, warm spots, and noisy cycles to protect your food.",
           formName: "Freezer", formText: "Warm, frosting up, or not running.", icon: "snow" },
 
-        washer: { show: true, wide: false, name: "Washer", page: "washer-repair.html", img: "./appliance/washer-logo.jpg",
+        washer: { show: true, install: true, maintenance: true, wide: false, name: "Washer", page: "washer-repair.html", img: "./appliance/washer-logo.jpg",
           ask: "Won't drain or spin?",
           text: "Fix water not draining, drum not spinning, or leaks and error codes.",
           formName: "Washer", formText: "Won't drain, spin, or fill.", icon: "washer" },
 
-        dryer: { show: true, wide: false, name: "Dryer", page: "dryer-repair.html", img: "./appliance/Dryer-logo.jpg",
+        dryer: { show: true, install: true, maintenance: true, wide: false, name: "Dryer", page: "dryer-repair.html", img: "./appliance/Dryer-logo.jpg",
           ask: "Not heating or drying?",
           text: "Solve no-heat, long drying times, and a drum that won’t turn.",
           formName: "Dryer", formText: "Not heating or drying slowly.", icon: "washer" },
 
-        ovenStove: { show: true, wide: false, name: "Oven & Stove", page: "oven-stove-repair.html", img: "./appliance/range-logo.jpg",
+        ovenStove: { show: true, install: false, maintenance: true, wide: false, name: "Oven & Stove", page: "oven-stove-repair.html", img: "./appliance/range-logo.jpg",
           ask: "Oven not heating evenly?",
           text: "Resolve heating, ignition, and temperature issues for consistent cooking.",
           formName: "Oven & Stove", formText: "Not heating or won't ignite.", icon: "oven" },
 
-        cooktopRange: { show: true, wide: false, name: "Cooktop & Range", page: "cooktop-range-repair.html", img: "./appliance/cook-top-logo.jpg",
+        cooktopRange: { show: true, install: false, maintenance: true, wide: false, name: "Cooktop & Range", page: "cooktop-range-repair.html", img: "./appliance/cook-top-logo.jpg",
           ask: "Burner won't light?",
           text: "Repair burners, igniters, and controls on cooktops and ranges.",
-          formName: "Cooktop & Range", formText: "Burners won't light or heat.", icon: "flame" }
+          formName: "Cooktop & Range", formText: "Burners won't light or heat.", icon: "flame" },
+
+        commercialRefrigerator: { show: true, install: false, maintenance: true, commercial: true, wide: false, name: "Commercial Refrigerator", page: "commercial-refrigerator-repair.html", img: "./appliance/refrigerator-lg.jpg",
+          ask: "Cooler not holding temperature?",
+          text: "Repair of reach-in, prep-table, display and walk-in coolers for restaurants and stores.",
+          formName: "Commercial Refrigerator", formText: "Reach-in, prep table, display, walk-in cooler.", icon: "fridge", fee: "appliancesCom" },
+
+        commercialFreezer: { show: true, install: false, maintenance: true, commercial: true, wide: false, name: "Commercial Freezer", page: "commercial-freezer-repair.html", img: "./appliance/Sub-Zero-freezer.jpg",
+          ask: "Freezer too warm or frosting up?",
+          text: "Repair of reach-in, chest, display and walk-in freezers, so your stock stays frozen.",
+          formName: "Commercial Freezer", formText: "Reach-in, chest, display, walk-in freezer.", icon: "snow", fee: "appliancesCom" }
       }
     },
     pool: {
@@ -132,37 +150,37 @@ window.SITE = (function () {
       fee: "pool",
       icon: "drop", text: "Pump, filter, heater, salt cell, and more", brand: false,   // booking form tile
       items: {
-        pump: { show: true, wide: false, name: "Pump", page: "pool-pump-repair.html", img: "./pool/pool_pump.webp",
+        pump: { show: true, install: false, maintenance: true, wide: false, name: "Pump", page: "pool-pump-repair.html", img: "./pool/pool_pump.webp",
           ask: "Noisy pump or low flow?",
           text: "Fix noise, loss of prime, and flow problems to keep water moving.",
           formName: "Pump", formText: "Noise, low flow, or loss of prime.", icon: "drop" },
 
-        filter: { show: true, wide: false, name: "Filter", page: "pool-filter-repair.html", img: "./pool/pool_filterd.webp",
+        filter: { show: true, install: false, maintenance: true, wide: false, name: "Filter", page: "pool-filter-repair.html", img: "./pool/pool_filterd.webp",
           ask: "Cloudy water or high pressure?",
           text: "Restore filtration, pressure balance, and water clarity.",
           formName: "Filter", formText: "Cloudy water or high pressure.", icon: "drop" },
 
-        heater: { show: true, wide: false, name: "Heater", page: "pool-heater-repair.html", img: "./pool/pool_heater.webp",
+        heater: { show: true, install: false, maintenance: true, wide: false, name: "Heater", page: "pool-heater-repair.html", img: "./pool/pool_heater.webp",
           ask: "Pool heater not heating?",
           text: "Repair ignition, heating, and temperature control issues.",
           formName: "Heater", formText: "Water not heating.", icon: "flame" },
 
-        saltCell: { show: true, wide: false, name: "Salt Cells", page: "pool-salt-cell-repair.html", img: "./pool/",
+        saltCell: { show: true, install: false, maintenance: true, wide: false, name: "Salt Cells", page: "pool-salt-cell-repair.html", img: "./pool/",
           ask: "Low chlorine or cell error?",
           text: "Inspect, clean, and replace salt cells to keep chlorine production steady.",
           formName: "Salt Cell", formText: "Low chlorine or cell errors.", icon: "bolt" },
         
-        plumbing: { show: true, wide: false, name: "Plumbing (Above Ground)", page: "pool-plumbing-repair.html", img: "./pool/",
+        plumbing: { show: true, install: false, maintenance: true, wide: false, name: "Plumbing (Above Ground)", page: "pool-plumbing-repair.html", img: "./pool/",
           ask: "Leaks at pipes or valves?",
           text: "Fix leaks, valves, and fittings on above-ground pool and spa plumbing.",
           formName: "Plumbing (Above Ground)", formText: "Leaks at pipes or valves.", icon: "tool" },
 
-        timers: { show: true, wide: false, name: "Timers & Smart Systems", page: "pool-timers-repair.html", img: "./pool/",
+        timers: { show: true, install: false, maintenance: true, wide: false, name: "Timers & Smart Systems", page: "pool-timers-repair.html", img: "./pool/",
           ask: "Timer or automation issues?",
           text: "Set up and repair timers, automation, and smart controls.",
           formName: "Timers & Smart Systems", formText: "Automation or timer issues.", icon: "cpu" },
 
-        electronics: { show: true, wide: false, name: "Electronics", page: "pool-electronics-repair.html", img: "./pool/",
+        electronics: { show: true, install: false, maintenance: true, wide: false, name: "Electronics", page: "pool-electronics-repair.html", img: "./pool/",
           ask: "Control panel not responding?",
           text: "Diagnose control boards, panels, and electronic components.",
           formName: "Electronics", formText: "Control panels and boards.", icon: "cpu" }
@@ -177,6 +195,7 @@ window.SITE = (function () {
     appliances: { standard: 79,  emergency: 150 },
     hvac:       { standard: 79,  emergency: 150 },
     hvacCom:    { standard: 100, emergency: 200 },  // HVAC commercial
+    appliancesCom: { standard: 100, emergency: 200 }, // commercial refrigerators / freezers
     pool:       { standard: 79,  emergency: 150 }
   };
 
@@ -188,6 +207,7 @@ window.SITE = (function () {
     appliances: 200,
     hvac:       250,
     hvacCom:    300, // HVAC commercial
+    appliancesCom: 300, // commercial refrigerators / freezers
     pool:       250
   };
 
@@ -274,6 +294,9 @@ window.SITE = (function () {
   /* 4) COMMERCIAL: switched in SERVICES above (commercial: { show: true / false }). Nothing to set here. */
   const COMMERCIAL = SERVICES.commercial.show !== false && Object.keys(SERVICES.commercial.items).some(k => SERVICES.commercial.items[k].show !== false);
 
+  /* 4b) WARRANTY: shown on every service page ("{{warranty}}" in any text). Change here -> changes everywhere. */
+  const WARRANTY = "3 months";   /* e.g. "3 months", "6 months", "1 year". Texts show "3-month warranty" automatically. */
+
   /* 5) GOOGLE REVIEWS shown in the small badge on the service pages */
   const RATING = "5.0";            // average rating, e.g. "5.0" or "4.8"
   const REVIEW_COUNT = "25+";      // number of reviews, e.g. "21+" or "34"
@@ -326,14 +349,18 @@ window.SITE = (function () {
 
 
 
+  /* 8) CITIES shown in "Areas we serve" on the home page AND on every service page (one list). The full list lives on service-areas.html */
+  const CITIES = ["Chicago", "Evanston", "Skokie", "Des Plaines", "Park Ridge", "Niles", "Norridge", "Schaumburg", "Arlington Heights", "Palatine", "Mount Prospect", "Wheeling", "Glenview", "Northbrook", "Elk Grove Village", "Hoffman Estates", "Elgin", "Naperville", "Aurora", "St. Charles", "Crystal Lake", "Lombard", "Oak Brook", "Wheaton"];
+
   /* ---------------- do not edit below ---------------- */
   const fmt = p => `(${p.slice(0, 3)}) ${p.slice(3, 6)}-${p.slice(6)}`;
   const S = {
     phone: fmt(PHONE), phoneTel: "+1" + PHONE,
     sms: fmt(TEXT_PHONE), smsTel: "+1" + TEXT_PHONE,
-    email: EMAIL, sheetsUrl: SHEETS_URL, fees: FEES, credit: CREDIT, schedule: SCHEDULE, commercial: COMMERCIAL, services: SERVICES
+    warranty: WARRANTY, cities: CITIES, email: EMAIL, sheetsUrl: SHEETS_URL, fees: FEES, credit: CREDIT, schedule: SCHEDULE, commercial: COMMERCIAL, services: SERVICES
   };
-  const MAP = { "{{rating}}": RATING, "{{reviewCount}}": REVIEW_COUNT, "{{reviewsUrl}}": REVIEWS_URL, "{{phone}}": S.phone, "{{phoneTel}}": S.phoneTel, "{{sms}}": S.sms, "{{smsTel}}": S.smsTel, "{{email}}": S.email };
+  const WARRANTY_ADJ = WARRANTY.replace(/\s+(month|year|day|week)s?$/i, "-$1");   /* "3 months" -> "3-month" (for "a 3-month warranty") */
+  const MAP = { "{{warranty}}": WARRANTY_ADJ, "{{warrantyLong}}": WARRANTY, "{{rating}}": RATING, "{{reviewCount}}": REVIEW_COUNT, "{{reviewsUrl}}": REVIEWS_URL, "{{phone}}": S.phone, "{{phoneTel}}": S.phoneTel, "{{sms}}": S.sms, "{{smsTel}}": S.smsTel, "{{email}}": S.email };
   /* fee tokens: {{feeAppliances}} = standard, {{feeAppliancesEm}} = emergency (also Hvac, HvacCom, Pool) */
   Object.keys(FEES).forEach(k => { const K = k[0].toUpperCase() + k.slice(1); MAP["{{fee" + K + "}}"] = "$" + FEES[k].standard; MAP["{{fee" + K + "Em}}"] = "$" + FEES[k].emergency; });
   /* credit tokens: {{creditAppliances}}, {{creditHvac}}, {{creditHvacCom}}, {{creditPool}} = minimum repair amount */
@@ -419,6 +446,15 @@ window.SITE = (function () {
       if (CALL_CONVERSION) window.gtag("config", CALL_CONVERSION, { phone_conversion_number: PHONE });
     } catch (e) { }
   }
+  /* sticky "Call / Schedule" bar on phones (every page except the booking page) */
+  function callBar() {
+    try {
+      if (/schedule-service/.test(location.pathname) || document.querySelector(".callbar")) return;
+      const d = document.createElement("div"); d.className = "callbar";
+      d.innerHTML = `<a class="cb-call" href="tel:${S.phoneTel}"><svg viewBox="0 0 24 24"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z"/></svg>Call ${S.phone}</a><a class="cb-book" href="schedule-service.html">Book online</a>`;
+      document.body.appendChild(d); document.body.classList.add("has-callbar");
+    } catch (e) { }
+  }
   function start() {
     if (!COMMERCIAL) document.querySelectorAll("[data-commercial]").forEach(e => e.remove());
     const st = document.createElement("style"); st.textContent = ".mega .inner{grid-template-columns:none!important;grid-auto-flow:column;grid-auto-columns:1fr}"; document.head.appendChild(st);   /* any number of menu columns in one row */
@@ -426,6 +462,8 @@ window.SITE = (function () {
     walk(document.body);
     hideOff();
     trackCalls();
+    callBar();
+    try { const fx = document.createElement("script"); fx.src = BASE + "fx.js"; fx.defer = true; document.body.appendChild(fx); } catch (e) { }   /* animations */
     new MutationObserver(ms => ms.forEach(m => m.addedNodes.forEach(x => { if (x.nodeType === 1 || x.nodeType === 3) walk(x.nodeType === 3 ? x.parentNode : x); }))).observe(document.body, { childList: true, subtree: true });
   }
   if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", start); else start();

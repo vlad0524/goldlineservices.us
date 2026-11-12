@@ -10,7 +10,7 @@
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Manrope:wght@600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="./index.css" />
 
     <!-- Google tag (same as main page) -->
@@ -23,7 +23,7 @@
     </script>
     <style>
         /* ===== About page (extra styles, index.css is loaded as usual) ===== */
-        .about-hero { background: radial-gradient(circle at 88% 12%, rgba(234,145,66,.20), transparent 42%), var(--bgdark) }
+        .about-hero .fxorb { display: none !important }
         .about-hero::before { display: none }
         .about-hero .hero-content { min-height: clamp(420px, 38vw, 540px); padding-top: 56px; padding-bottom: 56px; max-width: var(--max) }
         .about-hero .hero-content>* { position: relative; z-index: 2 }
@@ -48,15 +48,15 @@
 
         /* what we do */
         .do-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px }
-        .do-card { position: relative; background: linear-gradient(135deg, #fff, #f6f9f9); border: 1px solid #e3eaec; border-radius: 22px; padding: 30px 28px 26px; box-shadow: 0 18px 44px rgba(10,26,34,.07); display: flex; flex-direction: column; transition: transform .25s, box-shadow .25s, border-color .25s; overflow: hidden }
+        .do-card { position: relative; background: linear-gradient(135deg, #fff, #fafafa); border: 1px solid #e5e6e9; border-radius: 22px; padding: 30px 28px 26px; box-shadow: 0 18px 44px rgba(22, 24, 27,.07); display: flex; flex-direction: column; transition: transform .25s, box-shadow .25s, border-color .25s; overflow: hidden }
         .do-card::after { content: ""; position: absolute; left: 0; top: 0; height: 3px; width: 0; background: var(--grad); transition: width .45s ease }
-        .do-card:hover { transform: translateY(-5px); border-color: #ea9142; box-shadow: 0 24px 54px rgba(10,26,34,.13) }
+        .do-card:hover { transform: translateY(-5px); border-color: #ea9142; box-shadow: 0 24px 54px rgba(22, 24, 27,.13) }
         .do-card:hover::after { width: 100% }
         .do-card .ico { margin-bottom: 20px }
         .do-card h3 { font-size: clamp(22px, 2vw, 26px); font-weight: 600; letter-spacing: -.02em; margin-bottom: 10px }
-        .do-card p { color: #5d6f78; font-size: 15.5px; line-height: 1.65; letter-spacing: .01em }
+        .do-card p { color: #666a71; font-size: 15.5px; line-height: 1.65; letter-spacing: .01em }
         .do-card ul { list-style: none; margin: 18px 0 22px; display: grid; gap: 10px }
-        .do-card li { display: flex; gap: 10px; align-items: flex-start; font-size: 15px; color: #33434b }
+        .do-card li { display: flex; gap: 10px; align-items: flex-start; font-size: 15px; color: #34373c }
         .do-card li svg { color: #ea9142; font-size: 18px; margin-top: 2px; stroke-width: 2.4 }
         .do-card .more { margin-top: auto; display: inline-flex; align-items: center; gap: 8px; font-weight: 600; color: #b35f12; font-size: 15px }
         .do-card .more svg { transition: transform .25s }
@@ -66,13 +66,13 @@
 
         /* why (dark) */
         .why-dark { background: radial-gradient(circle at 8% 0%, rgba(234,145,66,.13), transparent 40%), var(--bgdark); color: #fff }
-        .why-dark .sec-head p { color: #aab6bc }
-        .why-dark .why-card { background: linear-gradient(135deg, #161e24, #12191e); border-color: #232e35; box-shadow: none }
+        .why-dark .sec-head p { color: #b4b7bc }
+        .why-dark .why-card { background: linear-gradient(135deg, #18191c, #141518); border-color: #2a2c30; box-shadow: none }
         .why-dark .why-card:hover { border-color: #ea9142; box-shadow: 0 18px 40px rgba(0,0,0,.35) }
         .why-dark .why-card h4 { color: #fff }
-        .why-dark .why-card p { color: #b9c3c9 }
+        .why-dark .why-card p { color: #bcbfc4 }
         .why-dark .ico { background: rgba(234,145,66,.14); border-color: rgba(234,145,66,.35); color: #efc15b }
-        .why-dark .why-card .no { color: #4f5f68 }
+        .why-dark .why-card .no { color: #5b5e63 }
         .why-dark .why-card { overflow: hidden }
 
         @media(max-width:1100px) { .do-grid { grid-template-columns: 1fr 1fr } }
@@ -85,23 +85,23 @@
         .contact-hero p { margin-bottom: 0 }
         .c-wrap { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: clamp(28px, 4vw, 64px); align-items: start }
         .c-left h2, .c-form h2 { font-size: clamp(26px, 3vw, 38px); font-weight: 600; letter-spacing: -.03em; line-height: 1.1 }
-        .c-left > p { margin: 14px 0 26px; color: #6b7d85; line-height: 1.7; letter-spacing: .01em; max-width: 520px }
+        .c-left > p { margin: 14px 0 26px; color: #6b6f76; line-height: 1.7; letter-spacing: .01em; max-width: 520px }
         .c-list { display: grid; gap: 14px }
-        .c-item { display: flex; gap: 16px; align-items: center; background: #fff; border: 1px solid #e3eaec; border-radius: 18px; padding: 18px 20px; box-shadow: 0 9px 22px rgba(9,28,42,.06); transition: transform .25s, border-color .25s, box-shadow .25s }
-        a.c-item:hover { transform: translateY(-3px); border-color: #ea9142; box-shadow: 0 16px 34px rgba(9,28,42,.12) }
+        .c-item { display: flex; gap: 16px; align-items: center; background: #fff; border: 1px solid #e5e6e9; border-radius: 18px; padding: 18px 20px; box-shadow: 0 9px 22px rgba(22, 24, 27,.06); transition: transform .25s, border-color .25s, box-shadow .25s }
+        a.c-item:hover { transform: translateY(-3px); border-color: #ea9142; box-shadow: 0 16px 34px rgba(22, 24, 27,.12) }
         .c-item .ico { margin: 0; flex: none; width: 50px; height: 50px; font-size: 24px; transition: transform .3s }
         a.c-item:hover .ico { transform: scale(1.08) rotate(-5deg) }
-        .c-item small { display: block; font-size: 12.5px; letter-spacing: .1em; text-transform: uppercase; color: #8a9aa2; font-weight: 600; margin-bottom: 3px }
+        .c-item small { display: block; font-size: 12.5px; letter-spacing: .1em; text-transform: uppercase; color: #9a9da3; font-weight: 600; margin-bottom: 3px }
         .c-item b { display: block; font-size: 18px; font-weight: 600; color: var(--ink); line-height: 1.35 }
-        .c-item span { display: block; color: #5d6f78; font-size: 14.5px; line-height: 1.5; margin-top: 2px }
-        .c-form { background: #fff; border: 1px solid #e3eaec; border-radius: 24px; padding: clamp(22px, 3vw, 36px); box-shadow: 0 18px 44px rgba(10,26,34,.10); position: relative; overflow: hidden }
+        .c-item span { display: block; color: #666a71; font-size: 14.5px; line-height: 1.5; margin-top: 2px }
+        .c-form { background: #fff; border: 1px solid #e5e6e9; border-radius: 24px; padding: clamp(22px, 3vw, 36px); box-shadow: 0 18px 44px rgba(22, 24, 27,.10); position: relative; overflow: hidden }
         .c-form::before { content: ""; position: absolute; left: 0; right: 0; top: 0; height: 4px; background: var(--grad) }
-        .c-form .sub { color: #6b7d85; font-size: 15px; margin: 8px 0 22px; line-height: 1.55 }
+        .c-form .sub { color: #6b6f76; font-size: 15px; margin: 8px 0 22px; line-height: 1.55 }
         .c-form form { display: grid; gap: 14px }
         .c-form .lb { display: block; font-size: 14px; font-weight: 600; margin-bottom: 7px }
-        .c-form .lb small { font-weight: 400; color: #8a9aa2 }
+        .c-form .lb small { font-weight: 400; color: #9a9da3 }
         .c-form .rq { color: #e5484d; font-weight: 700 }
-        .c-form .ip { width: 100%; background: #fff; border: 1.5px solid #dbe4e6; border-radius: 12px; padding: 13px 15px; font: inherit; font-size: 15.5px; color: var(--ink); transition: border-color .2s, box-shadow .2s }
+        .c-form .ip { width: 100%; background: #fff; border: 1.5px solid #dcdde1; border-radius: 12px; padding: 13px 15px; font: inherit; font-size: 15.5px; color: var(--ink); transition: border-color .2s, box-shadow .2s }
         .c-form .ip:focus { outline: none; border-color: #ea9142; box-shadow: 0 0 0 3px rgba(234,145,66,.18) }
         .c-form .ip.bad { border-color: #e5604d; box-shadow: 0 0 0 3px rgba(229,96,77,.14) }
         .c-form select.ip { appearance: none; -webkit-appearance: none; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%238a9aa2' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 14px center; background-size: 18px; padding-right: 42px; cursor: pointer }
@@ -112,7 +112,7 @@
         .c-form .fmsg { font-size: 14.5px; line-height: 1.5; text-align: center; min-height: 0 }
         .c-form .fmsg.ok { color: #1f8f6a; background: rgba(31,143,106,.09); border: 1px solid rgba(31,143,106,.3); border-radius: 12px; padding: 12px 14px }
         .c-form .fmsg.err { color: #d0452f }
-        .c-form .priv { font-size: 12.5px; color: #8a9aa2; text-align: center }
+        .c-form .priv { font-size: 12.5px; color: #9a9da3; text-align: center }
         @media(max-width:900px) { .c-wrap { grid-template-columns: 1fr } }
         @media(max-width:560px) { .c-form .g2 { grid-template-columns: 1fr } .c-item { padding: 15px 16px } .c-item b { font-size: 16.5px } }
 
@@ -162,7 +162,7 @@
     <main id="top">
         <!-- HERO (smaller, no buttons) -->
         <section class="hero about-hero contact-hero">
-            <div class="orb o1"></div><div class="orb o2"></div><div class="orb o3"></div>
+            
             <div class="inner hero-content">
                 <div class="eyebrow-hero">CONTACT US<i></i>CHICAGO &amp; NEARBY SUBURBS</div>
                 <h1><span class="line">We're here to <span class="grad-text">help.</span></span></h1>
@@ -208,17 +208,27 @@
             </div>
         </section>
 
-        <!-- SCHEDULE (orange) -->
-        <section class="sched" id="contact">
-            <div class="inner">
-                <div>
+        <!-- CALL TO ACTION -->
+        <section class="sp-cta" id="contact">
+            <div class="inner cta-card">
+                <div class="cta-l">
                     <div class="kick">Ready when you are</div>
                     <h2>Schedule your service appointment</h2>
-                    <p>Call us directly or request an appointment online. We’ll review your request and contact you shortly to confirm.</p>
+                    <p>Call us or request a visit online. We confirm your appointment and quote the exact price before any work begins.</p>
+                    <ul class="cta-ticks">
+                        <li><svg viewBox="0 0 24 24"><path d="m5 12 5 5 9-10"/></svg>Exact price before any work</li>
+                        <li><svg viewBox="0 0 24 24"><path d="m5 12 5 5 9-10"/></svg>{{warranty}} warranty</li>
+                        <li><svg viewBox="0 0 24 24"><path d="m5 12 5 5 9-10"/></svg>Emergency visits available</li>
+                    </ul>
                 </div>
-                <div class="btns">
-                    <a class="btn b-dark" href="tel:{{phoneTel}}"><i data-ic="phone"></i>Call now · {{phone}}</a>
-                    <a class="btn b-white" href="schedule-service.html"><i data-ic="cal"></i>Schedule online</a>
+                <div class="cta-r">
+                    <div class="cta-lab">Call us now</div>
+                    <a class="cta-phone" href="tel:{{phoneTel}}">{{phone}}</a>
+                    <div class="cta-hrs">Mon–Sat 8:00 AM – 9:00 PM · Sunday emergency calls</div>
+                    <div class="cta-btns">
+                        <a class="btn btn-grad" href="tel:{{phoneTel}}"><svg viewBox="0 0 24 24"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z"/></svg>Call now</a>
+                        <a class="btn btn-out" href="schedule-service.html"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M8 3v4M16 3v4M3 10h18"/></svg>Schedule online</a>
+                    </div>
                 </div>
             </div>
         </section>
@@ -335,28 +345,6 @@
         document.querySelectorAll('.mega a').forEach(a => a.addEventListener('click', () => document.activeElement.blur()));
     </script>
 
-    <!-- Scroll animations (same as other pages) -->
-    <script>
-        (function () {
-            if (!('IntersectionObserver' in window) || matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-            var sel = '.c-left>*,.c-item,.c-form,.sched .inner>div,.foot-grid>div';
-            var io = new IntersectionObserver(function (entries) {
-                entries.forEach(function (e) {
-                    if (!e.isIntersecting) return;
-                    var el = e.target;
-                    el.classList.add('in');
-                    io.unobserve(el);
-                    el.addEventListener('transitionend', function () { el.classList.remove('reveal', 'in'); el.style.removeProperty('--d'); }, { once: true });
-                });
-            }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
-            document.querySelectorAll(sel).forEach(function (el) {
-                var idx = Array.prototype.indexOf.call(el.parentElement.children, el);
-                el.style.setProperty('--d', Math.min(idx, 5) * 80 + 'ms');
-                el.classList.add('reveal');
-                io.observe(el);
-            });
-        })();
-    </script>
 </body>
 
 </html>

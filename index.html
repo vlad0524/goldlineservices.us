@@ -27,7 +27,7 @@
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Manrope:wght@600;700;800&display=swap" rel="stylesheet">
 
     <link rel="stylesheet" href="./index.css" />
 
@@ -131,7 +131,7 @@
 
     <main id="top">
         <!-- HERO -->
-        <section class="hero">
+        <section class="hero hero-plain">
             <img class="hero-bg ph" src="./index/main-bg.jpg"> 
             <!--<div class="hero-bg ph" data-label="Hero background image"></div>-->
             <div class="inner hero-content">
@@ -169,7 +169,7 @@
                 <div class="feat"><svg viewBox="0 0 24 24">
                         <path d="m12 2 3 6.6 7 .8-5.2 4.8 1.4 7.1L12 17.8 5.8 21.3l1.4-7.1L2 9.4l7-.8z" />
                     </svg>
-                    <div><b>Quality Work</b><span>Done right the first time.</span></div>
+                    <div><b>{{warranty}} Warranty</b><span>On our work and parts.</span></div>
                 </div>
                 <div class="feat"><svg viewBox="0 0 24 24">
                         <path d="m3 11 9-8 9 8" />
@@ -185,7 +185,7 @@
             <div class="inner">
                 <div class="sec-head">
                     <div>
-                        <div class="kicker">Our Services</div>
+                        <div class="kicker"><span class="kn">01</span>Our Services</div>
                         <h2>Expert care for your home</h2>
                         <p>Professional repair and maintenance for your HVAC systems, home appliances, and pool &amp;
                             spa equipment. Choose the service you need to review common symptoms, safe checks, and what
@@ -201,7 +201,7 @@
             <div class="inner">
                 <div class="sec-head">
                     <div>
-                        <div class="kicker">Our Customers</div>
+                        <div class="kicker"><span class="kn">02</span>Our Customers</div>
                         <h2>What our customers say</h2>
                         <p>Honest feedback from homeowners who trusted us with their repairs.</p>
                     </div>
@@ -221,10 +221,10 @@
             <div class="inner">
                 <div class="sec-head">
                     <div>
-                        <div class="kicker">Why Homeowners Trust Us</div>
+                        <div class="kicker"><span class="kn">03</span>Why Homeowners Trust Us</div>
                         <h2>Why choose Gold Line Services</h2>
                         <p
-                            style="color:#6b7d85;max-width:720px;margin-top:20px;font-size:clamp(16px,1.5vw,21px);line-height:1.7">
+                            style="color:#6b6f76;max-width:720px;margin-top:20px;font-size:clamp(16px,1.5vw,21px);line-height:1.7">
                             Reliable heating, cooling, appliance, and pool repairs delivered with honest advice and transparent pricing.</p>
                     </div>
                 </div>
@@ -233,34 +233,26 @@
             </div>
         </section>
 
-        <!-- AREAS -->
-        <section class="dark areas" id="areas">
-            <!-- Optional map: replace with <img class="areas-bg" src="map.jpg" alt="" style="object-fit:cover;width:100%;height:100%"> -->
-            <div class="areas-bg"></div>
-            <div class="inner">
-                <div class="areas-wrap">
-                    <div>
-                        <div class="kicker">Service Areas</div>
-                        <h2>Areas we serve</h2>
-                        <p>We proudly provide HVAC, pool/spa, and appliance services throughout Chicago and the
-                            surrounding communities. Don't see your town? Call us, we may still be able to help.</p>
-                        <div class="btns">
-                            <a class="btn btn-grad" href="schedule-service.html">Schedule Service</a>
-                            <!--<a class="btn btn-out" href="tel:{{phoneTel}}">Call Now</a>-->
-                            <a class="btn btn-out" href="service-areas.html">View All Areas
-                                <svg viewBox="0 0 24 24" style="font-size:20px"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
-                            </a>
-                        </div>
+        <!-- AREAS (same block as on the service pages) -->
+        <section class="sp-areas" id="areas">
+            <div class="inner row">
+                <div>
+                    <div class="kicker"><span class="kn">04</span>Service areas</div>
+                    <h2>Areas we serve</h2>
+                    <p>We proudly provide HVAC, pool/spa, and appliance services throughout Chicago and the surrounding communities. Don't see your town? Call us, we may still be able to help.</p>
+                    <div class="areas-btns">
+                        <a class="btn btn-grad" href="schedule-service.html">Schedule Service</a>
+                        <a class="btn btn-out" href="service-areas.html">View all areas</a>
                     </div>
-                    <div class="city-list" id="cities"></div>
                 </div>
+                <div class="chips" id="cities"></div>
             </div>
         </section>
         <!-- FAQ -->
         <section class="faq" id="faq">
             <div class="inner faq-wrap">
                 <div>
-                    <div class="kicker">Common Questions</div>
+                    <div class="kicker"><span class="kn">05</span>Common Questions</div>
                     <h2>Frequently asked questions</h2>
                     <p class="lead">Answers about our HVAC, appliance, and pool/spa repair services, scheduling, and
                         what to have ready.</p>
@@ -270,17 +262,27 @@
             </div>
         </section>
 
-        <!-- SCHEDULE -->
-        <section class="sched" id="contact">
-            <div class="inner">
-                <div>
+        <!-- CALL TO ACTION -->
+        <section class="sp-cta" id="contact">
+            <div class="inner cta-card">
+                <div class="cta-l">
                     <div class="kick">Ready when you are</div>
                     <h2>Schedule your service appointment</h2>
-                    <p>Call us directly or request an appointment online. We’ll review your request and contact you shortly to confirm.</p>
+                    <p>Call us or request a visit online. We confirm your appointment and quote the exact price before any work begins.</p>
+                    <ul class="cta-ticks">
+                        <li><svg viewBox="0 0 24 24"><path d="m5 12 5 5 9-10"/></svg>Exact price before any work</li>
+                        <li><svg viewBox="0 0 24 24"><path d="m5 12 5 5 9-10"/></svg>{{warranty}} warranty</li>
+                        <li><svg viewBox="0 0 24 24"><path d="m5 12 5 5 9-10"/></svg>Emergency visits available</li>
+                    </ul>
                 </div>
-                <div class="btns">
-                    <a class="btn b-dark" href="tel:{{phoneTel}}"><i data-ic="phone"></i>Call now · {{phone}}</a>
-                    <a class="btn b-white" href="schedule-service.html"><i data-ic="cal"></i>Schedule online</a>
+                <div class="cta-r">
+                    <div class="cta-lab">Call us now</div>
+                    <a class="cta-phone" href="tel:{{phoneTel}}">{{phone}}</a>
+                    <div class="cta-hrs">Mon–Sat 8:00 AM – 9:00 PM · Sunday emergency calls</div>
+                    <div class="cta-btns">
+                        <a class="btn btn-grad" href="tel:{{phoneTel}}"><svg viewBox="0 0 24 24"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z"/></svg>Call now</a>
+                        <a class="btn btn-out" href="schedule-service.html"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M8 3v4M16 3v4M3 10h18"/></svg>Schedule online</a>
+                    </div>
                 </div>
             </div>
         </section>
@@ -304,6 +306,7 @@
                         <li><a href="air-conditioner-repair.html">Air Conditioner repair</a></li>
                         <li><a href="furnace-repair.html">Furnace repair</a></li>
                         <li data-commercial><a href="commercial-ac-repair.html">Commercial HVAC repair</a></li>
+                        <li><a href="commercial-refrigerator-repair.html">Commercial refrigeration repair</a></li>
                         <li><a href="refrigerator-repair.html">Refrigerator repair</a></li>
                         <li><a href="washer-repair.html">Washer &amp; Dryer repair</a></li>
                         <li><a href="oven-stove-repair.html">Oven &amp; Stove repair</a></li>
@@ -341,16 +344,19 @@
     <script>
         /* ===== DATA: set img:"path/to/image.jpg" to show a photo in any card. Empty = placeholder zone ===== */
         /* cards come from SERVICES in site-config.js (shown / hidden, wide / small, texts, photos) */
-        const GROUPS = SITE.groups().map(g => ({ id: g.id, title: g.title, sub: g.heading, suffix: g.suffix || '', items: g.items.map(i => ({ n: i.name, href: i.page, e: i.ask, d: i.text, img: i.img, wide: !!i.wide })) }));
+        const GROUPS = SITE.groups().map(g => ({ id: g.id, title: g.title, sub: g.heading, suffix: g.suffix || '', comTitle: g.commercialTitle || 'Commercial', items: g.items.map(i => ({ n: i.name, href: i.page, e: i.ask, d: i.text, img: i.img, wide: !!i.wide, com: !!i.commercial })) }));
         const arrow = '<svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg>';
         document.getElementById('groups').innerHTML = GROUPS.map(g => {
-            const card = i => {
-                const m = `<div class="media${i.img ? '' : ' ph'}" data-label="Add image: ${i.n}">${i.img ? `<img src="${i.img}" alt="${i.n}">` : ''}<span class="tag">${g.title}</span><span class="name">${i.n}</span></div>`;
+            const card = (i, tag) => {
+                const m = `<div class="media${i.img ? '' : ' ph'}" data-label="Add image: ${i.n}">${i.img ? `<img src="${i.img}" alt="${i.n}">` : ''}<span class="tag">${tag || g.title}</span><span class="name">${i.n}</span></div>`;
                 return `<a class="card${i.wide ? ' wide' : ''}" href="${i.href || '#'}">${m}<div class="body"><small>${i.e}</small><h4>${i.n + g.suffix}</h4><p>${i.d}</p><span class="arrow">${arrow}</span></div></a>`;
             };
-        const wide = g.items.filter(i => i.wide).map(card).join('');
-        const rest = g.items.filter(i => !i.wide).map(card).join('');
-        return `<div class="group" id="${g.id}"><div class="group-title"><h3>${g.sub || g.title}</h3></div>${wide ? `<div class="grid2">${wide}</div>` : ''}${rest ? `<div class="grid3"${wide ? ' style="margin-top:28px"' : ''}>${rest}</div>` : ''}</div>`;
+            const mainItems = g.items.filter(i => !i.com), comItems = g.items.filter(i => i.com);
+            const wide = mainItems.filter(i => i.wide).map(i => card(i)).join('');
+            const rest = mainItems.filter(i => !i.wide).map(i => card(i)).join('');
+            /* commercial items of a group get their own zone under it, with big horizontal cards like HVAC */
+            const comZone = comItems.length ? `<div class="group group-com" id="${g.id}-commercial"><div class="group-title"><h3>${g.comTitle}</h3></div><div class="grid2">${comItems.map(i => card({ ...i, wide: true }, 'Commercial')).join('')}</div></div>` : '';
+            return `<div class="group" id="${g.id}"><div class="group-title"><h3>${g.sub || g.title}</h3></div>${wide ? `<div class="grid2">${wide}</div>` : ''}${rest ? `<div class="grid3"${wide ? ' style="margin-top:28px"' : ''}>${rest}</div>` : ''}</div>${comZone}`;
         }).join('');
         const P = { pin: '<path d="M20 10c0 6-8 12-8 12S4 16 4 10a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="3"/>', bolt: '<path d="M13 2 4 14h7l-1 8 9-12h-7z"/>', shield: '<path d="M12 2 4 5v6c0 5 3.4 9.4 8 11 4.6-1.6 8-6 8-11V5z"/><path d="m9 12 2 2 4-4"/>', star: '<path d="m12 2 3 6.6 7 .8-5.2 4.8 1.4 7.1L12 17.8 5.8 21.3l1.4-7.1L2 9.4l7-.8z"/>', home: '<path d="m3 11 9-8 9 8"/><path d="M5 10v10h14V10M10 20v-6h4v6"/>', chat: '<path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/><path d="M8 9h8M8 13h5"/>', tool: '<path d="M14.7 6.3a4 4 0 0 0-5.4 5.1L3 17.7V21h3.3l6.3-6.3a4 4 0 0 0 5.1-5.4l-2.6 2.6-2.4-.6-.6-2.4z"/>' };
         const ic = n => `<svg viewBox="0 0 24 24">${P[n]}</svg>`;
@@ -374,8 +380,7 @@
             ["chat", "Clear Communication", "We explain what’s wrong and what it will take to fix it, in simple terms, before any work starts."],
             ["tool", "One Team for Everything", "Appliance, HVAC, and pool/spa repair from a single company you can call."]];
         document.getElementById('why').innerHTML = WHY.map((w, i) => `<div class="why-card"><div class="ico">${ic(w[0])}</div><h4>${w[1]}</h4><p>${w[2]}</p></div>`).join('');
-        const CITIES = ["Chicago", "Des Plaines", "Evanston", "Skokie", "Park Ridge", "Niles", "Norridge", "Schaumburg", "Arlington Heights", "Elgin", "Naperville", "Aurora", "St. Charles", "Crystal Lake"];
-        document.getElementById('cities').innerHTML = CITIES.map(c => `<a class="city" href="#contact">${ic('pin')}<span>${c}</span>${ic('chat').replace(/<path.*<\/svg>/, '<path d="M5 12h14M13 6l6 6-6 6"/></svg>')}</a>`).join('');
+        document.getElementById('cities').innerHTML = SITE.cities.map(c => `<a class="chip" href="service-areas.html">${ic('pin')}${c}</a>`).join('') + `<a class="chip more" href="service-areas.html">All areas ${arrow}</a>`;   /* list comes from site-config.js (CITIES) */
         Object.assign(P, { phone: '<path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z"/>', mail: '<rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/>', clock: '<circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/>', cal: '<rect x="3" y="5" width="18" height="16" rx="2"/><path d="M8 3v4M16 3v4M3 10h18"/>', plus: '<path d="M12 5v14M5 12h14"/>', arrow: '<path d="M5 12h14M13 6l6 6-6 6"/>' });
         const FAQ = [
             ["Which services do you repair?", "We repair HVAC systems (air conditioners and furnaces), home appliances (refrigerators, freezers, washers, dryers, ovens, stoves, cooktops and ranges), and pool/spa equipment (pumps, filters, heaters, salt cells, above-ground plumbing, timers, smart systems and electronics)."],
@@ -395,30 +400,6 @@
 
 
 
-
-        <!-- Scroll animations (simple fade-up on scroll) -->
-        (function () {
-            if (!('IntersectionObserver' in window) || matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-            var sel = '.sec-head,.group-title,.card,.why-card,.rev,.city-list,.areas-wrap>div,.f,.faq-wrap>div,.sched .inner>div,.foot-grid>div,.features .feat';
-            var io = new IntersectionObserver(function (entries) {
-                entries.forEach(function (e) {
-                    if (!e.isIntersecting) return;
-                    var el = e.target;
-                    el.classList.add('in');
-                    io.unobserve(el);
-                    el.addEventListener('transitionend', function () {
-                        el.classList.remove('reveal', 'in');
-                        el.style.removeProperty('--d');
-                    }, { once: true });
-                });
-            }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
-            document.querySelectorAll(sel).forEach(function (el) {
-                var idx = Array.prototype.indexOf.call(el.parentElement.children, el);
-                el.style.setProperty('--d', Math.min(idx, 5) * 80 + 'ms');
-                el.classList.add('reveal');
-                io.observe(el);
-            });
-        })();
     </script>
 </body>
 
