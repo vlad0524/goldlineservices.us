@@ -2733,3 +2733,19 @@ html { background: linear-gradient(#fff 50%, #0b0c0e 50%) }
 
 .dd-btn, .dd-o { -webkit-tap-highlight-color: transparent; -webkit-user-select: none; user-select: none }
 .dd-btn:active, .dd-btn:focus { background: #fff }
+
+
+/* ===== v8: phones ===== */
+.callbar { display: none !important }
+.has-callbar .foot { padding-bottom: 0 !important }
+@media (max-width: 900px) {
+    /* service areas: text on top, areas below as wrapping chips */
+    .sp-areas .row { grid-template-columns: 1fr !important; gap: 32px !important; align-items: start }
+    .sp-areas { padding: 56px 0 !important }
+    .sp-areas h2 { font-size: 30px }
+    .sp-areas p { font-size: 15.5px; max-width: none }
+    .sp-areas .chips { gap: 8px }
+    .sp-areas .chip { padding: 9px 14px 9px 11px; font-size: 14px }
+    .sp-areas .chip svg { width: 15px; height: 15px }
+    .areas-btns { margin-top: 22px }
+}
