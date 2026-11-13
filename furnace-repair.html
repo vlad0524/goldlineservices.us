@@ -85,12 +85,12 @@
     <main id="top">
         <!-- 1. HERO: what we do + call / book -->
         <section class="hero page-hero sp-hero">
-            <img class="hero-bg" src="./hvac/hvac-logo.jpg" alt="">
+            <img class="hero-bg" src="./hvac/hvac-logo.jpg" alt="" onerror="this.onerror=null;this.src='./appliance/range-logo.jpg'">
             <div class="inner hero-content">
                 <div class="hero-copy">
                     <div class="eyebrow-hero">HVAC REPAIR<i></i>CHICAGO &amp; NEARBY SUBURBS</div>
                     <h1><span class="line">Furnace Repair</span> <span class="line grad-text">Any problem. Any brand.</span></h1>
-                    <p class="sp-lead">Cold house, strange noises, or a furnace that keeps shutting off? We diagnose on site, quote the exact price before any work begins, and back every repair with a {{warranty}} warranty.</p>
+                    <p class="sp-lead">Gas or electric furnace not heating, noisy, or shutting off? We diagnose on site, quote the exact price before any work begins, and back every repair with a {{warranty}} warranty.</p>
                     <ul class="sp-chips" id="offerChips"></ul>
                     <div class="btns">
                         <a class="btn btn-grad" href="tel:{{phoneTel}}"><i data-ic="phone"></i>Call {{phone}}</a>
@@ -206,7 +206,7 @@
                 <div class="sp-head">
                     <div class="kicker"><span class="kn">05</span>Brands</div>
                     <h2>All major brands</h2>
-                    <p>Gas and electric furnaces, including high-efficiency models.</p>
+                    <p>Gas and electric furnaces: standard and high-efficiency models of every major brand.</p>
                 </div>
             </div>
             <div class="marq"><div class="mq-track" id="brandtrack"></div></div>
@@ -325,6 +325,7 @@
               "category": "HVAC",
               "segment": "Residential",
               "fee": "hvac",
+              "repairText": "We repair both gas and electric furnaces of any brand, including high-efficiency models. We find the real cause on site and give you the exact price before any work begins.",
               "maint": "Pre-season tune-ups: burner, igniter and flame-sensor cleaning, plus filter, blower and safety-control checks.",
               "install": "New furnace installation for gas and electric systems, including high-efficiency models, sized for your home.",
               "parts": "Igniters, flame sensors, blower motors, gas valves, limit switches and control boards.",
@@ -389,6 +390,10 @@
                 "& more"
               ],
               "faq": [
+                [
+                  "Do you repair both gas and electric furnaces?",
+                  "Yes. We repair gas furnaces (igniters, flame sensors, gas valves, blowers) and electric furnaces (heating elements, sequencers, relays, blowers), including high-efficiency models. Not sure which type you have? A technician will identify it on site."
+                ],
                 [
                   "Should I repair or replace my furnace?",
                   "If the issue is a single part, repair is often the better choice. For older units with major failures we'll explain your options honestly, so you can decide."

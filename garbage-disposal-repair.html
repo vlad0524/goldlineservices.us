@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <script src="./site-config.js"></script>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <link rel="canonical" href="https://goldlineservices.us/garbage-disposal-repair.html">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Gold Line Services">
+    <meta property="og:title" content="Garbage Disposal Repair in Chicagoland | Gold Line Services">
+    <meta property="og:description" content="Garbage disposal repair and replacement in Chicago and nearby suburbs. Jammed, humming or leaking? Exact price before we start. Schedule today.">
+    <meta property="og:url" content="https://goldlineservices.us/garbage-disposal-repair.html">
+    <meta property="og:image" content="https://goldlineservices.us/index/og-image.jpg">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta name="twitter:card" content="summary_large_image">
+    <title>Garbage Disposal Repair in Chicagoland | Gold Line Services</title>
+    <meta name="description" content="Garbage disposal repair and replacement in Chicago and nearby suburbs. Jammed, humming or leaking? Exact price before we start. Schedule today.">
+
+    <link rel="icon" href="./favicon.png" type="image/x-icon">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Manrope:wght@600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./index.css" />
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=AW-18441761320"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'AW-18441761320');
+    </script>
+
+    <style>
+        /* emergency checkbox in the hero form */
+        .emchk { display: flex; gap: 10px; align-items: flex-start; margin: 4px 0 14px; font-size: 14px; line-height: 1.45; color: #e2e4e7; cursor: pointer; text-align: left }
+        .emchk input { width: 18px; height: 18px; margin-top: 2px; accent-color: #ea9142; flex: none }
+        .emchk small { display: block; margin-top: 3px; color: #b4b7bc; font-size: 12.5px }
+    </style>
+</head>
+
+<body class="sp">
+    <!-- HEADER (same on every page; the Services menu is built from site-config.js) -->
+    <header class="header" id="header">
+        <div class="inner">
+            <a class="logo" href="index.html#top" aria-label="Gold Line Services"><img src="index/LOGO@2x.png" alt="Gold Line Services"></a>
+            <nav class="nav">
+                <a href="index.html#top">Home</a>
+                <div class="has-menu">
+                    <button type="button" aria-haspopup="true">Services <svg viewBox="0 0 24 24"><path d="m6 9 6 6 6-6" /></svg></button>
+                    <div class="mega"><div class="inner" id="mega"></div></div>
+                </div>
+                <a href="about-us.html">About us</a>
+                <a href="service-areas.html">Service Areas</a>
+                <a href="contact-us.html">Contact</a>
+            </nav>
+            <div class="right">
+                <a class="phone" href="tel:{{phoneTel}}"><i data-ic="phone"></i>{{phone}}</a>
+                <a class="btn btn-grad" href="schedule-service.html">Schedule Service</a>
+            </div>
+            <button class="burger" id="burger" aria-label="Menu" aria-expanded="false"><svg viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h16" /></svg></button>
+        </div>
+        <div class="mobile">
+            <div class="inner">
+                <a href="index.html#top">Home</a>
+                <details>
+                    <summary>Services <svg viewBox="0 0 24 24" style="width:20px;height:20px;transition:.2s"><path d="m6 9 6 6 6-6" /></svg></summary>
+                    <div id="mmenu"></div>
+                </details>
+                <a href="about-us.html">About us</a>
+                <a href="service-areas.html">Service Areas</a>
+                <a href="contact-us.html">Contact</a>
+                <div class="actions">
+                    <a class="btn btn-out" href="tel:{{phoneTel}}">Call {{phone}}</a>
+                    <a class="btn btn-grad" href="schedule-service.html">Schedule Service</a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main id="top">
+        <!-- 1. HERO: what we do + call / book -->
+        <section class="hero page-hero sp-hero">
+            <img class="hero-bg" src="./appliance/garbage-disposal.jpg" alt="" onerror="this.onerror=null;this.src='./appliance/range-logo.jpg'">
+            <div class="inner hero-content">
+                <div class="hero-copy">
+                    <div class="eyebrow-hero">GARBAGE DISPOSAL REPAIR<i></i>CHICAGO &amp; NEARBY SUBURBS</div>
+                    <h1><span class="line">Garbage Disposal Repair</span> <span class="line grad-text">Any problem. Any brand.</span></h1>
+                    <p class="sp-lead">Garbage disposal jammed, humming, leaking or not turning on? We diagnose on site, quote the exact price before any work begins, and back every repair with a {{warranty}} warranty.</p>
+                    <ul class="sp-chips" id="offerChips"></ul>
+                    <div class="btns">
+                        <a class="btn btn-grad" href="tel:{{phoneTel}}"><i data-ic="phone"></i>Call {{phone}}</a>
+                        <a class="btn btn-out" href="schedule-service.html?service=appliances&item=Garbage%20Disposal"><i data-ic="cal"></i>Schedule online</a>
+                    </div>
+                    <div class="sp-proof"><span><span class="stars" aria-hidden="true">★★★★★</span> <b>{{rating}}</b> · {{reviewCount}} Google reviews</span><span class="sep"></span><span>Licensed &amp; insured</span><span class="sep"></span><span>{{warranty}} warranty</span></div>
+                </div>
+
+                <div class="lead-form" id="quote">
+                    <div class="live"><i data-ic="check"></i>Same-day emergency service available</div>
+                    <h2>Request a repair</h2>
+                    <p class="sub">Tell us what's going on and we'll call you to confirm your appointment.</p>
+                    <form id="leadForm" novalidate>
+                        <input type="hidden" name="appliance" value="">
+                        <input class="hp" type="text" name="company" tabindex="-1" autocomplete="off" aria-hidden="true">
+                        <label class="sr" for="f-name">Full name</label>
+                        <input class="field" id="f-name" name="name" type="text" placeholder="Full name" autocomplete="name" required>
+                        <div class="frow">
+                            <div><label class="sr" for="f-phone">Phone number</label><input class="field" id="f-phone" name="phone" type="tel" inputmode="tel" placeholder="Phone number" autocomplete="tel" required></div>
+                            <div><label class="sr" for="f-zip">ZIP code</label><input class="field" id="f-zip" name="zip" type="text" inputmode="numeric" maxlength="5" placeholder="ZIP code" autocomplete="postal-code" required></div>
+                        </div>
+                        <label class="sr" for="f-msg">Describe the problem (optional)</label>
+                        <textarea class="field" id="f-msg" name="message" rows="3" placeholder="What's wrong? (optional)"></textarea>
+                        <label class="emchk" for="f-emg"><input type="checkbox" id="f-emg" name="emergency"><span><b>Emergency (urgent) visit</b><small>Need a technician today or tomorrow, including Sundays &amp; holidays? Priority visit: <b id="emFee"></b> diagnostic (<b id="emReg"></b> with regular scheduling).</small></span></label>
+                        <button class="btn btn-grad" type="submit">Request service</button>
+                        <div class="fmsg" id="fmsg" role="status" aria-live="polite"></div>
+                        <div class="priv">We only use your details to contact you about your repair.</div>
+                    </form>
+                    <a class="rv" href="{{reviewsUrl}}" target="_blank" rel="noopener" aria-label="Read our Google reviews">
+                        <span class="gbadge"><svg viewBox="0 0 48 48" aria-hidden="true"><path fill="#EA4335" d="M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.38 2.56 13.22l7.98 6.19C12.43 13.72 17.74 9.5 24 9.5z"/><path fill="#4285F4" d="M46.98 24.55c0-1.57-.15-3.09-.38-4.55H24v9.02h12.94c-.58 2.96-2.26 5.48-4.78 7.18l7.73 6c4.51-4.18 7.09-10.36 7.09-17.65z"/><path fill="#FBBC05" d="M10.53 28.59c-.48-1.45-.76-2.99-.76-4.59s.27-3.14.76-4.59l-7.98-6.19C.92 16.46 0 20.12 0 24c0 3.88.92 7.54 2.56 10.78l7.97-6.19z"/><path fill="#34A853" d="M24 48c6.48 0 11.93-2.13 15.89-5.81l-7.73-6c-2.15 1.45-4.92 2.3-8.16 2.3-6.26 0-11.57-4.22-13.47-9.91l-7.98 6.19C6.51 42.62 14.62 48 24 48z"/></svg></span>
+                        <span class="stars" aria-hidden="true">★★★★★</span>
+                        <b>{{rating}}</b><span class="dot">·</span><span>{{reviewCount}} reviews</span>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- TRUST STRIP -->
+        <div class="features">
+            <div class="inner">
+                <div class="feat"><i data-ic="shield"></i><div><b>Licensed &amp; Insured</b><span>Your home is protected.</span></div></div>
+                <div class="feat"><i data-ic="check"></i><div><b>{{warranty}} Warranty</b><span>On our work and parts.</span></div></div>
+                <div class="feat"><i data-ic="dollar"></i><div><b>Upfront Pricing</b><span>Exact price before we start.</span></div></div>
+                <div class="feat"><i data-ic="bolt"></i><div><b>Emergency Calls</b><span>Available when you need us.</span></div></div>
+            </div>
+        </div>
+
+        <!-- 2. WHAT WE REPAIR -->
+        <section class="sp-sec sp-white" id="problems">
+            <div class="inner">
+                <div class="sp-head">
+                    <div class="kicker"><span class="kn">01</span>What we repair</div>
+                    <h2>We fix every garbage disposal problem</h2>
+                    <p>Any fault, any brand. These are the issues we handle most often: tap yours and we'll add it to your request. <b>Not listed? We still fix it.</b></p>
+                </div>
+                <div class="pgrid" id="pgrid"></div>
+                <p class="pnote">One symptom can have several causes. A technician confirms the real one on site before any repair. <span>Not sure what's wrong? <a href="tel:{{phoneTel}}">Call {{phone}}</a></span></p>
+            </div>
+        </section>
+
+        <!-- 3. WHAT WE DO: repair / maintenance / installation (switch: install in site-config.js) -->
+        <section class="sp-sec sp-dark" id="offer">
+            <div class="inner">
+                <div class="sp-head">
+                    <div class="kicker"><span class="kn">02</span>What we do</div>
+                    <h2>Garbage disposal service, start to finish</h2>
+                </div>
+                <div class="ogrid" id="offergrid"></div>
+            </div>
+        </section>
+
+        <!-- 4. PRICE, CREDIT, WARRANTY + HOW IT WORKS -->
+        <section class="sp-sec sp-gray" id="pricing">
+            <div class="inner sp-price">
+                <div>
+                    <div class="kicker"><span class="kn">03</span>How it works</div>
+                    <h2>Simple process, exact price</h2>
+                    <p class="txt">No guessing and no surprises: you know the price before we start any repair.</p>
+                    <ol class="sp-steps" id="steps"></ol>
+                </div>
+                <div class="price-card">
+                    <div class="lab">Diagnostic visit</div>
+                    <div class="price-tag"><b id="pfee"></b><span>flat rate</span></div>
+                    <div class="pcredit" id="pcredit"></div>
+                    <ul class="checks" id="pchecks"></ul>
+                    <div class="price-btns">
+                        <a class="btn btn-grad" href="tel:{{phoneTel}}"><i data-ic="phone"></i>Call now</a>
+                        <a class="btn btn-out" href="schedule-service.html?service=appliances&item=Garbage%20Disposal">Schedule online</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 4b. OUR PROMISE (dark band) -->
+        <section class="sp-sec sp-dark sp-promise" id="promise">
+            <div class="inner">
+                <div class="sp-head">
+                    <div class="kicker"><span class="kn">04</span>Our promise</div>
+                    <h2>What you can count on</h2>
+                </div>
+                <div class="pr-grid">
+                    <div class="pr"><b>{{warranty}}</b><h3>Warranty</h3><p>On our work and parts, so a repeat problem is on us.</p></div>
+                    <div class="pr"><b>Exact price</b><h3>Before we start</h3><p>You approve the cost first. No surprises on the invoice.</p></div>
+                    <div class="pr"><b>Licensed</b><h3>&amp; insured</h3><p>Your home and equipment are protected during every visit.</p></div>
+                    <div class="pr"><b>Same-day</b><h3>Visits available</h3><p>Fast scheduling, with emergency calls when it can't wait.</p></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 5. BRANDS -->
+        <section class="sp-sec sp-white sp-brands" id="brands">
+            <div class="inner">
+                <div class="sp-head">
+                    <div class="kicker"><span class="kn">05</span>Brands</div>
+                    <h2>All major brands</h2>
+                    <p>Continuous-feed and batch-feed disposals, from budget units to quiet premium models.</p>
+                </div>
+            </div>
+            <div class="marq"><div class="mq-track" id="brandtrack"></div></div>
+            <div class="inner"><p class="brand-note">Brand names are trademarks of their respective owners. Gold Line Services is an independent repair company and is not affiliated with these manufacturers.</p></div>
+        </section>
+
+        <!-- 6. AREAS (identical block on the home page) -->
+        <section class="sp-areas" id="areas">
+            <div class="inner row">
+                <div>
+                    <div class="kicker"><span class="kn">06</span>Service areas</div>
+                    <h2>Areas we serve</h2>
+                    <p>We repair garbage disposals throughout Chicago and the surrounding communities. Don't see your town? Call us, we may still be able to help.</p>
+                    <div class="areas-btns">
+                        <a class="btn btn-grad" href="schedule-service.html?service=appliances&item=Garbage%20Disposal">Schedule Service</a>
+                        <a class="btn btn-out" href="service-areas.html">View all areas</a>
+                    </div>
+                </div>
+                <div class="chips" id="cities"></div>
+            </div>
+        </section>
+
+        <!-- 7. FAQ -->
+        <section class="sp-sec sp-white faq" id="faq">
+            <div class="inner faq-wrap">
+                <div>
+                    <div class="kicker"><span class="kn">07</span>Garbage disposal repair</div>
+                    <h2>Frequently asked questions</h2>
+                    <p class="lead">Straight answers about pricing, scheduling, and what to expect.</p>
+                    <a class="btn btn-light" href="tel:{{phoneTel}}"><i data-ic="phone"></i>Call {{phone}}</a>
+                </div>
+                <div id="faqlist"></div>
+            </div>
+        </section>
+
+        <!-- 8. FINAL CALL TO ACTION -->
+        <section class="sp-cta" id="contact">
+            <div class="inner cta-card">
+                <div class="cta-l">
+                    <div class="kick">Ready when you are</div>
+                    <h2>Get your garbage disposal fixed</h2>
+                    <p>Call us or request a visit online. We confirm your appointment and quote the exact price before any work begins.</p>
+                    <ul class="cta-ticks">
+                        <li><i data-ic="check"></i>Exact price before any work</li>
+                        <li><i data-ic="check"></i>{{warranty}} warranty</li>
+                        <li><i data-ic="check"></i>Emergency visits available</li>
+                    </ul>
+                </div>
+                <div class="cta-r">
+                    <div class="cta-lab">Call us now</div>
+                    <a class="cta-phone" href="tel:{{phoneTel}}">{{phone}}</a>
+                    <div class="cta-hrs">Mon–Sat 8:00 AM – 9:00 PM · Sunday emergency calls</div>
+                    <div class="cta-btns">
+                        <a class="btn btn-grad" href="tel:{{phoneTel}}"><i data-ic="phone"></i>Call now</a>
+                        <a class="btn btn-out" href="schedule-service.html?service=appliances&item=Garbage%20Disposal"><i data-ic="cal"></i>Schedule online</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="dark foot">
+        <div class="inner">
+            <div class="foot-grid">
+                <div class="about">
+                    <a class="logo" href="index.html#top" aria-label="Gold Line Services"><img src="index/LOGO@2x.png" alt="Gold Line Services"></a>
+                    <p>Reliable HVAC, appliance, and pool/spa repair for Chicago and surrounding communities.</p>
+                </div>
+                <div>
+                    <h5>Services</h5>
+                    <ul>
+                        <li><a href="air-conditioner-repair.html">Air Conditioner repair</a></li>
+                        <li><a href="furnace-repair.html">Furnace repair</a></li>
+                        <li data-commercial><a href="commercial-ac-repair.html">Commercial HVAC repair</a></li>
+                        <li><a href="commercial-refrigerator-repair.html">Commercial refrigeration repair</a></li>
+                        <li><a href="refrigerator-repair.html">Refrigerator repair</a></li>
+                        <li><a href="washer-repair.html">Washer &amp; Dryer repair</a></li>
+                        <li><a href="oven-stove-repair.html">Oven &amp; Stove repair</a></li>
+                        <li><a href="index.html#pool">Pool / Spa repair</a></li>
+                        <li><a href="index.html#services">View all services</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h5>Explore</h5>
+                    <ul>
+                        <li><a href="index.html#top">Home</a></li>
+                        <li><a href="index.html#services">Services</a></li>
+                        <li><a href="about-us.html">About us</a></li>
+                        <li><a href="service-areas.html">Service Areas</a></li>
+                        <li><a href="#faq">FAQ</a></li>
+                        <li><a href="schedule-service.html">Schedule Service</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h5>Get in touch</h5>
+                    <a class="ct" href="tel:{{phoneTel}}"><i data-ic="phone"></i>{{phone}}</a>
+                    <a class="ct" href="sms:{{smsTel}}"><i data-ic="chat"></i>Text {{sms}}</a>
+                    <a class="ct" href="mailto:{{email}}"><i data-ic="mail"></i>{{email}}</a>
+                    <div class="ct"><i data-ic="clock"></i><span>Mon–Sat: 8:00 AM – 9:00 PM<br>Sunday: closed (emergency calls available)</span></div>
+                    <a class="btn btn-grad" href="schedule-service.html" style="margin-top:8px">Schedule service</a>
+                </div>
+            </div>
+            <div class="foot-bottom"><span>© 2026 Gold Line Services. All rights reserved. · <a href="privacy-policy.html">Privacy Policy</a> · <a href="terms.html">Terms &amp; Conditions</a></span><span>Payments accepted: Cash · Zelle · Visa · Mastercard</span></div>
+        </div>
+    </footer>
+
+    <!-- PAGE CONTENT: only this block is specific to this page. Everything else comes from service-page.js + site-config.js.
+         Installation on/off: site-config.js -> SERVICES -> this service -> install: true / false -->
+    <script>
+        const PAGE = {
+              "group": "appliances",
+              "item": "garbageDisposal",
+              "appliance": "garbage disposal",
+              "name": "Garbage Disposal",
+              "category": "Appliances",
+              "segment": "Residential",
+              "fee": "appliances",
+              "repairText": "We repair any fault on a garbage disposal of any brand. We find the real cause under the sink and give you the exact price before any work begins. If the unit is worn out, we replace it with a new one.",
+              "maint": "Cleaning and deodorizing, jam and blade checks, mounting and seal inspection, and drain-line checks to prevent clogs and leaks.",
+              "install": "",
+              "parts": "New motors, grinding components, mounting assemblies, gaskets and seals, power cords and reset switches.",
+              "problems": [
+                [
+                  "bolt",
+                  "Humming but not grinding",
+                  "A hum with no spinning usually means the grinding plate is jammed by something hard, or the motor is struggling to start."
+                ],
+                [
+                  "tool",
+                  "Jammed or stuck",
+                  "Bones, fruit pits, utensils or fibrous food can lock the flywheel. A technician frees it safely without damaging the unit."
+                ],
+                [
+                  "drop",
+                  "Leaking from the bottom or sides",
+                  "Leaks usually come from a worn seal, a loose drain connection or a cracked housing. A cracked housing means replacement."
+                ],
+                [
+                  "thermo",
+                  "Won't turn on at all",
+                  "Often a tripped reset button, a bad switch or outlet, a failed power cord, or a burned-out motor."
+                ],
+                [
+                  "volume",
+                  "Loud grinding or rattling",
+                  "Foreign objects, loose mounting hardware or worn grinding parts can make the disposal unusually loud."
+                ],
+                [
+                  "bubbles",
+                  "Clogged or slow draining sink",
+                  "A clog in the disposal or the drain line can back water up into the sink. We clear the cause, not just the symptom."
+                ],
+                [
+                  "snow",
+                  "Bad smells from the sink",
+                  "Built-up food residue in the chamber and baffle causes odors. A proper cleaning and inspection usually fixes it."
+                ],
+                [
+                  "clock",
+                  "Keeps tripping or shutting off",
+                  "An overloaded motor, a partial jam or an electrical fault can make the disposal shut off and need the reset button."
+                ],
+                [
+                  "cog",
+                  "Old unit that keeps failing",
+                  "If the disposal is more than ten years old or keeps breaking down, replacing it with a new one is often the better value."
+                ]
+              ],
+              "brands": [
+                "InSinkErator",
+                "Waste King",
+                "Moen",
+                "Badger",
+                "KitchenAid",
+                "Kenmore",
+                "GE",
+                "Whirlpool",
+                "Frigidaire",
+                "Anaheim",
+                "& more"
+              ],
+              "faq": [
+                [
+                  "Should I repair or replace my garbage disposal?",
+                  "If the problem is a jam, a loose connection or a worn seal, repair is usually quick and affordable. If the housing is cracked, the motor has burned out or the unit is very old, we will tell you honestly when a new one makes more sense."
+                ],
+                [
+                  "Can you install a new garbage disposal?",
+                  "Yes. We can replace your old disposal with a new unit. Tell us what you have when you book and we will confirm the details."
+                ],
+                [
+                  "Why is my disposal humming but not spinning?",
+                  "That sound usually means the grinding plate is jammed. Turn the power off first and do not put your hand inside. A technician can free it safely."
+                ],
+                [
+                  "Is it safe to reach into a garbage disposal?",
+                  "Never. Always turn the power off at the switch and the breaker first, and use tongs or pliers rather than your hand."
+                ],
+                [
+                  "What should I do before the technician arrives?",
+                  "Clear the area under the sink, avoid running the disposal, and note any noises or leaks. Have the brand and model number ready if you can see it on the unit."
+                ],
+                [
+                  "Do you repair all brands?",
+                  "We repair most major brands, including InSinkErator, Waste King, Moen and others. Ask us about yours when you call."
+                ]
+              ]
+            };
+    </script>
+    <script src="./service-page.js"></script>
+</body>
+
+</html>

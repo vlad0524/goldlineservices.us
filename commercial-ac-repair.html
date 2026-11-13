@@ -3,7 +3,6 @@
 
 <head>
     <script src="./site-config.js"></script>
-    <script>if (!SITE.commercial) location.replace("index.html");   /* page is hidden when the Commercial switch is off in site-config.js */</script>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
     <link rel="canonical" href="https://goldlineservices.us/commercial-ac-repair.html">
@@ -86,7 +85,7 @@
     <main id="top">
         <!-- 1. HERO: what we do + call / book -->
         <section class="hero page-hero sp-hero">
-            <img class="hero-bg" src="./commercial/commercial-ac-bg.jpg" alt="">
+            <img class="hero-bg" src="./commercial/commercial-ac-bg.jpg" alt="" onerror="this.onerror=null;this.src='./appliance/range-logo.jpg'">
             <div class="inner hero-content">
                 <div class="hero-copy">
                     <div class="eyebrow-hero">COMMERCIAL HVAC REPAIR<i></i>CHICAGO &amp; NEARBY SUBURBS</div>
@@ -319,13 +318,14 @@
          Installation on/off: site-config.js -> SERVICES -> this service -> install: true / false -->
     <script>
         const PAGE = {
-              "group": "commercial",
+              "group": "hvac",
               "item": "commercialAc",
               "appliance": "commercial air conditioning",
               "name": "Commercial Air Conditioner",
               "category": "HVAC",
               "segment": "Commercial",
               "fee": "hvacCom",
+              "repairText": "We repair commercial air conditioning of any brand: rooftop units, split systems and packaged cooling. A rooftop box can be cooling only, heating only, or both, and we repair all of them.",
               "maint": "Scheduled tune-ups for rooftop and split systems: coils, belts, filters, refrigerant and controls.",
               "install": "Installation of new commercial cooling systems, from rooftop units to split systems, sized for your space.",
               "parts": "Compressors, contactors, capacitors, belts, blower and condenser fan motors, and controls.",
@@ -389,6 +389,10 @@
                 "& more"
               ],
               "faq": [
+                [
+                  "My rooftop unit has both heating and cooling. Can you repair it?",
+                  "Yes. Commercial rooftop units can be cooling only, heating only, or a combination (packaged gas/electric) unit. We repair all of them, and a single visit covers both the cooling and the heating side."
+                ],
                 [
                   "Should I repair or replace my commercial AC?",
                   "If the issue is a single part, repair is often the better choice. For older units with major failures we'll explain your options honestly, so you can decide."

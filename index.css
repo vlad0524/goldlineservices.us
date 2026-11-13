@@ -2749,3 +2749,123 @@ html { background: linear-gradient(#fff 50%, #0b0c0e 50%) }
     .sp-areas .chip svg { width: 15px; height: 15px }
     .areas-btns { margin-top: 22px }
 }
+
+/* ===== v9: richer card design (problem / why / about / contact cards) ===== */
+body.sp .pcell, body .why-card, body .ab-card, body .c-item, body .do-card {
+    position: relative; overflow: hidden; isolation: isolate;
+    background: radial-gradient(120% 90% at 0% 0%, rgba(239, 193, 91, .13), transparent 55%), linear-gradient(180deg, #fafafb, #f4f4f6) !important;
+    border: 1px solid #e9e9ed !important; border-radius: 22px !important; box-shadow: 0 1px 0 rgba(255,255,255,.9) inset !important;
+    transition: transform .4s var(--ease), border-color .35s, box-shadow .4s var(--ease) !important }
+body.sp .pcell::before { background: radial-gradient(320px circle at var(--mx, 50%) var(--my, 0%), rgba(234,145,66,.14), transparent 62%) }
+body.sp .pcell::after, body .why-card::after, body .ab-card::after, body .c-item::after, body .do-card::after { content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 3px; background: var(--grad); transform: scaleX(0); transform-origin: 0 50%; transition: transform .5s var(--ease); width: auto; top: auto; pointer-events: none }
+body.sp .pcell:hover, body .why-card:hover, body .ab-card:hover, body .c-item:hover, body .do-card:hover {
+    transform: translateY(-6px); border-color: rgba(234,145,66,.55) !important; box-shadow: 0 26px 54px rgba(22,24,27,.12), 0 0 0 1px rgba(234,145,66,.12) !important;
+    background: radial-gradient(120% 90% at 0% 0%, rgba(239,193,91,.2), transparent 58%), #fff !important }
+body.sp .pcell:hover::after, body .why-card:hover::after, body .ab-card:hover::after, body .c-item:hover::after, body .do-card:hover::after { transform: scaleX(1) }
+/* icon tile: dark with gold glyph; on hover turns into the gold gradient tile (no looping shine) */
+body .pcell .ico, body .why-card .ico, body .ab-b .ico, body .c-item .ico { transition: background .35s, color .35s, box-shadow .35s, transform .4s var(--ease) }
+body .pcell .ico::after, body .why-card .ico::after { display: none !important }
+body .pcell:hover .ico, body .why-card:hover .ico, body .ab-b:hover .ico, body .c-item:hover .ico { background: var(--grad) !important; color: #17181b !important; box-shadow: 0 10px 24px rgba(234,145,66,.38) !important; transform: translateY(-2px) }
+body .pcell:hover .ico svg, body .why-card:hover .ico svg { transform: none !important }
+/* big faint numbers on the "why" and "about" cards */
+.why-grid, .ab-big { counter-reset: wc }
+body .why-card, body .ab-b { counter-increment: wc }
+body .why-card::before, body .ab-b::before { content: counter(wc, decimal-leading-zero); position: absolute; right: 22px; top: 14px; z-index: -1; font: 800 60px/1 var(--head); letter-spacing: -.05em; color: rgba(22,24,27,.05); transition: color .4s }
+body .why-card:hover::before, body .ab-b:hover::before { color: rgba(234,145,66,.16) }
+body .why-card h4, body .why-card h3, body .pcell h3 { font-family: var(--head); font-weight: 700; letter-spacing: -.02em }
+@media (hover: none) { body.sp .pcell:hover, body .why-card:hover, body .ab-card:hover, body .c-item:hover, body .do-card:hover { transform: none } }
+
+/* ===== v10: reveal fix, compact problem cards, reviews entrance, phone hero image ===== */
+/* v9 cards had their own transition that overrode the reveal transition: restore it while the card is still hidden (.fx) */
+body.sp .pcell.fx, body .why-card.fx, body .ab-card.fx, body .c-item.fx, body .do-card.fx { transition: opacity 1s var(--ease) var(--d, 0ms), transform 1s var(--ease) var(--d, 0ms) !important }
+
+body.sp .pcell.pcta { background: radial-gradient(90% 120% at 100% 0%, rgba(234,145,66,.28), transparent 60%), #121316 !important; border-color: rgba(239,193,91,.35) !important }
+body.sp .pcell.pcta h3 { color: #fff } body.sp .pcell.pcta p { color: #b4b7bc }
+body.sp .pcell.pcta .go { color: #efc15b; font-size: 15px }
+body.sp .pcell.pcta .ico { background: var(--grad) !important; color: #17181b !important }
+body.sp .pcell.pcta:hover { background: radial-gradient(90% 120% at 100% 0%, rgba(234,145,66,.4), transparent 60%), #17181b !important }
+
+/* reviews: entrance animation (keyframes, triggered once by the section) */
+#reviews.rv-pre .rev { opacity: 0 }
+#reviews.rv-go .rev { animation: revIn .9s var(--ease) backwards; animation-delay: calc(var(--ri, 0) * 110ms) }
+@keyframes revIn { from { opacity: 0; transform: translateY(34px) } to { opacity: 1; transform: none } }
+
+/* phones: hero photo always centered and covering the whole hero, never wider than the screen */
+.hero { overflow: hidden }
+@media (max-width: 640px) { .hero-bg { object-position: center center !important } }
+
+/* ===== v11: "What we repair" as one rounded list panel (numbered rows) + card corner fix ===== */
+.card, .grid3 .card { overflow: hidden; isolation: isolate; transform: translateZ(0); }
+.card .media { border-radius: inherit; border-bottom-left-radius: 0; border-bottom-right-radius: 0; overflow: hidden; isolation: isolate }
+.card.wide .media { border-radius: inherit; border-top-right-radius: 0 }
+@media (max-width: 760px) { .card.wide .media { border-radius: inherit; border-bottom-left-radius: 0; border-bottom-right-radius: 0 } }
+
+.card .media { border-radius: 0 !important }
+.card.wide .media { border-radius: 0 !important }
+.pcell .ico svg, .sym .ico svg { width: 26px; height: 26px }
+
+/* v12: problem cards = same look as About cards: soft gold glow on the left + big faint number on the right */
+.pgrid { counter-reset: pc }
+body.sp .pcell { counter-increment: pc; padding: 30px 28px 26px !important }
+body.sp .pcell::before { content: counter(pc, decimal-leading-zero); position: absolute; inset: auto; right: 22px; top: 14px; z-index: -1; width: auto; height: auto; opacity: 1; background: none; font: 800 60px/1 var(--head); letter-spacing: -.05em; color: rgba(22,24,27,.05); transition: color .4s; pointer-events: none }
+body.sp .pcell:hover::before { opacity: 1; color: rgba(234,145,66,.16) }
+body.sp .pcell>* { position: relative; z-index: 1 }
+body.sp .pcell.fx { transition: opacity 1s var(--ease) var(--d, 0ms), transform 1s var(--ease) var(--d, 0ms) !important }
+body.sp .pcell.fx.in { transition: transform .4s var(--ease), border-color .35s, box-shadow .4s var(--ease), background .35s !important }
+@media (max-width: 640px) { body.sp .pcell::before { font-size: 40px; right: 14px; top: 10px } }
+
+/* v13: home "Our Services": slightly gray section, white cards with a soft dark halo */
+#services { background: #fbfbfc !important }
+#services .card, #services .grid3 .card { background: #fff !important; border: 1px solid #ececef !important;
+    box-shadow: 0 0 0 1px rgba(22,24,27,.03), 0 0 30px 0 rgba(22,24,27,.07), 0 10px 26px rgba(22,24,27,.05) !important }
+#services .card:hover, #services .grid3 .card:hover { border-color: rgba(234,145,66,.6) !important;
+    box-shadow: 0 0 0 1px rgba(234,145,66,.15), 0 0 38px 2px rgba(22,24,27,.11), 0 18px 40px rgba(22,24,27,.09) !important }
+
+/* v14: thinner progress bar + diagnosis section */
+#fxbar { height: 1.5px !important }
+.sp-diag { background: #f7f7f8 !important; padding: 84px 0 }
+.dg-grid { display: grid; grid-template-columns: 1.05fr 1fr; gap: 64px; align-items: center }
+.dg-txt h2 { font-size: clamp(30px, 3.6vw, 46px); line-height: 1.08; letter-spacing: -.03em; font-weight: 800; margin: 10px 0 18px }
+.dg-txt p { color: #62666d; font-size: 16px; line-height: 1.7; margin: 0 0 14px }
+.dg-txt p.dg-lead { color: var(--ink); font-size: 19px; font-weight: 500 }
+.dg-txt a { color: #c7660f; font-weight: 700; text-decoration: underline; text-underline-offset: 3px }
+.dg-list { list-style: none; margin: 22px 0 0; padding: 0; display: grid; grid-template-columns: 1fr 1fr; border-top: 1px solid #e3e4e8 }
+.dg-list li { display: flex; align-items: center; gap: 12px; padding: 16px 4px; border-bottom: 1px solid #e3e4e8; font-weight: 700; color: var(--ink) }
+.dg-list svg { width: 20px; height: 20px; flex: none; fill: none; stroke: #e0872e; stroke-width: 2.4; stroke-linecap: round; stroke-linejoin: round }
+.dg-img { border-radius: 28px; overflow: hidden; isolation: isolate; box-shadow: 0 24px 60px rgba(22,24,27,.16); aspect-ratio: 4/4.6; background: #1e2024 }
+.dg-img img { width: 100%; height: 100%; object-fit: cover; display: block }
+@media (max-width: 900px) { .sp-diag { padding: 56px 0 } .dg-grid { grid-template-columns: 1fr; gap: 32px } .dg-img { aspect-ratio: 4/3; order: -1; border-radius: 22px } .dg-list { grid-template-columns: 1fr } }
+
+/* v15: diagnosis section in the site's card language */
+.sp-diag { background: #fff !important; padding: 72px 0 }
+.dg-grid { position: relative; isolation: isolate; overflow: hidden; gap: 56px; padding: 48px; border-radius: 28px; border: 1px solid #e9e9ed;
+    background: radial-gradient(70% 90% at 0% 0%, rgba(239,193,91,.16), transparent 60%), linear-gradient(180deg, #fafafb, #f4f4f6);
+    box-shadow: 0 1px 0 rgba(255,255,255,.9) inset, 0 18px 44px rgba(22,24,27,.07) }
+.dg-grid::after { content: "02"; position: absolute; right: 28px; top: 10px; z-index: -1; font: 800 90px/1 var(--head); letter-spacing: -.05em; color: rgba(22,24,27,.05) }
+.dg-list { border: 0; gap: 10px; margin-top: 24px }
+.dg-list li { background: #fff; border: 1px solid #e9e9ed; border-radius: 14px; padding: 12px 14px; font-size: 15px; box-shadow: 0 1px 2px rgba(22,24,27,.04); transition: border-color .3s, transform .3s var(--ease) }
+.dg-list li:hover { border-color: rgba(234,145,66,.6); transform: translateY(-2px) }
+.dg-list svg { width: 26px; height: 26px; padding: 5px; border-radius: 8px; background: #17181b; stroke: #efc15b; stroke-width: 2.6 }
+.dg-img { position: relative; border-radius: 22px; box-shadow: 0 20px 48px rgba(22,24,27,.2); aspect-ratio: 4/4.4 }
+.dg-badge { position: absolute; left: 16px; bottom: 16px; z-index: 2; display: grid; grid-template-columns: 38px auto; column-gap: 12px; align-items: center; padding: 12px 18px 12px 12px; border-radius: 16px; background: rgba(18,19,22,.82); border: 1px solid rgba(255,255,255,.1); color: #fff }
+.dg-badge i { grid-row: 1/3; width: 38px; height: 38px; border-radius: 11px; background: var(--grad); display: grid; place-items: center }
+.dg-badge svg { width: 20px; height: 20px; fill: none; stroke: #17181b; stroke-width: 2.6; stroke-linecap: round; stroke-linejoin: round }
+.dg-badge b { font-size: 15px; line-height: 1.2 } .dg-badge em { font-style: normal; font-size: 12.5px; color: #b4b7bc }
+@media (max-width: 900px) { .sp-diag { padding: 40px 0 } .dg-grid { padding: 22px 18px 26px; gap: 24px; border-radius: 22px } .dg-grid::after { font-size: 56px; right: 16px; top: 6px } .dg-img { aspect-ratio: 4/3 } }
+.dg-grid::after { display: none !important }
+
+/* v16: diagnosis card dark, like the CTA card */
+.dg-grid { border: 0 !important; background: radial-gradient(60% 80% at 0% 100%, rgba(234,145,66,.16), transparent 60%), radial-gradient(55% 70% at 100% 0%, rgba(239,193,91,.12), transparent 60%), linear-gradient(135deg, #1b1c20, #0b0c0e) !important; box-shadow: 0 30px 70px rgba(22,24,27,.28) !important }
+.dg-grid::before { content: ""; position: absolute; left: 8%; right: 8%; top: 0; height: 2px; z-index: 1; background: linear-gradient(90deg, transparent, #efc15b, transparent); opacity: .8 }
+.dg-txt h2 { color: #fff }
+.dg-txt p { color: #b4b7bc }
+.dg-txt p.dg-lead { color: #e9eaec }
+.dg-txt a { color: #efc15b }
+.dg-txt .kicker { color: #efc15b } .dg-txt .kicker .kn { color: #efc15b }
+.dg-list li { background: rgba(255,255,255,.05) !important; border-color: rgba(255,255,255,.1) !important; color: #fff !important; box-shadow: none !important }
+.dg-list li:hover { border-color: rgba(239,193,91,.6) !important; background: rgba(255,255,255,.08) !important }
+.dg-list svg { background: var(--grad) !important; stroke: #17181b !important }
+.dg-img { box-shadow: 0 20px 50px rgba(0,0,0,.45) !important; border: 1px solid rgba(255,255,255,.08) }
+.dg-img img.dg-slide { position: absolute; inset: 0; opacity: 0; transition: opacity 1.2s ease }
+.dg-img img.dg-slide.on { opacity: 1 }
+.dg-img .dg-badge { z-index: 3 }

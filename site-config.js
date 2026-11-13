@@ -21,7 +21,7 @@ window.SITE = (function () {
          SWITCHES
            group  show: false  = the whole group disappears (its menu column, home section, booking tile).
            item   show: false  = only that service disappears.     item  wide: true = big home card (2 per row), false = small (3 per row).
-           The "commercial" group is OFF by default: change its show to true to switch commercial HVAC on everywhere.
+           Commercial HVAC items (commercial: true) sit in the HVAC group; set an item show: false to hide it.
 
          HOW TO ADD A NEW SERVICE (e.g. "Dishwasher")
            1. Copy any item block inside the right group, paste it under the last item of that group (do not forget the comma
@@ -51,7 +51,7 @@ window.SITE = (function () {
   const SERVICES = {
     hvac: {
       show: true,
-      title: "HVAC", heading: "Heating & Cooling Repair and Installation",
+      title: "HVAC", heading: "Heating & Cooling Repair and Installation", commercialTitle: "Commercial Heating & Cooling",
       fee: "hvac",
       icon: "snow", text: "Air conditioning, furnace, and heating", brand: false,   // booking form tile
       items: {
@@ -62,7 +62,7 @@ window.SITE = (function () {
 
         furnace: { show: true, install: true, maintenance: true, wide: true, name: "Furnace", page: "furnace-repair.html", img: "./hvac/hvac-logo.jpg",
           ask: "No heat? We can fix it",
-          text: "Get safe, consistent heat back with fast diagnostics and dependable repairs.",
+          text: "Gas and electric furnaces: safe, consistent heat back with fast diagnostics and dependable repairs.",
           formName: "Furnace / Heating", formText: "No heat or uneven heating.", icon: "flame" },
 
         miniSplit: { show: false, install: true, maintenance: true, wide: true, name: "Mini-Split Systems", page: "mini-split-repair.html", img: "./hvac/mini-split.jpg",
@@ -78,23 +78,18 @@ window.SITE = (function () {
         wallUnit: { show: true, install: true, maintenance: true, wide: true, name: "Through-the-Wall Units", page: "through-the-wall-repair.html", img: "./hvac/wall-unit.jpg",
           ask: "Need comfort in just one room?",
           text: "Professional installation and repair of compact through-the-wall units, for cooling only or cooling and heating.",
-          formName: "Through-the-Wall Unit", formText: "Wall-mounted cooling and heating.", icon: "home" }
-      }
-    },
-    commercial: {
-      show: false,
-      title: "Commercial", heading: "Commercial Air Conditioning & Heating",
-      fee: "hvacCom",   mergeInto: "hvac",   // its items are listed inside the "hvac" tile of the booking form
-      items: {
-        commercialAc: { show: true, install: true, maintenance: true, wide: true, name: "Commercial Air Conditioning", page: "commercial-ac-repair.html", img: "./hvac/",
-          ask: "AC down at your business?",
-          text: "Keep staff and customers comfortable with fast repairs and reliable installation of rooftop and cooling units.",
-          formName: "Commercial Air Conditioner", formText: "Rooftop and commercial cooling systems.", icon: "snow" },
+          formName: "Through-the-Wall Unit", formText: "Wall-mounted cooling and heating.", icon: "home" },
 
-        commercialHeating: { show: true, install: true, maintenance: true, wide: true, name: "Commercial Heating", page: "commercial-heating-repair.html", img: "./hvac/",
+        commercialAc: { show: true, install: true, maintenance: true, commercial: true, wide: false, name: "Commercial Air Conditioning", page: "commercial-ac-repair.html", img: "./commercial/commercial-ac-bg.jpg",
+          ask: "AC down at your business?",
+          text: "Fast repair and reliable installation of rooftop, split and commercial cooling units.",
+          formName: "Commercial Air Conditioner", formText: "Rooftop and commercial cooling systems.", icon: "snow", fee: "hvacCom" },
+
+        commercialHeating: { show: true, install: true, maintenance: true, commercial: true, wide: false, name: "Commercial Furnaces & Heating", page: "commercial-heating-repair.html", img: "./commercial/commercial-heating-bg.jpg",
           ask: "No heat at your business?",
-          text: "Get your space warm again with dependable repair and installation of furnaces and heating systems.",
-          formName: "Commercial Furnace / Heating", formText: "Commercial heating systems.", icon: "flame" }
+          text: "Dependable repair and installation of commercial furnaces, rooftop heaters and unit heaters.",
+          formName: "Commercial Furnace / Heating", formText: "Commercial furnaces and heating systems.", icon: "flame", fee: "hvacCom" }
+
       }
     },
     appliances: {
@@ -133,15 +128,30 @@ window.SITE = (function () {
           text: "Repair burners, igniters, and controls on cooktops and ranges.",
           formName: "Cooktop & Range", formText: "Burners won't light or heat.", icon: "flame" },
 
+        garbageDisposal: { show: true, install: false, maintenance: true, wide: false, name: "Garbage Disposal", page: "garbage-disposal-repair.html", img: "./appliance/garbage-disposal.jpg",
+          ask: "Jammed, humming or leaking?",
+          text: "Fix jams, humming, leaks and clogs, or replace the unit under your sink.",
+          formName: "Garbage Disposal", formText: "Jammed, humming, leaking or not turning on.", icon: "tool" },
+
         commercialRefrigerator: { show: true, install: false, maintenance: true, commercial: true, wide: false, name: "Commercial Refrigerator", page: "commercial-refrigerator-repair.html", img: "./appliance/refrigerator-lg.jpg",
           ask: "Cooler not holding temperature?",
-          text: "Repair of reach-in, prep-table, display and walk-in coolers for restaurants and stores.",
-          formName: "Commercial Refrigerator", formText: "Reach-in, prep table, display, walk-in cooler.", icon: "fridge", fee: "appliancesCom" },
+          text: "Standard side-door and reach-in refrigerators for restaurants, stores and offices.",
+          formName: "Commercial Refrigerator (Reach-in)", formText: "Side-door, reach-in, prep table, under-counter.", icon: "fridge", fee: "appliancesCom" },
 
         commercialFreezer: { show: true, install: false, maintenance: true, commercial: true, wide: false, name: "Commercial Freezer", page: "commercial-freezer-repair.html", img: "./appliance/Sub-Zero-freezer.jpg",
           ask: "Freezer too warm or frosting up?",
-          text: "Repair of reach-in, chest, display and walk-in freezers, so your stock stays frozen.",
-          formName: "Commercial Freezer", formText: "Reach-in, chest, display, walk-in freezer.", icon: "snow", fee: "appliancesCom" }
+          text: "Standard reach-in and chest freezers, so your stock stays frozen.",
+          formName: "Commercial Freezer (Reach-in)", formText: "Reach-in, chest, under-counter freezer.", icon: "snow", fee: "appliancesCom" },
+
+        commercialWalkInCooler: { show: true, install: false, maintenance: true, commercial: true, wide: false, name: "Walk-in Cooler", page: "commercial-walk-in-cooler-repair.html", img: "./appliance/walk-in-cooler.jpg",
+          ask: "Walk-in too warm?",
+          text: "Repair of walk-in coolers: condensing units, evaporator fans, defrost, doors and controls.",
+          formName: "Walk-in Cooler", formText: "Walk-in cooler for a restaurant or store.", icon: "snow", fee: "appliancesCom" },
+
+        commercialWalkInFreezer: { show: true, install: false, maintenance: true, commercial: true, wide: false, name: "Walk-in Freezer", page: "commercial-walk-in-freezer-repair.html", img: "./appliance/walk-in-freezer.jpg",
+          ask: "Walk-in freezer icing up?",
+          text: "Repair of walk-in freezers: defrost systems, condensing units, door heaters and controls.",
+          formName: "Walk-in Freezer", formText: "Walk-in freezer for a restaurant, store or warehouse.", icon: "snow", fee: "appliancesCom" }
       }
     },
     pool: {
@@ -194,8 +204,8 @@ window.SITE = (function () {
   const FEES = {
     appliances: { standard: 79,  emergency: 150 },
     hvac:       { standard: 79,  emergency: 150 },
-    hvacCom:    { standard: 100, emergency: 200 },  // HVAC commercial
-    appliancesCom: { standard: 100, emergency: 200 }, // commercial refrigerators / freezers
+    hvacCom:    { standard: 150, emergency: 350 },  // HVAC commercial
+    appliancesCom: { standard: 150, emergency: 250 }, // commercial refrigerators / freezers
     pool:       { standard: 79,  emergency: 150 }
   };
 
@@ -292,14 +302,25 @@ window.SITE = (function () {
 
 
   /* 4) COMMERCIAL: switched in SERVICES above (commercial: { show: true / false }). Nothing to set here. */
-  const COMMERCIAL = SERVICES.commercial.show !== false && Object.keys(SERVICES.commercial.items).some(k => SERVICES.commercial.items[k].show !== false);
+  const COMMERCIAL = Object.keys(SERVICES).some(g => SERVICES[g].show !== false && Object.keys(SERVICES[g].items).some(k => SERVICES[g].items[k].commercial && SERVICES[g].items[k].show !== false));
 
   /* 4b) WARRANTY: shown on every service page ("{{warranty}}" in any text). Change here -> changes everywhere. */
-  const WARRANTY = "3 months";   /* e.g. "3 months", "6 months", "1 year". Texts show "3-month warranty" automatically. */
+  /* 4a) DIAGNOSIS PHOTOS: extra photos for the "Start with the symptom" block on each service page.
+         By default the block shows only the page's own hero photo. Add more file paths here and the photos fade into each other automatically.
+         "all" = added to every service page; or use the page name (e.g. "refrigerator-repair") for just that page.
+         Example:  all: ["./appliance/diag-1.jpg"],  "refrigerator-repair": ["./appliance/fridge-diag-2.jpg", "./appliance/fridge-diag-3.jpg"] */
+  const DIAG_IMAGES = {
+    all: [],
+    "refrigerator-repair": [],
+    "furnace-repair": []
+  };
+  const DIAG_SECONDS = 5;   /* seconds each photo stays on screen */
+
+  const WARRANTY = "90 days";   /* e.g. "90 days", "6 months", "1 year". Texts show "90-day warranty" automatically. */
 
   /* 5) GOOGLE REVIEWS shown in the small badge on the service pages */
   const RATING = "5.0";            // average rating, e.g. "5.0" or "4.8"
-  const REVIEW_COUNT = "25+";      // number of reviews, e.g. "21+" or "34"
+  const REVIEW_COUNT = "30+";      // number of reviews, e.g. "21+" or "34"
   const REVIEWS_URL = "https://share.google/feIekBTpIm25aUQHO";   // where the badge links to
 
   /* 6) GOOGLE ADS CONVERSION: "Booking form" label from Google Ads. Fires after a form is sent.
@@ -357,9 +378,9 @@ window.SITE = (function () {
   const S = {
     phone: fmt(PHONE), phoneTel: "+1" + PHONE,
     sms: fmt(TEXT_PHONE), smsTel: "+1" + TEXT_PHONE,
-    warranty: WARRANTY, cities: CITIES, email: EMAIL, sheetsUrl: SHEETS_URL, fees: FEES, credit: CREDIT, schedule: SCHEDULE, commercial: COMMERCIAL, services: SERVICES
+    warranty: WARRANTY, cities: CITIES, email: EMAIL, sheetsUrl: SHEETS_URL, fees: FEES, credit: CREDIT, schedule: SCHEDULE, commercial: COMMERCIAL, services: SERVICES, diagImages: DIAG_IMAGES, diagSeconds: DIAG_SECONDS
   };
-  const WARRANTY_ADJ = WARRANTY.replace(/\s+(month|year|day|week)s?$/i, "-$1");   /* "3 months" -> "3-month" (for "a 3-month warranty") */
+  const WARRANTY_ADJ = WARRANTY.replace(/\s+(month|year|day|week)s?$/i, "-$1");   /* "90 days" -> "90-day" (for "a 90-day warranty") */
   const MAP = { "{{warranty}}": WARRANTY_ADJ, "{{warrantyLong}}": WARRANTY, "{{rating}}": RATING, "{{reviewCount}}": REVIEW_COUNT, "{{reviewsUrl}}": REVIEWS_URL, "{{phone}}": S.phone, "{{phoneTel}}": S.phoneTel, "{{sms}}": S.sms, "{{smsTel}}": S.smsTel, "{{email}}": S.email };
   /* fee tokens: {{feeAppliances}} = standard, {{feeAppliancesEm}} = emergency (also Hvac, HvacCom, Pool) */
   Object.keys(FEES).forEach(k => { const K = k[0].toUpperCase() + k.slice(1); MAP["{{fee" + K + "}}"] = "$" + FEES[k].standard; MAP["{{fee" + K + "Em}}"] = "$" + FEES[k].emergency; });

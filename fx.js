@@ -150,6 +150,20 @@
         io.observe(el);
     }));
 
+
+    /* reviews entrance (home): the section triggers one keyframe animation, cards stagger */
+    const rvs = document.getElementById('reviews');
+    if (rvs) {
+        [...rvs.querySelectorAll('.rev')].forEach((el, i) => el.style.setProperty('--ri', Math.min(i, 5)));
+        const r0 = rvs.getBoundingClientRect();
+        if (r0.top > innerHeight * 0.8) {
+            rvs.classList.add('rv-pre');
+            const rio = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { rio.disconnect(); rvs.classList.remove('rv-pre'); rvs.classList.add('rv-go'); } }), { threshold: 0.2 });
+            rio.observe(rvs);
+            setTimeout(() => { if (rvs.classList.contains('rv-pre')) { rvs.classList.remove('rv-pre'); } }, 8000);   /* safety */
+        }
+    }
+
     /* steps timeline */
     $$('.sp-steps').forEach(ol => {
         [...ol.children].forEach((li, i) => { li.style.setProperty('--d', (i * 0.45) + 's'); li.style.setProperty('--ld', (i * 0.45 + 0.3) + 's'); });

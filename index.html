@@ -348,7 +348,7 @@
         const arrow = '<svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg>';
         document.getElementById('groups').innerHTML = GROUPS.map(g => {
             const card = (i, tag) => {
-                const m = `<div class="media${i.img ? '' : ' ph'}" data-label="Add image: ${i.n}">${i.img ? `<img src="${i.img}" alt="${i.n}">` : ''}<span class="tag">${tag || g.title}</span><span class="name">${i.n}</span></div>`;
+                const m = `<div class="media${i.img ? '' : ' ph'}" data-label="Add image: ${i.n}">${i.img ? `<img src="${i.img}" alt="${i.n}" onerror="this.onerror=null;this.src='./appliance/range-logo.jpg'">` : ''}<span class="tag">${tag || g.title}</span><span class="name">${i.n}</span></div>`;
                 return `<a class="card${i.wide ? ' wide' : ''}" href="${i.href || '#'}">${m}<div class="body"><small>${i.e}</small><h4>${i.n + g.suffix}</h4><p>${i.d}</p><span class="arrow">${arrow}</span></div></a>`;
             };
             const mainItems = g.items.filter(i => !i.com), comItems = g.items.filter(i => i.com);
