@@ -55,37 +55,39 @@ window.SITE = (function () {
       fee: "hvac",
       icon: "snow", text: "Air conditioning, furnace, and heating", brand: false,   // booking form tile
       items: {
-        airConditioner: { show: true, install: true, maintenance: true, wide: true, name: "Air Conditioner", page: "air-conditioner-repair.html", img: "./hvac/ac-logo.jpg",
+        airConditioner: { show: true, install: true, maintenance: true, wide: true, name: "Air Conditioner", page: "air-conditioner-repair.html", img: "./hvac/ac-logo.webp",
           ask: "AC not cooling?",
           text: "Restore strong cooling, steady airflow, and efficient performance all summer.",
           formName: "Air Conditioner", formText: "Not cooling, noisy, or leaking.", icon: "snow" },
 
-        furnace: { show: true, install: true, maintenance: true, wide: true, name: "Furnace", page: "furnace-repair.html", img: "./hvac/hvac-logo.jpg",
+        furnace: { show: true, install: true, maintenance: true, wide: true, name: "Furnace", page: "furnace-repair.html", img: "./hvac/hvac-logo.webp",
           ask: "No heat? We can fix it",
           text: "Gas and electric furnaces: safe, consistent heat back with fast diagnostics and dependable repairs.",
           formName: "Furnace / Heating", formText: "No heat or uneven heating.", icon: "flame" },
 
-        miniSplit: { show: false, install: true, maintenance: true, wide: true, name: "Mini-Split Systems", page: "mini-split-repair.html", img: "./hvac/mini-split.jpg",
+        miniSplit: { show: true, install: true, maintenance: true, wide: false, name: "Mini-Split Systems", page: "mini-split-repair.html", img: "./hvac/mini-split.webp",
           ask: "Cooling several rooms without ducts?",
           text: "Ductless systems with one outdoor unit connected to one or more indoor units, professionally installed and serviced.",
           formName: "Mini-Split System", formText: "Ductless indoor or outdoor units.", icon: "snow" },
 
-        packaged: { show: true, install: true, maintenance: true, wide: true, name: "Packaged Units", page: "packaged-unit-repair.html", img: "./hvac/packaged-unit.jpg",
+        packaged: { show: true, install: true, maintenance: true, wide: false, name: "Packaged Units", page: "packaged-unit-repair.html", img: "./hvac/packaged-unit.webp",
           ask: "Apartment or rooftop unit not working?",
           text: "Repair and installation of all-in-one heating and cooling units, from apartment closet models to rooftop systems.",
           formName: "Packaged Unit", formText: "All-in-one rooftop or closet units.", icon: "home" },
 
-        wallUnit: { show: true, install: true, maintenance: true, wide: true, name: "Through-the-Wall Units", page: "through-the-wall-repair.html", img: "./hvac/wall-unit.jpg",
+        wallUnit: { show: true, install: true, maintenance: true, wide: false, name: "Through-the-Wall Units", page: "through-the-wall-repair.html", img: "./hvac/wall-unit.webp",
           ask: "Need comfort in just one room?",
           text: "Professional installation and repair of compact through-the-wall units, for cooling only or cooling and heating.",
           formName: "Through-the-Wall Unit", formText: "Wall-mounted cooling and heating.", icon: "home" },
 
-        commercialAc: { show: true, install: true, maintenance: true, commercial: true, wide: false, name: "Commercial Air Conditioning", page: "commercial-ac-repair.html", img: "./commercial/commercial-ac-bg.jpg",
+
+
+        commercialAc: { show: false, install: true, maintenance: true, commercial: true, wide: false, name: "Commercial Air Conditioning", page: "commercial-ac-repair.html", img: "./commercial/commercial-ac-bg.webp",
           ask: "AC down at your business?",
           text: "Fast repair and reliable installation of rooftop, split and commercial cooling units.",
           formName: "Commercial Air Conditioner", formText: "Rooftop and commercial cooling systems.", icon: "snow", fee: "hvacCom" },
 
-        commercialHeating: { show: true, install: true, maintenance: true, commercial: true, wide: false, name: "Commercial Furnaces & Heating", page: "commercial-heating-repair.html", img: "./commercial/commercial-heating-bg.jpg",
+        commercialHeating: { show: false, install: true, maintenance: true, commercial: true, wide: false, name: "Commercial Furnaces & Heating", page: "commercial-heating-repair.html", img: "./commercial/commercial-heating-bg.webp",
           ask: "No heat at your business?",
           text: "Dependable repair and installation of commercial furnaces, rooftop heaters and unit heaters.",
           formName: "Commercial Furnace / Heating", formText: "Commercial furnaces and heating systems.", icon: "flame", fee: "hvacCom" }
@@ -98,57 +100,60 @@ window.SITE = (function () {
       fee: "appliances",
       icon: "fridge", text: "Refrigerator, washer, dryer, oven, and more", brand: true,   // booking form tile
       items: {
-        refrigerator: { show: true, install: false, maintenance: true, wide: false, name: "Refrigerator", page: "refrigerator-repair.html", img: "./appliance/refrigerator-lg.jpg",
+        refrigerator: { show: true, install: false, maintenance: true, wide: false, name: "Refrigerator", page: "refrigerator-repair.html", img: "./appliance/refrigerator-lg.webp",
           ask: "Not cooling or leaking?",
           text: "Get your fridge back to the right temperature and keep your groceries safe.",
           formName: "Refrigerator", formText: "Not cooling, leaking, or noisy.", icon: "fridge" },
 
-        freezer: { show: true, install: false, maintenance: true, wide: false, name: "Freezer", page: "freezer-repair.html", img: "./appliance/Sub-Zero-freezer.jpg",
+        freezer: { show: true, install: false, maintenance: true, wide: false, name: "Freezer", page: "freezer-repair.html", img: "./appliance/Sub-Zero-freezer.webp",
           ask: "Frost buildup or warm freezer?",
           text: "Fix frost buildup, warm spots, and noisy cycles to protect your food.",
           formName: "Freezer", formText: "Warm, frosting up, or not running.", icon: "snow" },
 
-        washer: { show: true, install: true, maintenance: true, wide: false, name: "Washer", page: "washer-repair.html", img: "./appliance/washer-logo.jpg",
+        washer: { show: true, install: true, maintenance: true, wide: false, name: "Washer", page: "washer-repair.html", img: "./appliance/washer-logo.webp",
           ask: "Won't drain or spin?",
           text: "Fix water not draining, drum not spinning, or leaks and error codes.",
           formName: "Washer", formText: "Won't drain, spin, or fill.", icon: "washer" },
 
-        dryer: { show: true, install: true, maintenance: true, wide: false, name: "Dryer", page: "dryer-repair.html", img: "./appliance/Dryer-logo.jpg",
+        dryer: { show: true, install: true, maintenance: true, wide: false, name: "Dryer", page: "dryer-repair.html", img: "./appliance/Dryer-logo.webp",
           ask: "Not heating or drying?",
           text: "Solve no-heat, long drying times, and a drum that won’t turn.",
           formName: "Dryer", formText: "Not heating or drying slowly.", icon: "washer" },
 
-        ovenStove: { show: true, install: false, maintenance: true, wide: false, name: "Oven & Stove", page: "oven-stove-repair.html", img: "./appliance/range-logo.jpg",
+        ovenStove: { show: true, install: false, maintenance: true, wide: false, name: "Oven & Stove", page: "oven-stove-repair.html", img: "./appliance/range-logo.webp",
           ask: "Oven not heating evenly?",
           text: "Resolve heating, ignition, and temperature issues for consistent cooking.",
           formName: "Oven & Stove", formText: "Not heating or won't ignite.", icon: "oven" },
 
-        cooktopRange: { show: true, install: false, maintenance: true, wide: false, name: "Cooktop & Range", page: "cooktop-range-repair.html", img: "./appliance/cook-top-logo.jpg",
+        cooktopRange: { show: true, install: false, maintenance: true, wide: false, name: "Cooktop & Range", page: "cooktop-range-repair.html", img: "./appliance/cook-top-logo.webp",
           ask: "Burner won't light?",
           text: "Repair burners, igniters, and controls on cooktops and ranges.",
           formName: "Cooktop & Range", formText: "Burners won't light or heat.", icon: "flame" },
 
-        garbageDisposal: { show: true, install: false, maintenance: true, wide: false, name: "Garbage Disposal", page: "garbage-disposal-repair.html", img: "./appliance/garbage-disposal.jpg",
+        garbageDisposal: { show: true, install: false, maintenance: true, wide: false, name: "Garbage Disposal", page: "garbage-disposal-repair.html", img: "./appliance/GarbageDisposal.webp",
           ask: "Jammed, humming or leaking?",
           text: "Fix jams, humming, leaks and clogs, or replace the unit under your sink.",
           formName: "Garbage Disposal", formText: "Jammed, humming, leaking or not turning on.", icon: "tool" },
 
-        commercialRefrigerator: { show: true, install: false, maintenance: true, commercial: true, wide: false, name: "Commercial Refrigerator", page: "commercial-refrigerator-repair.html", img: "./appliance/refrigerator-lg.jpg",
+
+
+        commercialRefrigerator: { show: true, install: false, maintenance: true, commercial: true, wide: false, name: "Commercial Refrigerator", page: "commercial-refrigerator-repair.html", img: "./appliance/CommercialRefrigerator.webp",
           ask: "Cooler not holding temperature?",
           text: "Standard side-door and reach-in refrigerators for restaurants, stores and offices.",
           formName: "Commercial Refrigerator (Reach-in)", formText: "Side-door, reach-in, prep table, under-counter.", icon: "fridge", fee: "appliancesCom" },
 
-        commercialFreezer: { show: true, install: false, maintenance: true, commercial: true, wide: false, name: "Commercial Freezer", page: "commercial-freezer-repair.html", img: "./appliance/Sub-Zero-freezer.jpg",
+        commercialFreezer: { show: true, install: false, maintenance: true, commercial: true, wide: false, name: "Commercial Freezer", page: "commercial-freezer-repair.html", img: "./appliance/CommercialFreezer.webp",
           ask: "Freezer too warm or frosting up?",
           text: "Standard reach-in and chest freezers, so your stock stays frozen.",
           formName: "Commercial Freezer (Reach-in)", formText: "Reach-in, chest, under-counter freezer.", icon: "snow", fee: "appliancesCom" },
 
-        commercialWalkInCooler: { show: true, install: false, maintenance: true, commercial: true, wide: false, name: "Walk-in Cooler", page: "commercial-walk-in-cooler-repair.html", img: "./appliance/walk-in-cooler.jpg",
+
+        commercialWalkInCooler: { show: false, install: false, maintenance: true, commercial: true, wide: false, name: "Walk-in Cooler", page: "commercial-walk-in-cooler-repair.html", img: "./appliance/walk-in-cooler.webp",
           ask: "Walk-in too warm?",
           text: "Repair of walk-in coolers: condensing units, evaporator fans, defrost, doors and controls.",
           formName: "Walk-in Cooler", formText: "Walk-in cooler for a restaurant or store.", icon: "snow", fee: "appliancesCom" },
 
-        commercialWalkInFreezer: { show: true, install: false, maintenance: true, commercial: true, wide: false, name: "Walk-in Freezer", page: "commercial-walk-in-freezer-repair.html", img: "./appliance/walk-in-freezer.jpg",
+        commercialWalkInFreezer: { show: false, install: false, maintenance: true, commercial: true, wide: false, name: "Walk-in Freezer", page: "commercial-walk-in-freezer-repair.html", img: "./appliance/walk-in-freezer.webp",
           ask: "Walk-in freezer icing up?",
           text: "Repair of walk-in freezers: defrost systems, condensing units, door heaters and controls.",
           formName: "Walk-in Freezer", formText: "Walk-in freezer for a restaurant, store or warehouse.", icon: "snow", fee: "appliancesCom" }
@@ -175,22 +180,22 @@ window.SITE = (function () {
           text: "Repair ignition, heating, and temperature control issues.",
           formName: "Heater", formText: "Water not heating.", icon: "flame" },
 
-        saltCell: { show: true, install: false, maintenance: true, wide: false, name: "Salt Cells", page: "pool-salt-cell-repair.html", img: "./pool/",
+        saltCell: { show: true, install: false, maintenance: true, wide: false, name: "Salt Cells", page: "pool-salt-cell-repair.html", img: "./pool/PoolSaltCell.webp",
           ask: "Low chlorine or cell error?",
           text: "Inspect, clean, and replace salt cells to keep chlorine production steady.",
           formName: "Salt Cell", formText: "Low chlorine or cell errors.", icon: "bolt" },
         
-        plumbing: { show: true, install: false, maintenance: true, wide: false, name: "Plumbing (Above Ground)", page: "pool-plumbing-repair.html", img: "./pool/",
+        plumbing: { show: true, install: false, maintenance: true, wide: false, name: "Plumbing (Above Ground)", page: "pool-plumbing-repair.html", img: "./pool/PoolPlumbing.webp",
           ask: "Leaks at pipes or valves?",
           text: "Fix leaks, valves, and fittings on above-ground pool and spa plumbing.",
           formName: "Plumbing (Above Ground)", formText: "Leaks at pipes or valves.", icon: "tool" },
 
-        timers: { show: true, install: false, maintenance: true, wide: false, name: "Timers & Smart Systems", page: "pool-timers-repair.html", img: "./pool/",
+        timers: { show: true, install: false, maintenance: true, wide: false, name: "Timers & Smart Systems", page: "pool-timers-repair.html", img: "./pool/PoolTimers.webp",
           ask: "Timer or automation issues?",
           text: "Set up and repair timers, automation, and smart controls.",
           formName: "Timers & Smart Systems", formText: "Automation or timer issues.", icon: "cpu" },
 
-        electronics: { show: true, install: false, maintenance: true, wide: false, name: "Electronics", page: "pool-electronics-repair.html", img: "./pool/",
+        electronics: { show: true, install: false, maintenance: true, wide: false, name: "Electronics", page: "pool-electronics-repair.html", img: "./pool/PoolElectronics.webp",
           ask: "Control panel not responding?",
           text: "Diagnose control boards, panels, and electronic components.",
           formName: "Electronics", formText: "Control panels and boards.", icon: "cpu" }
@@ -204,7 +209,7 @@ window.SITE = (function () {
   const FEES = {
     appliances: { standard: 79,  emergency: 150 },
     hvac:       { standard: 79,  emergency: 150 },
-    hvacCom:    { standard: 150, emergency: 350 },  // HVAC commercial
+    hvacCom:    { standard: 150, emergency: 250 },  // HVAC commercial
     appliancesCom: { standard: 150, emergency: 250 }, // commercial refrigerators / freezers
     pool:       { standard: 79,  emergency: 150 }
   };
@@ -214,11 +219,11 @@ window.SITE = (function () {
          enabled: false  ->  hides all "credited toward your repair" texts in the booking form. */
   const CREDIT = {
     enabled: true,
-    appliances: 200,
-    hvac:       250,
-    hvacCom:    300, // HVAC commercial
-    appliancesCom: 300, // commercial refrigerators / freezers
-    pool:       250
+    appliances: 300,
+    hvac:       300,
+    hvacCom:    400, // HVAC commercial
+    appliancesCom: 400, // commercial refrigerators / freezers
+    pool:       300
   };
 
 
@@ -308,11 +313,43 @@ window.SITE = (function () {
   /* 4a) DIAGNOSIS PHOTOS: extra photos for the "Start with the symptom" block on each service page.
          By default the block shows only the page's own hero photo. Add more file paths here and the photos fade into each other automatically.
          "all" = added to every service page; or use the page name (e.g. "refrigerator-repair") for just that page.
-         Example:  all: ["./appliance/diag-1.jpg"],  "refrigerator-repair": ["./appliance/fridge-diag-2.jpg", "./appliance/fridge-diag-3.jpg"] */
+         Example:  "refrigerator-repair": ["./appliance/fridge-2.jpg", "./appliance/fridge-3.jpg"],   (the first photo is always the page's hero photo, yours come after it) */
   const DIAG_IMAGES = {
-    all: [],
+    all: [],   /* photos added to EVERY service page (leave [] if you do not need them) */
+
+    /* ---- HVAC ---- */
+    "air-conditioner-repair": [],
+    "furnace-repair": [],
+    "mini-split-repair": [],
+    "packaged-unit-repair": [],
+    "through-the-wall-repair": [],
+
+    "commercial-ac-repair": [],
+    "commercial-heating-repair": [],
+
+    /* ---- APPLIANCES ---- */
     "refrigerator-repair": [],
-    "furnace-repair": []
+    "freezer-repair": [],
+    "washer-repair": [],
+    "dryer-repair": [],
+    "oven-stove-repair": [],
+    "cooktop-range-repair": [],
+    "garbage-disposal-repair": [],
+
+    "commercial-refrigerator-repair": [],
+    "commercial-freezer-repair": [],
+    "commercial-walk-in-cooler-repair": [],
+    "commercial-walk-in-freezer-repair": [],
+
+    /* ---- POOL / SPA ---- */
+    "pool-pump-repair": [],
+    "pool-filter-repair": [],
+    "pool-heater-repair": [],
+    "pool-salt-cell-repair": [],
+    "pool-plumbing-repair": [],
+    "pool-timers-repair": [],
+    "pool-electronics-repair": []
+
   };
   const DIAG_SECONDS = 5;   /* seconds each photo stays on screen */
 

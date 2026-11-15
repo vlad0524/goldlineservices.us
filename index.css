@@ -2869,3 +2869,11 @@ body.sp .pcell.fx.in { transition: transform .4s var(--ease), border-color .35s,
 .dg-img img.dg-slide { position: absolute; inset: 0; opacity: 0; transition: opacity 1.2s ease }
 .dg-img img.dg-slide.on { opacity: 1 }
 .dg-img .dg-badge { z-index: 3 }
+
+/* v17: faster gold shine across the Schedule buttons; diagnosis photo dots */
+.btn-grad { transition: background-position .45s ease, transform .6s var(--ease), box-shadow .6s ease !important }
+.dg-dots { position: absolute; left: 0; right: 0; bottom: 14px; z-index: 4; display: flex; justify-content: center; gap: 8px; pointer-events: none }
+.dg-dots button { pointer-events: auto; width: 9px; height: 9px; padding: 0; border: 0; border-radius: 99px; background: rgba(255,255,255,.5); cursor: pointer; transition: width .35s var(--ease), background .35s }
+.dg-dots button.on { width: 26px; background: var(--grad) }
+.dg-img:has(.dg-dots:not([style*="none"])) .dg-badge { bottom: 44px }
+.dg-img .dg-badge{display:none!important}

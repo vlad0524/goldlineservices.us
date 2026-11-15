@@ -196,6 +196,21 @@
     document.querySelectorAll('[data-ic]').forEach(e => { e.outerHTML = ic(e.dataset.ic); });
 })();
 
+/* hero photo = the photo set for this service in site-config.js (SERVICES -> img) */
+(function () {
+    try {
+        const file = (location.pathname.split('/').pop() || '');
+        const hero = document.querySelector('.hero-bg');
+        if (!hero || !window.SITE || !SITE.services) return;
+        let img = '';
+        Object.keys(SITE.services).forEach(g => Object.keys(SITE.services[g].items).forEach(k => { const it = SITE.services[g].items[k]; if (it.page === file && it.img) img = it.img; }));
+        if (!img || /\/$/.test(img)) return;   /* nothing set (or only a folder): keep the photo from the page */
+        const orig = hero.getAttribute('src');
+        hero.onerror = function () { hero.onerror = function () { hero.onerror = null; hero.src = './appliance/range-logo.jpg'; }; hero.src = orig; };
+        hero.src = img;
+    } catch (e) { }
+})();
+
 /* ---------- "Start with the symptom" diagnosis section (inserted after "What we repair") ---------- */
 (function () {
     const slug = (location.pathname.split('/').pop() || '').replace('.html', '');
@@ -237,22 +252,26 @@
         '<h2>A precise diagnosis starts before a part is changed</h2>' +
         '<p class="dg-lead">' + d[0] + '</p><p>' + d[1] + '</p><p>' + d[2] + '</p>' +
         '<ul class="dg-list">' + d[3].map(t => '<li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg>' + t + '</li>').join('') + '</ul></div>' +
-        '<div class="dg-img"><span class="dg-badge"><i>'+'<svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg></i><b>Diagnosis first</b><em>Exact price before any work</em></span><img class="dg-slide on" src="' + src + '" alt="" loading="lazy" onerror="this.onerror=null;this.src=\'./appliance/range-logo.jpg\'"></div></div></div>';
+        '<div class="dg-img"><img class="dg-slide on" src="' + src + '" alt="" loading="lazy" onerror="this.onerror=null;this.src=\'./appliance/range-logo.jpg\'"></div></div></div>';
     pg.after(sec);
-    /* extra photos (site-config.js -> DIAG_IMAGES) fade into each other */
+    /* extra photos (site-config.js -> DIAG_IMAGES) fade into each other; dots under the photo switch them by hand */
     const cfg = (window.SITE && SITE.diagImages) || {};
     const extra = [].concat(cfg.all || [], cfg[slug] || []).filter(Boolean);
     if (extra.length) {
         const box = sec.querySelector('.dg-img');
-        extra.forEach(u => { const im = document.createElement('img'); im.className = 'dg-slide'; im.alt = ''; im.loading = 'lazy'; im.src = u; im.onerror = () => im.remove(); box.appendChild(im); });
+        extra.forEach(u => { const im = document.createElement('img'); im.className = 'dg-slide'; im.alt = ''; im.loading = 'lazy'; im.src = u; im.onerror = () => { im.remove(); build(); }; box.appendChild(im); });
+        const dots = document.createElement('div'); dots.className = 'dg-dots'; box.appendChild(dots);
         let i = 0, timer = null, vis = true;
-        const next = () => {
-            const all = box.querySelectorAll('.dg-slide'); if (all.length < 2 || !vis || document.hidden) return;
-            all[i % all.length].classList.remove('on'); i = (i + 1) % all.length; all[i].classList.add('on');
-        };
-        const start = () => { if (!timer) timer = setInterval(next, Math.max(2, (SITE.diagSeconds || 5)) * 1000); };
+        const slides = () => box.querySelectorAll('.dg-slide');
+        const show = n => { const all = slides(); if (!all.length) return; i = (n + all.length) % all.length; all.forEach((s, k) => s.classList.toggle('on', k === i)); dots.querySelectorAll('button').forEach((d, k) => d.classList.toggle('on', k === i)); };
+        const restart = () => { clearInterval(timer); timer = setInterval(() => { if (vis && !document.hidden) show(i + 1); }, Math.max(2, (SITE.diagSeconds || 5)) * 1000); };
+        function build() {
+            const n = slides().length; dots.innerHTML = ''; dots.style.display = n > 1 ? '' : 'none';
+            for (let k = 0; k < n; k++) { const d = document.createElement('button'); d.type = 'button'; d.setAttribute('aria-label', 'Photo ' + (k + 1)); d.onclick = () => { show(k); restart(); }; dots.appendChild(d); }
+            show(Math.min(i, n - 1));
+        }
+        build(); restart();
         if ('IntersectionObserver' in window) new IntersectionObserver(es => { vis = es[0].isIntersecting; }).observe(box);
-        start();
     }
     document.querySelectorAll('.sp-sec .kicker .kn').forEach((k, i) => { k.textContent = String(i + 1).padStart(2, '0'); });
 })();
